@@ -1,0 +1,6 @@
+# APK files (build artifacts)
+*.apk
+
+# OS generated files
+.DS_Store
+Thumbs.db
