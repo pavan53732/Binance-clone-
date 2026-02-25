@@ -22,6 +22,7 @@ This document provides a comprehensive list of all features and functions in the
 | Asset List | RecyclerView | List of top holdings |
 
 **Data Displayed**:
+
 - Total portfolio value in USD
 - Total portfolio value in BTC
 - 24-hour change percentage
@@ -51,6 +52,7 @@ This document provides a comprehensive list of all features and functions in the
 | Buy Crypto | Credit card | Yellow button |
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────┐
 │  ┌─────┐  ┌─────┐  ┌─────┐  ┌─────┐  ┌─────┐       │
@@ -71,6 +73,7 @@ This document provides a comprehensive list of all features and functions in the
 | Pair Card | Symbol, price, 24h change |
 
 **Data Per Card**:
+
 - Trading pair symbol (e.g., BTC/USDT)
 - Current price
 - 24-hour change percentage
@@ -89,6 +92,7 @@ This document provides a comprehensive list of all features and functions in the
 | Image | 16:9 aspect ratio |
 
 **Banner Types**:
+
 - New listing announcements
 - Trading competitions
 - Earn product promotions
@@ -119,6 +123,7 @@ This document provides a comprehensive list of all features and functions in the
 | Valid query | Filter in real-time |
 
 **Search Scope**:
+
 - Pair symbol (BTC, ETH)
 - Pair name (Bitcoin, Ethereum)
 - Base asset
@@ -156,6 +161,7 @@ This document provides a comprehensive list of all features and functions in the
 | New | Recently listed | Date descending |
 
 **UI Components per Category**:
+
 - TabLayout with category names
 - Badge showing count
 - RecyclerView with filtered results
@@ -248,6 +254,7 @@ This document provides a comprehensive list of all features and functions in the
 | Total | Calculated | Price × Amount |
 
 **UI Components**:
+
 ```
 ┌─────────────────────────────────────┐
 │  Price (USDT)                       │
@@ -289,6 +296,7 @@ This document provides a comprehensive list of all features and functions in the
 | Amount | Decimal | Quantity to trade |
 
 **UI Components**:
+
 ```
 ┌─────────────────────────────────────┐
 │  Stop Price (USDT)                  │
@@ -327,6 +335,7 @@ This document provides a comprehensive list of all features and functions in the
 | Total | Cumulative total |
 
 **Visual Elements**:
+
 - Depth bar (background) showing relative size
 - Color intensity based on order size
 
@@ -385,6 +394,7 @@ This document provides a comprehensive list of all features and functions in the
 | Isolated | Specific amount as collateral | Only isolated amount at risk |
 
 **UI Components**:
+
 - Toggle switch between modes
 - Margin amount input (isolated)
 - Risk indicator
@@ -406,6 +416,7 @@ This document provides a comprehensive list of all features and functions in the
 | ROE | Return on Equity |
 
 **UI Components**:
+
 ```
 ┌─────────────────────────────────────────────────────┐
 │  BTCUSDT Perpetual                    [Close]       │
@@ -418,7 +429,7 @@ This document provides a comprehensive list of all features and functions in the
 
 ---
 
-## Wallet Screen Features
+## Assets Screen Features
 
 ### 1. Balance Display
 
@@ -466,6 +477,7 @@ This document provides a comprehensive list of all features and functions in the
 **Purpose**: Receive cryptocurrency
 
 **Flow Steps**:
+
 1. Select coin
 2. Select network (if multiple)
 3. Display address/QR
@@ -584,22 +596,22 @@ This document provides a comprehensive list of all features and functions in the
 
 ### Common Validation Rules
 
-| Field Type | Validation | Error Message |
-|------------|------------|---------------|
-| Email | Valid email format | "Invalid email address" |
-| Phone | Valid phone format | "Invalid phone number" |
-| Password | Min 8 chars, 1 upper, 1 number | "Password too weak" |
-| Amount | Positive number | "Amount must be positive" |
-| Address | Valid crypto address | "Invalid address" |
-| Price | Positive number | "Price must be positive" |
+| Field Type | Validation                     | Error Message             |
+| ---------- | ------------------------------ | ------------------------- |
+| Email      | Valid email format             | "Invalid email address"   |
+| Phone      | Valid phone format             | "Invalid phone number"    |
+| Password   | Min 8 chars, 1 upper, 1 number | "Password too weak"       |
+| Amount     | Positive number                | "Amount must be positive" |
+| Address    | Valid crypto address           | "Invalid address"         |
+| Price      | Positive number                | "Price must be positive"  |
 
 ### Real-time Validation
 
-| Trigger | Action |
-|---------|--------|
-| Text changed | Validate format |
-| Focus lost | Validate completeness |
-| Submit | Validate all fields |
+| Trigger      | Action                |
+| ------------ | --------------------- |
+| Text changed | Validate format       |
+| Focus lost   | Validate completeness |
+| Submit       | Validate all fields   |
 
 ---
 
@@ -607,21 +619,21 @@ This document provides a comprehensive list of all features and functions in the
 
 ### Success States
 
-| Action | Feedback |
-|--------|----------|
-| Order placed | Success dialog + notification |
-| Deposit confirmed | Balance update + notification |
-| Withdrawal submitted | Pending status + email |
-| Transfer complete | Balance update + toast |
+| Action               | Feedback                      |
+| -------------------- | ----------------------------- |
+| Order placed         | Success dialog + notification |
+| Deposit confirmed    | Balance update + notification |
+| Withdrawal submitted | Pending status + email        |
+| Transfer complete    | Balance update + toast        |
 
 ### Error States
 
-| Error Type | UI Response |
-|------------|-------------|
-| Network error | Retry button + message |
-| Validation error | Inline error text |
-| Insufficient balance | Error dialog |
-| Server error | Generic error + retry |
+| Error Type           | UI Response            |
+| -------------------- | ---------------------- |
+| Network error        | Retry button + message |
+| Validation error     | Inline error text      |
+| Insufficient balance | Error dialog           |
+| Server error         | Generic error + retry  |
 
 ---
 

@@ -12,26 +12,26 @@ This document describes the navigation structure and patterns used in the Binanc
 
 The Binance app uses a bottom navigation bar with 5 main sections:
 
-| Tab | Icon | Purpose |
-|-----|------|---------|
-| Home | Home icon | Dashboard, market overview, portfolio |
-| Markets | Chart icon | Trading pairs, price lists, market data |
-| Trade | Swap icon | Spot trading, margin trading |
-| Futures | Trending icon | Futures trading |
-| Wallet | Wallet icon | Asset management, deposit/withdraw |
+| Tab     | Icon          | Purpose                                 |
+| ------- | ------------- | --------------------------------------- |
+| Home    | Home icon     | Dashboard, market overview, portfolio   |
+| Markets | Chart icon    | Trading pairs, price lists, market data |
+| Trade   | Swap icon     | Spot trading, margin trading            |
+| Futures | Trending icon | Futures trading                         |
+| Assets  | Assets icon   | Asset management, deposit/withdraw      |
 
 ### Bottom Navigation Specifications
 
-| Property | Value |
-|----------|-------|
-| Height | 56dp |
-| Background | `#FF181A20` (dark theme) |
-| Icon Size | 24dp |
-| Icon Color (Selected) | `#FFF0B90B` (primary yellow) |
-| Icon Color (Unselected) | `#FF848E9C` (gray) |
-| Label Size | 10-12sp |
-| Label Color (Selected) | `#FFF0B90B` |
-| Label Color (Unselected) | `#FF848E9C` |
+| Property                 | Value                        |
+| ------------------------ | ---------------------------- |
+| Height                   | 56dp                         |
+| Background               | `#FF181A20` (dark theme)     |
+| Icon Size                | 24dp                         |
+| Icon Color (Selected)    | `#FFF0B90B` (primary yellow) |
+| Icon Color (Unselected)  | `#FF848E9C` (gray)           |
+| Label Size               | 10-12sp                      |
+| Label Color (Selected)   | `#FFF0B90B`                  |
+| Label Color (Unselected) | `#FF848E9C`                  |
 
 ---
 
@@ -53,6 +53,7 @@ Used within screens for sub-navigation (e.g., Buy/Sell, Spot/Margin).
 | Tab Mode | scrollable or fixed |
 
 **Example Usage**:
+
 - Buy/Sell tabs in trading
 - Spot/Margin/Futures tabs
 - Open/Close orders tabs
@@ -61,6 +62,7 @@ Used within screens for sub-navigation (e.g., Buy/Sell, Spot/Margin).
 ### Tab with Count Badge
 
 Some tabs display count badges:
+
 - Badge Size: 18dp diameter
 - Badge Color: `#FFF6465D` (red)
 - Text Size: 10sp
@@ -108,19 +110,20 @@ ScannerHelpFragment (Start)
 Navigation uses safe args for passing data between fragments:
 
 ```xml
-<argument 
-    android:name="document" 
+<argument
+    android:name="document"
     app:type="io.uqudo.sdk.core.domain.model.Document" />
-    
-<argument 
-    android:name="error" 
-    app:type="java.lang.Throwable" 
+
+<argument
+    android:name="error"
+    app:type="java.lang.Throwable"
     app:nullable="true" />
 ```
 
 ### Pop Behavior
 
 Actions can include pop behavior:
+
 - `popUpTo` - Pop back stack to specific destination
 - `popUpToInclusive` - Include the destination in pop
 
@@ -131,6 +134,7 @@ Actions can include pop behavior:
 ### Context Menus
 
 **Copy/Select All Menu** (`2131755013.xml`):
+
 ```xml
 <menu>
     <item android:id="@id/2131429558" android:title="@string/copy" />
@@ -139,6 +143,7 @@ Actions can include pop behavior:
 ```
 
 **Chat Context Menu** (`2131755015.xml`):
+
 ```xml
 <menu>
     <item android:id="@id/2131429570" android:title="@string/c2c_chat_unsend_title" />
@@ -150,25 +155,27 @@ Actions can include pop behavior:
 ### Toolbar Menus
 
 **Search Menu** (`2131755012.xml`):
+
 ```xml
 <menu>
-    <item 
-        android:icon="@drawable/2131234277" 
-        android:id="@id/2131431775" 
+    <item
+        android:icon="@drawable/2131234277"
+        android:id="@id/2131431775"
         android:title="@string/pi2_search_bar" />
 </menu>
 ```
 
 **Image Crop Menu** (`2131755014.xml`):
+
 ```xml
 <menu>
-    <item 
-        android:icon="@drawable/2131236638" 
-        android:id="@id/2131437488" 
+    <item
+        android:icon="@drawable/2131236638"
+        android:id="@id/2131437488"
         android:title="@string/ucrop_menu_crop" />
-    <item 
-        android:icon="@drawable/2131236650" 
-        android:enabled="false" 
+    <item
+        android:icon="@drawable/2131236650"
+        android:enabled="false"
         android:id="@id/2131437492" />
 </menu>
 ```
@@ -180,21 +187,25 @@ Actions can include pop behavior:
 ### Back Navigation
 
 **Hardware Back Button**:
+
 - Navigates up the back stack
 - Closes dialogs and bottom sheets
 - Exits app from main screen
 
 **Up Navigation (Toolbar Arrow)**:
+
 - Always navigates to parent destination
 - Shown when not at root destination
 
 ### Modal Navigation
 
 **Dialogs**:
+
 - Dismiss on back press or outside tap
 - No back stack history
 
 **Bottom Sheets**:
+
 - Dismiss on back press or swipe down
 - Can have nested navigation
 
@@ -204,7 +215,7 @@ Navigation destinations support deep links for external navigation:
 
 ```xml
 <deepLink app:uri="binance://trade/{pair}" />
-<deepLink app:uri="binance://wallet/deposit/{asset}" />
+<deepLink app:uri="binance://assets/deposit/{asset}" />
 ```
 
 **Common Deep Link Patterns**:
@@ -212,9 +223,9 @@ Navigation destinations support deep links for external navigation:
 |-------------|-------------|
 | `binance://home` | Home screen |
 | `binance://trade/{pair}` | Trading screen |
-| `binance://wallet` | Wallet screen |
-| `binance://wallet/deposit/{asset}` | Deposit screen |
-| `binance://wallet/withdraw/{asset}` | Withdraw screen |
+| `binance://assets` | Assets screen |
+| `binance://assets/deposit/{asset}` | Deposit screen |
+| `binance://assets/withdraw/{asset}` | Withdraw screen |
 
 ---
 
@@ -242,10 +253,10 @@ Home Screen
     └── COIN-M Futures
 ```
 
-### Wallet Flow
+### Assets Flow
 
 ```
-Wallet Screen
+Assets Screen
 ├── Asset List
 │   ├── Asset Detail
 │   │   ├── Deposit
@@ -296,16 +307,17 @@ C2C Homepage
 
 ### Standard Transitions
 
-| Transition | Usage |
-|------------|-------|
-| Slide Right | Back navigation |
-| Slide Left | Forward navigation |
-| Fade | Dialog appearance |
-| Bottom Sheet | Modal content |
+| Transition   | Usage              |
+| ------------ | ------------------ |
+| Slide Right  | Back navigation    |
+| Slide Left   | Forward navigation |
+| Fade         | Dialog appearance  |
+| Bottom Sheet | Modal content      |
 
 ### Shared Element Transitions
 
 Used for:
+
 - Trading pair list → Trading screen (chart preview)
 - Asset list → Asset detail (icon)
 
@@ -349,15 +361,16 @@ findNavController().popBackStack()
 
 Document verification uses Onfido SDK with its own navigation:
 
-| Menu File | Purpose |
-|-----------|---------|
-| `onfido_activity_workflow_toolbar_menu.xml` | Workflow toolbar |
-| `onfido_capture_activity_workflow_toolbar_menu.xml` | Capture toolbar |
-| `onfido_country_selection.xml` | Country selection |
+| Menu File                                           | Purpose           |
+| --------------------------------------------------- | ----------------- |
+| `onfido_activity_workflow_toolbar_menu.xml`         | Workflow toolbar  |
+| `onfido_capture_activity_workflow_toolbar_menu.xml` | Capture toolbar   |
+| `onfido_country_selection.xml`                      | Country selection |
 
 ### Uqudo SDK Navigation
 
 Document scanning uses Uqudo SDK navigation graph (`2131886084.xml`):
+
 - ScannerHelpFragment
 - PermissionsFragment
 - CameraFragment

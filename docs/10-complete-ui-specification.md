@@ -10,14 +10,14 @@ This document provides a comprehensive UI specification summary for the Binance 
 
 ### Brand Identity
 
-| Element | Value |
-|---------|-------|
-| App Name | Binance |
-| Primary Color | `#F0B90B` (Binance Yellow) |
-| Secondary Color | `#FCD535` (Light Yellow) |
-| Success Color | `#0ECB81` / `#2EBD85` (Green) |
-| Error Color | `#F6465D` (Red) |
-| Dark Theme Background | `#0B0E11` |
+| Element               | Value                         |
+| --------------------- | ----------------------------- |
+| App Name              | Binance                       |
+| Primary Color         | `#F0B90B` (Binance Yellow)    |
+| Secondary Color       | `#FCD535` (Light Yellow)      |
+| Success Color         | `#0ECB81` / `#2EBD85` (Green) |
+| Error Color           | `#F6465D` (Red)               |
+| Dark Theme Background | `#0B0E11`                     |
 
 ### Design Principles
 
@@ -33,32 +33,32 @@ This document provides a comprehensive UI specification summary for the Binance 
 
 ### Primary Colors
 
-| Name | Light Theme | Dark Theme | Usage |
-|------|-------------|------------|-------|
-| Primary | `#F0B90B` | `#F0B90B` | Buttons, highlights |
-| Primary Variant | `#FCD535` | `#FCD535` | Secondary actions |
-| Background | `#FFFFFF` | `#0B0E11` | Screen background |
-| Surface | `#F5F5F5` | `#1E2329` | Cards, dialogs |
-| Error | `#F6465D` | `#F6465D` | Errors, losses |
-| Success | `#0ECB81` | `#0ECB81` | Success, profits |
+| Name            | Light Theme | Dark Theme | Usage               |
+| --------------- | ----------- | ---------- | ------------------- |
+| Primary         | `#F0B90B`   | `#F0B90B`  | Buttons, highlights |
+| Primary Variant | `#FCD535`   | `#FCD535`  | Secondary actions   |
+| Background      | `#FFFFFF`   | `#0B0E11`  | Screen background   |
+| Surface         | `#F5F5F5`   | `#1E2329`  | Cards, dialogs      |
+| Error           | `#F6465D`   | `#F6465D`  | Errors, losses      |
+| Success         | `#0ECB81`   | `#0ECB81`  | Success, profits    |
 
 ### Text Colors
 
-| Type | Light Theme | Dark Theme |
-|------|-------------|------------|
-| Primary | `#000000` | `#FFFFFF` |
-| Secondary | `#707A8A` | `#848E9C` |
-| Disabled | `#B7BDC6` | `#474D57` |
-| Link | `#F0B90B` | `#F0B90B` |
+| Type      | Light Theme | Dark Theme |
+| --------- | ----------- | ---------- |
+| Primary   | `#000000`   | `#FFFFFF`  |
+| Secondary | `#707A8A`   | `#848E9C`  |
+| Disabled  | `#B7BDC6`   | `#474D57`  |
+| Link      | `#F0B90B`   | `#F0B90B`  |
 
 ### Semantic Colors
 
-| Purpose | Color |
-|---------|-------|
+| Purpose   | Color     |
+| --------- | --------- |
 | Profit/Up | `#0ECB81` |
 | Loss/Down | `#F6465D` |
-| Warning | `#F0B90B` |
-| Info | `#1E88E5` |
+| Warning   | `#F0B90B` |
+| Info      | `#1E88E5` |
 
 ---
 
@@ -66,23 +66,23 @@ This document provides a comprehensive UI specification summary for the Binance 
 
 ### Font Families
 
-| Weight | Usage |
-|--------|-------|
+| Weight  | Usage                   |
+| ------- | ----------------------- |
 | Regular | Body text, descriptions |
-| Medium | Labels, buttons |
-| Bold | Headings, emphasis |
+| Medium  | Labels, buttons         |
+| Bold    | Headings, emphasis      |
 
 ### Text Styles
 
-| Style | Size | Weight | Usage |
-|-------|------|--------|-------|
-| H1 | 24sp | Bold | Screen titles |
-| H2 | 20sp | Bold | Section headers |
-| H3 | 18sp | Medium | Card titles |
-| Body1 | 16sp | Regular | Primary text |
-| Body2 | 14sp | Regular | Secondary text |
-| Caption | 12sp | Regular | Labels, hints |
-| Button | 16sp | Medium | Button text |
+| Style   | Size | Weight  | Usage           |
+| ------- | ---- | ------- | --------------- |
+| H1      | 24sp | Bold    | Screen titles   |
+| H2      | 20sp | Bold    | Section headers |
+| H3      | 18sp | Medium  | Card titles     |
+| Body1   | 16sp | Regular | Primary text    |
+| Body2   | 14sp | Regular | Secondary text  |
+| Caption | 12sp | Regular | Labels, hints   |
+| Button  | 16sp | Medium  | Button text     |
 
 ---
 
@@ -90,32 +90,32 @@ This document provides a comprehensive UI specification summary for the Binance 
 
 ### SNS Design System Spacing
 
-| Name | Value | Usage |
-|------|-------|-------|
-| Tiny | 4dp | Minimal spacing |
-| Small | 8dp | Compact spacing |
-| Medium | 16dp | Standard spacing |
-| Large | 32dp | Section spacing |
-| Huge | 64dp | Major separations |
+| Name   | Value | Usage             |
+| ------ | ----- | ----------------- |
+| Tiny   | 4dp   | Minimal spacing   |
+| Small  | 8dp   | Compact spacing   |
+| Medium | 16dp  | Standard spacing  |
+| Large  | 32dp  | Section spacing   |
+| Huge   | 64dp  | Major separations |
 
 ### Standard Margins
 
-| Element | Value |
-|---------|-------|
-| Screen edge | 16dp |
-| Card padding | 16dp |
-| List item padding | 16dp horizontal |
-| Section spacing | 24dp |
-| Button padding | 16dp horizontal, 12dp vertical |
+| Element           | Value                          |
+| ----------------- | ------------------------------ |
+| Screen edge       | 16dp                           |
+| Card padding      | 16dp                           |
+| List item padding | 16dp horizontal                |
+| Section spacing   | 24dp                           |
+| Button padding    | 16dp horizontal, 12dp vertical |
 
 ### Corner Radius
 
-| Element | Radius |
-|---------|--------|
-| Cards | 8dp |
-| Buttons | 4dp |
-| Dialogs | 12dp |
-| Input fields | 8dp |
+| Element       | Radius          |
+| ------------- | --------------- |
+| Cards         | 8dp             |
+| Buttons       | 4dp             |
+| Dialogs       | 12dp            |
+| Input fields  | 8dp             |
 | Bottom sheets | 12dp (top only) |
 
 ---
@@ -124,39 +124,39 @@ This document provides a comprehensive UI specification summary for the Binance 
 
 ### Buttons
 
-| Type | Height | Background | Text Color | Radius |
-|------|--------|------------|------------|--------|
-| Primary | 40dp | `#F0B90B` | `#000000` | 4dp |
-| Secondary | 40dp | Transparent | `#F0B90B` | 4dp |
-| Disabled | 40dp | `#474D57` | `#707A8A` | 4dp |
+| Type      | Height | Background  | Text Color | Radius |
+| --------- | ------ | ----------- | ---------- | ------ |
+| Primary   | 40dp   | `#F0B90B`   | `#000000`  | 4dp    |
+| Secondary | 40dp   | Transparent | `#F0B90B`  | 4dp    |
+| Disabled  | 40dp   | `#474D57`   | `#707A8A`  | 4dp    |
 
 ### Input Fields
 
-| Property | Value |
-|----------|-------|
-| Height | 52dp |
-| Text Size | 16sp |
-| Corner Radius | 8dp |
-| Padding | 16dp horizontal |
-| Border | 1dp `#2B3139` |
+| Property      | Value           |
+| ------------- | --------------- |
+| Height        | 52dp            |
+| Text Size     | 16sp            |
+| Corner Radius | 8dp             |
+| Padding       | 16dp horizontal |
+| Border        | 1dp `#2B3139`   |
 
 ### Cards
 
-| Property | Value |
-|----------|-------|
-| Background | `#1E2329` (dark) |
-| Corner Radius | 8dp |
-| Padding | 16dp |
-| Elevation | 2-4dp |
+| Property      | Value            |
+| ------------- | ---------------- |
+| Background    | `#1E2329` (dark) |
+| Corner Radius | 8dp              |
+| Padding       | 16dp             |
+| Elevation     | 2-4dp            |
 
 ### List Items
 
-| Property | Value |
-|----------|-------|
-| Height | 48-56dp |
-| Icon Size | 24dp |
-| Text Size | 16sp |
-| Divider | 1dp `#202630` |
+| Property  | Value         |
+| --------- | ------------- |
+| Height    | 48-56dp       |
+| Icon Size | 24dp          |
+| Text Size | 16sp          |
+| Divider   | 1dp `#202630` |
 
 ---
 
@@ -170,17 +170,17 @@ MainActivity
 ├── MarketsFragment
 ├── TradeFragment
 ├── FuturesFragment
-└── WalletFragment
+└── AssetsFragment
 ```
 
 ### Screen Types
 
-| Type | Description |
-|------|-------------|
+| Type        | Description                |
+| ----------- | -------------------------- |
 | Full Screen | Activities, main fragments |
-| Modal | Dialogs, bottom sheets |
-| Overlay | Toasts, snackbars |
-| Embedded | Widgets, mini charts |
+| Modal       | Dialogs, bottom sheets     |
+| Overlay     | Toasts, snackbars          |
+| Embedded    | Widgets, mini charts       |
 
 ### Common Layout Patterns
 
@@ -195,13 +195,13 @@ MainActivity
 
 ### Bottom Navigation
 
-| Tab | Icon | Purpose |
-|-----|------|---------|
-| Home | Home | Dashboard, portfolio |
-| Markets | Chart | Trading pairs, prices |
-| Trade | Swap | Spot trading |
-| Futures | Trending | Futures trading |
-| Wallet | Wallet | Asset management |
+| Tab     | Icon     | Purpose               |
+| ------- | -------- | --------------------- |
+| Home    | Home     | Dashboard, portfolio  |
+| Markets | Chart    | Trading pairs, prices |
+| Trade   | Swap     | Spot trading          |
+| Futures | Trending | Futures trading       |
+| Assets  | Assets   | Asset management      |
 
 ### Tab Layout
 
@@ -211,12 +211,12 @@ MainActivity
 
 ### Navigation Transitions
 
-| Transition | Usage |
-|------------|-------|
-| Slide right | Back navigation |
-| Slide left | Forward navigation |
-| Fade | Dialog appearance |
-| Bottom sheet | Modal content |
+| Transition   | Usage              |
+| ------------ | ------------------ |
+| Slide right  | Back navigation    |
+| Slide left   | Forward navigation |
+| Fade         | Dialog appearance  |
+| Bottom sheet | Modal content      |
 
 ---
 
@@ -226,22 +226,22 @@ MainActivity
 
 Package: `com.major.android.uikit2`
 
-| Component | Description |
-|-----------|-------------|
-| KitButton | Styled button with states |
-| KitSwitch | Custom toggle switch |
-| KitRadioButton | Custom radio button |
-| KitCheckBox | Animated checkbox |
+| Component      | Description               |
+| -------------- | ------------------------- |
+| KitButton      | Styled button with states |
+| KitSwitch      | Custom toggle switch      |
+| KitRadioButton | Custom radio button       |
+| KitCheckBox    | Animated checkbox         |
 
 ### Standard Components
 
-| Component | Usage |
-|-----------|-------|
-| RecyclerView | Lists, grids |
-| ConstraintLayout | Complex layouts |
+| Component        | Usage              |
+| ---------------- | ------------------ |
+| RecyclerView     | Lists, grids       |
+| ConstraintLayout | Complex layouts    |
 | NestedScrollView | Scrollable content |
-| TabLayout | Tab navigation |
-| ViewPager2 | Swipeable pages |
+| TabLayout        | Tab navigation     |
+| ViewPager2       | Swipeable pages    |
 
 ---
 
@@ -249,23 +249,23 @@ Package: `com.major.android.uikit2`
 
 ### Standard Sizes
 
-| Size | Usage |
-|------|-------|
-| 16dp | Inline icons |
-| 20dp | Small actions |
+| Size | Usage          |
+| ---- | -------------- |
+| 16dp | Inline icons   |
+| 20dp | Small actions  |
 | 24dp | Standard icons |
-| 32dp | Medium icons |
-| 40dp | Large icons |
-| 48dp | Feature icons |
+| 32dp | Medium icons   |
+| 40dp | Large icons    |
+| 48dp | Feature icons  |
 
 ### Icon Colors
 
-| State | Color |
-|-------|-------|
-| Default | `#848E9C` |
+| State    | Color     |
+| -------- | --------- |
+| Default  | `#848E9C` |
 | Selected | `#F0B90B` |
 | Disabled | `#474D57` |
-| Error | `#F6465D` |
+| Error    | `#F6465D` |
 
 ---
 
@@ -273,21 +273,21 @@ Package: `com.major.android.uikit2`
 
 ### Timing
 
-| Duration | Usage |
-|----------|-------|
-| 33ms | Quick transitions |
-| 166ms | Standard UI |
-| 200ms | Fade in/out |
-| 300ms | Path morphing |
-| 400ms | Screen transitions |
+| Duration | Usage              |
+| -------- | ------------------ |
+| 33ms     | Quick transitions  |
+| 166ms    | Standard UI        |
+| 200ms    | Fade in/out        |
+| 300ms    | Path morphing      |
+| 400ms    | Screen transitions |
 
 ### Animation Types
 
-| Type | Usage |
-|------|-------|
-| Fade | Visibility changes |
-| Slide | Navigation |
-| Scale | Button press |
+| Type       | Usage              |
+| ---------- | ------------------ |
+| Fade       | Visibility changes |
+| Slide      | Navigation         |
+| Scale      | Button press       |
 | Path Morph | Icon state changes |
 
 ---
@@ -296,8 +296,8 @@ Package: `com.major.android.uikit2`
 
 ### Color Mapping
 
-| Light | Dark |
-|-------|------|
+| Light     | Dark      |
+| --------- | --------- |
 | `#FFFFFF` | `#0B0E11` |
 | `#F5F5F5` | `#1E2329` |
 | `#000000` | `#FFFFFF` |
@@ -333,13 +333,13 @@ All interactive elements include content descriptions for screen readers.
 
 ### Screen Size Support
 
-| Qualifier | Minimum Width |
-|-----------|---------------|
-| sw330dp | Small phones |
-| sw360dp | Standard phones |
-| sw400dp | Large phones |
-| sw600dp | 7" tablets |
-| sw720dp | 10" tablets |
+| Qualifier | Minimum Width   |
+| --------- | --------------- |
+| sw330dp   | Small phones    |
+| sw360dp   | Standard phones |
+| sw400dp   | Large phones    |
+| sw600dp   | 7" tablets      |
+| sw720dp   | 10" tablets     |
 
 ### Orientation Support
 
@@ -353,6 +353,7 @@ All interactive elements include content descriptions for screen readers.
 ### Supported Languages
 
 40+ languages including:
+
 - English (default)
 - Chinese (Simplified, Traditional)
 - Japanese, Korean
@@ -421,31 +422,37 @@ docs/
 ## Implementation Checklist
 
 ### Colors
+
 - [ ] Define all brand colors in colors.xml
 - [ ] Create color state lists for interactive elements
 - [ ] Implement dark theme color variants
 
 ### Typography
+
 - [ ] Define text appearances in styles.xml
 - [ ] Set up font families
 - [ ] Configure text sizes with sp units
 
 ### Dimensions
+
 - [ ] Define spacing dimensions
 - [ ] Set up corner radius values
 - [ ] Configure component heights
 
 ### Components
+
 - [ ] Implement custom UI kit components
 - [ ] Style standard Material components
 - [ ] Create reusable component styles
 
 ### Navigation
+
 - [ ] Set up bottom navigation
 - [ ] Configure navigation graph
 - [ ] Implement deep links
 
 ### Resources
+
 - [ ] Import all drawable resources
 - [ ] Configure density-specific assets
 - [ ] Set up night mode resources
