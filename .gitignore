@@ -1,9 +1,10 @@
-# APK files (build artifacts)
-*.apk
 
-# IDE configuration files
+# Reverse-engineered APK artifacts
+*.zip
+apk-tools/
+binance-3-10-4.apk
+binance-3-10-4.zip
+
+# IDE / Editor configuration
+.vscode/
 .idea/
-
-# OS generated files
-.DS_Store
-Thumbs.db
