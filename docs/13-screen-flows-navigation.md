@@ -12,27 +12,27 @@ This document provides comprehensive documentation of all user flows and navigat
 
 The app uses a 5-tab bottom navigation as the primary navigation pattern.
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
 │                    Main Content                         │
 │                                                         │
 ├─────────┬─────────┬─────────┬─────────┬─────────────────┤
-│  Home   │ Markets │  Trade  │ Futures │     Wallet      │
+│  Home   │ Markets │  Trade  │ Futures │     Assets      │
 │   🏠    │   📊    │   📈    │   ⚡    │       💰        │
 └─────────┴─────────┴─────────┴─────────┴─────────────────┘
 ```
 
 ### Navigation Hierarchy
 
-```
+```text
 App
 ├── Main Activity (Bottom Nav Container)
 │   ├── Home Fragment
 │   ├── Markets Fragment
 │   ├── Trade Fragment
 │   ├── Futures Fragment
-│   └── Wallet Fragment
+│   └── Assets Fragment
 │
 ├── Auth Flow
 │   ├── Splash Screen
@@ -47,7 +47,7 @@ App
 │   ├── Order Form
 │   └── Order Confirmation
 │
-├── Wallet Flow
+├── Assets Flow
 │   ├── Asset List
 │   ├── Deposit
 │   ├── Withdraw
@@ -92,18 +92,20 @@ flowchart TD
 ```
 
 **Screen Sequence**:
+
 1. **Splash Screen** → Auto-check login state
 2. **Login Screen** → Email/Phone + Password
 3. **OTP Screen** → 6-digit code input
 4. **Home Screen** → Main dashboard
 
 **Back Button Behavior**:
-| Screen | Back Action |
-|--------|-------------|
-| Splash | Exit app |
-| Login | Exit app |
-| OTP | Return to Login |
-| Home | Exit app (with double-tap confirmation) |
+
+| Screen | Back Action                             |
+| ------ | --------------------------------------- |
+| Splash | Exit app                                |
+| Login  | Exit app                                |
+| OTP    | Return to Login                         |
+| Home   | Exit app (with double-tap confirmation) |
 
 ---
 
@@ -138,6 +140,7 @@ flowchart TD
 ```
 
 **Screen Sequence**:
+
 1. **Register Screen** → Email/Phone input
 2. **Password Creation** → Password + Confirm
 3. **OTP Verification** → Verify contact
@@ -148,14 +151,15 @@ flowchart TD
 8. **Home Screen** → Account ready
 
 **Back Button Behavior**:
-| Screen | Back Action |
-|--------|-------------|
-| Register | Return to Login |
-| Password | Return to Register |
-| OTP | Return to Password |
-| Terms | Return to OTP |
+
+| Screen    | Back Action             |
+| --------- | ----------------------- |
+| Register  | Return to Login         |
+| Password  | Return to Register      |
+| OTP       | Return to Password      |
+| Terms     | Return to OTP           |
 | KYC Steps | Return to previous step |
-| Home | Exit app |
+| Home      | Exit app                |
 
 ---
 
@@ -189,6 +193,7 @@ flowchart TD
 ```
 
 **Screen Sequence**:
+
 1. **Markets Screen** → Browse pairs
 2. **Trade Screen** → Chart + Order form
 3. **Order Form** → Configure order
@@ -196,13 +201,14 @@ flowchart TD
 5. **Result Screen** → Success/Failure
 
 **Back Button Behavior**:
-| Screen | Back Action |
-|--------|-------------|
-| Markets | Return to previous tab |
-| Trade | Return to Markets |
-| Order Form | Cancel order, return to Trade |
-| Confirmation | Return to Order Form |
-| Result | Return to Trade |
+
+| Screen       | Back Action                   |
+| ------------ | ----------------------------- |
+| Markets      | Return to previous tab        |
+| Trade        | Return to Markets             |
+| Order Form   | Cancel order, return to Trade |
+| Confirmation | Return to Order Form          |
+| Result       | Return to Trade               |
 
 ---
 
@@ -210,7 +216,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A[Wallet Screen] --> B[Select Deposit]
+    A[Assets Screen] --> B[Select Deposit]
     B --> C[Select Coin]
     C --> D[Select Network]
     D --> E{Network Options}
@@ -236,18 +242,20 @@ flowchart TD
 ```
 
 **Screen Sequence**:
-1. **Wallet Screen** → Tap Deposit
+
+1. **Assets Screen** → Tap Deposit
 2. **Coin Selection** → Choose cryptocurrency
 3. **Network Selection** → Choose network (if multiple)
 4. **Deposit Address** → View address/QR
 5. **Confirmation** → Wait for transaction
 
 **Back Button Behavior**:
-| Screen | Back Action |
-|--------|-------------|
-| Coin Selection | Return to Wallet |
-| Network Selection | Return to Coin Selection |
-| Deposit Address | Return to Network Selection |
+
+| Screen            | Back Action                 |
+| ----------------- | --------------------------- |
+| Coin Selection    | Return to Assets            |
+| Network Selection | Return to Coin Selection    |
+| Deposit Address   | Return to Network Selection |
 
 ---
 
@@ -255,7 +263,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A[Wallet Screen] --> B[Select Withdraw]
+    A[Assets Screen] --> B[Select Withdraw]
     B --> C[Select Coin]
     C --> D[Withdraw Form]
     D --> E[Enter Address]
@@ -283,7 +291,8 @@ flowchart TD
 ```
 
 **Screen Sequence**:
-1. **Wallet Screen** → Tap Withdraw
+
+1. **Assets Screen** → Tap Withdraw
 2. **Coin Selection** → Choose cryptocurrency
 3. **Withdraw Form** → Address + Amount
 4. **Network Selection** → Choose network
@@ -292,14 +301,15 @@ flowchart TD
 7. **Result Screen** → Success/Failure
 
 **Back Button Behavior**:
-| Screen | Back Action |
-|--------|-------------|
-| Coin Selection | Return to Wallet |
-| Withdraw Form | Return to Coin Selection |
-| Network Selection | Return to Withdraw Form |
-| Review | Return to Withdraw Form |
-| 2FA | Cancel withdrawal |
-| Result | Return to Wallet |
+
+| Screen            | Back Action              |
+| ----------------- | ------------------------ |
+| Coin Selection    | Return to Wallet         |
+| Withdraw Form     | Return to Coin Selection |
+| Network Selection | Return to Withdraw Form  |
+| Review            | Return to Withdraw Form  |
+| 2FA               | Cancel withdrawal        |
+| Result            | Return to Assets         |
 
 ---
 
@@ -307,7 +317,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A[Wallet/Trade Screen] --> B[Select Swap]
+    A[Assets/Trade Screen] --> B[Select Swap]
     B --> C[Swap Screen]
     C --> D[Select From Coin]
     D --> E[Enter Amount]
@@ -331,7 +341,8 @@ flowchart TD
 ```
 
 **Screen Sequence**:
-1. **Swap Entry** → From Wallet or Trade
+
+1. **Swap Entry** → From Assets or Trade
 2. **Swap Screen** → Configure swap
 3. **Coin Selection** → From/To coins
 4. **Amount Input** → Enter amount
@@ -345,7 +356,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A[Wallet Screen] --> B[Select Transfer]
+    A[Assets Screen] --> B[Select Transfer]
     B --> C[Transfer Screen]
     C --> D[Select From Account]
     D --> E{Account Type}
@@ -372,13 +383,15 @@ flowchart TD
 ```
 
 **Account Types**:
+
 - **Spot Wallet** → Main trading balance
 - **Funding Wallet** → P2P and earn products
 - **Futures Wallet** → Futures trading balance
 - **Earn Wallet** → Staking and savings
 
 **Screen Sequence**:
-1. **Wallet Screen** → Tap Transfer
+
+1. **Assets Screen** → Tap Transfer
 2. **Transfer Screen** → Select accounts
 3. **Coin Selection** → Choose asset
 4. **Amount Input** → Enter amount
@@ -391,57 +404,59 @@ flowchart TD
 
 ### Home Screen Navigation
 
-| Element | Destination |
-|---------|-------------|
-| Portfolio Card | Wallet Detail |
-| Quick Action: Trade | Trade Screen |
-| Quick Action: Deposit | Deposit Flow |
-| Quick Action: Withdraw | Withdraw Flow |
-| Quick Action: Earn | Earn Products |
-| Market Overview Item | Trade Screen (pair) |
-| Banner | Promotional Screen |
-| Notification Icon | Notification Center |
-| Profile Icon | Profile Settings |
+| Element                      | Destination                                              |
+| ---------------------------- | -------------------------------------------------------- |
+| Menu / Notifications         | Profile / Notification Center                            |
+| App Mode (Exchange/Web3)     | Switches between Pro Trading and Web3 Wallet view        |
+| Global Search Bar            | Search Screen (Coins, Articles, Features)                |
+| Scan/Pay Icon                | QR Scanner / Binance Pay                                 |
+| Add Funds Button             | Fiat Deposit / P2P Purchase                              |
+| Portfolio Daily PNL          | Detailed PNL Analysis Screen                             |
+| Promo Cards                  | Associated Promotional/Event Screen                      |
+| Market Mini-Cards            | Trade Screen (specific pair)                             |
+| Contextual Action: P2P       | P2P Trading Hub                                          |
+| Contextual Action: Send Cash | Transfer/Send Funds Screen                               |
+| Content Feed Tabs            | Filters infinite scroll feed (Discover, Following, etc.) |
 
 ### Markets Screen Navigation
 
-| Element | Destination |
-|---------|-------------|
-| Search Bar | Search Screen |
-| Favorites Tab | Favorites List |
-| Hot Tab | Hot Pairs List |
-| Gainers Tab | Gainers List |
-| Losers Tab | Losers List |
-| New Tab | New Listings |
-| Pair Item | Trade Screen (pair) |
-| Star Icon | Add to Favorites |
-| Filter Button | Filter Options |
+| Element       | Destination         |
+| ------------- | ------------------- |
+| Search Bar    | Search Screen       |
+| Favorites Tab | Favorites List      |
+| Hot Tab       | Hot Pairs List      |
+| Gainers Tab   | Gainers List        |
+| Losers Tab    | Losers List         |
+| New Tab       | New Listings        |
+| Pair Item     | Trade Screen (pair) |
+| Star Icon     | Add to Favorites    |
+| Filter Button | Filter Options      |
 
 ### Trade Screen Navigation
 
-| Element | Destination |
-|---------|-------------|
+| Element       | Destination          |
+| ------------- | -------------------- |
 | Pair Selector | Pair Selection Sheet |
-| Chart | Fullscreen Chart |
-| Order Book | Expanded Order Book |
-| Recent Trades | Full Trade History |
-| Buy Button | Buy Order Form |
-| Sell Button | Sell Order Form |
-| Open Orders | Order Management |
-| Trade History | History Screen |
+| Chart         | Fullscreen Chart     |
+| Order Book    | Expanded Order Book  |
+| Recent Trades | Full Trade History   |
+| Buy Button    | Buy Order Form       |
+| Sell Button   | Sell Order Form      |
+| Open Orders   | Order Management     |
+| Trade History | History Screen       |
 
-### Wallet Screen Navigation
+### Assets Screen Navigation
 
-| Element | Destination |
-|---------|-------------|
-| Total Balance | Balance Detail |
-| Deposit Button | Deposit Flow |
-| Withdraw Button | Withdraw Flow |
-| Transfer Button | Transfer Flow |
-| Swap Button | Swap Flow |
-| Asset Item | Asset Detail |
+| Element             | Destination    |
+| ------------------- | -------------- |
+| Total Balance       | Balance Detail |
+| Deposit Button      | Deposit Flow   |
+| Withdraw Button     | Withdraw Flow  |
+| Transfer Button     | Transfer Flow  |
+| Swap Button         | Swap Flow      |
+| Asset Item          | Asset Detail   |
 | Transaction History | History Screen |
-| Earn Button | Earn Products |
+| Earn Button         | Earn Products  |
 
 ---
 
@@ -449,30 +464,31 @@ flowchart TD
 
 ### Global Back Stack
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │                    Back Stack                           │
 ├─────────────────────────────────────────────────────────┤
 │  Top: Current Screen                                    │
 │  ...                                                    │
-│  Bottom: Main Screen (Home/Markets/Trade/Futures/Wallet)│
+│  Bottom: Main Screen (Home/Markets/Trade/Futures/Assets)│
 └─────────────────────────────────────────────────────────┘
 ```
 
 ### Back Behavior by Screen Type
 
-| Screen Type | Back Action |
-|-------------|-------------|
-| Main Tab | Exit app (double-tap) |
-| Detail Screen | Return to parent |
-| Form Screen | Discard changes dialog |
-| Flow Screen | Previous step or cancel |
-| Modal/Dialog | Dismiss |
-| Bottom Sheet | Close sheet |
+| Screen Type   | Back Action             |
+| ------------- | ----------------------- |
+| Main Tab      | Exit app (double-tap)   |
+| Detail Screen | Return to parent        |
+| Form Screen   | Discard changes dialog  |
+| Flow Screen   | Previous step or cancel |
+| Modal/Dialog  | Dismiss                 |
+| Bottom Sheet  | Close sheet             |
 
 ### Double-Tap Exit
 
 **Implementation**:
+
 - First back press: Show toast "Press again to exit"
 - Second back press (within 2 seconds): Exit app
 - Timeout: Reset counter after 2 seconds
@@ -483,54 +499,54 @@ flowchart TD
 
 ### URL Scheme
 
-```
+```text
 binance://
 ```
 
 ### Deep Link Routes
 
-| Route | Destination | Parameters |
-|-------|-------------|------------|
-| `/home` | Home Screen | - |
-| `/markets` | Markets Screen | - |
-| `/trade/{pair}` | Trade Screen | pair: BTCUSDT |
-| `/wallet` | Wallet Screen | - |
-| `/wallet/deposit/{coin}` | Deposit Screen | coin: BTC |
-| `/wallet/withdraw/{coin}` | Withdraw Screen | coin: BTC |
-| `/swap` | Swap Screen | - |
-| `/swap/{from}/{to}` | Swap Screen | from: BTC, to: ETH |
-| `/futures/{pair}` | Futures Screen | pair: BTCUSDT |
-| `/earn` | Earn Products | - |
-| `/kyc` | KYC Flow | - |
-| `/settings` | Settings | - |
-| `/security` | Security Settings | - |
+| Route                     | Destination       | Parameters         |
+| ------------------------- | ----------------- | ------------------ |
+| `/home`                   | Home Screen       | -                  |
+| `/markets`                | Markets Screen    | -                  |
+| `/trade/{pair}`           | Trade Screen      | pair: BTCUSDT      |
+| `/assets`                 | Assets Screen     | -                  |
+| `/assets/deposit/{coin}`  | Deposit Screen    | coin: BTC          |
+| `/assets/withdraw/{coin}` | Withdraw Screen   | coin: BTC          |
+| `/swap`                   | Swap Screen       | -                  |
+| `/swap/{from}/{to}`       | Swap Screen       | from: BTC, to: ETH |
+| `/futures/{pair}`         | Futures Screen    | pair: BTCUSDT      |
+| `/earn`                   | Earn Products     | -                  |
+| `/kyc`                    | KYC Flow          | -                  |
+| `/settings`               | Settings          | -                  |
+| `/security`               | Security Settings | -                  |
 
 ### Example Deep Links
 
-```
+```text
 binance://trade/BTCUSDT
-binance://wallet/deposit/ETH?network=ERC20
+binance://assets/deposit/ETH?network=ERC20
 binance://swap/BTC/USDT
 binance://futures/ETHUSDT
 ```
 
 ### Web to App Links
 
-| Web URL | App Destination |
-|---------|-----------------|
-| `www.binance.com/trade/BTC_USDT` | Trade Screen |
-| `www.binance.com/wallet` | Wallet Screen |
-| `www.binance.com/earn` | Earn Products |
+| Web URL                          | App Destination |
+| -------------------------------- | --------------- |
+| `www.binance.com/trade/BTC_USDT` | Trade Screen    |
+| `www.binance.com/assets`         | Assets Screen   |
+| `www.binance.com/earn`           | Earn Products   |
 
 ### Push Notification Deep Links
 
-| Notification Type | Deep Link |
-|-------------------|-----------|
-| Price Alert | `binance://trade/{pair}` |
-| Order Filled | `binance://wallet/history` |
-| Deposit Received | `binance://wallet` |
-| Security Alert | `binance://security` |
-| Promotion | `binance://promo/{id}` |
+| Notification Type | Deep Link                  |
+| ----------------- | -------------------------- |
+| Price Alert       | `binance://trade/{pair}`   |
+| Order Filled      | `binance://assets/history` |
+| Deposit Received  | `binance://assets`         |
+| Security Alert    | `binance://security`       |
+| Promotion         | `binance://promo/{id}`     |
 
 ---
 
@@ -538,13 +554,13 @@ binance://futures/ETHUSDT
 
 ### Standard Transitions
 
-| Transition | Animation |
-|------------|-----------|
-| Forward | Slide from right |
-| Back | Slide to right |
-| Modal | Slide from bottom |
+| Transition   | Animation         |
+| ------------ | ----------------- |
+| Forward      | Slide from right  |
+| Back         | Slide to right    |
+| Modal        | Slide from bottom |
 | Bottom Sheet | Slide from bottom |
-| Dialog | Fade in |
+| Dialog       | Fade in           |
 
 ### Tab Switching
 
@@ -561,24 +577,24 @@ binance://futures/ETHUSDT
 ```xml
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     app:startDestination="@id/homeFragment">
-    
+
     <!-- Main Tabs -->
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.binance.app.home.HomeFragment" />
-    
+
     <fragment
         android:id="@+id/marketsFragment"
         android:name="com.binance.app.markets.MarketsFragment" />
-    
+
     <fragment
         android:id="@+id/tradeFragment"
         android:name="com.binance.app.trade.TradeFragment" />
-    
+
     <fragment
-        android:id="@+id/walletFragment"
-        android:name="com.binance.app.wallet.WalletFragment" />
-    
+        android:id="@+id/assetsFragment"
+        android:name="com.binance.app.assets.AssetsFragment" />
+
     <!-- Auth Flow -->
     <navigation android:id="@+id/authNavGraph"
         app:startDestination="@id/loginFragment">
@@ -589,7 +605,7 @@ binance://futures/ETHUSDT
             android:id="@+id/otpFragment"
             android:name="com.binance.app.auth.OtpFragment" />
     </navigation>
-    
+
     <!-- Trading Flow -->
     <navigation android:id="@+id/tradeNavGraph"
         app:startDestination="@id/tradeMainFragment">
@@ -609,21 +625,21 @@ binance://futures/ETHUSDT
 
 ### State Preservation
 
-| Screen | State Preserved |
-|--------|-----------------|
+| Screen  | State Preserved                             |
+| ------- | ------------------------------------------- |
 | Markets | Scroll position, selected tab, search query |
-| Trade | Selected pair, chart zoom, order form data |
-| Wallet | Selected filter, scroll position |
-| Forms | Input values (until submitted) |
+| Trade   | Selected pair, chart zoom, order form data  |
+| Assets  | Selected filter, scroll position            |
+| Forms   | Input values (until submitted)              |
 
 ### Arguments Passing
 
-| Destination | Arguments |
-|-------------|-----------|
-| Trade Screen | `pair: String`, `action: String?` |
-| Deposit Screen | `coinId: String`, `network: String?` |
-| Withdraw Screen | `coinId: String`, `address: String?` |
-| Swap Screen | `fromCoin: String?`, `toCoin: String?` |
+| Destination     | Arguments                              |
+| --------------- | -------------------------------------- |
+| Trade Screen    | `pair: String`, `action: String?`      |
+| Deposit Screen  | `coinId: String`, `network: String?`   |
+| Withdraw Screen | `coinId: String`, `address: String?`   |
+| Swap Screen     | `fromCoin: String?`, `toCoin: String?` |
 
 ---
 

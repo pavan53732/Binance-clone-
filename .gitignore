@@ -1,6 +1,9 @@
 
 # Reverse-engineered APK artifacts
 *.zip
+binance-apktool-decoded/
+binance-extracted/
+binance-jadx-sources/
 apk-tools/
 binance-3-10-4.apk
 binance-3-10-4.zip
