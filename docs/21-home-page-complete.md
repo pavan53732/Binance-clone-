@@ -45,7 +45,7 @@ The Binance app uses multiple home fragments depending on the user's context:
     <!-- Top Row -->
     <RelativeLayout>
         <ImageView id="@+id/menu_icon" />
-        <SegmentedControl id="@+id/exchange_wallet_toggle" />
+        <SegmentedControl id="@+id/exchange_assets_toggle" />
         <ImageView id="@+id/support_icon" />
         <ImageView id="@+id/scan_icon" />
     </RelativeLayout>
@@ -133,7 +133,7 @@ A sticky horizontal tab bar located immediately above the main bottom navigation
 | Markets | Chart icon   | "Markets" | Markets fragment    |
 | Trade   | Trade icon   | "Trade"   | Trade fragment      |
 | Futures | Futures icon | "Futures" | Futures fragment    |
-| Assets  | Wallet icon  | "Assets"  | Assets fragment     |
+| Assets  | Assets icon  | "Assets"  | Assets fragment     |
 
 #### Specifications
 
@@ -237,7 +237,7 @@ LinearLayout (horizontal)
 | `@string/_setting`    | "Settings"    |
 | `@string/balance`     | "Balance"     |
 | `@string/_assets`     | "Assets"      |
-| `@string/_wallets`    | "Wallet"      |
+| `@string/_wallets`    | "Assets"      |
 
 ---
 

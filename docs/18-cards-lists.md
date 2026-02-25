@@ -10,9 +10,10 @@ This document provides comprehensive documentation of all card and list componen
 
 ### 1. Asset Cards
 
-**Usage**: Wallet screen, portfolio display
+**Usage**: Assets screen, portfolio display
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ┌──────┐                                               │
@@ -63,6 +64,7 @@ This document provides comprehensive documentation of all card and list componen
 **Usage**: Transaction history, activity list
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ┌──────┐                                               │
@@ -95,6 +97,7 @@ This document provides comprehensive documentation of all card and list componen
 **Usage**: Markets screen, pair overview
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ┌──────┐                                               │
@@ -127,6 +130,7 @@ This document provides comprehensive documentation of all card and list componen
 **Usage**: News feed, announcements
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ┌─────────────────────────────────────────────────┐   │
@@ -163,6 +167,7 @@ This document provides comprehensive documentation of all card and list componen
 **Usage**: Home screen promotions, special offers
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ┌─────────────────────────────────────────────────┐   │
@@ -204,6 +209,7 @@ This document provides comprehensive documentation of all card and list componen
 **Usage**: Asset list, coin selection
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ┌──────┐                                               │
@@ -234,6 +240,7 @@ This document provides comprehensive documentation of all card and list componen
 **Usage**: Transaction history
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ┌──────┐                                               │
@@ -264,6 +271,7 @@ This document provides comprehensive documentation of all card and list componen
 **Usage**: Open orders, order history
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  BTC/USDT                                      [Cancel] │
@@ -301,6 +309,7 @@ This document provides comprehensive documentation of all card and list componen
 **Usage**: Notification center
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ┌──────┐                                               │
@@ -333,23 +342,23 @@ This document provides comprehensive documentation of all card and list componen
 
 ### Standard Card Sizes
 
-| Card Type | Width | Height | Radius |
-|-----------|-------|--------|--------|
-| Asset Card | Full - 32dp | 120dp min | 12dp |
-| Transaction Card | Full | 72dp | 0dp |
-| Market Card | Full | 64dp | 0dp |
-| News Card | Full - 32dp | Wrap | 12dp |
-| Promo Card | Full - 32dp | 160dp | 12dp |
-| Info Card | Full - 32dp | Wrap | 8dp |
+| Card Type        | Width       | Height    | Radius |
+| ---------------- | ----------- | --------- | ------ |
+| Asset Card       | Full - 32dp | 120dp min | 12dp   |
+| Transaction Card | Full        | 72dp      | 0dp    |
+| Market Card      | Full        | 64dp      | 0dp    |
+| News Card        | Full - 32dp | Wrap      | 12dp   |
+| Promo Card       | Full - 32dp | 160dp     | 12dp   |
+| Info Card        | Full - 32dp | Wrap      | 8dp    |
 
 ### Card Padding
 
-| Card Type | Horizontal | Vertical |
-|-----------|------------|----------|
-| Standard | 16dp | 16dp |
-| Compact | 12dp | 12dp |
-| Large | 20dp | 20dp |
-| No Padding | 0dp | 0dp |
+| Card Type  | Horizontal | Vertical |
+| ---------- | ---------- | -------- |
+| Standard   | 16dp       | 16dp     |
+| Compact    | 12dp       | 12dp     |
+| Large      | 20dp       | 20dp     |
+| No Padding | 0dp        | 0dp      |
 
 ---
 
@@ -357,22 +366,22 @@ This document provides comprehensive documentation of all card and list componen
 
 ### Card Internal Spacing
 
-| Element Gap | Spacing |
-|-------------|---------|
-| Icon to Text | 12dp |
-| Title to Subtitle | 4dp |
-| Text to Button | 16dp |
-| Between Buttons | 8dp |
-| Section to Section | 16dp |
+| Element Gap        | Spacing |
+| ------------------ | ------- |
+| Icon to Text       | 12dp    |
+| Title to Subtitle  | 4dp     |
+| Text to Button     | 16dp    |
+| Between Buttons    | 8dp     |
+| Section to Section | 16dp    |
 
 ### List Item Internal Spacing
 
-| Element Gap | Spacing |
-|-------------|---------|
-| Icon to Content | 12dp |
-| Title to Subtitle | 2dp |
-| Content to Action | 16dp |
-| Between Columns | 24dp |
+| Element Gap       | Spacing |
+| ----------------- | ------- |
+| Icon to Content   | 12dp    |
+| Title to Subtitle | 2dp     |
+| Content to Action | 16dp    |
+| Between Columns   | 24dp    |
 
 ---
 
@@ -424,17 +433,18 @@ This document provides comprehensive documentation of all card and list componen
 
 ### Background Colors
 
-| Card Type | Color | Opacity |
-|-----------|-------|---------|
-| Standard | `#1E2329` | 100% |
-| Elevated | `#202630` | 100% |
-| Highlighted | `#1AF0B90B` | 10% |
-| Error | `#1AF6465D` | 10% |
-| Success | `#1A2EBD85` | 10% |
+| Card Type   | Color       | Opacity |
+| ----------- | ----------- | ------- |
+| Standard    | `#1E2329`   | 100%    |
+| Elevated    | `#202630`   | 100%    |
+| Highlighted | `#1AF0B90B` | 10%     |
+| Error       | `#1AF6465D` | 10%     |
+| Success     | `#1A2EBD85` | 10%     |
 
 ### Background Drawables
 
 **Standard Card**:
+
 ```xml
 <shape android:shape="rectangle">
     <solid android:color="#FF1E2329" />
@@ -443,6 +453,7 @@ This document provides comprehensive documentation of all card and list componen
 ```
 
 **Card with Border**:
+
 ```xml
 <shape android:shape="rectangle">
     <solid android:color="#FF1E2329" />
@@ -452,6 +463,7 @@ This document provides comprehensive documentation of all card and list componen
 ```
 
 **Selectable Card**:
+
 ```xml
 <ripple android:color="#1AFFFFFF">
     <item>
@@ -469,31 +481,31 @@ This document provides comprehensive documentation of all card and list componen
 
 ### RecyclerView Configuration
 
-| Property | Value |
-|----------|-------|
-| Clip to Padding | false |
-| Padding Top | 8dp |
-| Padding Bottom | 8dp |
-| Scrollbars | vertical |
-| Over-scroll Mode | always |
+| Property         | Value    |
+| ---------------- | -------- |
+| Clip to Padding  | false    |
+| Padding Top      | 8dp      |
+| Padding Bottom   | 8dp      |
+| Scrollbars       | vertical |
+| Over-scroll Mode | always   |
 
 ### List Item Animation
 
-| Animation | Duration |
-|-----------|----------|
-| Item Add | 200ms |
-| Item Remove | 200ms |
-| Item Move | 250ms |
-| Item Change | 150ms |
+| Animation   | Duration |
+| ----------- | -------- |
+| Item Add    | 200ms    |
+| Item Remove | 200ms    |
+| Item Move   | 250ms    |
+| Item Change | 150ms    |
 
 ### List States
 
-| State | UI |
-|-------|-----|
-| Loading | Shimmer effect |
-| Empty | Empty state illustration |
-| Error | Error message with retry |
-| Content | List items visible |
+| State   | UI                       |
+| ------- | ------------------------ |
+| Loading | Shimmer effect           |
+| Empty   | Empty state illustration |
+| Error   | Error message with retry |
+| Content | List items visible       |
 
 ---
 

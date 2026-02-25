@@ -268,7 +268,7 @@ This document provides a comprehensive catalog of every screen in the Binance An
 | Property       | Value                                          |
 | -------------- | ---------------------------------------------- |
 | Screen Name    | AssetsFragment                                 |
-| Layout File    | `fragment_wallet.xml`                          |
+| Layout File    | `fragment_assets.xml`                          |
 | Purpose        | View and manage assets                         |
 | Key Components | Balance display, asset list, action buttons    |
 | Navigation     | → Deposit → Withdraw → Transfer → Asset Detail |

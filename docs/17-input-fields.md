@@ -13,6 +13,7 @@ This document provides comprehensive documentation of all input field types used
 **Usage**: Login, registration, account settings
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  Email Address                                          │
@@ -65,6 +66,7 @@ This document provides comprehensive documentation of all input field types used
 **Usage**: Login, registration, change password
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  Password                                               │
@@ -107,6 +109,7 @@ This document provides comprehensive documentation of all input field types used
 | Strong | `#2EBD85` | All criteria met |
 
 **Strength Criteria**:
+
 - Minimum 8 characters
 - At least 1 uppercase letter
 - At least 1 lowercase letter
@@ -120,6 +123,7 @@ This document provides comprehensive documentation of all input field types used
 **Usage**: Markets search, coin search, transaction search
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ┌─────────────────────────────────────────────────┐   │
@@ -163,6 +167,7 @@ This document provides comprehensive documentation of all input field types used
 **Usage**: Trading, deposit, withdraw, swap
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  Amount                                                 │
@@ -221,6 +226,7 @@ This document provides comprehensive documentation of all input field types used
 **Usage**: Limit orders, stop-limit orders
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  Price (USDT)                                           │
@@ -264,6 +270,7 @@ This document provides comprehensive documentation of all input field types used
 **Usage**: Withdraw, deposit address
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  Withdrawal Address                                     │
@@ -303,7 +310,7 @@ This document provides comprehensive documentation of all input field types used
 | Required | Not empty | "Address is required" |
 | Valid Format | Coin-specific | "Invalid address format" |
 | Correct Network | Network check | "Wrong network address" |
-| Not Own Address | Compare to wallet | "Cannot withdraw to own address" |
+| Not Own Address | Compare to assets | "Cannot withdraw to own address" |
 
 **Address Format Validation**:
 | Coin | Format | Length |
@@ -319,32 +326,32 @@ This document provides comprehensive documentation of all input field types used
 
 ### Standard Dimensions
 
-| Field Type | Height | Corner Radius | Padding H |
-|------------|--------|---------------|-----------|
-| Standard | 52dp | 8dp | 15dp |
-| Compact | 44dp | 8dp | 12dp |
-| Large | 60dp | 12dp | 16dp |
-| Multi-line | 80-120dp | 8dp | 15dp |
+| Field Type | Height   | Corner Radius | Padding H |
+| ---------- | -------- | ------------- | --------- |
+| Standard   | 52dp     | 8dp           | 15dp      |
+| Compact    | 44dp     | 8dp           | 12dp      |
+| Large      | 60dp     | 12dp          | 16dp      |
+| Multi-line | 80-120dp | 8dp           | 15dp      |
 
 ### Label Specifications
 
-| Property | Value |
-|----------|-------|
-| Text Size | 14sp |
-| Text Color | `#848E9C` |
-| Font Weight | Regular |
-| Margin Bottom | 8dp |
-| Required Indicator | Asterisk (*) in `#F6465D` |
+| Property           | Value                      |
+| ------------------ | -------------------------- |
+| Text Size          | 14sp                       |
+| Text Color         | `#848E9C`                  |
+| Font Weight        | Regular                    |
+| Margin Bottom      | 8dp                        |
+| Required Indicator | Asterisk (\*) in `#F6465D` |
 
 ### Helper Text Specifications
 
-| Property | Value |
-|----------|-------|
-| Text Size | 12sp |
-| Text Color | `#848E9C` |
-| Font Weight | Regular |
-| Margin Top | 4dp |
-| Icon Size | 14dp (optional) |
+| Property    | Value           |
+| ----------- | --------------- |
+| Text Size   | 12sp            |
+| Text Color  | `#848E9C`       |
+| Font Weight | Regular         |
+| Margin Top  | 4dp             |
+| Icon Size   | 14dp (optional) |
 
 ---
 
@@ -353,6 +360,7 @@ This document provides comprehensive documentation of all input field types used
 ### Error Display
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  Email Address *                                        │
@@ -374,20 +382,20 @@ This document provides comprehensive documentation of all input field types used
 
 ### Error Types
 
-| Error Type | Display | Duration |
-|------------|---------|----------|
-| Inline Error | Below field | Until corrected |
-| Toast Error | Toast message | 3 seconds |
-| Dialog Error | Alert dialog | Until dismissed |
-| Banner Error | Top banner | Until dismissed |
+| Error Type   | Display       | Duration        |
+| ------------ | ------------- | --------------- |
+| Inline Error | Below field   | Until corrected |
+| Toast Error  | Toast message | 3 seconds       |
+| Dialog Error | Alert dialog  | Until dismissed |
+| Banner Error | Top banner    | Until dismissed |
 
 ### Validation Timing
 
-| Trigger | Validation |
-|---------|------------|
+| Trigger      | Validation            |
+| ------------ | --------------------- |
 | Text Changed | Real-time (debounced) |
-| Focus Lost | Full validation |
-| Form Submit | All fields validated |
+| Focus Lost   | Full validation       |
+| Form Submit  | All fields validated  |
 
 ---
 
@@ -395,17 +403,18 @@ This document provides comprehensive documentation of all input field types used
 
 ### State Overview
 
-| State | Border | Background | Text Color |
-|-------|--------|------------|------------|
-| Default | `#2B3139` | `#1E2329` | `#FFFFFF` |
-| Focused | `#F0B90B` | `#1E2329` | `#FFFFFF` |
-| Error | `#F6465D` | `#1AF6465D` | `#FFFFFF` |
-| Disabled | `#474D57` | `#181A20` | `#707A8A` |
-| Success | `#2EBD85` | `#1A2EBD85` | `#FFFFFF` |
+| State    | Border    | Background  | Text Color |
+| -------- | --------- | ----------- | ---------- |
+| Default  | `#2B3139` | `#1E2329`   | `#FFFFFF`  |
+| Focused  | `#F0B90B` | `#1E2329`   | `#FFFFFF`  |
+| Error    | `#F6465D` | `#1AF6465D` | `#FFFFFF`  |
+| Disabled | `#474D57` | `#181A20`   | `#707A8A`  |
+| Success  | `#2EBD85` | `#1A2EBD85` | `#FFFFFF`  |
 
 ### Visual State Indicators
 
 **Default State**:
+
 ```xml
 <shape android:shape="rectangle">
     <solid android:color="#FF1E2329" />
@@ -415,6 +424,7 @@ This document provides comprehensive documentation of all input field types used
 ```
 
 **Focused State**:
+
 ```xml
 <shape android:shape="rectangle">
     <solid android:color="#FF1E2329" />
@@ -424,6 +434,7 @@ This document provides comprehensive documentation of all input field types used
 ```
 
 **Error State**:
+
 ```xml
 <shape android:shape="rectangle">
     <solid android:color="#1AF6465D" />
@@ -433,6 +444,7 @@ This document provides comprehensive documentation of all input field types used
 ```
 
 **Disabled State**:
+
 ```xml
 <shape android:shape="rectangle">
     <solid android:color="#FF181A20" />
@@ -448,6 +460,7 @@ This document provides comprehensive documentation of all input field types used
 ### OTP Input
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  Enter verification code                                │
@@ -475,6 +488,7 @@ This document provides comprehensive documentation of all input field types used
 ### PIN Input
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  Enter PIN                                              │
@@ -496,6 +510,7 @@ This document provides comprehensive documentation of all input field types used
 ### Text Area
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  Message                                                │
@@ -524,27 +539,27 @@ This document provides comprehensive documentation of all input field types used
 
 ### Common Validation Rules
 
-| Field Type | Validations |
-|------------|-------------|
-| Email | Required, Format, Max Length |
-| Phone | Required, Format, Min/Max Length |
-| Password | Required, Min Length, Complexity |
-| Amount | Required, Numeric, Positive, Range |
-| Price | Required, Numeric, Tick Size |
-| Address | Required, Format, Network |
-| Search | Optional, Min Length (2 chars) |
+| Field Type | Validations                        |
+| ---------- | ---------------------------------- |
+| Email      | Required, Format, Max Length       |
+| Phone      | Required, Format, Min/Max Length   |
+| Password   | Required, Min Length, Complexity   |
+| Amount     | Required, Numeric, Positive, Range |
+| Price      | Required, Numeric, Tick Size       |
+| Address    | Required, Format, Network          |
+| Search     | Optional, Min Length (2 chars)     |
 
 ### Validation Messages
 
-| Validation | Message Format |
-|------------|----------------|
-| Required | "{Field} is required" |
-| Invalid Format | "Invalid {field} format" |
-| Too Short | "{Field} must be at least {min} characters" |
-| Too Long | "{Field} must not exceed {max} characters" |
-| Too Low | "{Field} must be at least {min}" |
-| Too High | "{Field} must not exceed {max}" |
-| Insufficient | "Insufficient {asset} balance" |
+| Validation     | Message Format                              |
+| -------------- | ------------------------------------------- |
+| Required       | "{Field} is required"                       |
+| Invalid Format | "Invalid {field} format"                    |
+| Too Short      | "{Field} must be at least {min} characters" |
+| Too Long       | "{Field} must not exceed {max} characters"  |
+| Too Low        | "{Field} must be at least {min}"            |
+| Too High       | "{Field} must not exceed {max}"             |
+| Insufficient   | "Insufficient {asset} balance"              |
 
 ---
 

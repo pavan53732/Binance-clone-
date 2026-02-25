@@ -304,7 +304,7 @@ flowchart TD
 
 | Screen            | Back Action              |
 | ----------------- | ------------------------ |
-| Coin Selection    | Return to Wallet         |
+| Coin Selection    | Return to Assets         |
 | Withdraw Form     | Return to Coin Selection |
 | Network Selection | Return to Withdraw Form  |
 | Review            | Return to Withdraw Form  |
@@ -384,10 +384,10 @@ flowchart TD
 
 **Account Types**:
 
-- **Spot Wallet** → Main trading balance
-- **Funding Wallet** → P2P and earn products
-- **Futures Wallet** → Futures trading balance
-- **Earn Wallet** → Staking and savings
+- **Spot Assets** → Main trading balance
+- **Funding Assets** → P2P and earn products
+- **Futures Assets** → Futures trading balance
+- **Earn Assets** → Staking and savings
 
 **Screen Sequence**:
 
@@ -407,7 +407,7 @@ flowchart TD
 | Element                      | Destination                                              |
 | ---------------------------- | -------------------------------------------------------- |
 | Menu / Notifications         | Profile / Notification Center                            |
-| App Mode (Exchange/Web3)     | Switches between Pro Trading and Web3 Wallet view        |
+| App Mode (Exchange/Web3)     | Switches between Pro Trading and Web3 Assets view        |
 | Global Search Bar            | Search Screen (Coins, Articles, Features)                |
 | Scan/Pay Icon                | QR Scanner / Binance Pay                                 |
 | Add Funds Button             | Fiat Deposit / P2P Purchase                              |
