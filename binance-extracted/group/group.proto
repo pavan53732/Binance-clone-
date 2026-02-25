@@ -1,0 +1,510 @@
+syntax = "proto3";
+import "sdk_ws/ws.proto";
+option go_package = "./group;group";
+option java_package = "com.moon.im.core.model.proto.group";
+package group;
+
+// message CommonResp{
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+// }
+
+// message GroupAddMemberInfo{
+//   string userID = 1;
+//   int32 roleLevel = 2;
+// }
+
+// message CreateGroupReq{
+//   repeated GroupAddMemberInfo InitMemberList = 1;
+//   server_api_params.GroupInfo GroupInfo = 2;
+//   string operationID = 3;
+//   string opUserID = 4;  //app manager or group owner
+//   string ownerUserID = 5; //owner
+
+
+// }
+// message CreateGroupResp{
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+//   server_api_params.GroupInfo data = 4;
+// }
+
+ message GetGroupsInfoReq{
+   repeated string groupIDList = 1;
+   string operationID = 2;
+   string opUserID = 3; //No verification permission
+ }
+ message GetGroupsInfoResp{
+   string  code = 1;
+   string  message = 2;
+   bool    success = 3;
+   repeated server_api_params.GroupInfo data = 4;
+ }
+
+
+// message SetGroupInfoReq{
+//   server_api_params.GroupInfoForSet groupInfoForSet = 1;
+//   string opUserID = 2; //app manager or group owner
+//   string operationID = 3;
+// }
+// message SetGroupInfoResp{
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+// }
+
+
+// message GetGroupApplicationListReq {
+//   string opUserID = 1; //app manager or group owner(manager)
+//   string operationID = 2;
+//   string fromUserID = 3; //owner or manager
+// }
+// message GetGroupApplicationListResp {
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+//   repeated server_api_params.GroupRequest data = 4;
+// }
+
+// message GetUserReqApplicationListReq{
+//   string userID = 1;
+//   string opUserID = 2;
+//   string operationID = 3;
+// }
+
+// message GetUserReqApplicationListResp{
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+//   repeated server_api_params.GroupRequest data = 4;
+// }
+
+
+// message TransferGroupOwnerReq {
+//   string groupID = 1;
+//   string oldOwnerUserID = 2;
+//   string newOwnerUserID = 3;
+//   string operationID = 4;
+//   string opUserID = 5; //app manager or group owner
+// }
+// message TransferGroupOwnerResp{
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+// }
+
+message JoinGroupReq {
+  string groupID = 1;
+  string reqMessage = 2;
+  string opUserID = 3;
+  string operationID = 4;
+  int32 joinSource = 5;
+  string inviterUserID = 6;
+
+}
+message JoinGroupResp {
+  string  code = 1;
+  string  message = 2;
+  bool    success = 3;
+}
+
+
+// message GroupApplicationResponseReq{
+//   string operationID = 1;
+//   string opUserID = 2;
+//   string groupID = 3;
+//   string fromUserID = 4;  //
+//   string handledMsg = 5;
+//   int32 handleResult = 6;
+// }
+// message GroupApplicationResponseResp{
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+// }
+
+
+
+message QuitGroupReq{
+  string groupID = 1;
+  string operationID = 2;
+  string opUserID = 3;
+}
+message QuitGroupResp{
+  string  code = 1;
+  string  message = 2;
+  bool    success = 3;
+}
+
+
+
+// message GetGroupMemberListReq {
+//   string groupID = 1;
+//   string opUserID = 2;  //No verification permission
+//   string operationID = 3;
+//   int32 filter = 4;
+//   int32 nextSeq = 5;
+// }
+
+// message GetGroupMemberListResp {
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+//   repeated server_api_params.GroupMemberFullInfo data = 4;
+//   int32 nextSeq = 5;
+// }
+
+
+// message GetGroupMembersInfoReq {
+//   string groupID = 1;
+//   repeated string memberList = 2;
+//   string opUserID = 3;  //No verification permission
+//   string operationID = 4;
+// }
+
+// message GetGroupMembersInfoResp {
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+//   repeated server_api_params.GroupMemberFullInfo data = 4;
+// }
+
+// message KickGroupMemberReq {
+//   string groupID = 1;
+//   repeated string kickedUserIDList = 2;
+//   string reason = 3;
+//   string operationID = 5;
+//   string opUserID = 6;  //app manger or group manager
+// }
+
+// message Id2Result {
+//   string userID = 1;
+//   int32 result = 2; //0 ok; -1 error
+// }
+
+// message KickGroupMemberResp {
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+//   repeated Id2Result data = 4;
+// }
+
+
+ message GetJoinedGroupListReq {
+   string fromUserID = 1;
+   string operationID = 2;
+   string opUserID = 3; //app manager or FromUserID
+ }
+ message GetJoinedGroupListResp{
+   string  code = 1;
+   string  message = 2;
+   bool    success = 3;
+   repeated  server_api_params.GroupInfo data = 4;
+ }
+
+
+// message InviteUserToGroupReq {
+//   string operationID = 2;
+//   string groupID = 3;
+//   string reason = 4;
+//   repeated string invitedUserIDList = 5;
+//   string opUserID = 6; //group member or app manager
+// }
+// message InviteUserToGroupResp {
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+//   repeated  Id2Result data = 4; // 0 ok, -1 error
+// }
+
+
+// message GetGroupAllMemberReq {
+//   string groupID = 1;
+//   string opUserID = 2; //No verification permission
+//   string operationID = 3;
+// }
+// message GetGroupAllMemberResp {
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+//   repeated server_api_params.GroupMemberFullInfo data = 4;
+// }
+
+// message CMSGroup {
+//     server_api_params.GroupInfo GroupInfo = 1;
+//     string groupMasterName = 2;
+//     string groupMasterId = 3;
+// }
+
+// message GetGroupReq {
+//     string groupName = 1;
+//     server_api_params.RequestPagination pagination = 2;
+//     string operationID = 3;
+// }
+
+// message GetGroupResp {
+//     repeated CMSGroup cMSGroups = 1;
+//     server_api_params.RequestPagination pagination = 2;
+//     int32 groupNums = 3;
+// }
+
+// message GetGroupsReq {
+//     server_api_params.RequestPagination pagination = 1;
+//     string operationID = 2;
+// }
+
+// message GetGroupsResp {
+//     repeated CMSGroup CMSGroups = 1;
+//     server_api_params.RequestPagination pagination = 2;
+//     int32 GroupNum = 3;
+// }
+
+// message GetGroupMemberReq {
+//     string groupId = 1;
+//     string operationID = 2;
+// }
+
+// message OperateGroupStatusReq {
+//     string groupId = 1;
+//     int32 status = 2;
+//     string operationID = 3;
+// }
+
+// message OperateGroupStatusResp {
+
+// }
+
+// message OperateUserRoleReq {
+//   string groupId = 1;
+//   string userId = 2;
+//   int32 roleLevel = 3;
+//   string operationID = 4;
+// }
+ 
+// message OperateUserRoleResp {
+
+// }
+
+// message DeleteGroupReq {
+//   string groupId = 1;
+//   string operationID = 2;
+// }
+
+// message DeleteGroupResp {
+
+// }
+
+// message GetGroupByIdReq {
+//   string groupId = 1;
+//   string operationID = 2;
+// }
+
+// message GetGroupByIdResp {
+//   CMSGroup cMSGroup = 1;
+// }
+
+// message GetGroupMembersCMSReq {
+//    string groupId = 1;
+//    string userName = 2;
+//    server_api_params.RequestPagination Pagination = 3;
+//    string operationID = 4;
+// }
+
+// message GetGroupMembersCMSResp {
+//    repeated server_api_params.GroupMemberFullInfo members = 1;
+//    server_api_params.ResponsePagination Pagination = 2;
+//    int32 MemberNums = 3;
+// }
+
+// message RemoveGroupMembersCMSReq {
+//   string GroupId = 1;
+//   repeated string UserIds = 2;
+//   string operationID = 3;
+//   string OpUserId = 4;
+// }
+
+// message RemoveGroupMembersCMSResp {
+//   repeated string success = 1;
+//   repeated string failed = 2;
+// }
+
+// message AddGroupMembersCMSReq {
+//   string GroupId = 1;
+//   repeated string UserIds = 2;
+//   string OperationId = 3;
+//   string OpUserId = 4;
+// }
+
+// message AddGroupMembersCMSResp {
+//   repeated string success = 1;
+//   repeated string failed = 2;
+// }
+
+// message DismissGroupReq{
+//   string opUserID = 1; //group  or app manager
+//   string operationID = 2;
+//   string groupID = 3;
+// }
+
+// message DismissGroupResp{
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+// }
+
+
+// message MuteGroupMemberReq{
+//   string opUserID = 1; //group  or app manager
+//   string operationID = 2;
+//   string groupID = 3;
+//   string userID = 4;
+//   uint32 mutedSeconds = 5;
+// }
+
+// message MuteGroupMemberResp{
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+// }
+
+
+
+// message CancelMuteGroupMemberReq{
+//   string opUserID = 1; //group  or app manager
+//   string operationID = 2;
+//   string groupID = 3;
+//   string userID = 4;
+// }
+
+// message CancelMuteGroupMemberResp{
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+// }
+
+
+// message MuteGroupReq{
+//   string opUserID = 1; //group  or app manager
+//   string operationID = 2;
+//   string groupID = 3;
+// }
+
+// message MuteGroupResp{
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+// }
+
+
+
+// message CancelMuteGroupReq{
+//   string opUserID = 1; //group  or app manager
+//   string operationID = 2;
+//   string groupID = 3;
+// }
+
+// message CancelMuteGroupResp{
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+// }
+
+
+// message SetGroupMemberNicknameReq{
+//   string groupID = 1;
+//   string nickname = 2;
+//   string opUserID = 3;
+//   string operationID = 4;
+//   string userID = 5;
+// }
+// message SetGroupMemberNicknameResp{
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+// }
+
+// message GetJoinedSuperGroupListReq {
+//   string operationID = 1;
+//   string userID = 2;
+//   string opUserID = 3;
+// }
+
+// message GetJoinedSuperGroupListResp {
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+//   repeated server_api_params.GroupInfo data = 4;
+// }
+
+// message GetSuperGroupsInfoReq {
+//   repeated string groupIDList = 1;
+//   string operationID = 2;
+//   string opUserID = 3; //No verification permission
+// }
+
+// message GetSuperGroupsInfoResp {
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+//   repeated server_api_params.GroupInfo data = 4;
+// }
+
+// message SetGroupMemberInfoReq{
+//   string groupID = 1;
+//   string userID = 2;
+//   string opUserID = 3;
+//   string operationID = 4;
+//   google.protobuf.StringValue nickname = 5;
+//   google.protobuf.StringValue faceURL = 6;
+//   google.protobuf.Int32Value roleLevel = 7;
+//   google.protobuf.StringValue ex = 8;
+// }
+
+// message SetGroupMemberInfoResp{
+//   string  code = 1;
+//   string  message = 2;
+//   bool    success = 3;
+// }
+
+service group{
+  // rpc createGroup(CreateGroupReq) returns(CreateGroupResp);
+  rpc joinGroup(JoinGroupReq) returns(JoinGroupResp);
+  rpc quitGroup(QuitGroupReq) returns(QuitGroupResp);
+   rpc getGroupsInfo(GetGroupsInfoReq) returns(GetGroupsInfoResp);
+  // rpc setGroupInfo(SetGroupInfoReq) returns(SetGroupInfoResp);
+  // rpc getGroupApplicationList(GetGroupApplicationListReq) returns(GetGroupApplicationListResp);
+  // rpc getUserReqApplicationList(GetUserReqApplicationListReq) returns(GetUserReqApplicationListResp);
+  // rpc transferGroupOwner(TransferGroupOwnerReq) returns(TransferGroupOwnerResp);
+  // rpc groupApplicationResponse(GroupApplicationResponseReq) returns(GroupApplicationResponseResp);
+  // rpc getGroupMemberList(GetGroupMemberListReq) returns(GetGroupMemberListResp);
+  // rpc getGroupMembersInfo(GetGroupMembersInfoReq) returns(GetGroupMembersInfoResp);
+  // rpc kickGroupMember(KickGroupMemberReq) returns (KickGroupMemberResp);
+   rpc getJoinedGroupList(GetJoinedGroupListReq) returns (GetJoinedGroupListResp);
+  // rpc inviteUserToGroup(InviteUserToGroupReq) returns (InviteUserToGroupResp);
+  // rpc getGroupAllMember(GetGroupAllMemberReq) returns(GetGroupAllMemberResp);
+
+  // rpc GetGroupById(GetGroupByIdReq) returns(GetGroupByIdResp);
+  // rpc GetGroup(GetGroupReq) returns(GetGroupResp);
+  // rpc GetGroups(GetGroupsReq) returns(GetGroupsResp);
+  // rpc OperateGroupStatus(OperateGroupStatusReq) returns(OperateGroupStatusResp);
+  // rpc OperateUserRole(OperateUserRoleReq) returns(OperateUserRoleResp);
+  // rpc DeleteGroup(DeleteGroupReq) returns(DeleteGroupResp);
+  // rpc GetGroupMembersCMS(GetGroupMembersCMSReq) returns(GetGroupMembersCMSResp);
+  // rpc RemoveGroupMembersCMS(RemoveGroupMembersCMSReq) returns(RemoveGroupMembersCMSResp);
+  // rpc AddGroupMembersCMS(AddGroupMembersCMSReq) returns(AddGroupMembersCMSResp);
+
+  // rpc DismissGroup(DismissGroupReq) returns(DismissGroupResp);
+  // rpc MuteGroupMember(MuteGroupMemberReq) returns(MuteGroupMemberResp);
+  // rpc CancelMuteGroupMember(CancelMuteGroupMemberReq) returns(CancelMuteGroupMemberResp);
+  // rpc MuteGroup(MuteGroupReq) returns(MuteGroupResp);
+  // rpc CancelMuteGroup(CancelMuteGroupReq) returns(CancelMuteGroupResp);
+
+  // rpc SetGroupMemberNickname(SetGroupMemberNicknameReq) returns (SetGroupMemberNicknameResp);
+
+  // rpc GetJoinedSuperGroupList(GetJoinedSuperGroupListReq) returns (GetJoinedSuperGroupListResp);
+  // rpc GetSuperGroupsInfo(GetSuperGroupsInfoReq) returns (GetSuperGroupsInfoResp);
+  // rpc SetGroupMemberInfo(SetGroupMemberInfoReq) returns (SetGroupMemberInfoResp);
+
+}

@@ -1,0 +1,29 @@
+syntax = "proto2";
+
+package com.earn;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.earn";
+option java_multiple_files = true;
+option java_outer_classname = "EarnDntProjectOverviewMsgProto";
+
+message EarnDntProjectOverviewMsg {
+	required int64 time = 1;
+	repeated EarnDntProjectOverviewUnderlyingItem items = 2;
+
+	message EarnDntProjectOverviewUnderlyingItem {
+		required string underlying = 1;
+    required string highestPotentialApr = 2;
+    required string lowestPotentialApr = 3;
+    repeated EarnDntProjectOverviewItem overviews = 4;
+
+		message EarnDntProjectOverviewItem {
+			required int64 settlementDate = 1;
+      required int32 duration = 2;
+      required string priceRangeLowerBarrier = 3;
+      required string priceRangeUpperBarrier = 4;
+      required string potentialApr = 5;
+      required bool hasBeginner = 6;
+	  }
+  }
+}

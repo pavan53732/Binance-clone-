@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "C2cKlineMsgProto";
+
+message C2cKlineMsg {
+
+  repeated C2cKlineMessage coinKlineMessages = 1;
+
+  message C2cKlineMessage{
+    required string symbol = 1;
+    optional string open = 2;
+    optional string close = 3;
+    optional string high = 4;
+    optional string low = 5;
+    optional int64 openTime = 6;
+    optional int64 closeTime = 7;
+  }
+}

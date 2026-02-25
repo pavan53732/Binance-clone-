@@ -1,0 +1,89 @@
+syntax = "proto2";
+
+package com;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com";
+option java_multiple_files = true;
+option java_outer_classname = "WsReqProto";
+
+import "com/earn/ActivePositionsReq.proto";
+import "com/earn/LoanableAssetReq.proto";
+import "com/earn/TrialCalcForRepaymentReq.proto";
+import "com/earn/CoinConfigReq.proto";
+import "com/market/TrivialReq.proto";
+import "com/market/BalanceValuationReq.proto";
+import "com/market/KycStatusReq.proto";
+import "com/market/CapitalConfigReq.proto";
+import "com/market/GetSelectorReq.proto";
+import "com/market/GetSubSelectorReq.proto";
+import "com/market/IsolatedMarginAccountReq.proto";
+import "com/market/GetAccountUserConfigReq.proto";
+import "com/market/GetAssetPortfolioReq.proto";
+import "com/market/GetBuyAndSellSelectorReq.proto";
+import "com/market/GetBuyAndSellSubSelectorReq.proto";
+import "com/futures/GetOpenGridsReq.proto";
+import "com/futures/GetOrderConfirmationReq.proto";
+import "com/futures/GetUserCommissionReq.proto";
+import "com/inbox/InboxMsgReadReq.proto";
+import "com/inbox/InboxMsgReq.proto";
+import "com/inbox/InboxUnReadReq.proto";
+import "com/market/FaceSdkVerifyReq.proto";
+import "com/market/BuyRedesignQueryCryptoListReq.proto";
+import "com/market/BuyRedesignQueryFiatListReq.proto";
+import "com/market/OtcGetQuoteReq.proto";
+import "com/market/WalletBalanceV2Req.proto";
+
+message WsReq {
+
+  required string wsReqId = 1;
+  required int64 reqTime = 2;
+  required WsReqAction reqAction = 3;
+  optional string service = 4;
+  optional string tag = 5;
+
+  oneof body {
+    string reqArgs = 100;
+    com.market.TrivialReq trivialReq = 101;
+    com.market.BalanceValuationReq balanceValuationReq = 102;
+    com.market.KycStatusReq kycStatusReq = 103;
+    com.market.CapitalConfigReq capitalConfigReq = 104;
+    com.market.GetSelectorReq getSelectorReq = 105;
+    com.market.GetSubSelectorReq getSubSelectorReq = 106;
+    com.market.IsolatedMarginAccountReq isolatedMarginAccountReq = 107;
+    com.market.GetAccountUserConfigReq getAccountUserConfigReq = 108;
+    com.market.GetAssetPortfolioReq getAssetPortfolioReq = 109;
+    com.market.GetBuyAndSellSelectorReq getBuyAndSellSelectorReq = 111;
+    com.market.GetBuyAndSellSubSelectorReq getBuyAndSellSubSelectorReq = 112;
+    com.futures.GetOpenGridsReq getOpenGridsReq = 113;
+    com.futures.GetOrderConfirmationReq getOrderConfirmationReq = 114;
+    com.futures.GetUserCommissionReq getUserCommissionReq = 115;
+    com.inbox.InboxMsgReadReq inboxMsgReadReq = 116;
+    com.inbox.InboxMsgReq inboxMsgReq = 117;
+    com.inbox.InboxUnReadReq inboxUnReadReq = 118;
+    com.market.FaceSdkVerifyReq faceSdkVerifyReq = 119;
+    com.market.BuyRedesignQueryCryptoListReq buyRedesignQueryCryptoListReq = 120;
+    com.market.BuyRedesignQueryFiatListReq buyRedesignQueryFiatListReq = 121;
+    com.market.OtcGetQuoteReq otcGetQuoteReq = 122;
+    com.earn.ActivePositionsReq activePositionsReq = 123;
+    com.earn.LoanableAssetReq loanableAssetReq = 124;
+    com.earn.TrialCalcForRepaymentReq trialCalcForRepaymentReq = 125;
+    com.earn.CoinConfigReq coinConfigReq = 126;
+    com.market.WalletBalanceV2Req walletBalanceV2Req = 129;
+  }
+}
+
+enum WsReqAction {
+  SERVICE_REQ = 1;
+  SUBSCRIBE = 2;
+  UNSUBSCRIBE = 3;
+  LIST_CHANNELS = 4;
+  REFRESH_TOKEN = 5;
+  LAST_TOKEN_TIME = 6;
+  CLEAR_TOKEN = 7;
+  PUBLIC_SERVICE_REQ = 8;
+  FRIENDLY_SERVICE_REQ = 9;
+  PING = 10;
+  REFRESH_UUID = 11;
+  REFRESH_LANG = 12;
+}

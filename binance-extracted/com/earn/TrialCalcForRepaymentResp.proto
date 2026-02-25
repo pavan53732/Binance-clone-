@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+package com.earn;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.earn";
+option java_multiple_files = true;
+option java_outer_classname = "TrialCalcForRepaymentRespProto";
+
+message TrialCalcForRepaymentResp {
+	optional string collateralCoin = 1;
+	optional string loanCoin = 2;
+	optional string totalDebt = 3;
+	optional string repaymentAmount = 4;
+	optional string remainingDebt = 5;
+	optional string afterLtvWithKeepCollateral = 6;
+	optional string afterLtvWithNotKeepCollateral = 7;
+	optional string returnCollateralAmount = 8;
+	optional string extra = 9;
+}
+

@@ -1,0 +1,40 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "GetSubSelectorRespProto";
+
+message GetSubSelectorResp {
+
+  required string assetCode = 1;
+  optional string assetName = 2;
+  optional string logoUrl = 3;
+  optional string size = 4;
+  required int32 order = 5;
+  required string freeAsset = 6;
+  required bool fiatTag = 7;
+  required string priorChoiceFromCode = 8;
+  required string priorChoiceToCode = 9;
+  repeated SubSelector subSelector = 10;
+}
+
+message SubSelector {
+  required string assetCode = 1;
+  optional string assetName = 2;
+  optional string logoUrl = 3;
+  optional string size = 4;
+  required int32 order = 5;
+  required string perTimeMinLimit = 6;
+  required string perTimeMaxLimit = 7;
+  optional string dailyMaxLimit = 8;
+  optional string hadDailyLimit = 9;
+  optional bool needMarket = 10;
+  optional int32 feeType = 11;
+  optional string feeRate = 12;
+  optional string fixFee = 13;
+  optional string forexRate = 14;
+  required int32 expireTime = 15;
+}

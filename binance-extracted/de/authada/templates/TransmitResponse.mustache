@@ -1,0 +1,8 @@
+{{>Start}}
+        <iso:TransmitResponse xmlns:iso="urn:iso:std:iso-iec:24727:tech:schema">
+{{>Result}}
+            {{#outputAPDUs}}
+            <iso:OutputAPDU>{{.}}</iso:OutputAPDU>
+            {{/outputAPDUs}}
+        </iso:TransmitResponse>
+{{>End}}

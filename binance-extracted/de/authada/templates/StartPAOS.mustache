@@ -1,0 +1,30 @@
+{{>Start}}
+        <iso:StartPAOS xmlns:iso="urn:iso:std:iso-iec:24727:tech:schema">
+            <iso:SessionIdentifier>{{sessionIdentifier}}</iso:SessionIdentifier>
+            <iso:ConnectionHandle>
+                <iso:ContextHandle>{{contextHandle}}</iso:ContextHandle>
+                <iso:SlotHandle>{{slotHandle}}</iso:SlotHandle>
+            </iso:ConnectionHandle>
+            <iso:UserAgent>
+                <iso:Name>{{userAgentName}}</iso:Name>
+                <iso:VersionMajor>{{userAgentMajor}}</iso:VersionMajor>
+                {{#userAgentMinor}}
+                <iso:VersionMinor>{{.}}</iso:VersionMinor>
+                {{#userAgentSubminor}}
+                <iso:VersionSubminor>{{.}}</iso:VersionSubminor>
+                {{/userAgentSubminor}}
+                {{/userAgentMinor}}
+            </iso:UserAgent>
+            {{#supportedApiVersions}}
+            <iso:SupportedAPIVersions>
+                <iso:Major>{{major}}</iso:Major>
+                {{#minor}}
+                <iso:Minor>{{.}}</iso:Minor>
+                {{#subMinor}}
+                <iso:Subminor>{{.}}</iso:Subminor>
+                {{/subMinor}}
+                {{/minor}}
+            </iso:SupportedAPIVersions>
+            {{/supportedApiVersions}}
+        </iso:StartPAOS>
+{{>End}}

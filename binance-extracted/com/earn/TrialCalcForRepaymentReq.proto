@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package com.earn;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.earn";
+option java_multiple_files = true;
+option java_outer_classname = "TrialCalcForRepaymentReqProto";
+
+message TrialCalcForRepaymentReq {
+	required string positionId = 1;
+	required string repaymentAmount = 2;
+	optional bool keepCollateral = 3;
+	optional bool fullRepayment = 4;
+	optional string extra = 5;
+}
+

@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+package com.earn;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.earn";
+option java_multiple_files = true;
+option java_outer_classname = "LoanableAssetReqProto";
+
+message LoanableAssetReq {
+	optional int32 vipLevel = 1;
+	optional bool queryUserData = 2;
+	optional string extra = 3;
+}
+

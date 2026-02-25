@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "GetBuyAndSellSubSelectorReqProto";
+
+message GetBuyAndSellSubSelectorReq {
+  required string assetCode = 1;
+  required string payType = 2;
+  optional bool isPreTest = 3;
+  required string lang = 4;
+  required bool isApp = 5;
+  optional string ip = 6;
+}
+

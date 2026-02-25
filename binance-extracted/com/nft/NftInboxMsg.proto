@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package com.nft;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.nft";
+option java_multiple_files = true;
+option java_outer_classname = "NftInboxMsgProto";
+
+message NftInboxMsg {
+  required string id = 1;
+  optional int32 moduleId = 2;
+  optional string title = 3;
+  optional string bizType = 4;
+  optional string content = 5;
+  required int64 ts = 6;
+}

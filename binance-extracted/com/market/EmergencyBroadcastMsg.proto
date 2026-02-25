@@ -1,0 +1,38 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "EmergencyBroadcastMsgProto";
+
+message EmergencyBroadcastMsg {
+  repeated EmergencyMessage emergencyMessage = 1;
+}
+
+message TradingPairsMsg {
+  repeated string tradingPair = 1;
+}
+
+message EmergencyMessage{
+  required int64 id = 1;
+  required string title = 2;
+  optional string url = 3;
+  required int64 time = 4;
+  optional string lang = 5;
+  optional bool isTop = 6;
+  required bool isEmergency = 7;
+  optional string detail = 8;
+  optional string type = 9;
+  optional string picUrl = 10;
+  optional string pair = 11;
+  optional int64 endTime = 12;
+  optional string code = 13;
+  optional string actionType = 14;
+  repeated string scope = 15;
+  map<string, TradingPairsMsg> tradingPairs = 16;
+  optional int64 startTime = 17;
+  optional int64 forcedEndTime = 18;
+  optional string path = 19;
+}

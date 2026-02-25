@@ -1,0 +1,141 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "KycStatusRespProto";
+
+message KycStatusResp {
+  required int32 kycStatus = 1;
+  optional string kycMessage = 2;
+  optional string type = 3;
+  optional string transId = 4;
+  optional string qrCode = 5;
+  optional KycSubStatus kycSubStatus = 6;
+  optional FillInfo fillInfo = 7;
+  optional bool forbidCountryPassed = 8;
+  optional int32 kycLevel = 9;
+  optional KycCertificateStatus addressStatus = 10;
+  optional string certificateSubStatus = 11;
+  optional string addressTips = 12;
+  optional string baseFillStatus = 13;
+  optional string baseSubStatus = 14;
+  optional string baseFillTips = 15;
+  optional string jumioStatus = 16;
+  optional string jumioTips = 17;
+  optional string faceStatus = 18;
+  optional string faceTips = 19;
+  optional string faceOcrStatus = 20;
+  optional string faceOcrTips = 21;
+  optional string googleFormStatus = 22;
+  optional string googleFormTips = 23;
+  optional bool needAddress = 24;
+  optional string flowDefine = 25;
+  optional string faceTransId = 26;
+  optional string directorStatus = 27;
+  optional string uboStatus = 28;
+  optional string dealerStatus = 29;
+  optional string fiatStatus = 30;
+  optional string fiatTips = 31;
+  optional int64 identityExpectCompleteTime = 32;
+  optional int64 poaExpectCompleteTime = 33;
+  optional string kycFlowExten = 34;
+  optional string eddStatus = 35;
+  optional string eddTips = 36;
+  optional string wckStatus = 37;
+  optional string wckTips = 38;
+  optional string riskRateScore = 39;
+  optional string riskRateLevel = 40;
+  optional bool needEdd = 41;
+  optional string passKycLevel = 42;
+  optional string currentKycLevel = 43;
+  optional string currentKycLevelStatus = 44;
+  optional KycLevelTemplateModel kycLevelTemplateModel = 45;
+  optional int64 baseExpectCompleteTime = 46;
+  optional int64 eddExpectCompleteTime = 47;
+  optional int64 submitExpectCompleteTime = 48;
+  optional bool basicLocalVerifyPass = 49;
+  optional int64 wckExpectCompleteTime = 50;
+  optional string eddDetailStatus = 51;
+  optional string eddDetailTips = 52;
+  optional string sowStatus = 53;
+  optional string sowTips = 54;
+  optional string eddSubmitReason = 55;
+  optional string questionStatus = 56;
+  optional string frontDisplayLevelStatus = 57;
+  optional string frontDisplayLevelMsg = 58;
+  optional string identityVendor = 59;
+  optional bool uploadThirdPart = 60;
+}
+
+enum KycSubStatus{
+  JUMIO = 0;
+  FACE_PENDING = 1;
+  AUDITING = 2;
+  FACE_OCR = 3;
+  BASIC = 4 ;
+}
+
+message FillInfo{
+  optional string firstName = 1;
+  optional string middleName = 2;
+  optional string lastName = 3;
+  optional string companyName = 4;
+  optional string country = 5;
+  optional string city = 6;
+  optional string address = 7;
+  optional string dob = 8;
+  optional string postalCode = 9 ;
+  optional string idcardNumber = 10;
+  optional string residenceCountry = 11;
+}
+
+enum KycCertificateStatus{
+  PROCESS = 0;
+  PASS = 1;
+  REFUSED = 2;
+  REVIEW = 3;
+  SKIP = 4;
+  FORBID_PASS = 5;
+}
+
+message KycLevelTemplateModel{
+  optional string templateName = 1;
+  repeated KycLevelTemplateDetail levelDetail = 2;
+}
+
+message KycLevelTemplateDetail{
+  optional string levelName = 1;
+  repeated KycLevelCondition condition = 2;
+  repeated KycLevelCondition fiatCondition = 3;
+  repeated string conditionDesc = 4;
+  optional KycLevelLimitDetail limit = 5;
+}
+
+enum KycLevelCondition{
+  baseStatus = 0;
+  identityStatus = 1;
+  faceStatus = 2;
+  wckStatus = 3;
+  tmStatus = 4;
+  addressStatus = 5;
+  eddStatus = 6;
+  localStatus = 7;
+}
+
+message KycLevelLimitDetail{
+  optional string fiatCurrency = 1;
+  optional string depositFiatDailyLimit = 2;
+  optional string depositFiatMonthlyLimit = 3;
+  optional string depositFiatYearlyLimit = 4;
+  optional string depositFiatLifeTimeLimit = 5;
+  optional string withdrawFiatDailyLimit = 6;
+  optional string withdrawFiatMonthlyLimit = 7;
+  optional string withdrawFiatYearlyLimit = 8;
+  optional string withdrawFiatLifeTimeLimit = 9;
+  optional string cryptoCurrency = 10;
+  optional string depositCryptoDailyLimit = 11;
+  optional string withdrawCryptoDailyLimit = 12;
+}

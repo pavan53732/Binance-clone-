@@ -1,0 +1,52 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "IsolatedMarginAccountRespProto";
+
+message IsolatedMarginAccountResp {
+  repeated IsolatedMarginAccountDetail isolatedMarginAccountDetail = 1;
+}
+
+message IsolatedMarginAccountDetail {
+  optional bool created = 1;
+  optional string marginRatio = 2;
+  optional string marginLevel = 3;
+  optional string marginLevelStatus = 4;
+  optional bool tradeEnabled = 5;
+  optional IsolatedMarginCoeff coeff = 6;
+  optional int32 ladder = 7;
+  optional bool ladderLocked = 8;
+  optional string status = 9;
+  optional int64 delistTime = 10;
+  optional AssetDetail base = 11;
+  optional AssetDetail quote = 12;
+}
+
+message IsolatedMarginCoeff{
+  optional string normalBar = 1;
+  optional string callBar = 2;
+  optional string preLiquidationBar = 3;
+  optional string forceLiquidationBar = 4;
+}
+
+message AssetDetail {
+  optional string assetName = 1;
+  optional string free = 2;
+  optional string locked = 3;
+  optional string borrowed = 4;
+  optional string interest = 5;
+  optional string netAsset = 6;
+  optional string netAssetOfBtc = 7;
+  optional string total = 8;
+  optional string userMinBorrow = 9;
+  optional string userMinRepay = 10;
+  optional bool transferInEnabled = 11;
+  optional bool transferOutEnabled = 12;
+  optional bool borrowEnabled = 13;
+  optional bool repayEnabled = 14;
+  optional string couponAmount = 15;
+}

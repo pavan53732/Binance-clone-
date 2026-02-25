@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "CoinPriceMsgProto";
+
+message CoinPriceMsg {
+
+  repeated CoinPriceMessage coinPriceMessages = 1;
+
+  message CoinPriceMessage{
+
+    required string fiatCurrency = 1;
+
+    repeated CoinPrice coinPrices = 2;
+
+    message CoinPrice {
+      required string coin = 1;
+      required string quotePrice = 2;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+syntax = "proto2";
+
+package com.web3;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.web3";
+option java_multiple_files = true;
+option java_outer_classname = "TxStatusEventMsgProto";
+
+message TxStatusEventMsg {
+	required string type = 1;
+	required string binanceChainId = 2;
+	required string address = 3;
+	optional string orderId = 4;
+	required string txHash = 5;
+	required string status = 6;
+	required string txType = 7;
+	required string subType = 8;
+	optional Detail send = 9;
+	optional Detail receive = 10;
+	optional Detail register = 11;
+	optional Detail approve = 12;
+
+	message Detail {
+		required string tokenSymbol = 1;
+		optional string amount = 2;
+		optional int32 decimals = 3;
+	}
+}
+

@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+package com.earn;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.earn";
+option java_multiple_files = true;
+option java_outer_classname = "ActivePositionsReqProto";
+
+message ActivePositionsReq {
+	optional string startTime = 1;
+	optional string endTime = 2;
+	optional string collateralCoin = 3;
+	optional string loanCoin = 4;
+	optional string status = 5;
+	optional string sortBy = 6;
+	optional int64 current = 7;
+	optional int64 size = 8;
+	optional string extra = 9;
+}
+

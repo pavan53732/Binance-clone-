@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "GetBuyAndSellSelectorReqProto";
+
+message GetBuyAndSellSelectorReq {
+  required string lang = 1;
+  optional bool isPreTest = 2;
+  required bool isApp = 3;
+  required string payType = 4;
+}
+

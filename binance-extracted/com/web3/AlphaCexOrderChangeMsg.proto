@@ -1,0 +1,27 @@
+syntax = "proto2";
+
+package com.web3;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.web3";
+option java_multiple_files = true;
+option java_outer_classname = "AlphaCexOrderChangeMsgProto";
+
+message AlphaCexOrderChangeMsg {
+  optional string orderId = 1;
+  optional string direction = 2;
+  optional string fromToken = 3;
+  optional string fromTokenAmount = 4;
+  optional string fromBinanceChainId = 5;
+  optional string fromTokenId = 6;
+  optional string fromContractAddress = 7;
+  optional string toToken = 8;
+  optional string toTokenAmount = 9;
+  optional string toBinanceChainId = 10;
+  optional string toTokenId = 11;
+  optional string toContractAddress = 12;
+  optional string status = 13;
+  optional int64 dbCreateTime = 14;
+  optional int64 pushTime = 15;
+  optional int64 dbUpdateTime = 16;
+}

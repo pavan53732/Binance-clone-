@@ -1,0 +1,29 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "GetSelectorRespProto";
+
+message GetSelectorResp {
+
+  required string priorChoiceFromCode = 1;
+  required string priorChoiceToCode = 2;
+  repeated Selector selector = 3;
+
+}
+
+message Selector {
+  required string assetCode = 1;
+  optional string assetName = 2;
+  optional string logoUrl = 3;
+  optional string size = 4;
+  required int32 order = 5;
+  required string freeAsset = 6;
+  required bool fiatTag = 7;
+}
+
+
+

@@ -1,0 +1,24 @@
+syntax = "proto2";
+
+package com.payment;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.payment";
+option java_multiple_files = true;
+option java_outer_classname = "PaymentPixInfoSyncWsMsgProto";
+
+message PaymentPixInfoSyncWsMsg {
+	optional bool isOnboarded=1;
+	optional PixTransaction latestTxn=2;
+	optional string pixHomeDeeplink=3;
+	optional string pixHistoryDeeplink=4;
+	optional string pixPayeeDeeplink=5;
+
+	message PixTransaction {
+		optional string type=1;
+		optional string amount=2;
+		optional string currency=3;
+		optional int64 transactionTime=4;
+	}
+}
+

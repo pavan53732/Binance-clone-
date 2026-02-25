@@ -1,0 +1,40 @@
+syntax = "proto2";
+
+package com.earn;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.earn";
+option java_multiple_files = true;
+option java_outer_classname = "CoinConfigRespProto";
+
+message CoinConfigResp {
+	message LoanConfig {
+			optional string coin = 1;
+			optional string maxLoanAmount = 2;
+			optional string minLoanAmount = 3;
+			optional string remainingLoanableAmount = 4;
+			optional string annualInterestRate = 5;
+			optional string hourlyInterestRate = 6;
+			optional string liquidationPrice = 7;
+			optional string maxAssetDigit = 8;
+			optional string extra = 9;
+	}
+
+	message CollateralConfig {
+			optional string coin = 1;
+			optional string initialLtv = 2;
+			optional string marginCallLtv = 3;
+			optional string liquidationLtv = 4;
+			optional string individualMaxAmount = 5;
+			optional string maxCollateralAmount = 6;
+			optional string minCollateralAmount = 7;
+			optional string remainingAvailableCollateral = 8;
+			optional string maxAssetDigit = 9;
+			optional string marketApr = 10;
+			optional string extra = 11;
+	}
+
+	repeated LoanConfig loanConfig = 1;
+	repeated CollateralConfig collateralConfig = 2;
+	optional string extra = 3;
+}

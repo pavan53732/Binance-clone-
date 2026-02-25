@@ -1,0 +1,44 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "AnnouncementBroadcastMsgProto";
+
+message AnnouncementBroadcastMsg {
+  required Announcement announcement = 1;
+  repeated AnnouncementDevice announcementDevices = 2;
+  required AnnouncementLanguage announcementLanguage = 3;
+}
+
+message AnnouncementDevice {
+  required int64 announcementId = 1;
+  required string device = 2;
+  required string business = 3;
+  required string scope = 4;
+  required string url = 5;
+}
+
+message AnnouncementLanguage {
+  required int64 announcementId = 1;
+  required string language = 2;
+  required string title = 3;
+  required string contents = 4;
+  required string actionButton = 5;
+}
+
+message Announcement{
+  required int64 announcementId = 1;
+  required string description = 2;
+  required string type = 3;
+  required string status = 4;
+  required int64 createTime = 5;
+  required int64 releaseTime = 6;
+  required int64 hiddenTime = 7;
+  required int64 expiryTime = 8;
+  optional int32 rank = 9;
+  required string userType = 10;
+  required string userGroupId = 11;
+}

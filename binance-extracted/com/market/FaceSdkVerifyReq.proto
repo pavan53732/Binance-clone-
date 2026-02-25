@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "FaceSdkVerifyReqProto";
+
+message FaceSdkVerifyReq {
+  optional string transId = 1;
+  optional string delta = 2;
+  optional string imageBest = 3;
+  optional string imageEnv = 4;
+  optional string imageAction1 = 5;
+  optional string imageAction2 = 6;
+  optional string imageAction3 = 7;
+}
+

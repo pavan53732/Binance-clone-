@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+package com.futures;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.futures";
+option java_multiple_files = true;
+option java_outer_classname = "GetOpenGridsRespProto";
+
+message GetOpenGridsResp {
+  repeated GridItem gridItems = 1;
+
+  message GridItem{
+    required int64 strategyId = 1;
+    required string symbol = 2;
+    required string strategyStatus = 3;
+    required int64 bookTime = 4;
+    required int64 endTime = 5;
+    required string gridInitialValue = 6;
+    required int32 initialLeverage = 7;
+    required string gridProfit = 8;
+    required int32 opCode = 9;
+  }
+}
+

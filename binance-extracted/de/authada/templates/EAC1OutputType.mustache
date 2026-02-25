@@ -1,0 +1,16 @@
+{{>Start}}
+        <iso:DIDAuthenticateResponse xmlns:iso="urn:iso:std:iso-iec:24727:tech:schema" Profile="http://www.bsi.bund.com/ecard/api/1.1">
+{{>Result}}
+            <iso:AuthenticationProtocolData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="iso:EAC1OutputType">
+                {{#chat}}
+                <iso:CertificateHolderAuthorizationTemplate>{{.}}</iso:CertificateHolderAuthorizationTemplate>
+                {{/chat}}
+                {{#cars}}
+                <iso:CertificationAuthorityReference>{{.}}</iso:CertificationAuthorityReference>
+                {{/cars}}
+                <iso:EFCardAccess>{{efCardAccess}}</iso:EFCardAccess>
+                <iso:IDPICC>{{idpicc}}</iso:IDPICC>
+                <iso:Challenge>{{challenge}}</iso:Challenge>
+            </iso:AuthenticationProtocolData>
+        </iso:DIDAuthenticateResponse>
+{{>End}}

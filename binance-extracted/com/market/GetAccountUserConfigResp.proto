@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "GetAccountUserConfigRespProto";
+
+message GetAccountUserConfigResp {
+  repeated GetAccountUserConfigRet accountUserConfigRet = 1;
+}
+
+message GetAccountUserConfigRet {
+  optional string configType = 1;
+  optional string configName = 2;
+}
+

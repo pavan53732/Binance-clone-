@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+package com;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com";
+option java_multiple_files = true;
+option java_outer_classname = "ServiceReqKeyProto";
+
+message ServiceReqKey {
+
+  required string wsReqId = 1;
+  required int64 sessionId = 2;
+  required string ackTopic = 3;
+  optional int64 userId = 4;
+  optional string clientIp = 5;
+  optional string lang = 6;
+  optional string reqUuid = 7;
+  optional string origin = 8;
+
+}

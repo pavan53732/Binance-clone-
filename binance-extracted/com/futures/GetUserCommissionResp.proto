@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+package com.futures;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.futures";
+option java_multiple_files = true;
+option java_outer_classname = "GetUserCommissionRespProto";
+
+message GetUserCommissionResp {
+  required int32 feeTier = 1;
+  required int32 makerCommission = 2;
+  required int32 takerCommission = 3;
+}
+

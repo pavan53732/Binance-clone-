@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package com.earn;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.earn";
+option java_multiple_files = true;
+option java_outer_classname = "EarnDcUnderlyingOverviewMsgProto";
+
+message EarnDcUnderlyingOverviewMsg {
+	required string underlying = 1;
+	required string beginnerMinApr = 2;
+	required string beginnerMaxApr = 3;
+	required string proMinApr = 4;
+	required string proMaxApr = 5;
+	required string stream = 6;
+}

@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "OtcGetQuoteReqProto";
+
+message OtcGetQuoteReq {
+  required string fromCoin = 1;
+  required string toCoin = 2;
+  required string requestCoin = 3;
+  required string requestAmount = 4;
+  optional string versionType = 5;
+  optional string walletType = 6;
+}

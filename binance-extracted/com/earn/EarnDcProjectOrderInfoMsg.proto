@@ -1,0 +1,24 @@
+syntax = "proto2";
+
+package com.earn;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.earn";
+option java_multiple_files = true;
+option java_outer_classname = "EarnDcProjectOrderInfoMsgProto";
+
+message EarnDcProjectOrderInfoMsg {
+	required int64 sourceId = 1;
+	required string investmentAsset = 2;
+	required string targetAsset = 3;
+	required string dcProjectType = 4;
+	required string strikePrice = 5;
+	required int64 settleDate = 6;
+	required string projectId = 7;
+	required string optionPrice = 8;
+	required string orderId = 9;
+	required string earnRate = 10;
+	required string stream = 11;
+	required string minAmount = 12;
+	required string maxAmount = 13;
+}

@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package com.push;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.push";
+option java_multiple_files = true;
+option java_outer_classname = "PushMsgProto";
+
+message PushMsg {
+	required string body = 1;
+	required string title = 2;
+	required string tag = 3;
+	optional string action = 4;
+	optional string internalPage = 5;
+	optional string icon = 6;
+}

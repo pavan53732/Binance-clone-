@@ -1,0 +1,9 @@
+            <dss:Result xmlns:dss="urn:oasis:names:tc:dss:1.0:core:schema">
+                <dss:ResultMajor>{{resultMajor}}</dss:ResultMajor>
+                {{#resultMinor}}
+                <dss:ResultMinor>{{resultMinor}}</dss:ResultMinor>
+                {{#resultMessage}}
+                <dss:ResultMessage>{{resultMessage}}</dss:ResultMessage>
+                {{/resultMessage}}
+                {{/resultMinor}}
+            </dss:Result>

@@ -1,0 +1,45 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "GetBuyAndSellSubSelectorRespProto";
+
+message GetBuyAndSellSubSelectorResp {
+  repeated SortSubSelector subSelectors = 1;
+}
+
+message SortSubSelector {
+  required string assetCode = 1;
+  optional string assetName = 2;
+  optional string logoUrl = 3;
+  optional string size = 4;
+  optional bool checkoutCountrySupport = 5;
+  required int32 expireTime = 6;
+  repeated SupportPayment supportPayments = 7;
+  repeated string otherChannels = 8;
+  repeated ChannelDetails otherChannelDetails = 9;
+  optional string cryptoCurrencyPerTimeMinLimit = 10;
+  optional string cryptoCurrencyPerTimeMaxLimit = 11;
+}
+
+message SupportPayment {
+  required string channelCode = 1;
+  optional string channelName = 2;
+  optional string perTimeMinLimit = 3;
+  optional string perTimeMaxLimit = 4;
+  optional string dailyMaxLimit = 5;
+  optional string exchangeRate = 6;
+  optional bool canUseForSymbol = 7;
+  optional int32 order = 8;
+  repeated SupportPayment subSupportPayments = 9;
+  optional bool isTest = 10;
+}
+
+message ChannelDetails {
+  required string name = 1;
+  optional string icon = 2;
+}
+

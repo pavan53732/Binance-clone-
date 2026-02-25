@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "ExchangeRateMsgProto";
+
+message ExchangeRateMsg {
+
+  repeated ExchangeRateMessage exchangeRate = 1;
+
+  message ExchangeRateMessage {
+    required string baseAsset = 1;
+    required string quoteAsset = 2;
+    required int64 time = 3;
+    required int64 exchangeRate = 4;
+    optional int64 exchangeRateV2 = 5;
+    optional int32 rateV2Scale = 6;
+  }
+}

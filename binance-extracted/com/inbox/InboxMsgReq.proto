@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+package com.inbox;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.inbox";
+option java_multiple_files = true;
+option java_outer_classname = "InboxMsgReqProto";
+
+message InboxMsgReq {
+  optional string id = 1;
+  optional int32 moduleId = 2;
+  optional int32 status = 3;
+  optional int32 page = 4;
+  optional int32 rows = 5;
+  optional int32 popup = 6;
+  optional string client = 7;
+}

@@ -1,0 +1,32 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "BalanceValuationRespProto";
+
+message BalanceValuationResp {
+
+  repeated BalanceValuation balanceValuation = 1;
+
+  message BalanceValuation{
+    required string asset = 1;
+    optional string assetName = 2;
+    required string free = 3;
+    required string locked = 4;
+    required string freeze = 5;
+    required string withdrawing = 6;
+    required int32 test = 7;
+    required string plateType = 8;
+    optional string btcValuation = 9;
+    optional string ipoable = 10;
+    repeated FreezeDetails freezeDetails = 11;
+  }
+  message FreezeDetails{
+    optional string bizScene = 1;
+    optional string freeze = 2;
+  }
+}
+

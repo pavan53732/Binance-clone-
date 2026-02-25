@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+package com.web3;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.web3";
+option java_multiple_files = true;
+option java_outer_classname = "AlphaCexTokenListDynamicMgsProto";
+
+message AlphaCexTokenListDynamicMgs {
+	message Nested {
+		optional string chain = 1;
+		optional string ca = 2;
+		optional string p = 3;
+		optional string pc24 = 4;
+		optional string vol = 5;
+		optional string cap = 6;
+		optional string liq = 7;
+		optional string fdv = 8;
+		optional string holders = 9;
+		optional string score = 10;
+	}
+
+	repeated Nested items = 1;
+}
+

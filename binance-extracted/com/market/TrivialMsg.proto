@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "TrivialMsgProto";
+
+message TrivialMsg {
+  optional int64 time = 1;
+  optional Weather weather = 2;
+  optional int32 temperature = 3;
+  optional int32 windSpeed = 4;
+  optional int32 humidity = 5;
+}
+
+enum Weather{
+  RAINY = 0;
+  CLOUDY = 1;
+  SUNNY = 2;
+}
+

@@ -1,0 +1,46 @@
+syntax = "proto2";
+
+package com.web3;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.web3";
+option java_multiple_files = true;
+option java_outer_classname = "AlphaCexTokenAddMgsProto";
+
+message AlphaCexTokenAddMgs {
+	optional string tokenId = 1;
+	optional string chainId = 2;
+	optional string chainIconUrl = 3;
+	optional string chainName = 4;
+	optional string contractAddress = 5;
+	optional string name = 6;
+	optional string symbol = 7;
+	optional string iconUrl = 8;
+	optional string price = 9;
+	optional string percentChange24h = 10;
+	optional string volume24h = 11;
+	optional string marketCap = 12;
+	optional string liquidity = 13;
+	optional string totalSupply = 14;
+	optional string circulatingSupply = 15;
+	optional string holders = 16;
+	optional uint32 decimals = 17;
+	optional bool listingCex = 18;
+	optional bool hotTag = 19;
+	optional string cexCoinName = 20;
+	optional uint32 denomination = 21;
+	optional bool canTransfer = 22;
+	optional string fdv = 23;
+	optional bool offline = 24;
+	optional uint32 tradeDecimal = 25;
+	optional string alphaId = 26;
+	optional bool offsell = 27;
+	optional bool onlineTge = 28;
+	optional bool onlineAirdrop = 29;
+	optional string priceHigh24h = 30;
+	optional string priceLow24h = 31;
+	optional uint32 score = 32;
+	optional bool cexOffDisplay = 33;
+	optional bool stockState = 34;
+}
+

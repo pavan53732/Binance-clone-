@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package com.apex;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.apex";
+option java_multiple_files = true;
+option java_outer_classname = "UserRefreshMsgProto";
+
+message UserRefreshMsg {
+	required string type = 1;
+	required int64 userId = 2;
+	required int64 time = 3;
+}

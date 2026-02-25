@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package com.asset;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.asset";
+option java_multiple_files = true;
+option java_outer_classname = "AlphaBalanceMsgProto";
+
+message AlphaBalanceMsg {
+	required string chain = 1;
+	required string contractAddress = 2;
+	required string amount = 3;
+	required string free = 4;
+	required string freeze = 5;
+}
+

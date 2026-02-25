@@ -1,0 +1,29 @@
+syntax = "proto2";
+
+package com.earn;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.earn";
+option java_multiple_files = true;
+option java_outer_classname = "ActivePositionsRespProto";
+
+message ActivePositionsResp {
+	message Position {
+		optional string positionId = 1;
+		optional string ltv = 2;
+		optional string annualInterestRate = 3;
+		optional string hourlyRate = 4;
+		optional string loanCoin = 5;
+		optional string collateralCoin = 6;
+		optional string liquidationPrice = 7;
+		optional string initialLtv = 8;
+		optional string marginCallLtv = 9;
+		optional string liquidationLtv = 10;
+		optional string totalDebt = 11;
+		optional string totalCollateral = 12;
+		optional string status = 13;
+		optional string extra = 14;
+	}
+	repeated Position postionList = 1;
+}
+

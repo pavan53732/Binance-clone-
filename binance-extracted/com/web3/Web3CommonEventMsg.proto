@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package com.web3;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.web3";
+option java_multiple_files = true;
+option java_outer_classname = "Web3CommonEventMsgProto";
+
+message Web3CommonEventMsg {
+	required string type = 1;
+	required string eventData = 2;
+}
+

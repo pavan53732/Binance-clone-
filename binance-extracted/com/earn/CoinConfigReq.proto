@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package com.earn;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.earn";
+option java_multiple_files = true;
+option java_outer_classname = "CoinConfigReqProto";
+
+message CoinConfigReq {
+	optional string loanCoin = 1;
+	optional string collateralCoin = 2;
+	optional string extra = 3;
+}

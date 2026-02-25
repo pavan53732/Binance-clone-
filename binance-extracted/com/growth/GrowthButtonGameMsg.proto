@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package com.growth;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.growth";
+option java_multiple_files = true;
+option java_outer_classname = "GrowthButtonGameMsgProto";
+
+message GrowthButtonGameMsg {
+  optional int64 resourceId = 1;
+  optional string eventType = 2;
+  optional int32 totalParticipants = 3;
+  optional int64 clickTime = 4;
+  repeated string clickKeys = 5;
+  repeated string winners = 6;
+}

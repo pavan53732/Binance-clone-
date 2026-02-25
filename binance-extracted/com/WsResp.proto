@@ -1,0 +1,85 @@
+syntax = "proto2";
+
+package com;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com";
+option java_multiple_files = true;
+option java_outer_classname = "WsRespProto";
+
+import "com/WsReq.proto";
+import "com/earn/ActivePositionsResp.proto";
+import "com/earn/LoanableAssetResp.proto";
+import "com/earn/TrialCalcForRepaymentResp.proto";
+import "com/earn/CoinConfigResp.proto";
+import "com/market/TrivialResp.proto";
+import "com/market/BalanceValuationResp.proto";
+import "com/market/KycStatusResp.proto";
+import "com/market/CapitalConfigResp.proto";
+import "com/market/GetSelectorResp.proto";
+import "com/market/GetSubSelectorResp.proto";
+import "com/market/IsolatedMarginAccountResp.proto";
+import "com/market/GetAccountUserConfigResp.proto";
+import "com/market/GetAssetPortfolioResp.proto";
+import "com/market/GetBuyAndSellSelectorResp.proto";
+import "com/market/GetBuyAndSellSubSelectorResp.proto";
+import "com/futures/GetOpenGridsResp.proto";
+import "com/futures/GetOrderConfirmationResp.proto";
+import "com/futures/GetUserCommissionResp.proto";
+import "com/inbox/InboxMsgReadResp.proto";
+import "com/inbox/InboxMsgResp.proto";
+import "com/inbox/InboxUnReadResp.proto";
+import "com/market/FaceSdkVerifyResp.proto";
+import "com/market/BuyRedesignQueryCryptoListResp.proto";
+import "com/market/BuyRedesignQueryFiatListResp.proto";
+import "com/market/BuyRedesignQueryCryptoResp.proto";
+import "com/market/OtcGetQuoteResp.proto";
+import "com/market/WalletBalanceV2Resp.proto";
+
+message WsResp {
+
+  required string wsReqId = 1;
+  required int64 respTime = 2;
+  required WsReqAction reqAction = 3;
+  optional WsRespError respError = 4;
+  optional int32 errorCode = 5;
+  optional string errorMsg = 6;
+
+  oneof body {
+    string resp = 100;
+    com.market.TrivialResp trivialResp = 101;
+    com.market.BalanceValuationResp balanceValuationResp = 102;
+    com.market.KycStatusResp kycStatusResp = 103;
+    com.market.CapitalConfigResp capitalConfigResp = 104;
+    com.market.GetSelectorResp getSelectorResp = 105;
+    com.market.GetSubSelectorResp getSubSelectorResp = 106;
+    com.market.IsolatedMarginAccountResp isolatedMarginAccountResp = 107;
+    com.market.GetAccountUserConfigResp getAccountUserConfigResp = 108;
+    com.market.GetAssetPortfolioResp getAssetPortfolioResp = 109;
+    com.market.GetBuyAndSellSelectorResp getBuyAndSellSelectorResp = 111;
+    com.market.GetBuyAndSellSubSelectorResp getBuyAndSellSubSelectorResp = 112;
+    com.futures.GetOpenGridsResp getOpenGridsResp = 113;
+    com.futures.GetOrderConfirmationResp getOrderConfirmationResp = 114;
+    com.futures.GetUserCommissionResp getUserCommissionResp = 115;
+    com.inbox.InboxMsgReadResp inboxMsgReadResp = 116;
+    com.inbox.InboxMsgResp inboxMsgResp = 117;
+    com.inbox.InboxUnReadResp inboxUnReadResp = 118;
+    com.market.FaceSdkVerifyResp faceSdkVerifyResp = 119;
+    com.market.BuyRedesignQueryCryptoListResp buyRedesignQueryCryptoListResp = 120;
+    com.market.BuyRedesignQueryFiatListResp buyRedesignQueryFiatListResp = 121;
+    com.market.BuyRedesignQueryCryptoResp buyRedesignQueryCryptoResp = 122;
+    com.market.OtcGetQuoteResp otcGetQuoteResp = 123;
+    com.earn.ActivePositionsResp activePositionsResp = 124;
+    com.earn.LoanableAssetResp loanableAssetResp = 125;
+    com.earn.TrialCalcForRepaymentResp trialCalcForRepaymentResp = 126;
+    com.earn.CoinConfigResp coinConfigResp = 127;
+    com.market.WalletBalanceV2Resp walletBalanceV2Resp = 129;
+  }
+}
+
+enum WsRespError {
+  INVALID_TOKEN = 1;
+  INVALID_REQUEST = 2;
+  SERVICE_ERROR = 3;
+}
+

@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+package com.asset;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.asset";
+option java_multiple_files = true;
+option java_outer_classname = "FundingBalanceMsgProto";
+
+message FundingBalanceMsg {
+  repeated B b = 1;
+
+	message B {
+		required string a = 1;
+		required string f = 2;
+	}
+}
+

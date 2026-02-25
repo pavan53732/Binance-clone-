@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "BuyRedesignQueryCryptoListRespProto";
+
+message BuyRedesignQueryCryptoListResp {
+   required string assetCode = 1;
+   optional string assetName = 2;
+   optional string logoUrl = 3;
+   optional string size = 4;
+   optional bool checkoutCountrySupport = 5;
+   required int32 expireTime = 6;
+   optional string convertedAssetCode = 7;
+   optional string targetTransaction = 8;
+}
+
+
+

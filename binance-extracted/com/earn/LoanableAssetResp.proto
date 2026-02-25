@@ -1,0 +1,29 @@
+syntax = "proto2";
+
+package com.earn;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.earn";
+option java_multiple_files = true;
+option java_outer_classname = "LoanableAssetRespProto";
+
+message LoanableAssetResp {
+	message LoanableAsset {
+		message CoinRate {
+			optional string hourlyRate = 1;
+			optional string annuallyRate = 2;
+			optional string extra = 3;
+		}
+
+		optional string coin = 1;
+		optional string marketCap = 2;
+		optional string flexibleUtilization = 3;
+		optional CoinRate flexibleRate = 4;
+		optional CoinRate sevenDaysFixedRate = 5;
+		optional CoinRate thirtyDaysFixedRate = 6;
+		optional string extra = 7;
+	}
+
+	repeated LoanableAsset loanableAssets = 1;
+}
+

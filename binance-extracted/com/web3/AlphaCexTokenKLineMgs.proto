@@ -1,0 +1,30 @@
+syntax = "proto2";
+
+package com.web3;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.web3";
+option java_multiple_files = true;
+option java_outer_classname = "AlphaCexTokenKLineMgsProto";
+
+message AlphaCexTokenKLineMgs {
+	optional string stream = 1;
+	repeated Data data = 2;
+
+	message K {
+		optional uint64 t = 1;
+		optional uint64 p = 2;
+		optional string i = 3;
+		optional string o = 4;
+		optional string c = 5;
+		optional string h = 6;
+		optional string l = 7;
+		optional string v = 8;
+	}
+
+	message Data {
+		optional string chainId = 1;
+		optional string ca = 2;
+		repeated K k = 3;
+	}
+}

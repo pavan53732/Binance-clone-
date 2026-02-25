@@ -1,0 +1,13 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Header>
+        <wsa:MessageID xmlns:wsa="http://www.w3.org/2005/03/addressing">{{messageId}}</wsa:MessageID>
+        <wsa:ReplyTo xmlns:wsa="http://www.w3.org/2005/03/addressing">
+            <wsa:Address xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="wsa:AttributedURIType">
+                http://www.projectliberty.org/2006/02/role/paos
+            </wsa:Address>
+        </wsa:ReplyTo>
+        {{#relatesTo}}
+        <wsa:RelatesTo xmlns:wsa="http://www.w3.org/2005/03/addressing">{{.}}</wsa:RelatesTo>
+        {{/relatesTo}}
+    </soap:Header>
+    <soap:Body>

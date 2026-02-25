@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "C2cQuotePriceMsgProto";
+
+message C2cQuotePriceMsg {
+  optional string tradeType = 1;
+  optional string asset = 2;
+  optional string fiat = 3;
+  optional string symbol = 4;
+  optional double price = 5;
+  optional int64 update_time = 6;
+  optional double delta = 7;
+  optional string extend = 8;
+}
+

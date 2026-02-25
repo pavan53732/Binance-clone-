@@ -1,0 +1,11 @@
+syntax = "proto3";
+option go_package = ".;content_server_api_params";
+option java_package = "com.binance.content.server_api_params";
+package content_server_api_params;
+
+message Dummy {
+  int32 errCode = 1;
+  string errMsg = 2;
+  int32 type = 3;
+  string uid = 4;
+}

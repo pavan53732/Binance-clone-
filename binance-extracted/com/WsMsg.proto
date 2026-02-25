@@ -1,0 +1,98 @@
+syntax = "proto2";
+
+package com;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com";
+option java_multiple_files = true;
+option java_outer_classname = "WsMsgProto";
+
+import "com/WsResp.proto";
+import "com/earn/EarnDcProjectOrderInfoMsg.proto";
+import "com/earn/EarnDcUnderlyingOverviewMsg.proto";
+import "com/earn/EarnIndexMsg.proto";
+import "com/inbox/InboxMsg.proto";
+import "com/inbox/InboxNotificationMsg.proto";
+import "com/market/AnnouncementBroadcastMsg.proto";
+import "com/bigdata/OneClickFuturesRealtimeMetricsListMsg.proto";
+import "com/market/C2cAllQuotePriceMsg.proto";
+import "com/market/C2cKlineMsg.proto";
+import "com/market/C2cQuotePriceMsg.proto";
+import "com/market/CoinPriceMsg.proto";
+import "com/market/EmergencyBroadcastMsg.proto";
+import "com/market/ExchangeRateMsg.proto";
+import "com/market/TrivialMsg.proto";
+import "com/nft/NftInboxMsg.proto";
+import "com/push/PushMsg.proto";
+import "com/earn/AnnualInterestRatesMsg.proto";
+import "com/earn/SavingMarketAprMsg.proto";
+import "com/earn/EarnDntProjectOverviewMsg.proto";
+import "com/bigdata/HomePageRegUserMsg.proto";
+import "com/growth/GrowthButtonGameMsg.proto";
+import "com/account/RoamingWebAckPushMsg.proto";
+import "com/apex/ApexIncomeMsg.proto";
+import "com/asset/AssetRateMsg.proto";
+import "com/asset/AssetPushMsg.proto";
+import "com/asset/FundingBalanceMsg.proto";
+import "com/asset/AssetBalancePushMsg.proto";
+import "com/convert/QuoteUpdatePushMsg.proto";
+import "com/web3/TxStatusEventMsg.proto";
+import "com/web3/Web3CommonEventMsg.proto";
+import "com/asset/AlphaBalanceMsg.proto";
+import "com/web3/AlphaCexTokenAddMgs.proto";
+import "com/web3/AlphaCexTokenDynamicMgs.proto";
+import "com/web3/AlphaCexTokenKLineMgs.proto";
+import "com/web3/AlphaCexTokenListDynamicMgs.proto";
+import "com/web3/AlphaCexOrderChangeMsg.proto";
+import "com/apex/UserRefreshMsg.proto";
+import "com/payment/PaymentPixInfoSyncWsMsg.proto";
+import "com/push/AISearchPushMsg.proto";
+
+message WsMsg {
+
+  required string channel = 1;
+  required int64 sourceTime = 2;
+
+  oneof body {
+    com.WsResp wsResp = 100;
+    com.market.TrivialMsg trivialMsg = 101;
+    com.market.ExchangeRateMsg exchangeRateMsg = 102;
+    com.inbox.InboxMsg inboxMsg = 103;
+    com.market.C2cQuotePriceMsg c2cQuotePriceMsg = 104;
+    com.inbox.InboxNotificationMsg inboxNotificationMsg = 105;
+    com.market.CoinPriceMsg coinPriceMsg = 106;
+    com.market.C2cAllQuotePriceMsg c2cAllQuotePriceMsg = 107;
+    com.market.C2cKlineMsg c2cKlineMsg = 108;
+    com.market.EmergencyBroadcastMsg emergencyBroadcastMsg = 109;
+    com.market.AnnouncementBroadcastMsg announcementBroadcastMsg = 110;
+    com.earn.EarnIndexMsg earnIndexMsg = 111;
+    com.push.PushMsg pushMsg = 112;
+    com.nft.NftInboxMsg nftInboxMsg = 113;
+    com.earn.SavingMarketAprMsg savingMarketAprMsg = 114;
+    com.earn.EarnDntProjectOverviewMsg earnDntProjectOverviewMsg = 115;
+    com.bigdata.HomePageRegUserMsg homePageRegUserMsg = 116;
+    com.growth.GrowthButtonGameMsg growthButtonGameMsg = 117;
+    com.account.RoamingWebAckPushMsg roamingWebAckPushMsg = 118;
+    com.asset.AssetRateMsg assetRateMsg = 119;
+    com.convert.QuoteUpdatePushMsg quoteUpdatePushMsg = 120;
+    com.asset.AssetPushMsg assetPushMsg = 121;
+    com.asset.FundingBalanceMsg fundingBalanceMsg = 122;
+    com.web3.TxStatusEventMsg txStatusEventMsg = 123;
+    com.web3.Web3CommonEventMsg web3CommonEventMsg = 124;
+    com.earn.EarnDcUnderlyingOverviewMsg earnDcUnderlyingOverviewMsg = 125;
+    com.earn.EarnDcProjectOrderInfoMsg earnDcProjectOrderInfoMsg = 126;
+    com.apex.ApexIncomeMsg apexIncomeMsg = 127;
+    com.asset.AssetBalancePushMsg assetBalancePushMsg = 128;
+    com.asset.AlphaBalanceMsg alphaBalanceMsg = 129;
+    com.web3.AlphaCexTokenAddMgs alphaCexTokenAddMgs = 130;
+    com.web3.AlphaCexTokenDynamicMgs alphaCexTokenDynamicMgs = 131;
+    com.web3.AlphaCexTokenKLineMgs alphaCexTokenKLineMgs = 132;
+    com.web3.AlphaCexTokenListDynamicMgs alphaCexTokenListDynamicMgs = 133;
+    com.web3.AlphaCexOrderChangeMsg alphaCexOrderChangeMsg = 134;
+    com.apex.UserRefreshMsg userRefreshMsg = 136;
+    com.payment.PaymentPixInfoSyncWsMsg paymentPixInfoSyncWsMsg = 140;
+    com.bigdata.OneClickFuturesRealtimeMetricsListMsg oneClickFuturesRealtimeMetricsListMsg = 142;
+    com.push.AISearchPushMsg aiSearchPushMsg = 144;
+    com.earn.AnnualInterestRatesMsg annualInterestRatesMsg = 147;
+  }
+}

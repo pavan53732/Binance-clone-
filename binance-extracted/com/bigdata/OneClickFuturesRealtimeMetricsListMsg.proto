@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package com.bigdata;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.bigdata";
+option java_multiple_files = true;
+option java_outer_classname = "OneClickFuturesRealtimeMetricsListMsgProto";
+
+message OneClickFuturesRealtimeMetricsListMsg {
+  optional string type = 1;
+  repeated DataEntry dataList = 2;
+
+  message DataEntry {
+    map<string, string> fields = 1;
+  }
+}

@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+package com.inbox;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.inbox";
+option java_multiple_files = true;
+option java_outer_classname = "InboxUnReadRespProto";
+
+message InboxUnReadResp {
+  optional int32 moduleId = 1;
+  optional int64 userId = 2;
+  optional int32 moduleNum = 3;
+  optional int32 userNum = 4;
+  optional int32 activeDeviceCount = 5;
+}

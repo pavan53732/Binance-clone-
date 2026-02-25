@@ -1,0 +1,52 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "BuyRedesignQueryFiatListRespProto";
+
+message BuyRedesignQueryFiatListResp {
+required BuyRedesignSortSubSelector subSelectors = 1;
+}
+
+message BuyRedesignSortSubSelector {
+  required BuyRedesignCrypto crypto = 1;
+  repeated BuyRedesignAppFiatResp fiatList=2;
+}
+
+message BuyRedesignCrypto {
+   required string assetCode = 1;
+   optional string assetName = 2;
+   optional string logoUrl = 3;
+   optional string size = 4;
+   required int32 expireTime = 5;
+}
+
+message BuyRedesignAppFiatResp{
+   required string assetCode = 1;
+   optional string assetName = 2;
+   optional string logoUrl = 3;
+   optional string size = 4;
+   required int32 expireTime = 5;
+   required string cryptoCurrencyPerTimeMinLimit=6;
+   required string cryptoCurrencyPerTimeMaxLimit=7;
+   repeated BuyRedesignSupportPayment supportPaymentRespList = 8;
+   optional string fiatOneTimePerTimeMinLimit = 9;
+   optional string fiatOneTimePerTimeMaxLimit = 10;
+   optional string fiatRecurringPerTimeMinLimit = 11;
+   optional string fiatRecurringPerTimeMaxLimit = 12;
+   repeated string recurringChannels = 13;
+}
+
+message BuyRedesignSupportPayment {
+  required string channelCode = 1;
+  optional string channelName = 2;
+  optional string perTimeMinLimit = 3;
+  optional string perTimeMaxLimit = 4;
+  optional string dailyMaxLimit = 5;
+  optional string fiatRecurringPerTimeMinLimit = 6;
+  optional string fiatRecurringPerTimeMaxLimit = 7;
+  optional string fiatRecurringDailyMaxLimit = 8;
+}

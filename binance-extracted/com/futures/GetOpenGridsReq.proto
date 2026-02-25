@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+package com.futures;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.futures";
+option java_multiple_files = true;
+option java_outer_classname = "GetOpenGridsReqProto";
+
+message GetOpenGridsReq {
+  required string symbol = 1;
+}
+

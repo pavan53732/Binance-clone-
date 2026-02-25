@@ -1,0 +1,31 @@
+syntax = "proto2";
+
+package com.market;
+
+option optimize_for = SPEED;
+option java_package = "com.binance.ws.messages.protobuf.com.market";
+option java_multiple_files = true;
+option java_outer_classname = "WalletBalanceV2RespProto";
+
+import "com/market/WalletBalanceV2Req.proto";
+
+message WalletBalanceV2Resp {
+
+  repeated WalletBalanceV2 walletBalance = 1;
+
+}
+
+message WalletBalanceV2 {
+
+  optional string accountType = 1;
+
+  optional bool activate = 2;
+
+  optional string balance = 3;
+
+  optional int64 time = 4;
+
+  optional string walletName = 5;
+
+  optional string walletIcon = 6;
+}
