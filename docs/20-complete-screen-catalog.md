@@ -13,19 +13,19 @@ This catalog provides a comprehensive inventory of all screens in the Binance An
 | Screen Name    | Layout File                    | Purpose               | Key Components                            |
 | :------------- | :----------------------------- | :-------------------- | :---------------------------------------- |
 | **Home (Pro)** | `fragment_home_pro.xml`        | Dashboard & Discovery | Portfolio Summary, P2P, Promotion Banners |
-| **Markets**    | `fragment_markets.xml`         | Asset Tracking        | Favorites, Spot, Futures, Data Lists      |
-| **Trade**      | `fragment_trade_spot.xml`      | Token Swapping        | Buy/Sell Form, Order Book, Depth Chart    |
+| **Markets**    | `fragment_markets.xml`         | Asset Tracking        | Favorites, Spot, Futures, Sparkline Lists |
+| **Trade**      | `fragment_trade_spot.xml`      | Token Swapping        | Buy/Sell Form, Order Book, Margin Info    |
 | **Futures**    | `fragment_futures_main.xml`    | Derivatives Trading   | Leverage, Margin Type, Open Positions     |
-| **Assets**     | `fragment_assets_overview.xml` | Portfolio Mgmt        | Deposit, Withdraw, Transfer, Earn         |
+| **Assets**     | `fragment_assets_overview.xml` | Portfolio Mgmt        | Spot/Funding/Margin Tabs, Value Privacy   |
 
 ### Advanced Features
 
-| Screen Name       | Layout File                    | Purpose              | Key Components                           |
-| :---------------- | :----------------------------- | :------------------- | :--------------------------------------- |
-| **Options**       | `fragment_futures_options.xml` | Options Trading      | Call/Put Tabs, Strike Price List, Expiry |
-| **Smart Money**   | `fragment_smart_money.xml`     | Trading Analytics    | Top Traders, Signals, Subscriptions      |
-| **Trader Leader** | `fragment_top_traders.xml`     | Leaderboard Detail   | PnL ROI Cards, Equity Sparklines         |
-| **Analytics**     | `fragment_smart_signals.xml`   | Market Flow Tracking | Dominant Flow, Buy/Sell Count Bars       |
+| Screen Name    | Layout File                    | Purpose             | Key Components                            |
+| :------------- | :----------------------------- | :------------------ | :---------------------------------------- |
+| **Options**    | `fragment_futures_options.xml` | Options Trading     | Call/Put Strike Cards, Breakeven Analysis |
+| **Smart Hub**  | `fragment_smart_money.xml`     | High-Tier Analytics | Lead Trader Cards, Sparklines, B/S Flow   |
+| **Subscriber** | `fragment_top_traders.xml`     | Copier Intelligence | Engagement Counts, ROI/PnL Stats          |
+| **Signals**    | `fragment_smart_signals.xml`   | Market Intel        | Dominant Flow Boxes, Sentiment Progress   |
 
 ---
 
@@ -203,10 +203,10 @@ This catalog provides a comprehensive inventory of all screens in the Binance An
 
 **UI Elements**:
 
-- Search bar
-- Tab layout (Favorites, Hot, Gainers, Losers, New)
-- RecyclerView with pair list
-- Sort/filter options
+- **Header**: Search bar + Notification/Pay tray.
+- **Tab Layout**: Favorites, Spot, Futures, Feed, Data.
+- **Ticker List**: RecyclerView with symbol, price, 24h change pill, and sparkline.
+- **Bottom Navigation**: Sticky 5-tab bar (Home, Markets, Trade, Futures, Assets).
 
 ### 10. Search Screen
 
@@ -238,12 +238,11 @@ This catalog provides a comprehensive inventory of all screens in the Binance An
 
 **UI Elements**:
 
-- Pair selector (top)
-- Price chart with indicators
-- Order book (buy/sell sides)
-- Recent trades list
-- Order form (Buy/Sell tabs)
-- Open orders tab
+- **Pair Selector**: Dropdown showing current symbol (e.g., BTC/USDT) + 24h performance.
+- **Form Controls**: Horizontal Buy/Sell tabs (Green/Red color-coded).
+- **Inputs**: Limit/Market switcher, Price/Amount fields, percentage quick-select (25%, 50%, 75%, 100%).
+- **Order Book**: Vertical list of Ask (Red) and Bid (Green) orders with depth visualization.
+- **Position Panel**: "Open Orders" and "Funds" tabs at the bottom.
 
 ### 12. Fullscreen Chart
 
@@ -336,10 +335,10 @@ This catalog provides a comprehensive inventory of all screens in the Binance An
 
 **UI Elements**:
 
-- Total balance card
-- Account type tabs (Spot, Funding, Futures)
-- Quick action buttons
-- Asset list with search
+- Total balance card (Privacy masked `*` state)
+- Account type tabs (Spot, Funding, Futures, Options)
+- Quick action buttons (Deposit, Withdraw, Transfer, Convert)
+- Asset list with search & 24h Change sparklines
 - Hide small assets toggle
 
 ### 18. Deposit Screen
@@ -377,6 +376,20 @@ This catalog provides a comprehensive inventory of all screens in the Binance An
 | Navigation     | → Assets (back)                                        |
 | Input          | Accounts, coin, amount                                 |
 | Output         | Transfer complete                                      |
+
+### Web3 Interface Documentation
+
+1. **Home:** [27-web3-interface-home.md](file:///c:/Users/pavan/PROJECTS/Binance-clone-/docs/27-web3-interface-home.md)
+2. **Markets:** [28-web3-interface-markets.md](file:///c:/Users/pavan/PROJECTS/Binance-clone-/docs/28-web3-interface-markets.md)
+3. **Swap:** [29-web3-interface-swap.md](file:///c:/Users/pavan/PROJECTS/Binance-clone-/docs/29-web3-interface-swap.md)
+4. **Discovery:** [30-web3-interface-discover.md](file:///c:/Users/pavan/PROJECTS/Binance-clone-/docs/30-web3-interface-discover.md)
+5. **Assets:** [31-web3-interface-assets.md](file:///c:/Users/pavan/PROJECTS/Binance-clone-/docs/31-web3-interface-assets.md)
+
+### Specialized Web3 Sub-Interfaces
+
+1. **Topic Rush (Markets):** Detailed in [28-web3-interface-markets.md](file:///c:/Users/pavan/PROJECTS/Binance-clone-/docs/28-web3-interface-markets.md#topic-rush).
+2. **Web3 Pro Trading (Swap):** Detailed in [29-web3-interface-swap.md](file:///c:/Users/pavan/PROJECTS/Binance-clone-/docs/29-web3-interface-swap.md#pro-trading-mode).
+3. **Meme Rush (Markets):** Detailed in [28-web3-interface-markets.md](file:///c:/Users/pavan/PROJECTS/Binance-clone-/docs/28-web3-interface-markets.md#meme-rush).
 
 ### 21. Asset Detail Screen
 

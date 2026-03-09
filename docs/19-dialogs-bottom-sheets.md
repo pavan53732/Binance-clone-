@@ -8,8 +8,19 @@ Interaction components are categorized by their role in **Exchange (CeFi)** or *
 
 ### Global Alert & Confirmation
 
-- **Alert:** Standard warning/info dialog with single "OK/Continue" action.
 - **Confirmation:** Two-button layout for high-stakes actions like "Cancel Order".
+- **Margin Info Dialog:** Explains Risk Ratio and Liquidation (Trade Page).
+
+### Margin Liquidation Warning
+
+Used when Margin Level falls below 1.1.
+
+| Element         | Specification                 | Style                       |
+| --------------- | ----------------------------- | --------------------------- |
+| **Title**       | "Margin Risk Warning"         | 18sp, Bold, `#F6465D`       |
+| **Description** | "Risk is high. Repay debt..." | 14sp, Regular, `#848E9C`    |
+| **Link**        | "Learn more about Margin"     | 12sp, Medium, `#F0B90B`     |
+| **CTA**         | "Add Collateral"              | Yellow primary button, 40dp |
 
 ---
 
@@ -37,10 +48,41 @@ Used before a protocol can spend a user's tokens.
 
 ### Network / Wallet Selector
 
-| Feature          | Style                                               |
-| ---------------- | --------------------------------------------------- |
-| **Network Grid** | Icons for Ethereum, BSC, Polygon, Solana            |
-| **Wallet List**  | Vertical list of user-created/imported Web3 wallets |
+| Feature          | Style                                                     |
+| ---------------- | --------------------------------------------------------- |
+| **Network Grid** | Icons for Ethereum, BSC, Polygon, Solana                  |
+| **Wallet List**  | Vertical list with yellow checkmarks for active selection |
+
+### Asset Selector Bottom Sheet
+
+**Usage**: Primary pair switching in Trade/Alpha.
+
+- **Header**:
+  - **Search Bar**: "Search token name or address" with "Cancel" text-link.
+  - **Filter Chips**: Horizontal scroll of capsules (`Hot`, `New`, `Alpha`, `Point+`, `Stocks`).
+- **Body**:
+  - **Categorized Sections**: Vertical lists of tokens with network badges and profit multipliers (e.g., `x10`).
+- **Footer**: Sticky "Browse More" link with right arrow.
+- **Background**: Semi-transparent yellow (#1AF0B90B).
+- **Icon**: `ic_info_outline` (16dp, Yellow).
+- **Text**: "The asset data updates might be delayed..." (12sp, Medium, Yellow).
+
+### DeFi Status & Warning Boxes
+
+**Usage**: Web3 Assets (DeFi tab) and Earn pages.
+
+- **Type**: Info Alert Box.
+- **Background**: Semi-transparent yellow (#1AF0B90B).
+- **Icon**: `ic_info_outline` (16dp, Yellow).
+- **Text**: "The asset data updates might be delayed..." (12sp, Medium, Yellow).
+
+### DApp Signature Confirmation Flow
+
+**Usage**: Web3 Discovery/WalletConnect.
+
+- **Handle**: standard 32x4dp grey handle.
+- **DApp Info**: Icon + Domain (e.g., pancake.run) + Shield (Security verified).
+- **Message Area**: Darkened code block with scrollable text (Raw transaction JSON).
 
 **Specifications**:
 | Property | Value |
@@ -189,22 +231,33 @@ Used before a protocol can spend a user's tokens.
 | Handle Margin Top | 8dp |
 
 **Internal Elements**:
-| Element | Style |
-|---------|-------|
-| Title | 18sp, Medium, White |
-| Search Bar | 44dp height |
-| List Item | 64dp height |
 | Divider | 1dp, `#2B3139` |
+
+### 3. Asset Detail Sheet (Assets Page)
+
+**Usage**: Detailed overview of a specific coin when tapped in the Assets list.
+
+**Features**:
+
+- Balance breakdown (Available, Frozen, In Order).
+- Action buttons: Buy, Deposit, Withdraw, Trade, Earn.
+- Recent transaction history for the specific asset.
+
+| Element          | Specification              | Details                          |
+| :--------------- | :------------------------- | :------------------------------- |
+| **Header**       | Coin Icon + Name + Balance | 20sp, Bold title                 |
+| **Action Grid**  | 5-Column Button Layout     | Iconic style, 48dp icons         |
+| **History Item** | Type, Amount, Time, Status | Consistent with Transaction List |
 
 ### 2. Futures Trading Pair Selector
 
-**Usage**: Switching pairs in Futures market (shows Symbol, Price, and 24h Change)
+**Usage**: Switching pairs in Futures market (shows Symbol, Price, and 24h Change).
 
 **Layout**:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
-│  ─────                                                  │
+│  ───── (Drag Handle: 32x4dp, Rounded)                   │
 │  Select Futures Pair                                    │
 ├─────────────────────────────────────────────────────────┤
 │  ┌─────────────────────────────────────────────────┐   │
@@ -213,23 +266,37 @@ Used before a protocol can spend a user's tokens.
 │                                                         │
 │  Symbol / Vol      Price          24h Change            │
 │  ┌─────────────────────────────────────────────────┐   │
-│  │  BTCUSDT        42,500.21       +2.45%              │   │
-│  │  Perp  2.4B                                         │   │
+│  │  ★ BTCUSDT      42,500.21       +2.45%              │   │
+│  │    Perp  2.4B                                       │   │
 │  ├─────────────────────────────────────────────────┤   │
-│  │  ETHUSDT        2,280.45        -1.12%              │   │
-│  │  Perp  850M                                         │   │
+│  │  ★ ETHUSDT      2,280.45        -1.12%              │   │
+│  │    Perp  850M                                       │   │
 │  └─────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────┘
 ```
 
 **Specifications**:
-| Property | Value |
-|----------|-------|
-| Columns | Symbol (Left), Price (Center), 24h Change (Right) |
-| Symbol Style | 16sp, Medium, White |
-| Volume/Tag | 12sp, `#848E9C` |
-| Price Style | 14sp, Regular, White |
-| Change Style | 14sp, Color-coded (Green/Red) |
+
+| Property         | Value                                                 |
+| :--------------- | :---------------------------------------------------- |
+| **Columns**      | Symbol (Left), Price (Center), 24h Change (Right)     |
+| **Symbol Style** | 16sp, Medium, White (includes leading Star icon)      |
+| **Volume/Tag**   | 12sp, `#848E9C` (e.g., "Perp 2.41B")                  |
+| **Price Style**  | 14sp, Regular, White                                  |
+| **Change Style** | 14sp, Color-coded (Green: `#2EBD85` / Red: `#F6465D`) |
+
+### 6. Futures Options Activation (Overlay)
+
+**Usage**: One-time prompt when entering Binance Options.
+
+**Layout**:
+
+- **Header**: Large Yellow Gradient Graphic + "Welcome to Binance Options"
+- **Benefits List**:
+  - `Risk Control`: Manage downside with limited loss.
+  - `High Leverage`: Capital efficiency.
+  - `Low Threshold`: Start with small amounts.
+- **Action**: "Activate" (Yellow primary button) + "Skip" (Text-only link).
 
 ### 3. Network Selector
 

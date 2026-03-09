@@ -10,14 +10,12 @@ This document catalogs all color values and theme definitions extracted from the
 
 ### Primary Yellow (Binance Brand)
 
-| Color Name | Hex Value | Description |
-|------------|-----------|-------------|
-| Primary Yellow | `#FFF0B90B` | Main Binance brand color |
-| Primary Yellow Light | `#FFFCD535` | Lighter variant for highlights |
-| Primary Yellow Dark | `#FFD89F00` | Darker variant for pressed states |
-| Primary Yellow Lighter | `#FFFFE45E` | Extra light variant |
-| Primary Yellow Lightest | `#FFFFEF87` | Lightest variant |
-| Primary Yellow Highlight | `#FFFFF7B0` | Highlight variant |
+| Color Name           | Hex Value   | Description                              |
+| -------------------- | ----------- | ---------------------------------------- |
+| Primary Yellow       | `#FFF0B90B` | Main Binance brand color                 |
+| Primary Yellow Light | `#FFFCD535` | Lighter variant for highlights           |
+| Primary Yellow Dark  | `#FFD89F00` | Darker variant for pressed states        |
+| Promo Yellow         | `#FFF0B90B` | Used for "New" badges and leverage pills |
 
 ### XML Definitions
 
@@ -36,12 +34,12 @@ This document catalogs all color values and theme definitions extracted from the
 
 ### Profit/Success (Green)
 
-| Color Name | Hex Value | Alpha Variants | Usage |
-|------------|-----------|----------------|-------|
-| Success Green | `#FF2EBD85` | `#602EBD85`, `#802EBD85` | Profit indicators, buy buttons |
-| Success Green Alt | `#FF0ECB81` | `#600ECB81`, `#800ECB81` | Alternative success color |
-| Success Green Dark | `#FF28A473` | - | Pressed state |
-| Success Green Darker | `#FF1D966C` | - | Darker variant |
+| Color Name           | Hex Value   | Alpha Variants           | Usage                          |
+| -------------------- | ----------- | ------------------------ | ------------------------------ |
+| Success Green        | `#FF2EBD85` | `#602EBD85`, `#802EBD85` | Profit indicators, buy buttons |
+| Success Green Alt    | `#FF0ECB81` | `#600ECB81`, `#800ECB81` | Alternative success color      |
+| Success Green Dark   | `#FF28A473` | -                        | Pressed state                  |
+| Success Green Darker | `#FF1D966C` | -                        | Darker variant                 |
 
 ```xml
 <color name="2131099743">#ff2ebd85</color>
@@ -54,11 +52,12 @@ This document catalogs all color values and theme definitions extracted from the
 
 ### Loss/Error (Red)
 
-| Color Name | Hex Value | Alpha Variants | Usage |
-|------------|-----------|----------------|-------|
-| Error Red | `#FFF6465D` | `#60F6465D`, `#80F6465D` | Loss indicators, sell buttons |
-| Error Red Alt | `#FFE33B54` | - | Alternative error color |
-| Error Red Dark | `#FFCF304A` | - | Pressed state |
+| Color Name       | Hex Value   | Alpha Variants           | Usage                                     |
+| ---------------- | ----------- | ------------------------ | ----------------------------------------- |
+| Error Red        | `#FFF6465D` | `#60F6465D`, `#80F6465D` | Loss indicators, sell buttons             |
+| Error Red Alt    | `#FFE33B54` | -                        | Alternative error color                   |
+| Error Red Dark   | `#FFCF304A` | -                        | Pressed state                             |
+| Notification Red | `#FFE44558` | -                        | Used for "99+" bubble and critical alerts |
 
 ```xml
 <color name="2131099707">#fff6465d</color>
@@ -69,9 +68,9 @@ This document catalogs all color values and theme definitions extracted from the
 
 ### Warning (Orange)
 
-| Color Name | Hex Value | Usage |
-|------------|-----------|-------|
-| Warning Orange | `#FFDD7A2B` | Warning indicators |
+| Color Name         | Hex Value   | Usage               |
+| ------------------ | ----------- | ------------------- |
+| Warning Orange     | `#FFDD7A2B` | Warning indicators  |
 | Warning Orange Alt | `#FFFF693D` | Alternative warning |
 
 ```xml
@@ -81,11 +80,11 @@ This document catalogs all color values and theme definitions extracted from the
 
 ### Info (Blue)
 
-| Color Name | Hex Value | Usage |
-|------------|-----------|-------|
-| Info Blue | `#FF1F8DF9` | Information indicators |
-| Info Blue Alt | `#FF328DFD` | Alternative info color |
-| Info Blue Dark | `#FF1773EB` | Darker variant |
+| Color Name     | Hex Value   | Usage                  |
+| -------------- | ----------- | ---------------------- |
+| Info Blue      | `#FF1F8DF9` | Information indicators |
+| Info Blue Alt  | `#FF328DFD` | Alternative info color |
+| Info Blue Dark | `#FF1773EB` | Darker variant         |
 
 ```xml
 <color name="2131099658">#ff1f8df9</color>
@@ -99,13 +98,13 @@ This document catalogs all color values and theme definitions extracted from the
 
 ### Dark Theme Backgrounds
 
-| Color Name | Hex Value | Usage |
-|------------|-----------|-------|
-| Background Primary | `#FF0B0E11` | Main background |
+| Color Name           | Hex Value   | Usage                |
+| -------------------- | ----------- | -------------------- |
+| Background Primary   | `#FF0B0E11` | Main background      |
 | Background Secondary | `#FF12161C` | Secondary background |
-| Background Tertiary | `#FF181E25` | Tertiary background |
-| Background Card | `#FF202630` | Card backgrounds |
-| Background Elevated | `#FF1E2026` | Elevated surfaces |
+| Background Tertiary  | `#FF181E25` | Tertiary background  |
+| Background Card      | `#FF202630` | Card backgrounds     |
+| Background Elevated  | `#FF1E2026` | Elevated surfaces    |
 
 ```xml
 <color name="2131099846">#ff0b0e11</color>
@@ -117,10 +116,10 @@ This document catalogs all color values and theme definitions extracted from the
 
 ### Light Theme Backgrounds
 
-| Color Name | Hex Value | Usage |
-|------------|-----------|-------|
-| Background Light | `#FFFAFAFA` | Light background |
-| Background Light Alt | `#FFF5F5F5` | Alternative light |
+| Color Name            | Hex Value   | Usage                  |
+| --------------------- | ----------- | ---------------------- |
+| Background Light      | `#FFFAFAFA` | Light background       |
+| Background Light Alt  | `#FFF5F5F5` | Alternative light      |
 | Background Light Card | `#FFEAECEF` | Light card backgrounds |
 
 ```xml
@@ -135,13 +134,13 @@ This document catalogs all color values and theme definitions extracted from the
 
 ### Dark Theme Text
 
-| Color Name | Hex Value | Usage |
-|------------|-----------|-------|
-| Text Primary | `#FFFFFFFF` | Primary text (white) |
-| Text Secondary | `#FF848E9C` | Secondary text |
-| Text Tertiary | `#FFB7BDC6` | Tertiary text |
-| Text Disabled | `#FF707A8A` | Disabled text |
-| Text Hint | `#FF929AA5` | Hint/placeholder text |
+| Color Name       | Hex Value   | Usage                                |
+| ---------------- | ----------- | ------------------------------------ |
+| Text Extra Small | `10sp`      | Captions, timestamps, Network Badges |
+| Text Small       | `12sp`      | Secondary text, labels               |
+| Text Tertiary    | `#FFB7BDC6` | Tertiary text                        |
+| Text Disabled    | `#FF707A8A` | Disabled text                        |
+| Text Hint        | `#FF929AA5` | Hint/placeholder text                |
 
 ```xml
 <color name="2131099767">#ff848e9c</color>
@@ -152,10 +151,10 @@ This document catalogs all color values and theme definitions extracted from the
 
 ### Text on Primary
 
-| Color Name | Hex Value | Usage |
-|------------|-----------|-------|
-| Text on Primary | `#FF181A20` | Text on yellow buttons |
-| Text on Primary Dark | `#FF0B0E11` | Darker variant |
+| Color Name           | Hex Value   | Usage                  |
+| -------------------- | ----------- | ---------------------- |
+| Text on Primary      | `#FF181A20` | Text on yellow buttons |
+| Text on Primary Dark | `#FF0B0E11` | Darker variant         |
 
 ```xml
 <color name="2131099859">#ff181a20</color>
@@ -256,11 +255,11 @@ The Binance app uses a comprehensive design system called "SNS" with semantic na
 
 ## Border & Divider Colors
 
-| Color Name | Hex Value | Usage |
-|------------|-----------|-------|
-| Border Light | `#FFD8DCE1` | Light borders |
+| Color Name    | Hex Value   | Usage          |
+| ------------- | ----------- | -------------- |
+| Border Light  | `#FFD8DCE1` | Light borders  |
 | Border Medium | `#FFEAECEF` | Medium borders |
-| Divider | `#FF474D57` | Dividers |
+| Divider       | `#FF474D57` | Dividers       |
 
 ```xml
 <color name="2131100469">#ffd8dce1</color>
@@ -272,11 +271,11 @@ The Binance app uses a comprehensive design system called "SNS" with semantic na
 
 ## Overlay & Scrim Colors
 
-| Color Name | Hex Value | Usage |
-|------------|-----------|-------|
-| Scrim Dark | `#99000000` | Modal overlays |
-| Scrim Medium | `#66000000` | Light overlays |
-| Scrim Light | `#33000000` | Subtle overlays |
+| Color Name        | Hex Value   | Usage                |
+| ----------------- | ----------- | -------------------- |
+| Scrim Dark        | `#99000000` | Modal overlays       |
+| Scrim Medium      | `#66000000` | Light overlays       |
+| Scrim Light       | `#33000000` | Subtle overlays      |
 | Scrim Extra Light | `#14000000` | Very subtle overlays |
 
 ```xml
@@ -331,49 +330,49 @@ The app uses Material Design themes with custom attributes:
 
 ### Yellow Scale (Brand)
 
-| Step | Hex Value |
-|------|-----------|
-| 50 | `#FFFFFDE6` |
-| 100 | `#FFFFF7B0` |
-| 200 | `#FFFFEF87` |
-| 300 | `#FFFFE45E` |
-| 400 | `#FFFCD535` |
-| 500 | `#FFF0B90B` |
-| 600 | `#FFD89F00` |
-| 700 | `#FFA37200` |
-| 800 | `#FF7D5300` |
-| 900 | `#FF573700` |
+| Step | Hex Value   |
+| ---- | ----------- |
+| 50   | `#FFFFFDE6` |
+| 100  | `#FFFFF7B0` |
+| 200  | `#FFFFEF87` |
+| 300  | `#FFFFE45E` |
+| 400  | `#FFFCD535` |
+| 500  | `#FFF0B90B` |
+| 600  | `#FFD89F00` |
+| 700  | `#FFA37200` |
+| 800  | `#FF7D5300` |
+| 900  | `#FF573700` |
 
 ### Green Scale (Success)
 
-| Step | Hex Value |
-|------|-----------|
-| 10 | `#FFEDFCF4` |
-| 20 | `#FFD3F0E1` |
-| 40 | `#FFA3E3C4` |
-| 60 | `#FF78D6AC` |
-| 80 | `#FF51C997` |
-| 100 | `#FF2EBD85` |
-| 200 | `#FF28A473` |
-| 300 | `#FF1D966C` |
-| 400 | `#FF107052` |
-| 500 | `#FF074A37` |
-| 600 | `#FF03241B` |
+| Step | Hex Value   |
+| ---- | ----------- |
+| 10   | `#FFEDFCF4` |
+| 20   | `#FFD3F0E1` |
+| 40   | `#FFA3E3C4` |
+| 60   | `#FF78D6AC` |
+| 80   | `#FF51C997` |
+| 100  | `#FF2EBD85` |
+| 200  | `#FF28A473` |
+| 300  | `#FF1D966C` |
+| 400  | `#FF107052` |
+| 500  | `#FF074A37` |
+| 600  | `#FF03241B` |
 
 ### Red Scale (Error)
 
-| Step | Hex Value |
-|------|-----------|
-| 10 | `#FFFFF0F0` |
-| 20 | `#FFFFC2C4` |
-| 40 | `#FFFF99A0` |
-| 60 | `#FFFF707E` |
-| 80 | `#FFF6465D` |
-| 100 | `#FFF63C55` |
-| 200 | `#FFCF304A` |
-| 300 | `#FFA81E3A` |
-| 400 | `#FF82112B` |
-| 500 | `#FF5C0B21` |
+| Step | Hex Value   |
+| ---- | ----------- |
+| 10   | `#FFFFF0F0` |
+| 20   | `#FFFFC2C4` |
+| 40   | `#FFFF99A0` |
+| 60   | `#FFFF707E` |
+| 80   | `#FFF6465D` |
+| 100  | `#FFF63C55` |
+| 200  | `#FFCF304A` |
+| 300  | `#FFA81E3A` |
+| 400  | `#FF82112B` |
+| 500  | `#FF5C0B21` |
 
 ---
 

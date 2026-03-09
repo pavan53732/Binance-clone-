@@ -33,13 +33,18 @@ The app uses multiple drawable directories for different configurations:
 
 **Location**: `mipmap-*` directories
 
-| File                     | Purpose                            |
-| ------------------------ | ---------------------------------- |
-| `ic_launcher_logo`       | Standard launcher icon             |
-| `ic_launcher_round_logo` | Round launcher icon (Android 7.1+) |
-| `2131820547`             | Adaptive icon foreground           |
-| `2131820548`             | Adaptive icon background           |
-| `2131820550`             | Additional icon variant            |
+| File                     | Purpose                                     | Usage        |
+| ------------------------ | ------------------------------------------- | ------------ |
+| `ic_launcher_logo`       | Standard launcher icon                      |              |
+| `ic_launcher_round_logo` | Round launcher icon (Android 7.1+)          |              |
+| `ic_copy.xml`            | Overlapping rectangles (standard copy icon) | Trade Menu   |
+| `ic_bots.xml`            | Robot head profile icon                     | Trade Menu   |
+| `ic_manage.xml`          | Sliders/Filters icon                        | Trade Menu   |
+| `ic_leverage_pill.xml`   | Pill background for x2, x5, x10 multiplier  | Margin/Trade |
+| `ic_unit_switcher.xml`   | Opposing arrows circle (%/$)                | Order Form   |
+| `2131820547`             | Adaptive icon foreground                    |              |
+| `2131820548`             | Adaptive icon background                    |              |
+| `2131820550`             | Additional icon variant                     |              |
 
 ### Standard Icon Sizes
 

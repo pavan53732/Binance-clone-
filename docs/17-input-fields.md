@@ -570,6 +570,16 @@ This document provides comprehensive documentation of all input field types used
   [    Slider Track with Diamond Selection Nodes        ]
 ```
 
+- **Leverage Slider (Futures):** Diamond-nodes at 0, 25, 50, 75, 100%.
+
+### Trade execution input field
+
+**Usage**: Price and Amount entry in Spot/Alpha modes.
+
+- **Embedded Selector**: Small dropdown arrow adjacent to the quote asset ticker (e.g., `USDT ▼`) inside the right boundary of the edit text.
+- **Micro-Label**: "Suggest [Price]" appears in 10sp, Regular, Grey text immediately below the field baseline during active focus.
+- **Precision Controls**: Optional `-` and `+` circular buttons flanking the field for incremental adjustments.
+
 **Specifications**:
 | Property | Value |
 |----------|-------|

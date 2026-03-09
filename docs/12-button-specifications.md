@@ -158,17 +158,17 @@ This document provides comprehensive specifications for all button types used in
 
 ### Buy Button (Green)
 
-**Usage**: Buy orders, long positions, deposit
+**Usage**: Buy orders, long positions; Primary "Buy" action on Trade Page.
 
-| Property         | Value     |
-| ---------------- | --------- |
-| Height           | 40dp      |
-| Min Width        | 120dp     |
-| Corner Radius    | 4dp       |
-| Background Color | `#2EBD85` |
-| Text Color       | `#FFFFFF` |
-| Text Size        | 16sp      |
-| Font Weight      | Medium    |
+| Property         | Value                                  |
+| ---------------- | -------------------------------------- |
+| Height           | 40dp (Standard) / 48dp (Trade Page LG) |
+| Min Width        | 120dp                                  |
+| Corner Radius    | 4dp                                    |
+| Background Color | `#2EBD85`                              |
+| Text Color       | `#FFFFFF`                              |
+| Text Size        | 16sp                                   |
+| Font Weight      | Bold (Trade Page) / Medium (Standard)  |
 
 **States**:
 | State | Background Color |
@@ -179,17 +179,17 @@ This document provides comprehensive specifications for all button types used in
 
 ### Sell Button (Red)
 
-**Usage**: Sell orders, short positions, withdraw
+**Usage**: Sell orders, short positions; Primary "Sell" action on Trade Page.
 
-| Property         | Value     |
-| ---------------- | --------- |
-| Height           | 40dp      |
-| Min Width        | 120dp     |
-| Corner Radius    | 4dp       |
-| Background Color | `#F6465D` |
-| Text Color       | `#FFFFFF` |
-| Text Size        | 16sp      |
-| Font Weight      | Medium    |
+| Property         | Value                                  |
+| ---------------- | -------------------------------------- |
+| Height           | 40dp (Standard) / 48dp (Trade Page LG) |
+| Min Width        | 120dp                                  |
+| Corner Radius    | 4dp                                    |
+| Background Color | `#F6465D`                              |
+| Text Color       | `#FFFFFF`                              |
+| Text Size        | 16sp                                   |
+| Font Weight      | Bold (Trade Page) / Medium (Standard)  |
 
 **States**:
 | State | Background Color |
@@ -209,23 +209,72 @@ This document provides comprehensive specifications for all button types used in
 | Gap Between   | 8dp              |
 | Corner Radius | 4dp              |
 
-**Layout**:
+**Futures Sided Switcher (Segmented Control)**:
 
-```
-└────────────────────┘  └────────────────────┘
-```
+- **Description**: A specialized segmented control for "Buy" and "Sell" modes with high-fidelity visual indicators.
+- **Segment Background**:
+  - `Buy (Active)`: Solid green (`#2EBD85`) with white text.
+  - `Sell (Active)`: Solid red (`#F6465D`) with white text.
+  - `Inactive`: Transparent or dark gray (`#2B3139`) with gray text (`#848E9C`).
+- **Pointer Extension**: The active segment features a small triangular extension at the bottom center (a "pointer") that visually docks the button to the input form below.
+- **Corner Radius**: 4dp on outer edges; 0dp on the inner joining edge.
 
-**Futures Pointer Variant**:
+### Margin Action Buttons
 
-- **Description**: A specialized segmented control where the active button (Buy/Sell) has a small triangular "pointer" extension at the bottom center, directed towards the input fields below.
-- **Buy State**: Green button active + Green pointer.
-- **Sell State**: Red button active + Red pointer.
+**Usage**: Specialized actions within the Margin trading segment (Borrow, Repay).
 
-```
+| Property       | Value                                        |
+| :------------- | :------------------------------------------- |
+| **Height**     | 32dp (Small)                                 |
+| **Background** | Transparent with 1dp `#474D57` border (Gray) |
+| **Text Color** | `#F0B90B` (Yellow)                           |
+| **Text Size**  | 13sp                                         |
+| **Padding**    | 12dp Horizontal                              |
 
----
+### Inline Asset List Buttons
 
-## Icon Buttons
+**Usage**: Actionable items within the asset list (Earn, Trade).
+
+| Property       | Value                 |
+| :------------- | :-------------------- |
+| **Height**     | 28dp (Mini)           |
+| **Background** | `#2B3139` (Dark Gray) |
+| **Text Color** | White                 |
+| **Text Size**  | 12sp                  |
+| **Radius**     | 4dp                   |
+| **Padding**    | 8dp Horizontal        |
+
+### Precision Adjustment Buttons
+
+**Usage**: Micro-adjustments for price and amount inputs (`[-]` and `[+]`).
+
+| Property       | Value                                           |
+| :------------- | :---------------------------------------------- |
+| **Size**       | 32dp x 32dp                                     |
+| **Icon Size**  | 16dp                                            |
+| **Icon Color** | `#848E9C` (Medium Gray)                         |
+| **Border**     | 1dp solid `#2B3139` (Left/Right edges of input) |
+| **Background** | Transparent or `#1E2329`                        |
+
+### Micro-Action Context Buttons
+
+**Usage**: Context menus, info tips, and quick navigations.
+
+| Button Type           | Icon Drawable                         | Size   | Color       |
+| :-------------------- | :------------------------------------ | :----- | :---------- |
+| **Context Menu**      | `ic_more_vert.xml`                    | 24dp   | White       |
+| **Notification Dot**  | (Small yellow circle on context icon) | 8dp    | `#F0B90B`   |
+| **Scanner / QR**      | `ic_scanner.xml`                      | 24dp   | White       |
+| **Info / Tooltip**    | `ic_info_outline.xml`                 | 16dp   | `#848E9C`   |
+| **Chart Icon**        | `ic_chart_kline.xml`                  | 24dp   | White       |
+| **X Mode Toggle**     | `ic_x_logo_switch.xml`                | 40dp   | White/Grey  |
+| **Lightning Trade**   | `ic_lightning_yellow.xml`             | 32dp   | Yellow      |
+| **Security Shield**   | `ic_shield_protection.xml`            | 24dp   | White       |
+| **Allocation Toggle** | `ic_unit_switcher.xml` (%/$)          | 32dp   | Grey        |
+| **Slanted Toggle**    | `bg_slanted_buy_sell.xml`             | Custom | Green/Red   |
+| **BBO Button**        | `ic_bbo_action.xml` (Text: BBO)       | 28dp   | Yellow      |
+| **Leverage Pill**     | `ic_leverage_x.xml` (x2, x5, x10)     | 24dp   | Gray/Yellow |
+| **Funding Icon**      | `ic_funding.xml`                      | 24dp   | White       |
 
 ### Standard Icon Button
 
@@ -261,7 +310,7 @@ This document provides comprehensive specifications for all button types used in
 │ 8dp gap │
 └─────────────────────────┘
 
-````
+```
 
 ### Floating Action Button (FAB)
 
@@ -353,12 +402,16 @@ This document provides comprehensive specifications for all button types used in
 
 ### Assets Screen
 
-| Button   | Type        | Position         |
-| -------- | ----------- | ---------------- |
-| Deposit  | Buy (Green) | Quick action row |
-| Withdraw | Sell (Red)  | Quick action row |
-| Transfer | Secondary   | Quick action row |
-| Swap     | Primary     | Quick action row |
+| Button     | Type           | Position                 |
+| ---------- | -------------- | ------------------------ |
+| Add Funds  | Primary        | Action bar (Yellow Fill) |
+| Send       | Secondary Gray | Action bar (Outline)     |
+| Withdraw   | Secondary Gray | Action bar (Outline)     |
+| Transfer   | Secondary Gray | Action bar (Outline)     |
+| Swap       | Secondary Gray | Action bar (Outline)     |
+| Earn/Trade | Inline Mini    | Asset list rows (Right)  |
+| Borrow     | Margin Small   | Margin account summary   |
+| Repay      | Margin Small   | Margin account summary   |
 
 ### Dialog Buttons
 
@@ -399,7 +452,7 @@ This document provides comprehensive specifications for all button types used in
         android:layout_gravity="center"
         android:indeterminateTint="#000000" />
 </FrameLayout>
-````
+```
 
 ---
 
@@ -524,6 +577,55 @@ This document provides comprehensive specifications for all button types used in
 |-------|------------|------------|--------|
 | Unselected | `#1E2329` | `#848E9C` | None |
 | Selected | `#F0B90B` | `#000000` | None |
+
+---
+
+## Web3 Specialized Controls
+
+### X Mode Social Toggle
+
+**Usage**: Web3 Markets (Trenches) to enable social sentiment data.
+
+- **Visual**: Segmented toggle with the "X" logo on the active side.
+- **Active Color**: White background with black logo.
+- **Inactive Color**: Dark grey (#2B3139) with muted grey logo.
+
+### Sell half at double Strategy Checkbox
+
+**Usage**: Web3 Pro Trading for automated profit taking.
+
+- **Visual**: Standard checkbox with custom yellow "✓" on check.
+- **Label**: "Sell half at double" (12sp, Medium, White).
+
+### Use Exchange Balance Switch
+
+**Usage**: Web3 Swap to bridge CEX assets.
+
+- **Visual**: Rounded switch (Yellow toggle handle on dark track).
+- **Label**: "Use Exchange Balance" (14sp, Regular, White).
+
+---
+
+## Trade Page Directional Buttons
+
+### Trade execution input field
+
+**Usage**: Price and Amount entry in Spot/Alpha modes.
+
+- **Integrated BBO**: Small "BBO" text-button at the end of the field (active in Margin).
+- **Embedded Selector**: Small dropdown arrow inside the input field to switch between base and quote currency for entry (e.g., SOL or USDT).
+- **Suggest Price Label**: Small text appearing below the Price field (e.g., "Suggest 678.07").
+- **Currency Pill**: Unit (e.g., `USDC`) displayed as a gray pill inside the field.
+- **Market Placeholder**: Displays "Market Price" when Market order is selected.
+
+### Buy/Sell Pointer Button
+
+**Usage**: Active execution button in Spot/Margin/Alpha.
+
+- **Visual**: Rounded rectangle with a directional "pointer" extension on the outer edge (Right for Buy, Left for Sell).
+- **States**:
+  - **Buy**: Background `#02C076` (Green), Text "Buy [Asset]" (Binance White).
+  - **Sell**: Background `#CF304A` (Red), Text "Sell [Asset]" (Binance White).
 
 ---
 

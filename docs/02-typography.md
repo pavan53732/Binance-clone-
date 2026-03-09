@@ -12,13 +12,13 @@ This document catalogs the typography system used in the Binance Android app, in
 
 The Binance app uses system fonts with specific weight variations:
 
-| Font Family | Usage |
-|-------------|-------|
-| `sans-serif` | Default body text |
-| `sans-serif-medium` | Headings, emphasized text |
-| `sans-serif-bold` | Strong emphasis, titles |
-| `@font/2131296281` | Custom font reference |
-| `@font/2131296282` | Custom font reference (bold) |
+| Font Family         | Usage                        |
+| ------------------- | ---------------------------- |
+| `sans-serif`        | Default body text            |
+| `sans-serif-medium` | Headings, emphasized text    |
+| `sans-serif-bold`   | Strong emphasis, titles      |
+| `@font/2131296281`  | Custom font reference        |
+| `@font/2131296282`  | Custom font reference (bold) |
 
 ### Font Style Definitions
 
@@ -40,21 +40,21 @@ The Binance app uses system fonts with specific weight variations:
 
 ### Standard Text Sizes (sp)
 
-| Size Name | Value | Usage |
-|-----------|-------|-------|
-| Text Extra Small | `10sp` | Captions, timestamps |
-| Text Small | `12sp` | Secondary text, labels |
-| Text Small Medium | `13sp` | Tertiary text |
-| Text Medium | `14sp` | Body text, default |
-| Text Medium Large | `15sp` | Emphasized body |
-| Text Large | `16sp` | Primary body, inputs |
-| Text Large Medium | `18sp` | Subheadings |
-| Text Extra Large | `20sp` | Headings |
-| Text Title | `24sp` | Screen titles |
-| Text Large Title | `26sp` | Large titles |
-| Text Display | `28sp` | Display text |
-| Text Hero | `32sp` | Hero text, large numbers |
-| Text Extra Hero | `34sp` | Extra large display |
+| Size Name         | Value  | Usage                    |
+| ----------------- | ------ | ------------------------ |
+| Text Extra Small  | `10sp` | Captions, timestamps     |
+| Text Small        | `12sp` | Secondary text, labels   |
+| Text Small Medium | `13sp` | Tertiary text            |
+| Text Medium       | `14sp` | Body text, default       |
+| Text Medium Large | `15sp` | Emphasized body          |
+| Text Large        | `16sp` | Primary body, inputs     |
+| Text Large Medium | `18sp` | Subheadings              |
+| Text Extra Large  | `20sp` | Headings                 |
+| Text Title        | `24sp` | Screen titles            |
+| Text Large Title  | `26sp` | Large titles             |
+| Text Display      | `28sp` | Display text             |
+| Text Hero         | `32sp` | Hero text, large numbers |
+| Text Extra Hero   | `34sp` | Extra large display      |
 
 ### XML Definitions
 
@@ -180,31 +180,31 @@ The app extends Material Design text appearance styles:
 
 ### Heading Styles
 
-| Style Name | Size | Weight | Letter Spacing | Usage |
-|------------|------|--------|----------------|-------|
-| Display | 32sp | Bold | - | Large numbers, hero text |
-| Title Large | 24sp | Medium | - | Screen titles |
-| Title Medium | 20sp | Bold | 0.0125 | Section headers |
-| Title Small | 18sp | Medium | - | Card titles |
-| Subheading | 16sp | Medium | - | Subsections |
+| Style Name   | Size | Weight | Letter Spacing | Usage                    |
+| ------------ | ---- | ------ | -------------- | ------------------------ |
+| Display      | 32sp | Bold   | -              | Large numbers, hero text |
+| Title Large  | 24sp | Medium | -              | Screen titles            |
+| Title Medium | 20sp | Bold   | 0.0125         | Section headers          |
+| Title Small  | 18sp | Medium | -              | Card titles              |
+| Subheading   | 16sp | Medium | -              | Subsections              |
 
 ### Body Styles
 
-| Style Name | Size | Weight | Usage |
-|------------|------|--------|-------|
-| Body Large | 16sp | Regular | Primary body text |
-| Body Medium | 14sp | Regular | Secondary body text |
-| Body Small | 12sp | Regular | Tertiary text, captions |
-| Caption | 10sp | Regular | Labels, timestamps |
+| Style Name  | Size | Weight  | Usage                              |
+| ----------- | ---- | ------- | ---------------------------------- |
+| Body Large  | 16sp | Regular | Primary body text                  |
+| Body Medium | 14sp | Regular | Secondary body text                |
+| Body Small  | 12sp | Regular | Tertiary text, captions            |
+| Caption     | 10sp | Regular | Labels, timestamps, Network Badges |
 
 ### Interactive Text Styles
 
-| Style Name | Size | Weight | Usage |
-|------------|------|--------|-------|
-| Button Large | 16sp | Medium | Primary buttons |
-| Button Medium | 14sp | Bold | Secondary buttons |
-| Button Small | 12sp | Bold | Tertiary buttons |
-| Link | 14sp | Medium | Hyperlinks |
+| Style Name    | Size | Weight | Usage             |
+| ------------- | ---- | ------ | ----------------- |
+| Button Large  | 16sp | Medium | Primary buttons   |
+| Button Medium | 14sp | Bold   | Secondary buttons |
+| Button Small  | 12sp | Bold   | Tertiary buttons  |
+| Link          | 14sp | Medium | Hyperlinks        |
 
 ---
 
@@ -212,12 +212,12 @@ The app extends Material Design text appearance styles:
 
 The app uses specific letter spacing values for different text styles:
 
-| Style | Letter Spacing | Value |
-|-------|----------------|-------|
-| Button Text | 0.08928572 | ~8.9% |
-| Large Title | 0.0125 | 1.25% |
-| Medium Title | 0.007142857 | ~0.7% |
-| Uppercase Title | 0.08928572 | ~8.9% |
+| Style           | Letter Spacing | Value |
+| --------------- | -------------- | ----- |
+| Button Text     | 0.08928572     | ~8.9% |
+| Large Title     | 0.0125         | 1.25% |
+| Medium Title    | 0.007142857    | ~0.7% |
+| Uppercase Title | 0.08928572     | ~8.9% |
 
 ---
 
@@ -225,20 +225,20 @@ The app uses specific letter spacing values for different text styles:
 
 ### Primary Text Colors
 
-| Context | Color | Hex Value |
-|---------|-------|-----------|
-| Primary Text (Dark Theme) | White | `#FFFFFFFF` |
-| Secondary Text | Gray | `#FF848E9C` |
-| Tertiary Text | Light Gray | `#FFB7BDC6` |
-| Disabled Text | Muted Gray | `#FF707A8A` |
+| Context                   | Color      | Hex Value   |
+| ------------------------- | ---------- | ----------- |
+| Primary Text (Dark Theme) | White      | `#FFFFFFFF` |
+| Secondary Text            | Gray       | `#FF848E9C` |
+| Tertiary Text             | Light Gray | `#FFB7BDC6` |
+| Disabled Text             | Muted Gray | `#FF707A8A` |
 
 ### Semantic Text Colors
 
-| Context | Color | Hex Value |
-|---------|-------|-----------|
-| Profit Text | Green | `#FF2EBD85` |
-| Loss Text | Red | `#FFF6465D` |
-| Link Text | Blue | `#FF1F8DF9` |
+| Context      | Color  | Hex Value   |
+| ------------ | ------ | ----------- |
+| Profit Text  | Green  | `#FF2EBD85` |
+| Loss Text    | Red    | `#FFF6465D` |
+| Link Text    | Blue   | `#FF1F8DF9` |
 | Warning Text | Orange | `#FFDD7A2B` |
 
 ---
@@ -248,15 +248,15 @@ The app uses specific letter spacing values for different text styles:
 Based on the styles analysis, the app follows Material Design guidelines for line heights:
 
 | Text Size | Recommended Line Height |
-|-----------|------------------------|
-| 10sp | 14sp |
-| 12sp | 16sp |
-| 14sp | 20sp |
-| 16sp | 24sp |
-| 18sp | 26sp |
-| 20sp | 28sp |
-| 24sp | 32sp |
-| 32sp | 40sp |
+| --------- | ----------------------- |
+| 10sp      | 14sp                    |
+| 12sp      | 16sp                    |
+| 14sp      | 20sp                    |
+| 16sp      | 24sp                    |
+| 18sp      | 26sp                    |
+| 20sp      | 28sp                    |
+| 24sp      | 32sp                    |
+| 32sp      | 40sp                    |
 
 ---
 
@@ -264,11 +264,11 @@ Based on the styles analysis, the app follows Material Design guidelines for lin
 
 The app uses the following font weights:
 
-| Weight | Usage |
-|--------|-------|
-| Regular (400) | Body text, descriptions |
-| Medium (500) | Subheadings, emphasized text |
-| Bold (700) | Titles, buttons, important values |
+| Weight        | Usage                             |
+| ------------- | --------------------------------- |
+| Regular (400) | Body text, descriptions           |
+| Medium (500)  | Subheadings, emphasized text      |
+| Bold (700)    | Titles, buttons, important values |
 
 ---
 

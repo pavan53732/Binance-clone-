@@ -99,6 +99,9 @@ The primary dashboard for the centralized exchange interface.
 - **Market Order**: Instant execution at best price.
 - **Stop-Limit / OCO**: Advanced risk management.
 - **Grid Trading**: Automated buy/sell within ranges.
+- **Alpha Trading Mode**: High-performance "Alpha" tab for advanced order execution.
+- **Suggest Price Logic**: Real-time "Suggest Price" label in input fields based on taker/maker preference.
+- **Taker Fee Promo**: Yellow badge logic for "0 Taker Fee" promotions on specific pairs.
 
 ### 4. Futures (Exchange)
 
@@ -110,15 +113,24 @@ The primary dashboard for the centralized exchange interface.
 
 **Position Management**:
 
-- Auto-Deleverage (ADL) indicator.
-- Margin Ratio (Liquidation risk meter).
-- Partial/Full Close buttons.
+- **Auto-Deleverage (ADL) indicator**: Visual status bar for liquidation queue.
+- **Margin Ratio**: High-fidelity liquidation risk meter with color-coded warning zones.
+- **Partial/Full Close**: Precision buttons for exiting positions.
+- **Asset Modes**:
+  - `S` (Single-Asset Mode): Collateralized by a single asset.
+  - `M` (Multi-Asset Mode): Collateralized by multiple assets (e.g., USDT + USDC).
 
-**Advanced Analytics (Smart Money)**:
+**Advanced Analytics & Intelligence**:
 
-- **Top Traders**: ROI, PnL tracking with equity curves.
-- **Smart Signals**: Dominant flow monitoring (Sell/Buy dominance).
-- **Options Trading**: Call/Put probability and breakeven calculators.
+- **Top Traders (Smart Money)**: Direct performance tracking with:
+  - `Subscriber Verification`: Logic for active vs total subscriber counts.
+  - `Equity Curve Analysis`: Visual sparkline generation based on 30D historical PnL.
+- **Smart Signals**:
+  - `Dominant Flow Detection`: Real-time tracking of Large-Order volume (Sell/Buy dominance).
+  - `Engagement Scoring`: Person silhouette icon tracking real-time user interaction (`Total` vs `Active`).
+- **Options Trading**:
+  - `ITM/OTM Detection`: Dynamic background color shifts (Green/White) based on Strike vs Index Price.
+  - `Probability of Profit`: Real-time calculation displayed on Strike cards.
 
 ### 5. Assets (Exchange)
 

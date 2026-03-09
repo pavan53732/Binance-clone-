@@ -17,6 +17,21 @@ This document specifies the design and behavior of various card and list compone
 | **PNL Text**     | `-₹1.27 (-7.67%)`           | 12sp, Medium, Red (`#F6465D`) |
 | **Actions**      | "Add Funds" Button          | Yellow, 40dp height           |
 
+### Margin Account Risk Card
+
+**Usage**: Displays debt and risk levels in the Assets -> Margin segment.
+
+| Element                   | Specification       | Details                                  |
+| ------------------------- | ------------------- | ---------------------------------------- |
+| **Margin Level**          | `999.00`            | 20sp, Bold, Green (`#2EBD85`)            |
+| **Risk Gauge**            | Linear Progress Bar | Low (Green), Medium (Orange), High (Red) |
+| **Total Debt**            | `0.00 USDT`         | 14sp, Regular, White                     |
+| **Account Equity**        | `10.50 USDT`        | 14sp, Regular, White                     |
+| **Margin Action Buttons** | Green or Red Solid  | 12sp, Medium, White                      |
+| **Asset List Buttons**    | Secondary Gray      | 12sp, Medium, White                      |
+
+### Margin Mode Control (Trade Page)
+
 ### Market Overview Grid Cards (Exchange Home)
 
 **Usage**: BNB, SOL, BTC overview on Home screen.
@@ -58,8 +73,61 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 ### On-Chain Asset List Items (Assets Tab)
 
-- **Asset Row:** Includes **Network Badge** (small overlay icon on the main coin logo) indicating the chain (e.g., BSC, ETH).
 - **NFT Gallery Card:** Square image preview with Collection Name and ID.
+
+### Web3 Wallet Controller Card
+
+**Usage**: Top of Web3 Home/Assets pages.
+
+- **Specification**:
+  - **Background**: Subtle linear gradient (#1E2329 to #2B3139) or transparent overlay.
+  - **Balance**: 28sp, Bold, Binance White.
+  - **Actions**: Array of circular grey buttons (Send, Receive, History, Approvals).
+
+### Topic Rush Social Sentiment Bar
+
+**Usage**: Web3 Markets (Topic Rush).
+
+- **Specification**:
+  - **Width**: match_parent (within card).
+  - **Height**: 4dp.
+  - **Gradient**: Linear from Orange (#F6465D - Bearish) to Green (#0ECB81 - Bullish).
+
+### Asset Selector Bottom Sheet
+
+**Usage**: Primary pair switching in Trade/Alpha.
+
+- **Header**:
+  - **Search Bar**: "Search token name or address" with "Cancel" text-link.
+  - **Filter Chips**: Horizontal scroll of capsules (`Hot`, `New`, `Alpha`, `Point+`, `Stocks`).
+- **Body**:
+  - **Categorized Sections**: Vertical lists of tokens with network badges and profit multipliers (e.g., `x10`).
+- **Footer**: Sticky "Browse More" link with right arrow.
+
+### Network Badge (Asset Logo Overlay)
+
+**Usage**: Asset icons in search/Alpha lists.
+
+- **Specification**:
+  - **Logo**: 12dp circular icon with network branding (e.g., SOL, BASE, ARB).
+  - **Position**: Bottom-right (overlapping 25% of the main icon).
+  - **Label**: Adjacent text label (e.g., "Solana", "Base") in 10sp Grey.
+
+### Dual-Metric Search Row
+
+**Usage**: Asset search results.
+
+- **Layout**: Token Name/Symbol on left, Metrics on right.
+- **Metrics**: 24h Volume separated from Market Cap by a vertical divider `|` (e.g., `$24M | $1.2B`).
+
+### Taker Fee Promo Badge
+
+**Usage**: Pair lists (specifically USDC markets).
+
+- **Style**: Rounded pill, Yellow Background (#F0B90B), Black text.
+- **Text**: "Taker Fee Promo".
+- **Growth Indicator**: Percentage change in Green/Red based on 24h delta.
+- **Multiplier**: Yellow `x2` or `x4` pill badge for incentive-eligible tokens.
 
 ### 2. Transaction Cards
 
@@ -67,7 +135,7 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 **Layout**:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │  ┌──────┐                                               │
 │  │ 🟢   │  Deposit - BTC                       Completed│
@@ -77,13 +145,14 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 ```
 
 **Specifications**:
-| Property | Value |
-| :--- | :--- |
-| Width | match_parent |
-| Height | 72dp |
-| Padding Horizontal | 16dp |
-| Padding Vertical | 12dp |
-| Background | Transparent or `#1E2329` |
+
+| Property           | Value                    |
+| :----------------- | :----------------------- |
+| Width              | match_parent             |
+| Height             | 72dp                     |
+| Padding Horizontal | 16dp                     |
+| Padding Vertical   | 12dp                     |
+| Background         | Transparent or `#1E2329` |
 
 **Internal Elements**:
 
@@ -95,40 +164,46 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 | Timestamp    | 12sp, Regular, `#848E9C` |
 | Status Badge | 12sp, Rounded            |
 
-### 3. Market Cards
+### 3. Market Ticker List Item (Exchange Markets)
 
-**Usage**: Markets screen, pair overview
+**Usage**: Main asset list on Markets screen.
 
 **Layout**:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
-│  ┌──────┐                                               │
-│  │ BTC  │  BTC/USDT                           ★        │
-│  │ icon │  42,500.00 USDT                                    │
-│  └──────┘  +2.5%                              ▁▂▃▄▅   │
+│  BTC/USDT                             42,500.21        │
+│  Bitcoin    Vol 2.4B                  +2.45%           │
+│  ★ icon                               ▁▂▃▄▅ (Spark)   │
 └─────────────────────────────────────────────────────────┘
 ```
 
 **Specifications**:
 
-| Property   | Value                         |
-| ---------- | ----------------------------- |
-| Width      | match_parent                  |
-| Height     | 64dp                          |
-| Padding    | 16dp horizontal, 8dp vertical |
-| Background | Selectable ripple             |
+| Property               | Value                                           |
+| ---------------------- | ----------------------------------------------- | ------------ |
+| Width                  | match_parent                                    |
+| Height                 | 72dp                                            |
+| Padding                | 16dp Horizontal                                 |
+| `ic_copy.xml`          | Overlapping rectangles (standard copy icon)     | Trade Menu   |
+| `ic_bots.xml`          | Robot head profile icon                         | Trade Menu   |
+| `ic_manage.xml`        | Sliders/Filters icon                            | Trade Menu   |
+| `ic_leverage_pill.xml` | Pill background for x2, x5, x10 multiplier      | Margin/Trade |
+| `ic_unit_switcher.xml` | Opposing arrows circle (%/$)                    | Order Form   |
+| Background             | Selectable ripple (on click: navigate to Trade) |
 
 **Internal Elements**:
 
-| Element       | Size/Style              |
-| ------------- | ----------------------- |
-| Coin Icon     | 32dp x 32dp             |
-| Pair Symbol   | 16sp, Medium, White     |
-| Price         | 16sp, Regular, White    |
-| Change        | 14sp, Medium, Green/Red |
-| Sparkline     | 60dp x 24dp             |
-| Favorite Icon | 24dp                    |
+| Element         | Specification                             | Style / Color                                   |
+| --------------- | ----------------------------------------- | ----------------------------------------------- |
+| **Symbol**      | `BTC/USDT`                                | 16sp, Bold, White                               |
+| **Full Name**   | `Bitcoin`                                 | 12sp, Regular, `#848E9C`                        |
+| **Volume**      | `Vol 2.41B`                               | 12sp, Medium, `#848E9C`                         |
+| **Price**       | `42,500.21`                               | 16sp, Bold, White                               |
+| **Change %**    | `+2.45%` (Pill)                           | 14sp, White text on color pill (Green/Red)      |
+| **Change Pill** | Corner Radius: 4dp, Vertical padding: 4dp | Green: `#2EBD85`, Red: `#F6465D`                |
+| **Sparkline**   | 1:1 Parity with 24h trend                 | Path width: 1.5dp, Color: `#2EBD85` / `#F6465D` |
+| **Star Icon**   | `ic_star_hollow` or `ic_star_filled`      | Size: 20dp, Active Color: `#F0B90B`             |
 
 ### 4. News Cards
 
@@ -136,7 +211,7 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 **Layout**:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │  ┌─────────────────────────────────────────────────┐   │
 │  │                  News Image                     │   │
@@ -161,12 +236,13 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 | Padding       | 16dp                |
 
 **Internal Elements**:
-| Element | Size/Style |
-|---------|------------|
-| Image | 16:9 aspect ratio |
-| Title | 16sp, Medium, White, 2 lines max |
-| Description | 14sp, Regular, `#848E9C`, 3 lines max |
-| Meta | 12sp, Regular, `#707A8A` |
+
+| Element          | Size/Style                              |
+| ---------------- | --------------------------------------- | ------------------------- |
+| Image            | 16:9 aspect ratio                       |
+| Title            | 16sp, Medium, White, 2 lines max        |
+| Description      | 14sp, Regular, `#848E9C`, 3 lines max   |
+| Meta             | 12sp, Regular, `#707A8A`                |
 | **Social Stats** | Icons for Comment, Retweet, Like, Share | Social interaction footer |
 
 ### 6. Futures-Specific Components
@@ -174,27 +250,33 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 **Option Card (Options Tab)**:
 
 - **Usage**: Call/Put strike price selection in Futures Options.
-- **Title**: Strike Price (e.g., `1,925 Call`) + Leverage Badge (e.g., `64.20x`).
-- **Stats Row**: `Breakeven %` (Precise value + offset %), `Prob of Profit %`.
-- **Mark Price Box**: Detached green box on the right trailing edge with the current mark price.
+- **Card Sub-Tabs**: `Call ↗` and `Put ↘` (Directional orientation indicators).
+- **Strike Price Layout**: Star icon (Favorites) + Strike Price (e.g., `1,925 Call`) + Gray leverage multiplier badge (`66.08x`).
+- **Strike Price Separator**: Pill-shaped `Index Price` (e.g., `1941.16`) on a horizontal white line splitting Call from Put cards (ITM vs OTM).
+- **Stats Row**:
+  - `Breakeven (%)`: Precise price and percentage in brackets, e.g., `1,954.3637 (+0.72%)`.
+  - `Prob of Profit`: Percentage value with 2 decimal places.
+- **Mark Price Box**: Dark gray rounded container with color-coded value.
 
 **Trader Profile Card (Smart Money)**:
 
 - **Usage**: Top Traders leaderboard.
-- **Header**: User Avatar (Circle) + Username + Subscriber Count Badge.
+- **Header**: User Avatar (Circle with themed graphic) + Username + Subscriber Count Badge (`1,772 Subscribers`).
 - **KPI Grid**:
-  - `30D PnL`: Green/Red large text (e.g., `+$732,377.76`).
-  - `30D ROI`: Large percentage text.
-  - `Assets`: Portfolio value.
-- **Equity Curve**: Cyan sparkline (bottom aligned).
-- **Primary Action**: "Subscribe" button (Yellow, full width or fixed).
+  - `30D PnL (USD)`: Large green value (e.g., `+$732,377.76`).
+  - `30D ROI`: Red/Green large percentage text.
+  - `Assets (USD)`: Portfolio value.
+- **Equity Curve**: Cyan sparkline at the bottom edge.
+- **Primary Action**: "Subscribe" yellow button.
 
 **Smart Signal Card (Smart Money)**:
 
 - **Usage**: Market flow tracking for dominant signals.
-- **Header**: Crypto Symbol (e.g., `ETHUSDT Perp`) + "View" Button.
-- **Signal Metric**: "Dominant Flow" value with Buy/Sell icon (`B` or `S`).
-- **Sentiment Bar**: Multi-colored progress bar depicting buyer/seller ratio with participant counts (e.g., `143 (Green) | 53 (Red)`).
+- **Interaction Bar**: `Refresh` icon with `30s` indicator.
+- **Header**: Crypto Symbol (e.g., `ETHUSDT Perp`) + Gray rounded "View" Button.
+- **Dominant Flow**: Labeled with `S` (Red Box) or `B` (Green Box).
+- **Sentiment Bar**: Dual-progress bar (Green vs Red) showing Long/Short ratio.
+- **Engagement Details**: Person silhouette icon (`res/drawable/ic_trader_count.xml`) followed by `Total (Active)` interaction counts, e.g., `143 ( 53 )`.
 
 ### 5. Promo Cards
 
@@ -202,7 +284,7 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 **Layout**:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │  ┌─────────────────────────────────────────────────┐   │
 │  │                                                  │   │
@@ -218,21 +300,23 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 ```
 
 **Specifications**:
-| Property | Value |
-| :--- | :--- |
-| Width | match_parent - 32dp |
-| Height | 160dp |
-| Corner Radius | 12dp |
-| Background | Gradient or brand color |
-| Padding | 20dp |
+
+| Property      | Value                   |
+| :------------ | :---------------------- |
+| Width         | match_parent - 32dp     |
+| Height        | 160dp                   |
+| Corner Radius | 12dp                    |
+| Background    | Gradient or brand color |
+| Padding       | 20dp                    |
 
 **Internal Elements**:
-| Element | Size/Style |
-| :--- | :--- |
-| Icon/Emoji | 32sp |
-| Title | 20sp, Bold, White |
+
+| Element     | Size/Style               |
+| :---------- | :----------------------- |
+| Icon/Emoji  | 32sp                     |
+| Title       | 20sp, Bold, White        |
 | Description | 14sp, Regular, White 80% |
-| CTA Button | 40dp height |
+| CTA Button  | 40dp height              |
 
 ---
 
@@ -244,30 +328,34 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 **Layout**:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │  ┌──────┐                                               │
-│  │ BTC  │  Bitcoin (BTC)                      0.5      │
-│  │ icon │  $42,500.00                          $21,250 │
+│  │ BTC  │  Bitcoin (BTC)                     0.5       │
+│  │ icon │  $42,500.00                         $21,250  │
 │  └──────┘                                               │
 └─────────────────────────────────────────────────────────┘
 ```
 
 **Specifications**:
-| Property | Value |
-|----------|-------|
-| Height | 64dp |
-| Padding Horizontal | 16dp |
-| Padding Vertical | 12dp |
-| Background | Selectable |
+
+| Property           | Value      |
+| ------------------ | ---------- |
+| Height             | 64dp       |
+| Padding Horizontal | 16dp       |
+| Padding Vertical   | 12dp       |
+| Background         | Selectable |
 
 **Internal Elements**:
-| Element | Position | Size |
-|---------|----------|------|
-| Icon | Left | 32dp |
-| Name/Symbol | Left of icon | 16sp/12sp |
-| Balance | Right | 16sp |
-| USD Value | Right, below balance | 14sp, `#848E9C` |
+
+| Element       | Position                | Size         | Style                       |
+| :------------ | :---------------------- | :----------- | :-------------------------- |
+| **Icon**      | Left                    | 32dp         | Circular crop               |
+| **Name**      | Top Left (adj. icon)    | 16sp         | Bold, White                 |
+| **Symbol**    | Bottom Left (adj. icon) | 12sp         | Regular, `#848E9C`          |
+| **Balance**   | Top Right               | 16sp         | Bold, White                 |
+| **USD Value** | Bottom Right            | 14sp         | Regular, `#848E9C`          |
+| **Actions**   | Inline (Far Right)      | Mini Buttons | "Earn", "Trade" (Dark Gray) |
 
 ### 2. Transaction List Item
 
@@ -275,30 +363,32 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 **Layout**:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
-│  ┌──────┐                                               │
-│  │  🟢  │  Deposit - BTC              Completed  →     │
-│  │      │  +0.05 BTC • Feb 24                         │
-│  └──────┘                                               │
+│ ┌──────┐                                                │
+│ │ 🟢   │  Deposit - BTC                       Completed │
+│ │      │  +0.05 BTC • Feb 24                            │
+│ └──────┘                                                │
 └─────────────────────────────────────────────────────────┘
 ```
 
 **Specifications**:
-| Property | Value |
-|----------|-------|
-| Height | 72dp |
-| Padding | 16dp horizontal |
-| Divider | 1dp, `#2B3139` |
+
+| Property | Value           |
+| -------- | --------------- |
+| Height   | 72dp            |
+| Padding  | 16dp horizontal |
+| Divider  | 1dp, `#2B3139`  |
 
 **Internal Elements**:
-| Element | Style |
-|---------|-------|
-| Icon | 40dp, status-colored |
-| Title | 16sp, White |
-| Subtitle | 14sp, `#848E9C` |
-| Status | 12sp badge |
-| Arrow | 24dp, `#848E9C` |
+
+| Element  | Style                |
+| -------- | -------------------- |
+| Icon     | 40dp, status-colored |
+| Title    | 16sp, White          |
+| Subtitle | 14sp, `#848E9C`      |
+| Status   | 12sp badge           |
+| Arrow    | 24dp, `#848E9C`      |
 
 ### 3. Order List Item
 
@@ -306,37 +396,39 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 **Layout**:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
-│  BTC/USDT                                      [Cancel] │
-│  Limit • Buy                                            │
+│ BTC/USDT [Cancel]                                       │
+│ Limit • Buy                                             │
 │                                                         │
-│  Price              Amount              Total           │
-│  42,000 USDT        0.1 BTC             4,200 USDT     │
+│ Price Amount Total                                      │
+│ 42,000 USDT 0.1 BTC 4,200 USDT                          │
 │                                                         │
-│  Filled: 0%                        Feb 24, 14:32       │
-│  ─────────────────────────────────────────────────────  │
-│  ████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
+│ Filled: 0% Feb 24, 14:32                                │
+│ ─────────────────────────────────────────────────────   │
+│ ████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
 └─────────────────────────────────────────────────────────┘
 ```
 
 **Specifications**:
-| Property | Value |
-|----------|-------|
-| Height | 100dp |
-| Padding | 16dp |
-| Background | `#1E2329` |
-| Margin Bottom | 8dp |
+
+| Property      | Value     |
+| ------------- | --------- |
+| Height        | 100dp     |
+| Padding       | 16dp      |
+| Background    | `#1E2329` |
+| Margin Bottom | 8dp       |
 
 **Internal Elements**:
-| Element | Style |
-|---------|-------|
-| Pair | 16sp, Medium, White |
-| Type | 12sp, `#848E9C` |
+
+| Element       | Style                |
+| ------------- | -------------------- |
+| Pair          | 16sp, Medium, White  |
+| Type          | 12sp, `#848E9C`      |
 | Cancel Button | 32dp height, outline |
-| Labels | 12sp, `#848E9C` |
-| Values | 14sp, White |
-| Progress Bar | 4dp height |
+| Labels        | 12sp, `#848E9C`      |
+| Values        | 14sp, White          |
+| Progress Bar  | 4dp height           |
 
 ### 4. Notification List Item
 
@@ -344,31 +436,33 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 **Layout**:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
-│  ┌──────┐                                               │
-│  │  🔔  │  Price Alert Triggered                       │
-│  │      │  BTC reached $42,500                        │
-│  └──────┘  2 hours ago                                 │
+│ ┌──────┐                                                │
+│ │ 🔔   │  Price Alert Triggered                          │
+│ │      │  BTC reached $42,500                            │
+│ └──────┘  2 hours ago                                   │
 └─────────────────────────────────────────────────────────┘
 ```
 
 **Specifications**:
-| Property | Value |
-|----------|-------|
-| Height | 72dp |
-| Padding | 16dp |
+
+| Property          | Value       |
+| ----------------- | ----------- |
+| Height            | 72dp        |
+| Padding           | 16dp        |
 | Unread Background | `#1AF0B90B` |
-| Read Background | Transparent |
+| Read Background   | Transparent |
 
 **Internal Elements**:
-| Element | Style |
-|---------|-------|
-| Icon | 32dp, context-colored |
-| Title | 16sp, White |
-| Message | 14sp, `#848E9C` |
-| Timestamp | 12sp, `#707A8A` |
-| Unread Dot | 8dp, `#F0B90B` |
+
+| Element    | Style                 |
+| ---------- | --------------------- |
+| Icon       | 32dp, context-colored |
+| Title      | 16sp, White           |
+| Message    | 14sp, `#848E9C`       |
+| Timestamp  | 12sp, `#707A8A`       |
+| Unread Dot | 8dp, `#F0B90B`        |
 
 ---
 
@@ -423,43 +517,46 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 ### List Dividers
 
-**Standard Divider**:
-| Property | Value |
-|----------|-------|
-| Height | 1dp |
-| Color | `#2B3139` |
-| Margin Left | 16dp (or 60dp with icon) |
-| Margin Right | 0dp |
+| Property     | Value                    |
+| ------------ | ------------------------ |
+| Height       | 1dp                      |
+| Color        | `#2B3139`                |
+| Margin Left  | 16dp (or 60dp with icon) |
+| Margin Right | 0dp                      |
 
 **Full Width Divider**:
-| Property | Value |
-|----------|-------|
-| Height | 1dp |
-| Color | `#2B3139` |
-| Margin | 0dp |
+
+| Property | Value     |
+| -------- | --------- |
+| Height   | 1dp       |
+| Color    | `#2B3139` |
+| Margin   | 0dp       |
 
 **Section Divider**:
-| Property | Value |
-|----------|-------|
-| Height | 4dp |
-| Color | `#181A20` |
-| Margin | 0dp |
+
+| Property | Value     |
+| -------- | --------- |
+| Height   | 4dp       |
+| Color    | `#181A20` |
+| Margin   | 0dp       |
 
 ### Card Dividers
 
 **Internal Divider**:
-| Property | Value |
-|----------|-------|
-| Height | 1dp |
-| Color | `#2B3139` |
-| Margin Horizontal | 16dp |
+
+| Property          | Value     |
+| ----------------- | --------- |
+| Height            | 1dp       |
+| Color             | `#2B3139` |
+| Margin Horizontal | 16dp      |
 
 **Rounded Divider**:
-| Property | Value |
-|----------|-------|
-| Height | 4dp |
-| Corner Radius | 2dp |
-| Color | `#2B3139` |
+
+| Property      | Value     |
+| ------------- | --------- |
+| Height        | 4dp       |
+| Corner Radius | 2dp       |
+| Color         | `#2B3139` |
 
 ---
 
@@ -548,26 +645,28 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 ### Grid Card Specifications
 
 **2-Column Grid**:
-| Property | Value |
-|----------|-------|
-| Span Count | 2 |
-| Card Width | (screen - 48dp) / 2 |
-| Card Height | 120dp |
-| Horizontal Gap | 16dp |
-| Vertical Gap | 12dp |
+
+| Property       | Value               |
+| -------------- | ------------------- |
+| Span Count     | 2                   |
+| Card Width     | (screen - 48dp) / 2 |
+| Card Height    | 120dp               |
+| Horizontal Gap | 16dp                |
+| Vertical Gap   | 12dp                |
 
 **3-Column Grid**:
-| Property | Value |
-|----------|-------|
-| Span Count | 3 |
-| Card Width | (screen - 64dp) / 3 |
-| Card Height | 100dp |
-| Horizontal Gap | 16dp |
-| Vertical Gap | 12dp |
+
+| Property       | Value               |
+| -------------- | ------------------- |
+| Span Count     | 3                   |
+| Card Width     | (screen - 64dp) / 3 |
+| Card Height    | 100dp               |
+| Horizontal Gap | 16dp                |
+| Vertical Gap   | 12dp                |
 
 ### Grid Card Layout
 
-```
+```text
 ┌─────────────┐  ┌─────────────┐
 │  Feature 1  │  │  Feature 2  │
 │    Icon     │  │    Icon     │
@@ -586,7 +685,7 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 ### Carousel Layout
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │  Section Title                               See All → │
 ├─────────────────────────────────────────────────────────┤
