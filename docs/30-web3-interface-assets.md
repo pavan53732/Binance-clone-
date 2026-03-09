@@ -1,8 +1,12 @@
-# Web3 Wallet Assets Interface Documentation
+# 30. Web3 Interface: Assets
 
-## Screen Overview
+Web3 Wallet Assets Interface Documentation
 
-The Web3 Assets page is the comprehensive portfolio management view. It provides a granular breakdown of multi-chain holdings across liquid tokens, decentralized finance (DeFi) positions, and non-fungible tokens (NFTs).
+## Overview
+
+This document provides comprehensive documentation of the Binance **Web3 Assets Interface**, the comprehensive portfolio management view for decentralized holdings. It provides a granular breakdown of multi-chain holdings across liquid tokens, DeFi positions, NFTs, and staked assets. This is the DeFi (Decentralized Finance) portfolio interface, separate from the CeFi Exchange assets interface.
+
+---
 
 ## UI Components
 
@@ -52,3 +56,16 @@ The Web3 Assets page is the comprehensive portfolio management view. It provides
   - **Red**: #F6465D (Price drop)
   - **Green**: #0ECB81 (Price increase)
   - **Active Background**: #2B3139 (Component focus)
+
+---
+
+## Notes
+
+1. The Web3 Assets page provides comprehensive portfolio management across multiple chains.
+2. Multi-chain support includes BNB Chain, Ethereum, Polygon, and other networks.
+3. Asset classification includes Tokens, DeFi positions, and NFTs.
+4. Network filtering allows viewing assets on specific blockchains.
+5. Token approvals management helps users control dApp permissions.
+6. Sparkline charts show 24h price performance for each token.
+7. Pull-to-refresh updates on-chain balances in real-time.
+8. Numerical precision up to 8 decimal places ensures accurate token quantities.

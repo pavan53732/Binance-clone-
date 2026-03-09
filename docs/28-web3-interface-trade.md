@@ -1,8 +1,12 @@
-# Web3 Wallet Swap Interface Documentation
+# 28. Web3 Interface: Trade
 
-## Screen Overview
+Web3 Wallet Swap Interface Documentation
 
-The Web3 Swap interface is a multi-functional trading portal providing three distinct modes of asset exchange: standard swapping, cross-chain bridging, and professional-grade trading. It integrates Binance Exchange liquidity with decentralized on-chain routing.
+## Overview
+
+This document provides comprehensive documentation of the Binance **Web3 Trade (Swap) Interface**, a multi-functional trading portal providing three distinct modes of decentralized asset exchange: standard swapping, cross-chain bridging, and professional-grade trading. It integrates on-chain liquidity with decentralized routing protocols. This is the DeFi (Decentralized Finance) trading interface, separate from the CeFi Exchange trade interface.
+
+---
 
 ## UI Components
 
@@ -52,3 +56,15 @@ The Web3 Swap interface is a multi-functional trading portal providing three dis
 - **Allocation Diamonds**: Diamond markers turn yellow when selected.
 - **Input Fields**: Focus state indicated by a subtle border highlight.
 - **Footer**: Integrated tab bar for quick navigation between Home, Markets, Trade, etc.
+
+---
+
+## Notes
+
+1. The Web3 Trade interface provides three trading modes: Swap, Bridge, and Pro.
+2. Swap mode offers standard on-chain token exchanges with slippage settings.
+3. Bridge mode enables cross-chain transfers between different blockchain networks.
+4. Pro mode provides professional trading features with order books and advanced order types.
+5. Users can toggle between Exchange balance and wallet balance for transactions.
+6. Real-time order book visualization shows market depth.
+7. The interface integrates Binance liquidity with decentralized routing for best execution.

@@ -1,8 +1,12 @@
-# Web3 Wallet Home Interface Documentation
+# 26. Web3 Interface: Home
 
-## Screen Overview
+Web3 Wallet Home Interface Documentation
 
-The Web3 Wallet Home page serves as the primary gateway to decentralized applications (DApps) and multi-chain asset management. It features a simplified portal compared to the main Exchange homepage, prioritizing security and ecosystem discovery.
+## Overview
+
+This document provides comprehensive documentation of the Binance **Web3 Wallet Home Interface**, the primary gateway to decentralized applications (DApps) and multi-chain asset management. It features a simplified portal compared to the Exchange homepage, prioritizing security, wallet management, and DeFi ecosystem discovery. This is the DeFi (Decentralized Finance) interface, separate from the CeFi Exchange interface.
+
+---
 
 ## UI Components
 
@@ -53,3 +57,15 @@ The Web3 Wallet Home page serves as the primary gateway to decentralized applica
 - **Secondary Text**: Muted grey (#707A8A).
 - **Call to Action (CTA)**: Binance Yellow (#F0B90B) used for active states and critical buttons.
 - **Spacing**: Generous padding between cards to ensure clear touch targets on mobile devices.
+
+---
+
+## Notes
+
+1. The Web3 Wallet Home serves as the main entry point for decentralized finance activities.
+2. Multi-chain support allows users to manage assets across different blockchain networks.
+3. Featured DApps provide quick access to popular DeFi protocols.
+4. Security features include wallet protection settings and QR code scanning.
+5. The interface uses the same dark theme as the Exchange interface with Binance Yellow accents.
+6. Balance privacy mode allows hiding sensitive financial information.
+7. The bottom navigation provides access to Markets, Trade, Discover, and Assets sections.

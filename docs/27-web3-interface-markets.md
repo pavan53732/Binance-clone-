@@ -1,8 +1,12 @@
-# Web3 Wallet Markets Interface Documentation
+# 27. Web3 Interface: Markets
 
-## Screen Overview
+Web3 Wallet Markets Interface Documentation
 
-The Web3 Markets interface is a sophisticated tracking and discovery hub. Unlike the standard Exchange markets, this view integrates on-chain data, social sentiment, and AI-driven analysis to provide high-fidelity insights into trending tokens and "smart money" movements.
+## Overview
+
+This document provides comprehensive documentation of the Binance **Web3 Markets Interface**, a sophisticated tracking and discovery hub for on-chain tokens and DeFi activities. Unlike the Exchange markets, this view integrates on-chain data, social sentiment, AI-driven analysis, and smart money movements to provide high-fidelity insights into trending tokens, meme coins, and decentralized trading opportunities. This is the DeFi (Decentralized Finance) markets interface.
+
+---
 
 ## UI Components
 
@@ -50,3 +54,15 @@ The Web3 Markets interface is a sophisticated tracking and discovery hub. Unlike
   - **Status Icons**: Poop emoji for "shitcoin" categorization, robot icon for AI tools.
 - **Typography**: Clean sans-serif with emphasized numerical data in yellow/green/red based on type.
 - **Interactive Elements**: All list items are clickable for deep-dive charts and on-chain explorer links.
+
+---
+
+## Notes
+
+1. The Web3 Markets interface provides advanced tracking for on-chain tokens and DeFi activities.
+2. Tracker feature monitors smart money movements and trading signals.
+3. Trenches offers early access to meme coin discoveries with real-time metrics.
+4. AI-powered analysis provides insights into token behavior and market sentiment.
+5. Social sentiment integration helps identify trending topics and community engagement.
+6. X Mode toggle enables social data integration from Twitter.
+7. The interface combines traditional market data with Web3-specific analytics.
