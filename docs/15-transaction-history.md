@@ -8,13 +8,15 @@ The transaction history is split into two primary views based on the active inte
 
 ### Core Transaction Types
 
-| Tab          | Item Type          | Description                                         |
-| ------------ | ------------------ | --------------------------------------------------- |
-| **All**      | `HISTORY_ALL`      | Unified view of all centralized activity            |
-| **Deposit**  | `HISTORY_DEPOSIT`  | Incoming crypto from external or internal addresses |
-| **Withdraw** | `HISTORY_WITHDRAW` | Outgoing crypto to external or internal addresses   |
-| **Trade**    | `HISTORY_TRADE`    | Spot, Margin, and Futures trading executions        |
-| **Transfer** | `HISTORY_TRANSFER` | Movement between Spot, Margin, and Futures wallets  |
+| Tab             | Item Type          | Description                                         |
+| :-------------- | :----------------- | :-------------------------------------------------- |
+| **All**         | `HISTORY_ALL`      | Unified view of all centralized activity            |
+| **Deposit**     | `HISTORY_DEPOSIT`  | Incoming crypto from external or internal addresses |
+| **Withdraw**    | `HISTORY_WITHDRAW` | Outgoing crypto to external or internal addresses   |
+| **Trade**       | `HISTORY_TRADE`    | Spot, Margin, and Futures trading executions        |
+| **Transfer**    | `HISTORY_TRANSFER` | Movement between Spot, Margin, and Futures wallets  |
+| **Funding Fee** | `HISTORY_FUNDING`  | Periodic payments between longs and shorts          |
+| **PNL**         | `HISTORY_PNL`      | Realized Profit or Loss from position closures      |
 
 ### UI Elements (Exchange)
 
@@ -30,7 +32,7 @@ The Web3 Wallet tracks on-chain activity across multiple blockchains (Ethereum, 
 ### Web3 Transaction Categories
 
 | Category                 | UI Element    | Details Shown                                                 |
-| ------------------------ | ------------- | ------------------------------------------------------------- |
+| :----------------------- | :------------ | :------------------------------------------------------------ |
 | **Send / Receive**       | Arrow icons   | Asset name, Quantity, Destination/Source address              |
 | **Contract Interaction** | Code icon     | Protocol name (e.g., Uniswap, PancakeSwap), Function executed |
 | **Token Approval**       | Shield icon   | Spending limit granted to a protocol                          |
@@ -284,6 +286,30 @@ The Web3 Wallet tracks on-chain activity across multiple blockchains (Ethereum, 
 └─────────────────────────────────────────────────────────┘
 ```
 
+### 8. Futures Specifics (Funding/PNL)
+
+**Description**: Systematic payments and realized gains/losses
+
+**UI Components**:
+| Component | Value/Style |
+|-----------|-------------|
+| Icon | Dollar sign (green/red) |
+| Title | "Realized PNL" or "Funding Fee" |
+| Amount | Green (profit/recieved) or Red (loss/paid) |
+| Pair | Trading pair (e.g., BTCUSDT Perp) |
+| Timestamp | Date and time |
+
+**Funding Fee Layout**:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  💸 Funding Fee - BTCUSDT Perp                 Completed │
+│  -0.15 USDT                                             │
+│  Type: Funding Fee                                      │
+│  Feb 24, 2024, 08:00                                    │
+└─────────────────────────────────────────────────────────┘
+```
+
 ---
 
 ## Transaction Status Indicators
@@ -504,7 +530,7 @@ data class Transaction(
 )
 
 enum class TransactionType {
-    DEPOSIT, WITHDRAW, TRADE, TRANSFER, SWAP, STAKING, AIRDROP
+    DEPOSIT, WITHDRAW, TRADE, TRANSFER, SWAP, STAKING, AIRDROP, FUNDING_FEE, REALIZED_PNL
 }
 
 enum class TransactionStatus {

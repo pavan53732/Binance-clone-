@@ -1,6 +1,8 @@
 # Binance Cards & Lists Documentation
 
-Components are categorized by their UI role in either the **Exchange** or **Web3 Wallet** interface.
+## Overview
+
+This document specifies the design and behavior of various card and list components used in the Binance Android app, catering to both the **Exchange** and **Web3 Wallet** interfaces.
 
 ---
 
@@ -76,7 +78,7 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 **Specifications**:
 | Property | Value |
-|----------|-------|
+| :--- | :--- |
 | Width | match_parent |
 | Height | 72dp |
 | Padding Horizontal | 16dp |
@@ -84,13 +86,14 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 | Background | Transparent or `#1E2329` |
 
 **Internal Elements**:
-| Element | Size/Style |
-|---------|------------|
-| Status Icon | 32dp x 32dp |
-| Title | 16sp, Regular, White |
-| Amount | 14sp, Medium, Green/Red |
-| Timestamp | 12sp, Regular, `#848E9C` |
-| Status Badge | 12sp, Rounded |
+
+| Element      | Size/Style               |
+| :----------- | :----------------------- |
+| Status Icon  | 32dp x 32dp              |
+| Title        | 16sp, Regular, White     |
+| Amount       | 14sp, Medium, Green/Red  |
+| Timestamp    | 12sp, Regular, `#848E9C` |
+| Status Badge | 12sp, Rounded            |
 
 ### 3. Market Cards
 
@@ -108,22 +111,24 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 ```
 
 **Specifications**:
-| Property | Value |
-|----------|-------|
-| Width | match_parent |
-| Height | 64dp |
-| Padding | 16dp horizontal, 8dp vertical |
-| Background | Selectable ripple |
+
+| Property   | Value                         |
+| ---------- | ----------------------------- |
+| Width      | match_parent                  |
+| Height     | 64dp                          |
+| Padding    | 16dp horizontal, 8dp vertical |
+| Background | Selectable ripple             |
 
 **Internal Elements**:
-| Element | Size/Style |
-|---------|------------|
-| Coin Icon | 32dp x 32dp |
-| Pair Symbol | 16sp, Medium, White |
-| Price | 16sp, Regular, White |
-| Change | 14sp, Medium, Green/Red |
-| Sparkline | 60dp x 24dp |
-| Favorite Icon | 24dp |
+
+| Element       | Size/Style              |
+| ------------- | ----------------------- |
+| Coin Icon     | 32dp x 32dp             |
+| Pair Symbol   | 16sp, Medium, White     |
+| Price         | 16sp, Regular, White    |
+| Change        | 14sp, Medium, Green/Red |
+| Sparkline     | 60dp x 24dp             |
+| Favorite Icon | 24dp                    |
 
 ### 4. News Cards
 
@@ -146,13 +151,14 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 ```
 
 **Specifications**:
-| Property | Value |
-|----------|-------|
-| Width | match_parent - 32dp |
-| Corner Radius | 12dp |
-| Background | `#1E2329` |
-| Image Height | 180dp (16:9) |
-| Padding | 16dp |
+
+| Property      | Value               |
+| ------------- | ------------------- |
+| Width         | match_parent - 32dp |
+| Corner Radius | 12dp                |
+| Background    | `#1E2329`           |
+| Image Height  | 180dp (16:9)        |
+| Padding       | 16dp                |
 
 **Internal Elements**:
 | Element | Size/Style |
@@ -161,6 +167,34 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 | Title | 16sp, Medium, White, 2 lines max |
 | Description | 14sp, Regular, `#848E9C`, 3 lines max |
 | Meta | 12sp, Regular, `#707A8A` |
+| **Social Stats** | Icons for Comment, Retweet, Like, Share | Social interaction footer |
+
+### 6. Futures-Specific Components
+
+**Option Card (Options Tab)**:
+
+- **Usage**: Call/Put strike price selection in Futures Options.
+- **Title**: Strike Price (e.g., `1,925 Call`) + Leverage Badge (e.g., `64.20x`).
+- **Stats Row**: `Breakeven %` (Precise value + offset %), `Prob of Profit %`.
+- **Mark Price Box**: Detached green box on the right trailing edge with the current mark price.
+
+**Trader Profile Card (Smart Money)**:
+
+- **Usage**: Top Traders leaderboard.
+- **Header**: User Avatar (Circle) + Username + Subscriber Count Badge.
+- **KPI Grid**:
+  - `30D PnL`: Green/Red large text (e.g., `+$732,377.76`).
+  - `30D ROI`: Large percentage text.
+  - `Assets`: Portfolio value.
+- **Equity Curve**: Cyan sparkline (bottom aligned).
+- **Primary Action**: "Subscribe" button (Yellow, full width or fixed).
+
+**Smart Signal Card (Smart Money)**:
+
+- **Usage**: Market flow tracking for dominant signals.
+- **Header**: Crypto Symbol (e.g., `ETHUSDT Perp`) + "View" Button.
+- **Signal Metric**: "Dominant Flow" value with Buy/Sell icon (`B` or `S`).
+- **Sentiment Bar**: Multi-colored progress bar depicting buyer/seller ratio with participant counts (e.g., `143 (Green) | 53 (Red)`).
 
 ### 5. Promo Cards
 
@@ -185,7 +219,7 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 **Specifications**:
 | Property | Value |
-|----------|-------|
+| :--- | :--- |
 | Width | match_parent - 32dp |
 | Height | 160dp |
 | Corner Radius | 12dp |
@@ -194,7 +228,7 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 **Internal Elements**:
 | Element | Size/Style |
-|---------|------------|
+| :--- | :--- |
 | Icon/Emoji | 32sp |
 | Title | 20sp, Bold, White |
 | Description | 14sp, Regular, White 80% |

@@ -269,14 +269,15 @@ The app uses multiple drawable directories for different configurations:
 
 ### Trading Icons
 
-| Icon          | Usage           |
-| ------------- | --------------- |
-| Trending up   | Price increase  |
-| Trending down | Price decrease  |
-| Buy           | Buy orders      |
-| Sell          | Sell orders     |
-| Chart         | Price charts    |
-| Order book    | Order book view |
+| Icon          | Usage                        |
+| ------------- | ---------------------------- |
+| Trending up   | Price increase               |
+| Trending down | Price decrease               |
+| Buy           | Buy orders                   |
+| Sell          | Sell orders                  |
+| Chart         | Price charts                 |
+| Order book    | Order book view              |
+| Sparkline     | Mini trend chart (Green/Red) |
 
 ### Crypto Icons
 
@@ -286,6 +287,8 @@ The app includes icons for major cryptocurrencies:
 - Ethereum (ETH)
 - BNB
 - USDT
+- Smart Flow (Buy) (Green fill w/ white arrow)
+- Smart Flow (Sell) (Red fill w/ white arrow)
 - And 300+ other tokens
 
 ---

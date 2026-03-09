@@ -19,12 +19,16 @@ The Binance app features a persistent top header containing the interface switch
 | **Customer Support**  | Technical support and help center                        | Right   |
 | **Binance Pay/QR**    | QR code scanner and payment features                     | Right   |
 
-### 2. Interface Switcher
+### 2. Interface Switcher (Dual Mode)
 
-| Element             | Description                                                                |
-| ------------------- | -------------------------------------------------------------------------- |
-| **Exchange Toggle** | Switches UI to the CeFi interface (Home, Markets, Trade, Futures, Assets)  |
-| **Wallet Toggle**   | Switches UI to the DeFi interface (Home, Markets, Trade, Discover, Assets) |
+The interface switcher is a central toggle labeled **"Exchange | Wallet"**.
+
+| Element             | State            | Behavioral Details                                                               |
+| :------------------ | :--------------- | :------------------------------------------------------------------------------- |
+| **Exchange Toggle** | Active (Default) | Switches system to CeFi mode. Yellow underline indicator. Background: Pro black. |
+| **Wallet Toggle**   | Active           | Switches system to Web3 DeFi mode. High contrast yellow text when selected.      |
+
+**Transition Behavior**: Switching interfaces triggers a full bottom navigation reload and updates the available fragment stack (e.g., swapping "Futures" for "Discover").
 
 ---
 
@@ -34,28 +38,28 @@ The navigation bar dynamically updates its tabs based on the active interface mo
 
 ### 1. Exchange Interface Navigation
 
-| Tab     | Icon           | Purpose                                 |
-| ------- | -------------- | --------------------------------------- |
-| Home    | Home icon      | Dashboard, market overview, portfolio   |
-| Markets | Chart icon     | Trading pairs, price lists, market data |
-| Trade   | Swap icon      | Spot trading, margin trading            |
-| Futures | Lightning icon | USD-M, COIN-M, and Options trading      |
-| Assets  | Assets icon    | Asset management, deposit/withdraw      |
+| Tab         | Icon                   | Key Components                              |
+| :---------- | :--------------------- | :------------------------------------------ |
+| **Home**    | `ic_home_pro`          | Dashboard, Portfolio PNL, Quick Action Hub  |
+| **Markets** | `ic_markets_chart`     | Spot/Futures/Margin lists, Heatmaps         |
+| **Trade**   | `ic_trade_swap`        | Order Book, Buy/Sell, Limit/Market orders   |
+| **Futures** | `ic_futures_lightning` | Leverage controls, Positions, Active Orders |
+| **Assets**  | `ic_assets_wallet`     | Overview, Spot, Funding, Earn fragments     |
 
 ### 2. Web3 Wallet Interface Navigation
 
-| Tab      | Icon         | Purpose                                 |
-| -------- | ------------ | --------------------------------------- |
-| Home     | Home icon    | Wallet balance, quick actions (Receive) |
-| Markets  | Chart icon   | Token list, market trends, hot searches |
-| Trade    | Swap/🔄 icon | Decentralized token swaps               |
-| Discover | Compass icon | DApps, Trending, Meme Rush, Alpha       |
-| Assets   | Assets icon  | Web3 asset holdings and history         |
+| Tab          | Icon                  | Key Components                             |
+| :----------- | :-------------------- | :----------------------------------------- |
+| **Home**     | `ic_wallet_home`      | Total Balance (USD), Send/Receive/Buy/Swap |
+| **Markets**  | `ic_markets_token`    | Token List, Trending (24h/On-Chain)        |
+| **Trade**    | `ic_swap_🔄`          | DeFi Swap interface (Input/Output/Rate)    |
+| **Discover** | `ic_discover_compass` | DApps, Meme Rush, Trending protocols       |
+| **Assets**   | `ic_web3_assets`      | On-Chain assets, NFTs, Web3 History        |
 
 ### Bottom Navigation Specifications
 
 | Property                | Value                        |
-| ----------------------- | ---------------------------- |
+| :---------------------- | :--------------------------- |
 | Height                  | 56dp                         |
 | Background              | `#FF181A20` (dark theme)     |
 | Icon Size               | 24dp                         |
@@ -75,7 +79,7 @@ Used within screens for sub-navigation (e.g., Buy/Sell, Spot/Margin).
 
 **Specifications**:
 | Property | Value |
-|----------|-------|
+| :--- | :--- |
 | Height | 44dp |
 | Indicator Height | 2dp |
 | Indicator Color | `#FFF0B90B` |
@@ -110,7 +114,7 @@ The app uses Android Jetpack Navigation component with navigation graphs defined
 
 **Navigation Files**:
 | File | Purpose |
-|------|---------|
+| :--- | :--- |
 | `2131886080.xml` | Main navigation flow |
 | `2131886081.xml` | Secondary navigation |
 | `2131886082.xml` | Feature navigation |
@@ -252,7 +256,7 @@ Navigation destinations support deep links for external navigation:
 
 **Common Deep Link Patterns**:
 | URI Pattern | Destination |
-|-------------|-------------|
+| :--- | :--- |
 | `binance://home` | Home screen |
 | `binance://trade/{pair}` | Trading screen |
 | `binance://assets` | Assets screen |

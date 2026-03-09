@@ -196,7 +196,42 @@ Used before a protocol can spend a user's tokens.
 | List Item | 64dp height |
 | Divider | 1dp, `#2B3139` |
 
-### 2. Network Selector
+### 2. Futures Trading Pair Selector
+
+**Usage**: Switching pairs in Futures market (shows Symbol, Price, and 24h Change)
+
+**Layout**:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  ─────                                                  │
+│  Select Futures Pair                                    │
+├─────────────────────────────────────────────────────────┤
+│  ┌─────────────────────────────────────────────────┐   │
+│  │  🔍 Search pairs...                             │   │
+│  └─────────────────────────────────────────────────┘   │
+│                                                         │
+│  Symbol / Vol      Price          24h Change            │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │  BTCUSDT        42,500.21       +2.45%              │   │
+│  │  Perp  2.4B                                         │   │
+│  ├─────────────────────────────────────────────────┤   │
+│  │  ETHUSDT        2,280.45        -1.12%              │   │
+│  │  Perp  850M                                         │   │
+│  └─────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Specifications**:
+| Property | Value |
+|----------|-------|
+| Columns | Symbol (Left), Price (Center), 24h Change (Right) |
+| Symbol Style | 16sp, Medium, White |
+| Volume/Tag | 12sp, `#848E9C` |
+| Price Style | 14sp, Regular, White |
+| Change Style | 14sp, Color-coded (Green/Red) |
+
+### 3. Network Selector
 
 **Usage**: Select blockchain network for deposit/withdraw
 

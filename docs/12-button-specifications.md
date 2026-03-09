@@ -212,11 +212,15 @@ This document provides comprehensive specifications for all button types used in
 **Layout**:
 
 ```
-┌────────────────────┐  ┌────────────────────┐
-│        BUY         │  │       SELL         │
-│    Background:     │  │    Background:     │
-│     #2EBD85        │  │     #F6465D        │
 └────────────────────┘  └────────────────────┘
+```
+
+**Futures Pointer Variant**:
+
+- **Description**: A specialized segmented control where the active button (Buy/Sell) has a small triangular "pointer" extension at the bottom center, directed towards the input fields below.
+- **Buy State**: Green button active + Green pointer.
+- **Sell State**: Red button active + Red pointer.
+
 ```
 
 ---
@@ -250,12 +254,14 @@ This document provides comprehensive specifications for all button types used in
 **Layout**:
 
 ```
+
 ┌─────────────────────────┐
-│  [Icon]    Button Text  │
-│  20dp      14sp         │
-│     8dp gap             │
+│ [Icon] Button Text │
+│ 20dp 14sp │
+│ 8dp gap │
 └─────────────────────────┘
-```
+
+````
 
 ### Floating Action Button (FAB)
 
@@ -393,7 +399,7 @@ This document provides comprehensive specifications for all button types used in
         android:layout_gravity="center"
         android:indeterminateTint="#000000" />
 </FrameLayout>
-```
+````
 
 ---
 

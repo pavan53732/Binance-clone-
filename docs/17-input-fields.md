@@ -257,6 +257,12 @@ This document provides comprehensive documentation of all input field types used
 | Min Price | >= minimum | "Price too low" |
 | Max Price | <= maximum | "Price too high" |
 
+**BBO (Best Bid/Offer) Variant**:
+
+- **Layout**: Features a distinct yellow `BBO` button on the far right of the price input field.
+- **Interaction**: Clicking `BBO` instantly populates the input with the current best liquidity price.
+- **Visuals**: Square-ish button with yellow border and text inside the input container.
+
 ---
 
 ### 6. Address Inputs (with Paste/Scan QR)
@@ -526,6 +532,43 @@ This document provides comprehensive documentation of all input field types used
 | Corner Radius | 8dp |
 | Text Size | 16sp |
 | Character Counter | Bottom right |
+
+### 7. Futures Leverage Slider
+
+**Usage**: Adjusting leverage (1x - 125x) in Futures order panel
+
+**Layout**:
+
+```
+  [10x]  <───────────────────[◆]───────────────────>
+   1x     25x      50x      75x     100x     125x
+```
+
+**Specifications**:
+| Property | Value |
+|----------|-------|
+| Track Height | 2dp |
+| Track Color (Inactive) | `#2B3139` |
+| Track Color (Active) | `#F0B90B` |
+| Thumb | Diamond shape (◆), 12dp |
+| Thumb Color | `#F0B90B` |
+| Nodes | Circles at 1x, 25x, 50x, 75x, 100x, 125x |
+| Floating Label | 12sp, White on `#2B3139` background |
+
+```
+  1x        20x       50x       75x      100x      125x
+  ├──────────◆──────────┼──────────┼──────────┼──────────┤
+  [    Slider Track with Diamond Selection Node        ]
+```
+
+**Specifications**:
+| Property | Value |
+|----------|-------|
+| Node Shape | Diamond (Rotated Square) |
+| Active Color | `#F0B90B` (Yellow) |
+| Inactive Track | `#2B3139` (Dark Gray) |
+| Snap Points | Fixed stops at 25%, 50%, 75%, 100% |
+| Label Size | 10sp, `#848E9C` |
 
 ---
 

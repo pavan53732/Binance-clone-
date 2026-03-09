@@ -24,38 +24,52 @@ The primary dashboard for the centralized exchange interface.
 
 **App Header Row**:
 
-- **Sidebar Menu**: Access to profile, security settings, and VIP status.
-- **Search Bar**: Contextual search with "Hot searches" (e.g., "HOLO hot search").
-- **Interface Switcher**: "Exchange | Wallet" toggle.
-- **Action Hub**: Global buttons for Chat/Notifications (99+ badge), Help, and QR/Pay.
+- **Sidebar Menu**: User profile avatar (Top-Left); provides entry to Profile Settings, Reward Hub, Gift Cards, and VIP status dashboard.
+- **Search Bar**: Centered input field featuring:
+  - **Flame Icon**: Left-aligned, triggers "Hot Searches" landing page.
+  - **Dynamic Placeholder**: Rotates trending assets (e.g., "HOLO hot search").
+  - **Magnifying Glass**: Right-aligned, initiates search query.
+- **Interface Switcher**: "Exchange | Wallet" central toggle; includes yellow underline for active "Exchange" state.
+- **Action Hub**: Right-aligned icon set:
+  - **Customer Support**: Headset icon; launches live chat support.
+  - **Binance Pay**: QR/Pay logo; quick access to payment and scanner functions.
+  - **Notifications**: Bell icon with red "99+" badge for unread alerts.
 
 **Portfolio Summary (Pro Mode)**:
 
-- **Est. Total Value (INR)**: Displays holdings in local currency with a breakdown toggle.
-- **Add Funds**: Primary yellow CTA for onboarding fiat/crypto.
-- **PNL Dashboard**: "Today's PNL" display with daily profit/loss and percentage trend.
+- **Est. Total Value (INR)**: Primary balance display in local currency (INR).
+  - **Privacy Toggle**: "Eye" icon to hide/show sensitive balance values (replaces with `****`).
+- **PNL Dashboard**: Displays "Today's PNL" in INR and percentage (e.g., green text for positive gains).
+- **Primary CTA**: High-contrast yellow **"Add Funds"** button for quick fiat or crypto deposits.
 
 **Interaction Hub**:
 
 - **Promotional Banners**: Horizontal carousel for events (e.g., "Win 1 BTC").
-- **Market Rankings Grid**: High-level cards for top assets (BNB, BTC, SOL) showing:
-  - Price and 24h percentage change.
-  - Live sparkline mini-chart for trend visualization.
-- **Quick Service Cards**: High-visibility cards for main gateways:
-  - **P2P Orders**: "Buy/Sell Crypto with INR".
-  - **Send Cash / Receive Fiat**: Displays real-time reference rates (e.g., USDT/INR price).
+- **Market Overview / Rankings**:
+  - **Tabs**: Hot, Gainers, Losers, New Listing, 24h Vol.
+  - **Asset Cards**: High-level tokens (BNB, BTC, SOL) showing live price, 24h change pill, and dynamic sparkline chart.
+- **Quick Service Hub**: Gateway cards with micro-details:
+  - **P2P Orders**: "Buy/Sell Crypto with INR" via Peer-to-Peer; includes "Find Offer" quick-link.
+  - **Send Cash**: Direct crypto-to-fiat settlement entry; display shows actual reference rate (e.g., "₹101.16 USDT/INR").
 
 **Discover Feed (Multi-Tab Content)**:
 
 - **Navigation Tabs**: Discover, Following, Campaign, Announcements, Live, News, Academy, Hot.
 - **Content Types**:
-  - **Campaign**: Joined events and project leaderboards (CreatorPad).
-  - **Announcements**: New listings and event logs with timing.
-  - **Live**: Thumbnail-based livestream previews with viewer counts.
-  - **News**: Chronological news feed with likes/comments/shares interaction.
-  - **Academy**: Educational modules ("A Beginner's Guide").
-  - **Hot**: Trending topics (e.g., #AltcoinSeason) and sentiment polls ("Bearish vs Bullish").
-  - **Floating CTA**: Persistent yellow "+" button for quick trade/post actions.
+  - **Announcements**: Dynamic list of new listings, events, and system logs (e.g., "Win 1 BTC") with precise publication timestamps.
+  - **Live Feed**: Video previews featuring:
+    - **Live Badge**: High-visibility red "||| LIVE" indicator.
+    - **Viewer Metrics**: Live count of current viewers (e.g., "3,672 Viewers").
+    - **Interaction**: Floating real-time community comments with user identities.
+  - **News Feed**: Real-time ticker with:
+    - **Timeline**: Vertical chronological flow with specific dates (e.g., "Mar 9 2026").
+    - **Engagement Icons**: Comment, Retweet, Like, and Share buttons with interactive counts.
+  - **Academy**: Educational portal with icon-based navigation for categories: Blockchain, NFT, DeFi, Security, and Trading.
+  - **Hot Feed**: Dynamic social tracker including:
+    - **Hashtags**: Top-trending tags (e.g., "#AltcoinSeason") with participant volume.
+    - **Sentiment Polls**: "How do you feel about BTC today?" with interactive "Bearish" (Red) and "Bullish" (Green) buttons + "6,125 Joined" count.
+    - **Market Rapid Risers**: Ranking of top-searched assets with real-time mini-charts and "Rapid Riser" labeling.
+- **Floating Action Button (FAB)**: Persistent yellow circular button (`#FCD535`) with black "+" symbol; anchors bottom-right for quick trade or post creation.
 
 ### 2. Markets (Exchange)
 
@@ -99,6 +113,12 @@ The primary dashboard for the centralized exchange interface.
 - Auto-Deleverage (ADL) indicator.
 - Margin Ratio (Liquidation risk meter).
 - Partial/Full Close buttons.
+
+**Advanced Analytics (Smart Money)**:
+
+- **Top Traders**: ROI, PnL tracking with equity curves.
+- **Smart Signals**: Dominant flow monitoring (Sell/Buy dominance).
+- **Options Trading**: Call/Put probability and breakeven calculators.
 
 ### 5. Assets (Exchange)
 

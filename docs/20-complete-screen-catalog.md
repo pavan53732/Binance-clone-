@@ -1,6 +1,8 @@
 # Binance UI/UX Screen Catalog
 
-This catalog provides a comprehensive list of screens in the Binance Android app, organized by interface mode (Exchange vs. Web3 Wallet).
+## Overview
+
+This catalog provides a comprehensive inventory of all screens in the Binance Android app, categorized by their respective interfaces (Exchange and Web3 Wallet). It serves as a reference for layout files and key visual components.
 
 ---
 
@@ -18,10 +20,12 @@ This catalog provides a comprehensive list of screens in the Binance Android app
 
 ### Advanced Features
 
-| Screen Name     | Layout File                    | Purpose           | Key Components                           |
-| :-------------- | :----------------------------- | :---------------- | :--------------------------------------- |
-| **Options**     | `fragment_futures_options.xml` | Options Trading   | Call/Put Tabs, Strike Price List, Expiry |
-| **Smart Money** | `fragment_smart_money.xml`     | Trading Analytics | Top Traders, Signals, Subscriptions      |
+| Screen Name       | Layout File                    | Purpose              | Key Components                           |
+| :---------------- | :----------------------------- | :------------------- | :--------------------------------------- |
+| **Options**       | `fragment_futures_options.xml` | Options Trading      | Call/Put Tabs, Strike Price List, Expiry |
+| **Smart Money**   | `fragment_smart_money.xml`     | Trading Analytics    | Top Traders, Signals, Subscriptions      |
+| **Trader Leader** | `fragment_top_traders.xml`     | Leaderboard Detail   | PnL ROI Cards, Equity Sparklines         |
+| **Analytics**     | `fragment_smart_signals.xml`   | Market Flow Tracking | Dominant Flow, Buy/Sell Count Bars       |
 
 ---
 
