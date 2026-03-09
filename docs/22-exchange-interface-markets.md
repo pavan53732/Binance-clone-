@@ -1,6 +1,10 @@
-# 24. Exchange Interface: Markets Page
+# 22. Exchange Interface: Markets Page
 
 High-fidelity documentation of the Binance Markets Interface, covering all navigational elements, sorting mechanisms, and data visualization components.
+
+## Overview
+
+This document provides comprehensive documentation of the Binance **Exchange Markets Interface**, detailing all navigational elements, sorting mechanisms, and data visualization components for tracking cryptocurrency prices and market trends. It covers the Spot, Futures, Favorites, Alpha, Grow, Square, and Data tabs with AI sentiment analysis and intelligent filtering capabilities.
 
 ## 1. Page Header & Navigation
 
@@ -71,3 +75,14 @@ High-fidelity documentation of the Binance Markets Interface, covering all navig
 - **Typography**:
   - Symbols/Prices: `14sp` Bold.
   - Sub-details: `10sp` regular weight.
+
+---
+
+## Notes
+
+1. The Markets page is the primary interface for browsing all available trading pairs.
+2. Real-time price updates are received via WebSocket connections.
+3. Market tabs (Favorites, Market, Alpha, Grow, Square, Data) provide categorized views.
+4. AI Sentiment Analysis provides market mood indicators for informed trading decisions.
+5. Filter chips allow quick filtering by quote asset (USDT, BTC, ETH, etc.).
+6. The Square tab integrates social features with market data.

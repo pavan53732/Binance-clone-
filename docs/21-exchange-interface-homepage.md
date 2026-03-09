@@ -1,8 +1,10 @@
-# 23-exchange-interface-homepage.md: Binance Exchange Interface Specification
+# 21. Exchange Interface: Home Page
+
+High-fidelity documentation of the Binance Exchange Home Page (Pro Mode), covering all navigational elements, market widgets, portfolio summary, and social feed components.
 
 ## Overview
 
-This document provides a 1:1 technical and visual specification of the Binance **Exchange Home Page** (Pro Mode). It is based on an exhaustive audit of 9 high-fidelity interface captures, ensuring absolute accuracy in UI elements, interaction patterns, and data states.
+This document provides a 1:1 technical and visual specification of the Binance **Exchange Home Page** (Pro Mode). It is based on an exhaustive audit of 9 high-fidelity interface captures, ensuring absolute accuracy in UI elements, interaction patterns, and data states. This documentation covers the CeFi (Centralized Finance) trading interface, distinct from the Web3 Wallet interface.
 
 ---
 
@@ -145,3 +147,14 @@ The main content area is divided into 8 distinct tabs with unique UI logic.
 - **Tabs**: Home, Markets, Trade, Futures, Wallet.
 - **Active State**: Yellow icon with black label.
 - **Contextual FAB**: Persistent yellow "+" button (`#FCD535`) floating over the list content for quick posting or trading.
+
+---
+
+## Notes
+
+1. The Exchange Home Page serves as the primary landing screen after authentication.
+2. All price data should update in real-time via WebSocket connections.
+3. The 8-tab Discover feed provides social trading features and news aggregation.
+4. Portfolio balances display in the user's selected fiat currency (INR in this specification).
+5. Privacy mode toggle hides sensitive balance information with asterisks.
+6. The FAB (Floating Action Button) provides quick access to trading or posting.

@@ -1,6 +1,10 @@
-# 25. Exchange Interface: Trade Page
+# 23. Exchange Interface: Trade Page
 
 Comprehensive documentation of the Binance Trade (Spot/Convert/Margin) Interface, detailing order forms, order book dynamics, and asset selection.
+
+## Overview
+
+This document provides comprehensive documentation of the Binance **Exchange Trade Interface**, covering Spot, Convert, Margin, Alpha, Fiat, P2P, and Express trading modes. It details order entry forms, order book visualization, charting capabilities, and position management. This is the CeFi (Centralized Finance) trading interface, separate from the Web3 Wallet Swap interface.
 
 ## 1. Top Navigation & Feature Selector
 
@@ -833,3 +837,16 @@ Max: 0.500 BTC          Cost: 0.00 USDT
     - Actions:
       - "Try Again": Retries same swap
       - "Contact Support": Opens help ticket
+
+---
+
+## Notes
+
+1. The Trade page is the central hub for executing cryptocurrency trades.
+2. Multiple trading modes (Spot, Convert, Margin, Alpha) offer various trading strategies.
+3. Order book provides real-time liquidity visualization with depth bars.
+4. Advanced order types include Limit, Market, Stop-Limit, Trailing Stop, Post Only, IOC, FOK, and OCO.
+5. The Convert feature provides zero-fee OTC trading with instant quotes.
+6. Technical indicators and drawing tools are available on the integrated chart.
+7. Position management panel shows open orders, order history, trade history, and funds.
+8. Real-time price updates and market data via WebSocket connections.

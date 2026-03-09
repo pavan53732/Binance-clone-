@@ -1,6 +1,10 @@
-# 26. Exchange Interface: Assets Page
+# 25. Exchange Interface: Assets
 
 Detailed high-fidelity documentation for the Binance Assets Interface, providing 1:1 parity with the mobile UI components, interactive states, and account segmentation.
+
+## Overview
+
+This document provides comprehensive documentation of the Binance **Exchange Assets Interface**, covering portfolio overview, spot balances, funding accounts, margin positions, futures balances, and Earn products. It details all account-specific features and balance management.
 
 ## 1. Global Navigation & Architecture
 
@@ -64,3 +68,15 @@ Detailed high-fidelity documentation for the Binance Assets Interface, providing
   - **Labels**: Regular 12sp, Muted `#848E9C`.
 - **Spacing**: 16dp global horizontal padding; 8dp vertical gap between list items.
 - **Corning**: 8dp radius for all action buttons and primary cards.
+
+---
+
+## Notes
+
+1. The Assets page provides a comprehensive view of all account balances across different product types.
+2. Users can view Spot, Funding, Margin, Futures, and Earn balances in one place.
+3. Privacy mode allows users to hide their balance values.
+4. Margin account risk levels are displayed with visual gauges.
+5. Quick actions include Deposit, Withdraw, and Transfer between accounts.
+6. Small asset conversion helps users consolidate dust balances into BNB.
+7. Real-time price updates and PNL tracking are available for all holdings.

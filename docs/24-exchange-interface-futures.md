@@ -1,4 +1,10 @@
-# 22-exchange-interface-futures.md: Binance Futures High-Fidelity Specification
+# 24. Exchange Interface: Futures
+
+Binance Futures High-Fidelity Specification
+
+## Overview
+
+This document provides comprehensive documentation of the Binance **Exchange Futures Interface**, covering USDⓈ-M, COIN-M, Options, and Smart Money trading modes. It details the derivative order panel, order book visualization, options trading, and copy trading features.
 
 ## 1. Global Navigation & Tab System
 
@@ -170,3 +176,16 @@ Micro-details for the advanced trader monitoring dashboard.
   - **Copy Trading**: Manager/Investor dashboard.
 - **Symbol Filter Sheet**:
   - Full-screen bottom sheet with search bar and sortable alphabetized list of "Perpetual" pairs.
+
+---
+
+## Notes
+
+1. The Futures interface provides access to USDT-Margined and Coin-Margined perpetual contracts.
+2. Options trading offers European-style options with various expiry dates and strike prices.
+3. Smart Money features enable copy trading and analytics for following successful traders.
+4. Leverage can be adjusted up to 125x on certain contracts.
+5. Funding rate countdown is displayed in real-time.
+6. Long/Short ratio provides market sentiment indicators.
+7. Order book shows real-time liquidity with depth visualization.
+8. Multiple margin modes (Cross/Isolated) provide risk management options.
