@@ -4,7 +4,7 @@ Web3 Wallet Assets Interface Documentation
 
 ## Overview
 
-This document provides comprehensive documentation of the Binance **Web3 Assets Interface**, the comprehensive portfolio management view for decentralized holdings. It provides a granular breakdown of multi-chain holdings across liquid tokens, DeFi positions, NFTs, and staked assets. This is the DeFi (Decentralized Finance) portfolio interface, separate from the CeFi Exchange assets interface.
+This document provides comprehensive documentation of the Binance **Web3 Assets Interface**, the portfolio management view for decentralized holdings. It provides a granular breakdown of multi-chain holdings across liquid tokens, DeFi positions, NFTs, and staked assets. This is the DeFi (Decentralized Finance) portfolio interface, separate from the CeFi Exchange assets interface.
 
 ---
 
@@ -13,59 +13,70 @@ This document provides comprehensive documentation of the Binance **Web3 Assets 
 ### 1. Global Header & Wallet Controller
 
 - **Header Actions**:
-  - **Hamburger Menu**: Left-aligned access to global app settings.
-  - **Network Selector**: Globe-like icon (Top Right) to filter the entire assets view by a specific network (e.g., BNB Chain, ETH).
-  - **History Clock**: Quick link to the global transaction log.
+  - **Hamburger Menu**: Left-aligned (three horizontal lines).
+  - **Screen Title**: "Assets" centered in white, bold text.
+  - **Network Selector**: Globe-like icon (Top Right) to filter the assets by specific networks.
+  - **History Clock**: Clock icon (Top Right, next to globe) for global transaction log.
 - **Wallet Card**:
-  - **Identifier**: "Wallet 1" (Dropdown) with a chevron for switching between multiple Web3 wallets.
-  - **Copy Address**: Overlapping rectangles icon.
-  - **Aggregate Balance**: Bold display of total portfolio value (e.g., INR 95.71).
+  - **Identifier Pill**: Dark grey pill-shaped container holding a small square yellow wallet icon, text "Wallet1", a dropdown chevron, and separated by a subtle vertical divider, a copy icon (overlapping rectangles).
+  - **Aggregate Balance**: Bold, extra-large white typography displaying total portfolio value in fiat (e.g., `₹95.71`).
 
 ### 2. Primary Financial Actions
 
 - **Action Grid (Centered 4-column)**:
-  - **Send**: Up arrow icon in circular grey enclosure.
-  - **Receive**: Down arrow icon in circular grey enclosure.
-  - **History**: Square-clock icon; filtered view of asset-specific transactions.
-  - **Approvals**: Shield-check icon; tool to manage and revoke token permissions.
-- **Wallet Address Row**: Address string with **overlapping rectangles copy icon**.
+  - Container style: Dark grey squircle (rounded square) enclosures.
+  - Icons are thin, yellow strokes.
+  - **Send**: Up arrow icon. Text "Send" below.
+  - **Receive**: Down arrow icon. Text "Receive" below.
+  - **History**: Document with a tiny clock icon indicating history/records. Text "History" below.
+  - **Approvals**: Shield outline containing a checkmark. Text "Approvals" below.
 
 ### 3. Asset Classification (Tabs)
 
-- **Tokens**:
-  - **Network Badging**: Asset icons feature a **small circular network badge** at the bottom-right (e.g., a tiny BNB logo on a USDT icon indicating it's on BSC).
-  - **Sparklines**: Real-time 24h performance charts next to the token value.
-- **DeFi**:
-  - **Total Staked**: Aggregate value of all smart contract positions.
-  - **Empty State**: Illustration + Yellow "Explore DeFi" hyperlink.
-- **NFTs**:
-  - **Segmentation**: Sub-tabs for "Assets" and "History".
-  - **Network Support**: Footer with logos for **Ethereum, Polygon, and BNB Chain** support.
+- **Main Navigation Tabs**: "Tokens", "DeFi", "NFTs". The active tab ("Tokens") has a thick yellow horizontal indicator line beneath it.
+- **Tokens Tab**:
+  - **Total Assets Header**: Shows "Total Assets" and fiat value (e.g., `₹95.71`) on the left, with an options/filter slider icon on the right.
+  - **List Items**:
+    - **Asset Icon**: Circular coin logo. Features a **small circular network badge** at the bottom-right (e.g., BNB icon has a tiny BNB Smart Chain badge, TON has a TON network badge).
+    - **Left Column**:
+      - Primary Text: Token Ticker (e.g., "BNB", "TON", "USDT.z") in bold white.
+      - Secondary Text: Current token price in fiat (e.g., `₹56,516.74`) followed by the 24h percentage change (e.g., `-0.89%` in Red `#F6465D` or `+0.47%` in Green `#0ECB81`).
+    - **Right Column** (Right-aligned):
+      - Primary Text: Holdings amount precisely up to 8 decimal places (e.g., `0.00099484`) in white.
+      - Secondary Text: Equivalent fiat value of the holdings (e.g., `₹56.22`) in grey.
+- **DeFi Tab**:
+  - **Delayed Data Warning**: Full-width brownish/orange card with an exclamation circle icon stating: "The asset data updates might be delayed by a few minutes after your transaction is successful."
+  - **Total Assets**: Shows "₹0" with the filter icon.
+  - **Empty State**: Central grey illustration of a document with a magnifying glass. Below is text "You have no assets yet." and a bold yellow hyperlink "Explore DeFi".
+- **NFTs Tab**:
+  - **Secondary Navigation (Sub-tabs)**: Pill-shaped toggle buttons below the main tabs containing "Assets" (active, filled grey pill) and "History" (inactive text).
+  - **Empty State**: Same central document illustration.
+  - **Text Information**: "No record found" in white, subtext "Currently supports Ethereum, Polygon, and BNB Chain networks. Purchased or received NFTs will be displayed here." in grey.
 
-### 4. Navigation & Tooling
+### 4. Bottom Navigation
 
-- **Bottom Navigation**: Persistent bar with the "Assets" tab highlighted (Yellow icon and label).
-- **Refresh Control**: Pull-to-refresh functionality for updating on-chain balances.
+- Persistent 5-item bar: Home, Markets, Trade, Discover, Assets.
+- "Assets" is the active state with a solid yellow wallet icon and bold white text. The line indicator at the very bottom shows Android system gesture navigation.
+
+---
 
 ## Visual Fidelity Details
 
-- **Transparency**: The wallet controller card has a subtle gradient/transparency to differentiate it from the scrollable list.
-- **Typography**: Numerical precision up to 8 decimal places for token quantities to ensure high accuracy.
-- **Iconography**: Custom-designed action icons in a muted grey circular enclosure.
+- **Typography**: High contrast hierarchy. Values/balances use larger tabular numbers; secondary infos use smaller medium-grey text.
+- **Iconography**: Clean, thin-stroke UI icons. Network badges are extremely small context indicators overlapping the main coin icons.
 - **Colors**:
-  - **Red**: #F6465D (Price drop)
-  - **Green**: #0ECB81 (Price increase)
-  - **Active Background**: #2B3139 (Component focus)
+  - **Background**: Deep dark blue/grey `#181A20` (approximate native dark mode base).
+  - **Red (Negative)**: `#F6465D`
+  - **Green (Positive)**: `#0ECB81`
+  - **Brand Yellow**: `#FCD535` for active states, icons, and CTA links.
+  - **Muted Elements**: Cards and squircle buttons use a slightly lighter grey `#2B3139` than the deep background.
 
 ---
 
 ## Notes
 
-1. The Web3 Assets page provides comprehensive portfolio management across multiple chains.
-2. Multi-chain support includes BNB Chain, Ethereum, Polygon, and other networks.
-3. Asset classification includes Tokens, DeFi positions, and NFTs.
-4. Network filtering allows viewing assets on specific blockchains.
-5. Token approvals management helps users control dApp permissions.
-6. Sparkline charts show 24h price performance for each token.
-7. Pull-to-refresh updates on-chain balances in real-time.
-8. Numerical precision up to 8 decimal places ensures accurate token quantities.
+1. Unlike the Exchange interface, this Web3 interface emphasizes multi-chain support inherently inside a single wallet view, indicated heavily by network badges.
+2. The UI relies strictly on percentage text for 24h changes (no sparklines observed).
+3. Wallet management is prominent at the top via the pill dropdown.
+4. Delayed on-chain data is explicitly communicated via warning cards in the DeFi tab.
+5. Numerical precision up to 8 decimal places ensures accurate token quantities.
