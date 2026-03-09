@@ -269,15 +269,16 @@ The app uses multiple drawable directories for different configurations:
 
 ### Trading Icons
 
-| Icon          | Usage                        |
-| ------------- | ---------------------------- |
-| Trending up   | Price increase               |
-| Trending down | Price decrease               |
-| Buy           | Buy orders                   |
-| Sell          | Sell orders                  |
-| Chart         | Price charts                 |
-| Order book    | Order book view              |
-| Sparkline     | Mini trend chart (Green/Red) |
+| Icon          | Usage                           |
+| ------------- | ------------------------------- |
+| Trending up   | Price increase                  |
+| Trending down | Price decrease                  |
+| Buy           | Buy orders                      |
+| Sell          | Sell orders                     |
+| Chart         | Price charts                    |
+| Order book    | Order book view                 |
+| Sparkline     | Mini trend chart (Green/Red)    |
+| Dominant Flow | `S` (Red Box) / `B` (Green Box) |
 
 ### Crypto Icons
 
@@ -287,8 +288,19 @@ The app includes icons for major cryptocurrencies:
 - Ethereum (ETH)
 - BNB
 - USDT
-- Smart Flow (Buy) (Green fill w/ white arrow)
-- Smart Flow (Sell) (Red fill w/ white arrow)
+- **Smart Flow Icons**:
+  - `S` Icon: White "S" inside a square red box (#F6465D). Indicates Sell/Short flow dominance. Vector `res/drawable/ic_smart_sell.xml`.
+  - `B` Icon: White "B" inside a square green box (#0ECB81). Indicates Buy/Long flow dominance. Vector `res/drawable/ic_smart_buy.xml`.
+- **Engagement Icon**:
+  - Person silhouette icon (Outline) used in Smart Signals to denote trader interaction or signal strength.
+- **Directional UI Icons**:
+  - `Call ↗`: Up-right arrow icon used in Options navigation.
+  - `Put ↘`: Down-right arrow icon used in Options navigation.
+  - `Transfer`: Two horizontal arrows pointing in opposite directions (Left/Right) used for balance transfer entry.
+- **Refresh Icon**: Circular arrow icon accompanied by text (e.g., `30s`) indicating auto-refresh interval.
+- **Sentiment Bars**: Dual-progress horizontal bars used to visualize Long/Short sentiment ratios. Layer-list with `@color/price_up` (left) and `@color/price_down` (right).
+- **Empty State Graphic**: Large thematic gray illustration featuring a magnifying glass over documents with an exclamation mark, used for "No records" states.
+- **View Button (Drawable)**: Gray rounded rectangular background with centered white text, used as an action trigger in lists.
 - And 300+ other tokens
 
 ---
@@ -431,6 +443,31 @@ drawable?.setTint(color)
 // Set as background
 view.background = drawable
 ```
+
+---
+
+---
+
+## 11. Complex Data Components
+
+### Sparkline (Mini Charts)
+
+- **Usage**: Asset equity curves, rapid market trends.
+- **Specifications**:
+  - `StrokeWidth`: 1.5dp
+  - `Smoothness`: Cubic-Bezier path interpolation.
+  - `Colors`: `#2EBD85` (Positive), `#F6465D` (Negative).
+  - `Size`: Dynamic (Typically 64dp x 24dp).
+
+### Sentiment Bar (Smart Signals)
+
+- **Component**: `CustomSplitProgressBar`.
+- **Logic**: Percent-based split between two colors.
+- **Icon Overlay**: Small user/person silhouette preceding the count.
+- **Dotted Underlines**: Used on component labels (e.g., `Price`, `Amount`, `Margin Mode`) to indicate that the label itself acts as a tooltip trigger.
+- **Precision Controls**: `[-]` and `[+]` buttons appearing on the far edges of numeric inputs.
+- **Asset Toggles**: Circular or square toggle buttons (e.g., `S` for Single Asset Mode) located within or adjacent to the input area.
+- **Placeholder Buttons**: `BBO` (Best Bid Offer) badge appearing within the Price input field.
 
 ---
 

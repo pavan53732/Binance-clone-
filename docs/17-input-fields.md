@@ -166,7 +166,7 @@ This document provides comprehensive documentation of all input field types used
 ┌─────────────────────────────────────────────────────────┐
 │  Amount                                                 │
 │  ┌─────────────────────────────────────────────────┐   │
-│  │  0.10000000                           BTC [▼]   │   │
+│  │  [-] 0.10000000 [+]                   BTC [▼]   │   │
 │  └─────────────────────────────────────────────────┘   │
 │  Available: 0.5 BTC    [25%] [50%] [75%] [100%]       │
 │  ≈ $4,250.00                                            │
@@ -183,6 +183,14 @@ This document provides comprehensive documentation of all input field types used
 | Text Color | `#FFFFFF` |
 | Input Type | numberDecimal |
 | Decimal Places | 8 (crypto), 2 (fiat) |
+| Precision Controls | `[-]` and `[+]` icon buttons inside the track boundaries |
+
+**Micro-Details**:
+
+- **Dotted Underlines**: Used on component labels (e.g., `Price`, `Amount`, `Margin Mode`, `Leverage`, `Order Type`, `Cost`, `TP/SL`, `Reduce Only`) to indicate active tooltip triggers.
+- **Precision Controls**: `[-]` and `[+]` clickable buttons at the horizontal extremities of numeric input fields.
+- **Asset Mode Toggle**: Circular toggle labeled `S` (Single Asset Mode) or `M` (Multi-Asset Mode).
+- **Placeholder**: `BBO` gray badge inside Price fields.
 
 **Currency Selector**:
 | Property | Value |
@@ -225,7 +233,7 @@ This document provides comprehensive documentation of all input field types used
 ┌─────────────────────────────────────────────────────────┐
 │  Price (USDT)                                           │
 │  ┌─────────────────────────────────────────────────┐   │
-│  │  42,500.00                            [-] [+]   │   │
+│  │  [-] 42,500.00 [+]                [BBO] [+]   │   │
 │  └─────────────────────────────────────────────────┘   │
 │  Last Price: 42,510.00                                  │
 └─────────────────────────────────────────────────────────┘
@@ -239,6 +247,7 @@ This document provides comprehensive documentation of all input field types used
 | Input Type | numberDecimal |
 | Decimal Places | 2 (USDT pairs), 8 (BTC pairs) |
 | Thousand Separator | Comma |
+| Placeholder | `BBO` label in `#848E9C` (when empty/hint) |
 
 **Increment Buttons**:
 | Property | Value |
@@ -552,13 +561,13 @@ This document provides comprehensive documentation of all input field types used
 | Track Color (Active) | `#F0B90B` |
 | Thumb | Diamond shape (◆), 12dp |
 | Thumb Color | `#F0B90B` |
-| Nodes | Circles at 1x, 25x, 50x, 75x, 100x, 125x |
+| Nodes | Diamond (Rotated Square) at 1x, 25%, 50%, 75%, 100% |
 | Floating Label | 12sp, White on `#2B3139` background |
 
 ```
-  1x        20x       50x       75x      100x      125x
-  ├──────────◆──────────┼──────────┼──────────┼──────────┤
-  [    Slider Track with Diamond Selection Node        ]
+  1x        25%       50%       75%      100%
+  ├──────────◆──────────◆──────────◆──────────◆──────────┤
+  [    Slider Track with Diamond Selection Nodes        ]
 ```
 
 **Specifications**:
@@ -567,7 +576,7 @@ This document provides comprehensive documentation of all input field types used
 | Node Shape | Diamond (Rotated Square) |
 | Active Color | `#F0B90B` (Yellow) |
 | Inactive Track | `#2B3139` (Dark Gray) |
-| Snap Points | Fixed stops at 25%, 50%, 75%, 100% |
+| Node Count | 5 Nodes (0%, 25%, 50%, 75%, 100%) |
 | Label Size | 10sp, `#848E9C` |
 
 ---
