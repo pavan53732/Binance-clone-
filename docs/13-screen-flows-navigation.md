@@ -8,18 +8,44 @@ This document provides comprehensive documentation of all user flows and navigat
 
 ## Navigation Architecture
 
-### Bottom Navigation Structure
+### Dual-Interface Architecture (Exchange vs Web3 Wallet)
 
-The app uses a 5-tab bottom navigation as the primary navigation pattern.
+The Binance App features two fundamentally distinct top-level interfaces. The user can toggle between these two interfaces (typically via a switcher at the top of the App):
+
+1. **Exchange Interface (CeFi):** The traditional centralized exchange platform.
+2. **Web3 Wallet Interface (DeFi):** The decentralized, non-custodial Web3 wallet platform.
+
+Both interfaces utilize a 5-tab bottom navigation structure, but the tabs navigate to different screens depending on the active interface mode.
+
+### Bottom Navigation Structure (Exchange Interface)
+
+The primary view for trading centralized crypto assets.
 
 ```text
 ┌─────────────────────────────────────────────────────────┐
+│  [ Exchange ]  |  [ Web3 Wallet ]                       │
 │                                                         │
 │                    Main Content                         │
 │                                                         │
 ├─────────┬─────────┬─────────┬─────────┬─────────────────┤
 │  Home   │ Markets │  Trade  │ Futures │     Assets      │
 │   🏠    │   📊    │   📈    │   ⚡    │       💰        │
+└─────────┴─────────┴─────────┴─────────┴─────────────────┘
+```
+
+### Bottom Navigation Structure (Web3 Wallet Interface)
+
+The decentralized wallet experience. "Futures" is typically replaced with "Discover" (DApps).
+
+```text
+┌─────────────────────────────────────────────────────────┐
+│  [ Exchange ]  |  [ Web3 Wallet ]                       │
+│                                                         │
+│                    Main Content                         │
+│                                                         │
+├─────────┬─────────┬─────────┬─────────┬─────────────────┤
+│  Home   │ Markets │  Trade  │Discover │     Assets      │
+│   🏠    │   📊    │   🔄    │   🧭    │       💰        │
 └─────────┴─────────┴─────────┴─────────┴─────────────────┘
 ```
 

@@ -4,6 +4,15 @@
 
 This document provides a comprehensive UI specification summary for the Binance Android app, consolidating all design patterns, components, and specifications documented in this knowledge base.
 
+### Core Architecture: Dual Interfaces
+
+The Binance App encompasses two distinct, self-contained interfaces which govern the layout and functionality of the application:
+
+1. **Exchange Interface**: The traditional CeFi exchange platform with tabs for Home, Markets, Trade, Futures, and Assets.
+2. **Web3 Wallet Interface**: The decentralized, non-custodial wallet with tabs for Home, Markets, Trade, Discover, and Assets.
+
+All UI components detailed below may appear slightly differently or have different configurations depending on which of these two core interfaces is currently active.
+
 ---
 
 ## Design System Summary

@@ -1,70 +1,46 @@
-# Binance UI/UX Knowledge Base - Transaction History
+# Binance Transaction History Documentation
 
-## Overview
-
-This document provides comprehensive documentation of the Transaction History feature in the Binance Android app, including screen layouts, transaction types, status indicators, and mock data structures.
+The transaction history is split into two primary views based on the active interface: **Centralized Exchange (CeFi)** and **Web3 Wallet (DeFi)**.
 
 ---
 
-## Transaction History Screen Layout
+## 1. Exchange Transaction History (CeFi)
 
-### Screen Structure
+### Core Transaction Types
 
-```
-┌─────────────────────────────────────────────────────────┐
-│  ← Transaction History                    [Filter] 🔍   │
-├─────────────────────────────────────────────────────────┤
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  [All] [Deposit] [Withdraw] [Trade] [Transfer]  │   │
-│  └─────────────────────────────────────────────────┘   │
-│                                                         │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  Today                                           │   │
-│  │  ┌─────────────────────────────────────────┐   │   │
-│  │  │ 🟢 Deposit - BTC                        │   │   │
-│  │  │ +0.05 BTC                    Completed  │   │   │
-│  │  │ From: 0x1234...5678                     │   │   │
-│  │  │ Feb 24, 2024, 14:32                     │   │   │
-│  │  └─────────────────────────────────────────┘   │   │
-│  │  ┌─────────────────────────────────────────┐   │   │
-│  │  │ 🔴 Withdraw - ETH                       │   │   │
-│  │  │ -1.5 ETH                     Pending    │   │   │
-│  │  │ To: 0xabcd...efgh                       │   │   │
-│  │  │ Feb 24, 2024, 10:15                     │   │   │
-│  │  └─────────────────────────────────────────┘   │   │
-│  └─────────────────────────────────────────────────┘   │
-│                                                         │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  Yesterday                                       │   │
-│  │  ┌─────────────────────────────────────────┐   │   │
-│  │  │ 🟢 Trade - Buy BTC/USDT                 │   │   │
-│  │  │ +0.02 BTC                    Completed  │   │   │
-│  │  │ Price: 42,500 USDT                      │   │   │
-│  │  │ Feb 23, 2024, 09:45                     │   │   │
-│  │  └─────────────────────────────────────────┘   │   │
-│  └─────────────────────────────────────────────────┘   │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
+| Tab          | Item Type          | Description                                         |
+| ------------ | ------------------ | --------------------------------------------------- |
+| **All**      | `HISTORY_ALL`      | Unified view of all centralized activity            |
+| **Deposit**  | `HISTORY_DEPOSIT`  | Incoming crypto from external or internal addresses |
+| **Withdraw** | `HISTORY_WITHDRAW` | Outgoing crypto to external or internal addresses   |
+| **Trade**    | `HISTORY_TRADE`    | Spot, Margin, and Futures trading executions        |
+| **Transfer** | `HISTORY_TRANSFER` | Movement between Spot, Margin, and Futures wallets  |
 
-### Header Section
+### UI Elements (Exchange)
 
-| Component | Type | Description |
-|-----------|------|-------------|
-| Back Button | ImageButton | Navigate back |
-| Title | TextView | "Transaction History" |
-| Filter Button | ImageButton | Open filter options |
-| Search Button | ImageButton | Search transactions |
+- **Status Badges:** Completed (Green), Pending (Yellow), Cancelled (Gray).
+- **Icons:** Coin-specific logos or action-specific glyphs.
 
-### Filter Tabs
+---
 
-| Tab | Filter | Description |
-|-----|--------|-------------|
-| All | None | Show all transactions |
-| Deposit | type=deposit | Deposits only |
-| Withdraw | type=withdraw | Withdrawals only |
-| Trade | type=trade | Trades only |
-| Transfer | type=transfer | Internal transfers |
+## 2. Web3 Wallet Activity (DeFi)
+
+The Web3 Wallet tracks on-chain activity across multiple blockchains (Ethereum, BSC, Solana, etc.).
+
+### Web3 Transaction Categories
+
+| Category                 | UI Element    | Details Shown                                                 |
+| ------------------------ | ------------- | ------------------------------------------------------------- |
+| **Send / Receive**       | Arrow icons   | Asset name, Quantity, Destination/Source address              |
+| **Contract Interaction** | Code icon     | Protocol name (e.g., Uniswap, PancakeSwap), Function executed |
+| **Token Approval**       | Shield icon   | Spending limit granted to a protocol                          |
+| **Swap (DeFi)**          | Circle arrows | Input/Output tokens, Dex used, Slippage                       |
+
+### On-Chain Status Indicators
+
+- **Success:** Transaction confirmed on-chain.
+- **Fail:** Transaction reverted (Gas spent, but action failed).
+- **Processing:** Broadcasted to the mempool, waiting for block confirmation.
 
 ---
 
@@ -85,6 +61,7 @@ This document provides comprehensive documentation of the Transaction History fe
 | Timestamp | Date and time |
 
 **List Item Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  🟢 Deposit - BTC                              Completed │
@@ -122,6 +99,7 @@ This document provides comprehensive documentation of the Transaction History fe
 | Timestamp | Date and time |
 
 **List Item Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  🔴 Withdraw - ETH                             Pending  │
@@ -159,6 +137,7 @@ This document provides comprehensive documentation of the Transaction History fe
 | Timestamp | Date and time |
 
 **Buy Trade Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  🟢 Buy - BTC/USDT                             Completed │
@@ -171,6 +150,7 @@ This document provides comprehensive documentation of the Transaction History fe
 ```
 
 **Sell Trade Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  🔴 Sell - ETH/USDT                            Completed │
@@ -209,6 +189,7 @@ This document provides comprehensive documentation of the Transaction History fe
 | Timestamp | Date and time |
 
 **Transfer Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  🟡 Transfer - USDT                            Completed │
@@ -241,6 +222,7 @@ This document provides comprehensive documentation of the Transaction History fe
 | Timestamp | Date and time |
 
 **Swap Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  🔵 Swap - BTC → ETH                           Completed │
@@ -267,6 +249,7 @@ This document provides comprehensive documentation of the Transaction History fe
 | Timestamp | Date and time |
 
 **Staking Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  💰 Staking Reward - ETH                       Completed │
@@ -291,6 +274,7 @@ This document provides comprehensive documentation of the Transaction History fe
 | Timestamp | Date and time |
 
 **Airdrop Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  🎁 Airdrop - BNB                              Completed │
@@ -306,16 +290,17 @@ This document provides comprehensive documentation of the Transaction History fe
 
 ### Status Types
 
-| Status | Color | Icon | Description |
-|--------|-------|------|-------------|
-| Completed | Green `#2EBD85` | ✓ checkmark | Transaction successful |
-| Pending | Yellow `#F0B90B` | ◐ spinner | Processing |
-| Failed | Red `#F6465D` | ✗ cross | Transaction failed |
-| Cancelled | Gray `#848E9C` | ○ circle | User cancelled |
+| Status    | Color            | Icon        | Description            |
+| --------- | ---------------- | ----------- | ---------------------- |
+| Completed | Green `#2EBD85`  | ✓ checkmark | Transaction successful |
+| Pending   | Yellow `#F0B90B` | ◐ spinner   | Processing             |
+| Failed    | Red `#F6465D`    | ✗ cross     | Transaction failed     |
+| Cancelled | Gray `#848E9C`   | ○ circle    | User cancelled         |
 
 ### Status Badge Styles
 
 **Completed**:
+
 ```xml
 <shape android:shape="rectangle">
     <solid android:color="#1A2EBD85" />
@@ -325,6 +310,7 @@ This document provides comprehensive documentation of the Transaction History fe
 ```
 
 **Pending**:
+
 ```xml
 <shape android:shape="rectangle">
     <solid android:color="#1AF0B90B" />
@@ -334,6 +320,7 @@ This document provides comprehensive documentation of the Transaction History fe
 ```
 
 **Failed**:
+
 ```xml
 <shape android:shape="rectangle">
     <solid android:color="#1AF6465D" />
@@ -348,10 +335,10 @@ This document provides comprehensive documentation of the Transaction History fe
 ┌──────────┐     ┌───────────┐     ┌───────────┐
 │ Pending  │ ──► │ Processing│ ──► │ Completed │
 └──────────┘     └───────────┘     └───────────┘
-     │                                   
-     │              ┌───────────┐        
-     └─────────────►│  Failed   │        
-                    └───────────┘        
+     │
+     │              ┌───────────┐
+     └─────────────►│  Failed   │
+                    └───────────┘
 ```
 
 ---
@@ -394,41 +381,44 @@ This document provides comprehensive documentation of the Transaction History fe
 ### Detail Fields by Type
 
 #### Deposit Details
-| Field | Format |
-|-------|--------|
-| Coin | Name (Symbol) |
-| Amount | Full decimal |
-| From Address | Full address with copy |
-| Network | Network name |
-| TXID | Full hash with copy |
-| Confirmations | Current/Required |
-| Time | Full timestamp |
-| Status | Status with icon |
+
+| Field         | Format                 |
+| ------------- | ---------------------- |
+| Coin          | Name (Symbol)          |
+| Amount        | Full decimal           |
+| From Address  | Full address with copy |
+| Network       | Network name           |
+| TXID          | Full hash with copy    |
+| Confirmations | Current/Required       |
+| Time          | Full timestamp         |
+| Status        | Status with icon       |
 
 #### Withdrawal Details
-| Field | Format |
-|-------|--------|
-| Coin | Name (Symbol) |
-| Amount | Full decimal |
-| Fee | Fee amount |
+
+| Field      | Format                 |
+| ---------- | ---------------------- |
+| Coin       | Name (Symbol)          |
+| Amount     | Full decimal           |
+| Fee        | Fee amount             |
 | To Address | Full address with copy |
-| Network | Network name |
-| TXID | Full hash with copy |
-| Time | Full timestamp |
-| Status | Status with icon |
+| Network    | Network name           |
+| TXID       | Full hash with copy    |
+| Time       | Full timestamp         |
+| Status     | Status with icon       |
 
 #### Trade Details
-| Field | Format |
-|-------|--------|
-| Pair | BASE/QUOTE |
-| Side | Buy/Sell |
-| Type | Market/Limit |
-| Price | Execution price |
-| Amount | Trade amount |
-| Total | Total value |
-| Fee | Fee amount |
+
+| Field    | Format          |
+| -------- | --------------- |
+| Pair     | BASE/QUOTE      |
+| Side     | Buy/Sell        |
+| Type     | Market/Limit    |
+| Price    | Execution price |
+| Amount   | Trade amount    |
+| Total    | Total value     |
+| Fee      | Fee amount      |
 | Order ID | Order reference |
-| Time | Full timestamp |
+| Time     | Full timestamp  |
 
 ---
 
@@ -477,12 +467,12 @@ This document provides comprehensive documentation of the Transaction History fe
 
 ### Filter Options
 
-| Filter | Options |
-|--------|---------|
-| Type | All, Deposit, Withdraw, Trade, Transfer, Swap, Staking, Airdrop |
-| Status | All, Completed, Pending, Failed, Cancelled |
-| Date Range | All Time, Today, 7 Days, 30 Days, Custom |
-| Coin | Searchable list of all coins |
+| Filter     | Options                                                         |
+| ---------- | --------------------------------------------------------------- |
+| Type       | All, Deposit, Withdraw, Trade, Transfer, Swap, Staking, Airdrop |
+| Status     | All, Completed, Pending, Failed, Cancelled                      |
+| Date Range | All Time, Today, 7 Days, 30 Days, Custom                        |
+| Coin       | Searchable list of all coins                                    |
 
 ---
 
@@ -644,21 +634,21 @@ val mockTransactions = listOf(
 
 ### Pagination
 
-| Parameter | Value |
-|-----------|-------|
-| Page Size | 20 transactions |
-| Load More | On scroll to bottom |
-| Initial Load | 20 items |
-| Max Cached | 100 items |
+| Parameter    | Value               |
+| ------------ | ------------------- |
+| Page Size    | 20 transactions     |
+| Load More    | On scroll to bottom |
+| Initial Load | 20 items            |
+| Max Cached   | 100 items           |
 
 ### Loading States
 
-| State | UI |
-|-------|-----|
-| Initial Load | Full screen shimmer |
-| Load More | Bottom progress bar |
-| Empty | Empty state illustration |
-| Error | Error message with retry |
+| State        | UI                       |
+| ------------ | ------------------------ |
+| Initial Load | Full screen shimmer      |
+| Load More    | Bottom progress bar      |
+| Empty        | Empty state illustration |
+| Error        | Error message with retry |
 
 ---
 

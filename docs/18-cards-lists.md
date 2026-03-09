@@ -1,63 +1,42 @@
-# Binance UI/UX Knowledge Base - Cards & Lists
+# Binance Cards & Lists Documentation
 
-## Overview
-
-This document provides comprehensive documentation of all card and list components used in the Binance Android app, including dimensions, internal spacing, divider styles, and layout specifications.
+Components are categorized by their UI role in either the **Exchange** or **Web3 Wallet** interface.
 
 ---
 
-## Card Types
+## 1. Exchange Card Components (CeFi)
 
-### 1. Asset Cards
+### Asset Cards (Exchange)
 
-**Usage**: Assets screen, portfolio display
+| Property       | Specification            | Description            |
+| -------------- | ------------------------ | ---------------------- |
+| **Background** | `#1E2329`                | Dark theme default     |
+| **Actions**    | Deposit, Withdraw, Trade | Quick action footer    |
+| **Metrics**    | Balance, USD Value       | Portfolio summary data |
 
-**Layout**:
+---
 
-```
-┌─────────────────────────────────────────────────────────┐
-│  ┌──────┐                                               │
-│  │ BTC  │  Bitcoin                              ⋮      │
-│  │ icon │  BTC                                           │
-│  └──────┘                                               │
-│                                                         │
-│  0.50000000 BTC                                         │
-│  ≈ $21,250.00                                           │
-│                                                         │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  [Deposit]    [Withdraw]    [Trade]    [More]   │   │
-│  └─────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────┘
-```
+## 2. Web3 Wallet Card Components (DeFi)
 
-**Specifications**:
-| Property | Value |
-|----------|-------|
-| Width | match_parent - 32dp margin |
-| Min Height | 120dp |
-| Corner Radius | 12dp |
-| Background Color | `#1E2329` |
-| Padding | 16dp |
-| Elevation | 2dp |
-| Margin Bottom | 12dp |
+The Web3 interface introduces specialized cards for decentralized discovery and asset management.
 
-**Internal Elements**:
-| Element | Size/Style |
-|---------|------------|
-| Coin Icon | 40dp x 40dp |
-| Coin Name | 16sp, Medium, White |
-| Coin Symbol | 12sp, Regular, `#848E9C` |
-| Balance | 20sp, Medium, White |
-| USD Value | 14sp, Regular, `#848E9C` |
-| Action Buttons | 32dp height, 14sp text |
+### DApp Discovery Cards (Discover Tab)
 
-**Action Buttons**:
-| Button | Style | Icon |
-|--------|-------|------|
-| Deposit | Text + Icon | Down arrow |
-| Withdraw | Text + Icon | Up arrow |
-| Trade | Text + Icon | Swap |
-| More | Text + Icon | Three dots |
+- **Large Banner Card:** High-priority news or rewards (e.g., "SPK Rewards").
+- **Grid Category Card:** 4x2 grid of small DApp icons with labels.
+
+### Meme Rush / Trending Cards (Markets Tab)
+
+| Element        | Visual Style            | Details                                  |
+| -------------- | ----------------------- | ---------------------------------------- |
+| **Token Icon** | Multi-stacked (3 icons) | Shows top trending coins in the category |
+| **New Tokens** | Text Badge              | Quantity of new tokens added in 1h       |
+| **Signals**    | Pulse animation         | Market alerts (Gems found)               |
+
+### On-Chain Asset List Items (Assets Tab)
+
+- **Asset Row:** Includes **Network Badge** (small overlay icon on the main coin logo) indicating the chain (e.g., BSC, ETH).
+- **NFT Gallery Card:** Square image preview with Collection Name and ID.
 
 ### 2. Transaction Cards
 

@@ -1,8 +1,48 @@
-# Binance UI/UX Knowledge Base - Complete Screen Catalog
+# Binance UI/UX Screen Catalog
 
-## Overview
+This catalog provides a comprehensive list of screens in the Binance Android app, organized by interface mode (Exchange vs. Web3 Wallet).
 
-This document provides a comprehensive catalog of every screen in the Binance Android app, organized by section, with layout references, purpose, key components, navigation destinations, and input/output specifications.
+---
+
+## 1. Exchange Interface (CeFi)
+
+### Core Sections
+
+| Screen Name    | Layout File                    | Purpose               | Key Components                            |
+| :------------- | :----------------------------- | :-------------------- | :---------------------------------------- |
+| **Home (Pro)** | `fragment_home_pro.xml`        | Dashboard & Discovery | Portfolio Summary, P2P, Promotion Banners |
+| **Markets**    | `fragment_markets.xml`         | Asset Tracking        | Favorites, Spot, Futures, Data Lists      |
+| **Trade**      | `fragment_trade_spot.xml`      | Token Swapping        | Buy/Sell Form, Order Book, Depth Chart    |
+| **Futures**    | `fragment_futures_main.xml`    | Derivatives Trading   | Leverage, Margin Type, Open Positions     |
+| **Assets**     | `fragment_assets_overview.xml` | Portfolio Mgmt        | Deposit, Withdraw, Transfer, Earn         |
+
+### Advanced Features
+
+| Screen Name     | Layout File                    | Purpose           | Key Components                           |
+| :-------------- | :----------------------------- | :---------------- | :--------------------------------------- |
+| **Options**     | `fragment_futures_options.xml` | Options Trading   | Call/Put Tabs, Strike Price List, Expiry |
+| **Smart Money** | `fragment_smart_money.xml`     | Trading Analytics | Top Traders, Signals, Subscriptions      |
+
+---
+
+## 2. Web3 Wallet Interface (DeFi)
+
+### Core Sections
+
+| Screen Name        | Layout File                  | Purpose             | Key Components                         |
+| :----------------- | :--------------------------- | :------------------ | :------------------------------------- |
+| **Wallet Home**    | `fragment_web3_home.xml`     | DeFi Portfolio      | Receive Button, Multi-Wallet Switcher  |
+| **Wallet Markets** | `fragment_web3_markets.xml`  | Web3 Token Tracking | Hot Searches, Trending, Network Filter |
+| **Wallet Trade**   | `fragment_web3_swap.xml`     | Decentralized Swap  | Network Selector, Slidder, Slippage    |
+| **Discover**       | `fragment_discovery_hub.xml` | DApp Browser        | Alpha, Meme Rush, Sentio Booster       |
+| **Web3 Assets**    | `fragment_web3_assets.xml`   | DeFi Asset List     | NFTs, Staking, History, Network Icons  |
+
+### Specialized Wallet Screens
+
+| Screen Name        | Layout File                   | Purpose           | Key Components                      |
+| :----------------- | :---------------------------- | :---------------- | :---------------------------------- |
+| **Meme Rush**      | `fragment_web3_meme.xml`      | Token Launchpad   | New Tokens, APY Charts, Join Button |
+| **Sentio Booster** | `fragment_sentio_booster.xml` | Ecosystem Rewards | Program Progress, Tasks, Claim UI   |
 
 ---
 
@@ -94,25 +134,40 @@ This document provides a comprehensive catalog of every screen in the Binance An
 
 ## Home Section
 
-### 7. Home Screen (Main)
+### 7. Home Screen (Exchange Pro)
 
-| Property       | Value                                                   |
-| -------------- | ------------------------------------------------------- |
-| Screen Name    | HomeFragment                                            |
-| Layout File    | `fragment_home.xml`                                     |
-| Purpose        | Main dashboard, portfolio overview                      |
-| Key Components | Portfolio card, quick actions, market overview, banners |
-| Navigation     | → Trade → Deposit → Withdraw → Earn → Assets            |
-| Input          | Pull to refresh                                         |
-| Output         | Portfolio data, market data                             |
+| Property       | Value                                                                |
+| -------------- | -------------------------------------------------------------------- |
+| Screen Name    | HomeProFragment                                                      |
+| Layout File    | `fragment_home_pro.xml`                                              |
+| Purpose        | Master dashboard for CeFi trading, portfolio, and ecosystem news     |
+| Key Components | Header Group, Portfolio Card, Action Grid, Discover Feed             |
+| Navigation     | → Markets → Trade → Futures → Assets → Sidebar → Pay → Notifications |
+| Input          | Pull-to-refresh, horizontal swipe (banners), vertical scroll (feed)  |
+| Output         | Real-time asset values, trending market data, social content         |
 
-**UI Elements**:
+**UI Elements & Component Hierarchy**:
 
-- Portfolio balance card
-- Quick action buttons (Trade, Deposit, Withdraw, Transfer, Earn)
-- Market overview horizontal scroll
-- Promotional banner carousel
-- News/announcements section
+1. **Global Header (Sticky)**:
+   - Sidebar/Profile Trigger (Left)
+   - Search Bar with rotating hot keywords (Center)
+   - Global Action Tray: Notification (with badge), Customer Support, QR/Pay (Right)
+   - Interface Toggle: "Exchange | Web3" (Top Center)
+
+2. **Portfolio Dashboard**:
+   - Total Balance Display (INR/BTC) with privacy mask.
+   - 24h PNL indicator (Real-time percentage/value).
+   - "Deposit/Add Funds" Primary CTA (Binance Yellow).
+
+3. **Interaction Hub**:
+   - Promotional Banner Carousel (Event driven).
+   - Market Overview Grid: Quick-view cards for BNB, BTC, SOL with live sparklines.
+   - Primary Service Gateway: P2P Trading card and "Send Cash/Receive Fiat" cards.
+
+4. **Discover Feed (Multi-Tab)**:
+   - Tab Bar: Discover, Following, Campaign, Announcements, Live, News, Academy, Hot.
+   - Content Area: Mixed media (News, Livestreams, Announcements) with community metrics (Likes/Comments).
+   - Floating Action Button (FAB): Quick access "+" menu for trading/posting.
 
 ### 8. Notification Center
 

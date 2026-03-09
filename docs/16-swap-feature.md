@@ -1,68 +1,46 @@
-# Binance UI/UX Knowledge Base - Swap Feature
+# Binance Swap Feature Documentation
 
-## Overview
-
-This document provides comprehensive documentation of the Swap feature in the Binance Android app, including screen layouts, input/output coin selection, price conversion, slippage settings, and mock swap calculations.
+The Binance app provides two distinct swap experiences: **Exchange Swap (CeFi)** and **Web3 Swap (DeFi)**.
 
 ---
 
-## Swap Screen Layout
+## 1. Centralized Exchange Swap (CeFi)
 
-### Main Screen Structure
+### Core Experience
 
-```
-┌─────────────────────────────────────────────────────────┐
-│  ← Swap                                    [Settings]   │
-├─────────────────────────────────────────────────────────┤
-│                                                         │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  You Pay                                         │   │
-│  │  ┌─────────────────────────────────────────┐   │   │
-│  │  │  BTC                            [▼]     │   │   │
-│  │  │  0.10000000                              │   │   │
-│  │  │  ≈ $4,250.00                             │   │   │
-│  │  └─────────────────────────────────────────┘   │   │
-│  │  Balance: 0.5 BTC                               │   │
-│  │  [25%] [50%] [75%] [100%]                       │   │
-│  └─────────────────────────────────────────────────┘   │
-│                                                         │
-│                      ┌─────┐                           │
-│                      │ ⇅  │                            │
-│                      └─────┘                           │
-│                                                         │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  You Receive                                     │   │
-│  │  ┌─────────────────────────────────────────┐   │   │
-│  │  │  ETH                            [▼]     │   │   │
-│  │  │  1.85000000                              │   │   │
-│  │  │  ≈ $4,250.00                             │   │   │
-│  │  └─────────────────────────────────────────┘   │   │
-│  │  Balance: 2.5 ETH                               │   │
-│  └─────────────────────────────────────────────────┘   │
-│                                                         │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  Rate: 1 BTC = 18.50 ETH                        │   │
-│  │  Price Impact: <0.01%                           │   │
-│  │  Min Received: 1.844 ETH                        │   │
-│  │  Fee: 0.0002 BTC                                │   │
-│  │  ⏱ Rate refreshes in 25s                        │   │
-│  └─────────────────────────────────────────────────┘   │
-│                                                         │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │              [SWAP BTC → ETH]                    │   │
-│  └─────────────────────────────────────────────────┘   │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
+- **Mechanism:** Off-chain matching via Binance liquidity.
+- **Fees:** Zero-fee or small spread based on trading tier.
+- **Speed:** Instant execution.
 
-### Header Section
+### Layout Summary (Exchange)
 
-| Component | Type | Description |
-|-----------|------|-------------|
-| Back Button | ImageButton | Navigate back |
-| Title | TextView | "Swap" |
-| Settings Button | ImageButton | Open slippage settings |
-| History Button | ImageButton | View swap history |
+- **Header:** Back button, Swap title, Settings (Slippage), History.
+- **Input Area:** Asset selection, Amount, Balance shortcuts (25%-100%).
+- **Output Area:** Target asset selection, Estimated amount, Balance.
+
+---
+
+## 2. Web3 Wallet Swap (DeFi / DEX)
+
+The Web3 Swap utilizes decentralized exchanges (DEXs) and bridges to swap assets directly on the blockchain.
+
+### DEX Swap UI Components
+
+| Component              | UI Type     | Specification                                              |
+| ---------------------- | ----------- | ---------------------------------------------------------- |
+| **Network Selector**   | Top Toggle  | Choose chain (BSC, Ethereum, Solana, Polyon, etc.)         |
+| **DEX Aggregater**     | Text/Icon   | Shows the provider (e.g., Binance Bridge, Uniswap)         |
+| **Slippage Tolerance** | Badge/Input | Default at 0.5% or 1%. User adjustable.                    |
+| **Gas Fee Estimate**   | Text        | Estimated network cost in native token (e.g., Gwei or BNB) |
+| **Minimum Received**   | Text        | Guaranteed amount based on slippage.                       |
+
+### Advanced DEX Settings
+
+| Setting                  | Description                                                 |
+| ------------------------ | ----------------------------------------------------------- |
+| **Slippage**             | Maximum price variation allowed before transaction reverts. |
+| **Transaction Deadline** | Time limit for on-chain execution.                          |
+| **Gas Options**          | Fast, Normal, Slow (Adjusts priority fee).                  |
 
 ---
 
@@ -143,6 +121,7 @@ This document provides comprehensive documentation of the Swap feature in the Bi
 | Position | Centered between sections |
 
 **Behavior**:
+
 - Tap to swap From/To coins
 - Amounts recalculate automatically
 - Animation on switch
@@ -165,23 +144,23 @@ This document provides comprehensive documentation of the Swap feature in the Bi
 
 ### Rate Display Components
 
-| Component | Format | Description |
-|-----------|--------|-------------|
-| Rate | "1 {FROM} = {RATE} {TO}" | Exchange rate |
-| Price Impact | Percentage | Market impact of trade |
-| Min Received | Amount with slippage | Minimum output guaranteed |
-| Fee | Amount | Swap fee |
-| Timer | Countdown | Rate validity timer |
+| Component    | Format                   | Description               |
+| ------------ | ------------------------ | ------------------------- |
+| Rate         | "1 {FROM} = {RATE} {TO}" | Exchange rate             |
+| Price Impact | Percentage               | Market impact of trade    |
+| Min Received | Amount with slippage     | Minimum output guaranteed |
+| Fee          | Amount                   | Swap fee                  |
+| Timer        | Countdown                | Rate validity timer       |
 
 ### Rate Colors
 
-| Element | Color | Condition |
-|---------|-------|-----------|
-| Price Impact | Green `#2EBD85` | < 1% |
-| Price Impact | Yellow `#F0B90B` | 1% - 3% |
-| Price Impact | Red `#F6465D` | > 3% |
-| Timer | White | Normal |
-| Timer | Yellow | < 10 seconds |
+| Element      | Color            | Condition    |
+| ------------ | ---------------- | ------------ |
+| Price Impact | Green `#2EBD85`  | < 1%         |
+| Price Impact | Yellow `#F0B90B` | 1% - 3%      |
+| Price Impact | Red `#F6465D`    | > 3%         |
+| Timer        | White            | Normal       |
+| Timer        | Yellow           | < 10 seconds |
 
 ### USD Value Display
 
@@ -233,28 +212,28 @@ This document provides comprehensive documentation of the Swap feature in the Bi
 
 ### Slippage Presets
 
-| Preset | Value | Use Case |
-|--------|-------|----------|
-| Low | 0.1% | Stable pairs |
-| Standard | 0.5% | Normal trading |
-| High | 1.0% | Volatile pairs |
-| Custom | User input | Special cases |
+| Preset   | Value      | Use Case       |
+| -------- | ---------- | -------------- |
+| Low      | 0.1%       | Stable pairs   |
+| Standard | 0.5%       | Normal trading |
+| High     | 1.0%       | Volatile pairs |
+| Custom   | User input | Special cases  |
 
 ### Slippage Validation
 
-| Rule | Error Message |
-|------|---------------|
+| Rule    | Error Message                             |
+| ------- | ----------------------------------------- |
 | < 0.01% | "Slippage too low - transaction may fail" |
-| > 5% | "High slippage warning" |
-| > 20% | "Slippage too high - not allowed" |
+| > 5%    | "High slippage warning"                   |
+| > 20%   | "Slippage too high - not allowed"         |
 
 ### Rate Refresh Intervals
 
-| Option | Value |
-|--------|-------|
-| Fast | 15 seconds |
+| Option   | Value      |
+| -------- | ---------- |
+| Fast     | 15 seconds |
 | Standard | 30 seconds |
-| Slow | 60 seconds |
+| Slow     | 60 seconds |
 
 ---
 
@@ -299,26 +278,26 @@ This document provides comprehensive documentation of the Swap feature in the Bi
 
 ### Confirmation Details
 
-| Field | Description |
-|-------|-------------|
-| You Pay | Input amount and coin |
-| You Receive | Output amount and coin |
-| Rate | Exchange rate |
-| Price Impact | Market impact |
-| Min Received | Guaranteed minimum |
-| Slippage | Tolerance setting |
-| Fee | Platform fee |
-| Network Fee | Estimated gas |
+| Field        | Description            |
+| ------------ | ---------------------- |
+| You Pay      | Input amount and coin  |
+| You Receive  | Output amount and coin |
+| Rate         | Exchange rate          |
+| Price Impact | Market impact          |
+| Min Received | Guaranteed minimum     |
+| Slippage     | Tolerance setting      |
+| Fee          | Platform fee           |
+| Network Fee  | Estimated gas          |
 
 ### Confirmation States
 
-| State | UI |
-|-------|-----|
-| Ready | Yellow "CONFIRM SWAP" button |
-| Rate Expired | "Refresh Rate" button |
-| Processing | Loading spinner |
-| Success | Success animation |
-| Failed | Error message |
+| State        | UI                           |
+| ------------ | ---------------------------- |
+| Ready        | Yellow "CONFIRM SWAP" button |
+| Rate Expired | "Refresh Rate" button        |
+| Processing   | Loading spinner              |
+| Success      | Success animation            |
+| Failed       | Error message                |
 
 ---
 
@@ -342,38 +321,41 @@ This document provides comprehensive documentation of the Swap feature in the Bi
 
 ### Refresh Triggers
 
-| Trigger | Action |
-|---------|--------|
-| Timer expires | Auto-refresh rate |
-| Amount changed | Fetch new rate |
-| Coin changed | Fetch new rate |
+| Trigger        | Action            |
+| -------------- | ----------------- |
+| Timer expires  | Auto-refresh rate |
+| Amount changed | Fetch new rate    |
+| Coin changed   | Fetch new rate    |
 | Manual refresh | User taps refresh |
-| Screen resume | Fetch fresh rate |
+| Screen resume  | Fetch fresh rate  |
 
 ### Rate Expiration UI
 
 **Before Expiration**:
+
 ```
 ⏱ Rate refreshes in 25s
 ```
 
 **Near Expiration (< 10s)**:
+
 ```
 ⏱ Rate refreshes in 8s  [Refresh Now]
 ```
 
 **Expired**:
+
 ```
 ⚠️ Rate expired  [Refresh Rate]
 ```
 
 ### Rate Loading States
 
-| State | UI |
-|-------|-----|
-| Loading | Shimmer on rate section |
-| Success | Show rate details |
-| Error | Error message with retry |
+| State   | UI                       |
+| ------- | ------------------------ |
+| Loading | Shimmer on rate section  |
+| Success | Show rate details        |
+| Error   | Error message with retry |
 
 ---
 
@@ -404,13 +386,13 @@ data class SwapCalculation(
     fun calculate(): SwapQuote {
         // Calculate output amount
         val outputAmount = inputAmount * exchangeRate
-        
+
         // Calculate fee
         val fee = inputAmount * (platformFeePercent / 100)
-        
+
         // Calculate minimum received with slippage
         val minReceived = outputAmount * (1 - slippageTolerance / 100)
-        
+
         return SwapQuote(
             fromAmount = inputAmount,
             toAmount = outputAmount,
@@ -438,6 +420,7 @@ data class SwapCalculation(
 | Platform Fee | 0.2% |
 
 **Calculation**:
+
 ```
 Exchange Rate = BTC Price / ETH Price
              = 42,500 / 2,300
@@ -475,6 +458,7 @@ Minimum Received = 1.8478 * (1 - 0.01)
 | Platform Fee | 0.2% |
 
 **Calculation**:
+
 ```
 Exchange Rate = 2,300 USDT per ETH
 
@@ -500,6 +484,7 @@ Minimum Received = 5,750 * (1 - 0.005)
 ### Price Impact Calculation
 
 **Formula**:
+
 ```
 Price Impact = (Trade Size / Pool Liquidity) * 100
 ```
@@ -563,13 +548,13 @@ Price Impact = (Trade Size / Pool Liquidity) * 100
 
 ### Error Types
 
-| Error | Message | Action |
-|-------|---------|--------|
-| Insufficient Balance | "Not enough {COIN}" | Show balance |
-| Rate Expired | "Rate has expired" | Refresh rate |
-| High Slippage | "Price moved too much" | Adjust slippage |
-| Network Error | "Network error" | Retry |
-| Liquidity Error | "Insufficient liquidity" | Try smaller amount |
+| Error                | Message                  | Action             |
+| -------------------- | ------------------------ | ------------------ |
+| Insufficient Balance | "Not enough {COIN}"      | Show balance       |
+| Rate Expired         | "Rate has expired"       | Refresh rate       |
+| High Slippage        | "Price moved too much"   | Adjust slippage    |
+| Network Error        | "Network error"          | Retry              |
+| Liquidity Error      | "Insufficient liquidity" | Try smaller amount |
 
 ---
 
@@ -577,21 +562,21 @@ Price Impact = (Trade Size / Pool Liquidity) * 100
 
 ### Amount Validation
 
-| Rule | Error Message |
-|------|---------------|
-| Empty amount | "Enter an amount" |
-| Zero amount | "Amount must be greater than 0" |
-| Exceeds balance | "Insufficient {COIN} balance" |
-| Below minimum | "Minimum swap is {MIN} {COIN}" |
-| Invalid decimal | "Invalid amount format" |
+| Rule            | Error Message                   |
+| --------------- | ------------------------------- |
+| Empty amount    | "Enter an amount"               |
+| Zero amount     | "Amount must be greater than 0" |
+| Exceeds balance | "Insufficient {COIN} balance"   |
+| Below minimum   | "Minimum swap is {MIN} {COIN}"  |
+| Invalid decimal | "Invalid amount format"         |
 
 ### Coin Pair Validation
 
-| Rule | Error Message |
-|------|---------------|
-| Same coin selected | "Cannot swap to the same coin" |
-| Pair not available | "This pair is not available for swap" |
-| Coin suspended | "{COIN} swaps are temporarily disabled" |
+| Rule               | Error Message                           |
+| ------------------ | --------------------------------------- |
+| Same coin selected | "Cannot swap to the same coin"          |
+| Pair not available | "This pair is not available for swap"   |
+| Coin suspended     | "{COIN} swaps are temporarily disabled" |
 
 ---
 

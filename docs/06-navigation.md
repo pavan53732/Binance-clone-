@@ -6,32 +6,64 @@ This document describes the navigation structure and patterns used in the Binanc
 
 ---
 
+## Top Interface Switcher & Header Icons
+
+The Binance app features a persistent top header containing the interface switcher and global action icons.
+
+### 1. Header Global Icons
+
+| Icon                  | Description                                              | Context |
+| --------------------- | -------------------------------------------------------- | ------- |
+| **Sidebar/Profile**   | User profile, verification status, and app settings      | Left    |
+| **Chat/Notification** | System messages and order notifications (with 99+ badge) | Left    |
+| **Customer Support**  | Technical support and help center                        | Right   |
+| **Binance Pay/QR**    | QR code scanner and payment features                     | Right   |
+
+### 2. Interface Switcher
+
+| Element             | Description                                                                |
+| ------------------- | -------------------------------------------------------------------------- |
+| **Exchange Toggle** | Switches UI to the CeFi interface (Home, Markets, Trade, Futures, Assets)  |
+| **Wallet Toggle**   | Switches UI to the DeFi interface (Home, Markets, Trade, Discover, Assets) |
+
+---
+
 ## Bottom Navigation Structure
 
-### Main Navigation Tabs
+The navigation bar dynamically updates its tabs based on the active interface mode.
 
-The Binance app uses a bottom navigation bar with 5 main sections:
+### 1. Exchange Interface Navigation
 
-| Tab     | Icon          | Purpose                                 |
-| ------- | ------------- | --------------------------------------- |
-| Home    | Home icon     | Dashboard, market overview, portfolio   |
-| Markets | Chart icon    | Trading pairs, price lists, market data |
-| Trade   | Swap icon     | Spot trading, margin trading            |
-| Futures | Trending icon | Futures trading                         |
-| Assets  | Assets icon   | Asset management, deposit/withdraw      |
+| Tab     | Icon           | Purpose                                 |
+| ------- | -------------- | --------------------------------------- |
+| Home    | Home icon      | Dashboard, market overview, portfolio   |
+| Markets | Chart icon     | Trading pairs, price lists, market data |
+| Trade   | Swap icon      | Spot trading, margin trading            |
+| Futures | Lightning icon | USD-M, COIN-M, and Options trading      |
+| Assets  | Assets icon    | Asset management, deposit/withdraw      |
+
+### 2. Web3 Wallet Interface Navigation
+
+| Tab      | Icon         | Purpose                                 |
+| -------- | ------------ | --------------------------------------- |
+| Home     | Home icon    | Wallet balance, quick actions (Receive) |
+| Markets  | Chart icon   | Token list, market trends, hot searches |
+| Trade    | Swap/🔄 icon | Decentralized token swaps               |
+| Discover | Compass icon | DApps, Trending, Meme Rush, Alpha       |
+| Assets   | Assets icon  | Web3 asset holdings and history         |
 
 ### Bottom Navigation Specifications
 
-| Property                 | Value                        |
-| ------------------------ | ---------------------------- |
-| Height                   | 56dp                         |
-| Background               | `#FF181A20` (dark theme)     |
-| Icon Size                | 24dp                         |
-| Icon Color (Selected)    | `#FFF0B90B` (primary yellow) |
-| Icon Color (Unselected)  | `#FF848E9C` (gray)           |
-| Label Size               | 10-12sp                      |
-| Label Color (Selected)   | `#FFF0B90B`                  |
-| Label Color (Unselected) | `#FF848E9C`                  |
+| Property                | Value                        |
+| ----------------------- | ---------------------------- |
+| Height                  | 56dp                         |
+| Background              | `#FF181A20` (dark theme)     |
+| Icon Size               | 24dp                         |
+| Icon Color (Selected)   | `#FFF0B90B` (primary yellow) |
+| Icon Color (Unselected) | `#FF848E9C` (gray)           |
+| Label Size              | 10-12sp                      |
+| Selected Text Style     | Bold                         |
+| Unselected Text Style   | Regular                      |
 
 ---
 

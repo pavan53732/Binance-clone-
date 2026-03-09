@@ -2,648 +2,222 @@
 
 ## Overview
 
-This document provides a comprehensive list of all features and functions in the Binance Android app, including UI components, input fields, validations, and state management.
+This document provides a comprehensive list of all features and functions in the Binance Android app, organized by the two primary interfaces: **Exchange (CeFi)** and **Web3 Wallet (DeFi)**.
 
 ---
 
-## Home Screen Features
+## Core Interface Switcher
 
-### 1. Portfolio Display
+**Purpose**: Allows users to toggle between the centralized Exchange and the decentralized Web3 Wallet.
 
-**Purpose**: Show user's total asset value and portfolio composition
-
-**UI Components**:
-| Component | Type | Description |
-|-----------|------|-------------|
-| Total Balance | TextView | Large text showing total USD/BTC value |
-| Balance Toggle | ImageButton | Eye icon to hide/show balance |
-| 24h Change | TextView | Percentage change with color indicator |
-| Portfolio Chart | PieChart | Asset distribution visualization |
-| Asset List | RecyclerView | List of top holdings |
-
-**Data Displayed**:
-
-- Total portfolio value in USD
-- Total portfolio value in BTC
-- 24-hour change percentage
-- Top 5 assets by value
-- Asset allocation percentage
-
-**Interactions**:
-| Action | Result |
-|--------|--------|
-| Tap balance | Toggle between USD/BTC display |
-| Tap eye icon | Hide/show balance (privacy) |
-| Tap asset | Navigate to asset detail |
-| Pull down | Refresh portfolio data |
-
-### 2. Quick Actions
-
-**Purpose**: Provide fast access to common operations
-
-**UI Components**:
-| Action | Icon | Button Style |
-|--------|------|--------------|
-| Deposit | Down arrow | Green button |
-| Withdraw | Up arrow | Red button |
-| Trade | Swap arrows | Yellow button |
-| Transfer | Transfer icon | Yellow button |
-| Earn | Percentage icon | Yellow button |
-| Buy Crypto | Credit card | Yellow button |
-
-**Layout**:
-
-```
-┌─────────────────────────────────────────────────────┐
-│  ┌─────┐  ┌─────┐  ┌─────┐  ┌─────┐  ┌─────┐       │
-│  │Deposit│ │Withdraw│ │Trade│ │Transfer│ │Earn│    │
-│  └─────┘  └─────┘  └─────┘  └─────┘  └─────┘       │
-└─────────────────────────────────────────────────────┘
-```
-
-### 3. Market Overview
-
-**Purpose**: Display trending market data
-
-**UI Components**:
-| Component | Description |
-|-----------|-------------|
-| Section Header | "Market Overview" with "See All" link |
-| Horizontal RecyclerView | Scrollable list of top pairs |
-| Pair Card | Symbol, price, 24h change |
-
-**Data Per Card**:
-
-- Trading pair symbol (e.g., BTC/USDT)
-- Current price
-- 24-hour change percentage
-- Mini sparkline chart (optional)
-
-### 4. Banner Carousel
-
-**Purpose**: Display promotions and announcements
-
-**UI Components**:
-| Component | Specification |
-|-----------|---------------|
-| ViewPager2 | Horizontal scrolling banners |
-| Indicator | Dot indicators at bottom |
-| Auto-scroll | 5-second interval |
-| Image | 16:9 aspect ratio |
-
-**Banner Types**:
-
-- New listing announcements
-- Trading competitions
-- Earn product promotions
-- Feature updates
-- Educational content
+| Component  | Location                          | Interaction                                   |
+| ---------- | --------------------------------- | --------------------------------------------- |
+| Top Toggle | Top center of Home/Markets/Assets | Tap "Exchange" or "Web3" to switch interfaces |
 
 ---
 
-## Markets Screen Features
+## PART 1: Exchange Interface (CeFi)
 
-### 1. Search Functionality
+### 1. Home Screen (Exchange)
 
-**Purpose**: Find trading pairs quickly
+The primary dashboard for the centralized exchange interface.
 
-**UI Components**:
-| Component | Type | Specification |
-|-----------|------|---------------|
-| Search Bar | EditText | Full width, 44dp height |
-| Search Icon | ImageView | Left side of input |
-| Clear Button | ImageButton | Right side (when text exists) |
-| Results List | RecyclerView | Filtered pairs |
+**App Header Row**:
 
-**Input Validation**:
-| Rule | Behavior |
-|------|----------|
-| Empty query | Show all pairs |
-| No results | Show empty state |
-| Valid query | Filter in real-time |
+- **Sidebar Menu**: Access to profile, security settings, and VIP status.
+- **Search Bar**: Contextual search with "Hot searches" (e.g., "HOLO hot search").
+- **Interface Switcher**: "Exchange | Wallet" toggle.
+- **Action Hub**: Global buttons for Chat/Notifications (99+ badge), Help, and QR/Pay.
 
-**Search Scope**:
+**Portfolio Summary (Pro Mode)**:
 
-- Pair symbol (BTC, ETH)
-- Pair name (Bitcoin, Ethereum)
-- Base asset
-- Quote asset
+- **Est. Total Value (INR)**: Displays holdings in local currency with a breakdown toggle.
+- **Add Funds**: Primary yellow CTA for onboarding fiat/crypto.
+- **PNL Dashboard**: "Today's PNL" display with daily profit/loss and percentage trend.
 
-### 2. Favorites System
+**Interaction Hub**:
 
-**Purpose**: Track preferred trading pairs
+- **Promotional Banners**: Horizontal carousel for events (e.g., "Win 1 BTC").
+- **Market Rankings Grid**: High-level cards for top assets (BNB, BTC, SOL) showing:
+  - Price and 24h percentage change.
+  - Live sparkline mini-chart for trend visualization.
+- **Quick Service Cards**: High-visibility cards for main gateways:
+  - **P2P Orders**: "Buy/Sell Crypto with INR".
+  - **Send Cash / Receive Fiat**: Displays real-time reference rates (e.g., USDT/INR price).
 
-**UI Components**:
-| Component | Description |
-|-----------|-------------|
-| Star Icon | Toggle favorite status |
-| Favorites Tab | Show only favorited pairs |
-| Empty State | "No favorites yet" message |
+**Discover Feed (Multi-Tab Content)**:
 
-**Interactions**:
-| Action | Result |
-|--------|--------|
-| Tap star | Add/remove from favorites |
-| View favorites | Filter to show only favorites |
-| Pull to refresh | Update prices |
+- **Navigation Tabs**: Discover, Following, Campaign, Announcements, Live, News, Academy, Hot.
+- **Content Types**:
+  - **Campaign**: Joined events and project leaderboards (CreatorPad).
+  - **Announcements**: New listings and event logs with timing.
+  - **Live**: Thumbnail-based livestream previews with viewer counts.
+  - **News**: Chronological news feed with likes/comments/shares interaction.
+  - **Academy**: Educational modules ("A Beginner's Guide").
+  - **Hot**: Trending topics (e.g., #AltcoinSeason) and sentiment polls ("Bearish vs Bullish").
+  - **Floating CTA**: Persistent yellow "+" button for quick trade/post actions.
 
-### 3. Market Categories
+### 2. Markets (Exchange)
 
-**Purpose**: Organize trading pairs by performance
+**Spot Market**:
 
-**Categories**:
-| Tab | Filter Logic | Sort Order |
-|-----|--------------|------------|
-| All | All pairs | By volume |
-| Hot | High volume | Volume descending |
-| Gainers | Positive 24h change | Change descending |
-| Losers | Negative 24h change | Change ascending |
-| New | Recently listed | Date descending |
+- Search by symbol (BTC, ETH, etc.).
+- Categories: Favorites, USDT, FDUSD, BTC, Alts.
+- Sorting: Price, 24h Change, Volume.
 
-**UI Components per Category**:
+**Futures Market**:
 
-- TabLayout with category names
-- Badge showing count
-- RecyclerView with filtered results
+- USD-M Markets (USDT/USDC settled).
+- COIN-M Markets (Crypto settled).
+- Options & Strategy Trading.
 
-### 4. Price Alerts
+### 3. Trade (Exchange - Spot)
 
-**Purpose**: Notify users of price movements
+**Chart System**:
 
-**UI Components**:
-| Component | Type | Description |
-|-----------|------|-------------|
-| Alert Icon | ImageButton | In pair item row |
-| Alert Dialog | BottomSheet | Configure alert |
-| Price Input | EditText | Target price |
-| Condition | RadioButton | Above/Below |
-| Active Alerts | RecyclerView | List of active alerts |
+- Candlestick patterns (1m, 15m, 1h, 4h, 1d).
+- Technical Indicators: MA, EMA, BOLL, RSI, MACD.
+- Full-screen landscape mode.
 
-**Alert Configuration**:
-| Field | Type | Validation |
-|-------|------|------------|
-| Target Price | Decimal | Must differ from current price |
-| Condition | Selection | Above or Below |
-| Repeat | Boolean | One-time or recurring |
-| Notification | Selection | Push, Email, SMS |
+**Order Execution**:
 
----
+- **Limit Order**: Set specific buy/sell price.
+- **Market Order**: Instant execution at best price.
+- **Stop-Limit / OCO**: Advanced risk management.
+- **Grid Trading**: Automated buy/sell within ranges.
 
-## Trade Screen Features
+### 4. Futures (Exchange)
 
-### 1. Chart Types
+**Leverage & Margin**:
 
-**Purpose**: Visualize price data
+- Leverage Slider (1x to 125x).
+- Margin Modes: **Cross** (Share balance) vs **Isolated** (Specific allocation).
+- **TP/SL**: Take Profit and Stop Loss setup during or after entry.
 
-**Chart Types**:
-| Type | Description | Default |
-|------|-------------|---------|
-| Candlestick | OHLC candles | ✓ |
-| Line | Close price line | |
-| Area | Filled line chart | |
+**Position Management**:
 
-**Time Intervals**:
-| Interval | Label | API Parameter |
-|----------|-------|---------------|
-| 1 minute | 1m | "1m" |
-| 3 minutes | 3m | "3m" |
-| 5 minutes | 5m | "5m" |
-| 15 minutes | 15m | "15m" |
-| 30 minutes | 30m | "30m" |
-| 1 hour | 1h | "1h" |
-| 2 hours | 2h | "2h" |
-| 4 hours | 4h | "4h" |
-| 6 hours | 6h | "6h" |
-| 12 hours | 12h | "12h" |
-| 1 day | 1d | "1d" |
-| 3 days | 3d | "3d" |
-| 1 week | 1w | "1w" |
-| 1 month | 1M | "1M" |
+- Auto-Deleverage (ADL) indicator.
+- Margin Ratio (Liquidation risk meter).
+- Partial/Full Close buttons.
 
-**Chart Interactions**:
-| Gesture | Action |
-|---------|--------|
-| Pinch | Zoom in/out |
-| Swipe | Pan left/right |
-| Long press | Show crosshair with OHLC |
-| Double tap | Reset zoom |
+### 5. Assets (Exchange)
 
-**Chart Indicators**:
-| Indicator | Overlay | Description |
-|-----------|---------|-------------|
-| MA (Moving Average) | Yes | 7, 25, 99 periods |
-| EMA | Yes | Exponential MA |
-| Bollinger Bands | Yes | Volatility bands |
-| RSI | No | Separate panel |
-| MACD | No | Separate panel |
-| Volume | No | Bottom panel |
+**Wallet Types**:
 
-### 2. Order Types
+- **Spot**: Primary trading funds.
+- **Funding**: P2P and Card spending.
+- **Earn**: Staked assets.
+- **Futures**: Collateral for leveraged trades.
 
-**Purpose**: Execute different trading strategies
+**Functions**:
 
-#### Limit Order
-
-**Description**: Buy/sell at specified price or better
-
-**Input Fields**:
-| Field | Type | Validation |
-|-------|------|------------|
-| Price | Decimal | Must be > 0 |
-| Amount | Decimal | Within balance |
-| Total | Calculated | Price × Amount |
-
-**UI Components**:
-
-```
-┌─────────────────────────────────────┐
-│  Price (USDT)                       │
-│  ┌─────────────────────────────┐   │
-│  │  42,500.00         [-] [+]  │   │
-│  └─────────────────────────────┘   │
-│                                     │
-│  Amount (BTC)                       │
-│  ┌─────────────────────────────┐   │
-│  │  0.1000            [-] [+]  │   │
-│  └─────────────────────────────┘   │
-│  [25%] [50%] [75%] [100%]          │
-│                                     │
-│  Total: 4,250.00 USDT              │
-└─────────────────────────────────────┘
-```
-
-#### Market Order
-
-**Description**: Buy/sell at current market price
-
-**Input Fields**:
-| Field | Type | Validation |
-|-------|------|------------|
-| Amount | Decimal | Within balance |
-| Estimated Total | Calculated | Based on best price |
-
-**Note**: No price input - executes at market price
-
-#### Stop-Limit Order
-
-**Description**: Trigger limit order at specified price
-
-**Input Fields**:
-| Field | Type | Validation |
-|-------|------|------------|
-| Stop Price | Decimal | Trigger price |
-| Limit Price | Decimal | Order execution price |
-| Amount | Decimal | Quantity to trade |
-
-**UI Components**:
-
-```
-┌─────────────────────────────────────┐
-│  Stop Price (USDT)                  │
-│  ┌─────────────────────────────┐   │
-│  │  40,000.00                  │   │
-│  └─────────────────────────────┘   │
-│                                     │
-│  Limit Price (USDT)                 │
-│  ┌─────────────────────────────┐   │
-│  │  39,500.00                  │   │
-│  └─────────────────────────────┘   │
-│                                     │
-│  Amount (BTC)                       │
-│  ┌─────────────────────────────┐   │
-│  │  0.1000                     │   │
-│  └─────────────────────────────┘   │
-└─────────────────────────────────────┘
-```
-
-### 3. Order Book
-
-**Purpose**: Display market depth
-
-**UI Components**:
-| Section | Color | Description |
-|---------|-------|-------------|
-| Asks (Sell) | Red | Sell orders, highest to lowest |
-| Spread | Gray | Difference between best bid/ask |
-| Bids (Buy) | Green | Buy orders, highest to lowest |
-
-**Data Per Row**:
-| Column | Description |
-|--------|-------------|
-| Price | Order price |
-| Amount | Order quantity |
-| Total | Cumulative total |
-
-**Visual Elements**:
-
-- Depth bar (background) showing relative size
-- Color intensity based on order size
-
-### 4. Recent Trades
-
-**Purpose**: Show latest executed trades
-
-**UI Components**:
-| Column | Description |
-|--------|-------------|
-| Price | Execution price |
-| Amount | Trade quantity |
-| Time | Execution timestamp |
-
-**Color Coding**:
-| Trade Type | Color |
-|------------|-------|
-| Buy (taker) | Green |
-| Sell (taker) | Red |
+- **Deposit/Withdraw**: On-chain and internal transfers.
+- **Convert**: Zero-fee instant swap between large/small cap coins.
+- **Transfer**: Move funds between internal wallet types (e.g., Spot to Futures).
 
 ---
 
-## Futures Screen Features
+## PART 2: Web3 Wallet Interface (DeFi)
 
-### 1. Leverage Selection
+### 1. Home Screen (Web3 Wallet)
 
-**Purpose**: Control position size multiplier
+**MPC Wallet Management**:
 
-**UI Components**:
-| Component | Type | Description |
-|-----------|------|-------------|
-| Leverage Button | Button | Shows current leverage |
-| Slider | SeekBar | Adjust leverage |
-| Input Field | EditText | Direct input |
+- Cloud Backup (Google Drive/iCloud) for key shards.
+- Multi-chain balance aggregation.
+- Copy Address button with network selection popup.
 
-**Leverage Options**:
-| Mode | Range | Step |
-|------|-------|------|
-| Cross | 1x - 125x | Variable |
-| Isolated | 1x - 50x | Variable |
+**Asset Overview**:
 
-**Validation**:
-| Rule | Error Message |
-|------|---------------|
-| Insufficient margin | "Insufficient balance for leverage" |
-| Exceeds max leverage | "Maximum leverage is Xx" |
+- "Tokens" list vs "NFTs" tab.
+- Send/Receive/Swap/History quick buttons.
 
-### 2. Margin Mode
+**Security Banner**:
 
-**Purpose**: Define how margin is calculated
+- MPC key shard status indicator.
+- Backup verification prompts.
 
-**Modes**:
-| Mode | Description | Risk |
-|------|-------------|------|
-| Cross | All balance as collateral | Entire balance at risk |
-| Isolated | Specific amount as collateral | Only isolated amount at risk |
+### 2. Discover / DApps
 
-**UI Components**:
+**DApp Browser**:
 
-- Toggle switch between modes
-- Margin amount input (isolated)
-- Risk indicator
+- Search bar for URL entry or DApp names.
+- Recently used DApps list.
+- Categories: DeFi, Games, Social, Tools.
 
-### 3. Position Display
+**Meme Rush (Feature)**:
 
-**Purpose**: Show open positions
+- Interactive dashboard for trending "Meme" coins.
+- Real-time heatmaps and social sentiment indicators.
+- Quick-buy buttons for high-volatility tokens.
 
-**Position Data**:
-| Field | Description |
-|-------|-------------|
-| Pair | Trading pair |
-| Size | Position size |
-| Entry Price | Average entry price |
-| Mark Price | Current mark price |
-| Liquidation Price | Price of forced closure |
-| Margin | Used margin |
-| PnL | Profit and Loss |
-| ROE | Return on Equity |
+**Sentio Booster (Earn)**:
 
-**UI Components**:
+- Exclusive Web3 yield farming opportunities.
+- "Boost" button to apply multipliers to staking APR.
+- Progress bars for reward accumulation.
 
-```
-┌─────────────────────────────────────────────────────┐
-│  BTCUSDT Perpetual                    [Close]       │
-│  Size: 0.5 BTC (Long)                              │
-│  Entry: 42,000 | Mark: 43,000 | Liq: 38,000       │
-│  Margin: 420 USDT | Leverage: 50x                   │
-│  PnL: +500 USDT (+1.19%)              [TP/SL]      │
-└─────────────────────────────────────────────────────┘
-```
+### 3. Markets / DEX Swap (Web3)
 
----
+**Decentralized Exchange (DEX)**:
 
-## Assets Screen Features
+- Network Selector (BNB Chain, Ethereum, Polygon, Arbitrum, etc.).
+- Slippage Tolerance configuration (0.1%, 0.5%, 1%, or Custom).
+- Gas Fee Estimation (Slow/Average/Fast).
+- **Bridge Support**: Cross-chain asset migration within the swap interface.
 
-### 1. Balance Display
+**Market Rankings (On-Chain)**:
 
-**Purpose**: Show total and available balances
+- Trending tokens on DEXs.
+- Liquidity pool data and volume analysis.
 
-**UI Components**:
-| Component | Description |
-|-----------|-------------|
-| Total Balance | Sum of all assets |
-| Estimated Value | In USD/BTC |
-| Account Selector | Spot/Funding/Futures tabs |
+### 4. Assets (Web3)
 
-**Balance Categories**:
-| Category | Description |
-|----------|-------------|
-| Total Balance | All assets combined |
-| Available | Free to trade/withdraw |
-| In Order | Locked in open orders |
-| Earn | Locked in earn products |
+**Multi-Chain Asset List**:
 
-### 2. Asset List
+- Tokens grouped by network or consolidated view.
+- **Spam Token Filter**: Automatic hiding of suspicious airdrops.
+- Token Import (Manual contract address entry).
 
-**Purpose**: Display all held assets
+**NFT Gallery**:
 
-**List Item Components**:
-| Component | Description |
-|-----------|-------------|
-| Coin Icon | Cryptocurrency logo |
-| Coin Symbol | BTC, ETH, etc. |
-| Coin Name | Full name |
-| Balance | Total holdings |
-| Value | USD equivalent |
-| 24h Change | Price change |
-
-**Sorting Options**:
-| Option | Order |
-|--------|-------|
-| Value (High to Low) | Default |
-| Value (Low to High) | Ascending |
-| Name (A-Z) | Alphabetical |
-| 24h Change | Performance |
-
-### 3. Deposit Feature
-
-**Purpose**: Receive cryptocurrency
-
-**Flow Steps**:
-
-1. Select coin
-2. Select network (if multiple)
-3. Display address/QR
-4. Wait for confirmation
-
-**UI Components**:
-| Component | Description |
-|-----------|-------------|
-| Coin Selector | Searchable list |
-| Network Selector | Radio buttons |
-| QR Code | Scannable address |
-| Address Text | Copyable string |
-| Copy Button | Copy to clipboard |
-| Share Button | Share address |
-| Warning Banner | Network-specific warnings |
-
-### 4. Withdraw Feature
-
-**Purpose**: Send cryptocurrency
-
-**Input Fields**:
-| Field | Type | Validation |
-|-------|------|------------|
-| Coin | Selection | Must have balance |
-| Network | Selection | Must be valid for coin |
-| Address | Text | Valid address format |
-| Amount | Decimal | Within available balance |
-| Memo/Tag | Text | Required for some coins |
-
-**Validations**:
-| Rule | Error |
-|------|-------|
-| Invalid address format | "Invalid address format" |
-| Amount too low | "Minimum withdrawal is X" |
-| Amount too high | "Insufficient balance" |
-| Missing memo | "Memo/Tag is required" |
-| Address is own | "Cannot withdraw to own address" |
-
-### 5. Transfer Feature
-
-**Purpose**: Move funds between accounts
-
-**Transfer Types**:
-| From | To | Purpose |
-|------|-----|---------|
-| Spot | Funding | P2P trading |
-| Spot | Futures | Futures trading |
-| Funding | Spot | Main trading |
-| Futures | Spot | Risk management |
-
-**UI Components**:
-| Component | Description |
-|-----------|-------------|
-| From Account | Dropdown selector |
-| To Account | Dropdown selector |
-| Coin Selector | Searchable list |
-| Amount Input | With percentage buttons |
-| Available Balance | Reference display |
-
-### 6. Transaction History
-
-**Purpose**: View all past transactions
-
-**Transaction Types**:
-| Type | Icon | Description |
-|------|------|-------------|
-| Deposit | Down arrow | Incoming funds |
-| Withdraw | Up arrow | Outgoing funds |
-| Transfer | Arrows | Internal transfer |
-| Trade | Swap | Buy/sell execution |
-| Swap | Refresh | Token swap |
-| Earn | Percentage | Staking rewards |
-| Airdrop | Gift | Free tokens |
+- Visual grid of owned NFTs.
+- Metadata view (rarity, attributes).
+- Send NFT function.
 
 ---
 
-## Settings Screen Features
+## PART 3: Shared Features & Validations
 
-### 1. Profile Management
+### 1. Account & Security (Universal)
 
-**Features**:
-| Feature | Description |
-|---------|-------------|
-| Avatar | Profile picture |
-| Display Name | User's name |
-| Email | Registered email |
-| Phone | Registered phone |
-| KYC Status | Verification level |
+| Feature                     | Description                                                      |
+| --------------------------- | ---------------------------------------------------------------- |
+| Identity Verification (KYC) | Document upload and facial recognition flow (required for CeFi). |
+| 2FA (Two-Factor)            | Binance Authenticator, Google Auth, SMS, and Email.              |
+| Passkeys                    | Biometric login support (Fingerprint/FaceID).                    |
+| Wallet Activity Alerts      | Real-time push notifications for all transfers.                  |
 
-### 2. Security Settings
+### 2. Input Validations Summary
 
-**Features**:
-| Feature | Type | Description |
-|---------|------|-------------|
-| 2FA | Toggle | Google Authenticator |
-| SMS Auth | Toggle | SMS verification |
-| Email Auth | Toggle | Email verification |
-| Anti-Phishing | Toggle | Custom code in emails |
-| Withdrawal Whitelist | Toggle | Only whitelisted addresses |
-| Device Management | List | Active sessions |
+| Field Type     | Validation                                             | UI Error State                        |
+| -------------- | ------------------------------------------------------ | ------------------------------------- |
+| Crypto Address | Regex match for specific network (e.g., 0x... for EVM) | Inline text: "Invalid Address Format" |
+| Order Amount   | Amount > Min Step & Amount <= Balance                  | Grayed out "Buy/Sell" button          |
+| Slippage       | 0.01% to 50% range                                     | Yellow warning for >5% (High risk)    |
+| Gas Price      | Gwei value must be > 0                                 | Spinner or "Network Busy" alert       |
 
-### 3. Preferences
+### 3. State Management
 
-**Features**:
-| Feature | Options |
-|---------|---------|
-| Language | 20+ languages |
-| Currency | USD, EUR, GBP, etc. |
-| Theme | Light, Dark, System |
-| Notifications | Push, Email, SMS toggles |
-| Chart Settings | Default interval, indicators |
-
----
-
-## Input Validations Summary
-
-### Common Validation Rules
-
-| Field Type | Validation                     | Error Message             |
-| ---------- | ------------------------------ | ------------------------- |
-| Email      | Valid email format             | "Invalid email address"   |
-| Phone      | Valid phone format             | "Invalid phone number"    |
-| Password   | Min 8 chars, 1 upper, 1 number | "Password too weak"       |
-| Amount     | Positive number                | "Amount must be positive" |
-| Address    | Valid crypto address           | "Invalid address"         |
-| Price      | Positive number                | "Price must be positive"  |
-
-### Real-time Validation
-
-| Trigger      | Action                |
-| ------------ | --------------------- |
-| Text changed | Validate format       |
-| Focus lost   | Validate completeness |
-| Submit       | Validate all fields   |
-
----
-
-## Success/Error States
-
-### Success States
-
-| Action               | Feedback                      |
-| -------------------- | ----------------------------- |
-| Order placed         | Success dialog + notification |
-| Deposit confirmed    | Balance update + notification |
-| Withdrawal submitted | Pending status + email        |
-| Transfer complete    | Balance update + toast        |
-
-### Error States
-
-| Error Type           | UI Response            |
-| -------------------- | ---------------------- |
-| Network error        | Retry button + message |
-| Validation error     | Inline error text      |
-| Insufficient balance | Error dialog           |
-| Server error         | Generic error + retry  |
+- **Real-time Data**: WebSockets for order books and tickers.
+- **Persistence**: Local storage for user preferences (Dark Mode, Language).
+- **Loading States**: Shimmer effects for Asset lists; Skeleton screens for Home.
+- **Error Handlers**: "Pull to Refresh" on all listing screens; Retry buttons for network timeouts.
 
 ---
 
 ## Notes
 
-1. All features follow consistent UI patterns
-2. Real-time data updates via WebSocket
-3. Offline mode shows cached data with indicator
-4. All financial actions require confirmation
-5. Security actions require re-authentication
-6. Error messages are user-friendly and actionable
-7. Success states provide clear feedback
-8. Loading states prevent duplicate submissions
+1. **KYC Dependency**: Web3 Wallet can be created before KYC, but Exchange features require full verification.
+2. **Network Switching**: Changing the network in the Web3 Swap does NOT affect the Exchange Spot market.
+3. **Internal Transfers**: "Binance Transfer" allows gasless movement between CeFi Spot wallet and Web3 Wallet (selected chains).

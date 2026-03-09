@@ -1,70 +1,46 @@
-# Binance UI/UX Knowledge Base - Dialogs & Bottom Sheets
+# Binance Dialogs & Bottom Sheets Documentation
 
-## Overview
-
-This document provides comprehensive documentation of all dialog and bottom sheet components used in the Binance Android app, including types, dimensions, styling, and usage guidelines.
+Interaction components are categorized by their role in **Exchange (CeFi)** or **Web3 Wallet (DeFi)** workflows.
 
 ---
 
-## Dialog Types
+## 1. Unified Dialog Components
 
-### 1. Alert Dialogs
+### Global Alert & Confirmation
 
-**Usage**: Important notifications, warnings
+- **Alert:** Standard warning/info dialog with single "OK/Continue" action.
+- **Confirmation:** Two-button layout for high-stakes actions like "Cancel Order".
 
-**Layout**:
-```
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│                      ⚠️                                 │
-│                 Attention Required                      │
-│                                                         │
-│     Your session will expire in 5 minutes.              │
-│     Please save your work and re-login.                 │
-│                                                         │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │              [Continue]                          │   │
-│  └─────────────────────────────────────────────────┘   │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
+---
 
-**Specifications**:
-| Property | Value |
-|----------|-------|
-| Width | 85% screen width (max 320dp) |
-| Corner Radius | 12dp |
-| Background Color | `#1E2329` |
-| Padding | 24dp |
-| Dim Amount | 0.32 (32% black overlay) |
+## 2. Web3 Wallet Specific Sheets (DeFi)
 
-**Internal Elements**:
-| Element | Style |
-|---------|-------|
-| Icon | 48dp, centered |
-| Title | 18sp, Medium, White, centered |
-| Message | 14sp, Regular, `#848E9C`, centered |
-| Button | Full width, 40dp height |
+Decentralized interactions require specialized confirmation flows to handle on-chain approvals and signatures.
 
-### 2. Confirmation Dialogs
+### Signature Request (Bottom Sheet)
 
-**Usage**: Action confirmations, deletions
+Used when a DApp requests a message signature (e.g., Login with Wallet).
+| Element | Description |
+|---------|-------------|
+| **Origin** | The URL/Name of the DApp requesting the sign |
+| **Message** | The raw or formatted text/data to be signed |
+| **Sign Button**| Confirm the signature |
 
-**Layout**:
-```
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│              Cancel Order?                              │
-│                                                         │
-│     Are you sure you want to cancel this order?         │
-│     This action cannot be undone.                       │
-│                                                         │
-│  ┌─────────────────┐  ┌─────────────────────────────┐  │
-│  │     No, Keep    │  │      Yes, Cancel            │  │
-│  └─────────────────┘  └─────────────────────────────┘  │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
+### Token Approval Sheet (Limited/Unlimited)
+
+Used before a protocol can spend a user's tokens.
+| Feature | Details |
+|---------|---------|
+| **Asset** | Token icon and balance |
+| **Limit** | Input field to set maximum spend or "Unlimited" toggle |
+| **Risk Warning**| Prominent text warning about protocol permissions |
+
+### Network / Wallet Selector
+
+| Feature          | Style                                               |
+| ---------------- | --------------------------------------------------- |
+| **Network Grid** | Icons for Ethereum, BSC, Polygon, Solana            |
+| **Wallet List**  | Vertical list of user-created/imported Web3 wallets |
 
 **Specifications**:
 | Property | Value |
@@ -85,6 +61,7 @@ This document provides comprehensive documentation of all dialog and bottom shee
 **Usage**: Processing operations, API calls
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
@@ -119,6 +96,7 @@ This document provides comprehensive documentation of all dialog and bottom shee
 ### 4. Success/Error Dialogs
 
 **Success Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
@@ -137,6 +115,7 @@ This document provides comprehensive documentation of all dialog and bottom shee
 ```
 
 **Error Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
@@ -171,6 +150,7 @@ This document provides comprehensive documentation of all dialog and bottom shee
 **Usage**: Select cryptocurrency for trading, deposit, withdraw
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ─────                                                  │
@@ -221,6 +201,7 @@ This document provides comprehensive documentation of all dialog and bottom shee
 **Usage**: Select blockchain network for deposit/withdraw
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ─────                                                  │
@@ -273,6 +254,7 @@ This document provides comprehensive documentation of all dialog and bottom shee
 **Usage**: Filter transactions, orders, markets
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ─────                                                  │
@@ -328,6 +310,7 @@ This document provides comprehensive documentation of all dialog and bottom shee
 **Usage**: Confirm trade before execution
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ─────                                                  │
@@ -376,6 +359,7 @@ This document provides comprehensive documentation of all dialog and bottom shee
 **Usage**: Share content, invite friends
 
 **Layout**:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  ─────                                                  │
@@ -418,22 +402,22 @@ This document provides comprehensive documentation of all dialog and bottom shee
 
 ### Dialog Dimensions
 
-| Dialog Type | Width | Height | Radius |
-|-------------|-------|--------|--------|
-| Alert | 85% (max 320dp) | Wrap | 12dp |
-| Confirmation | 85% (max 320dp) | Wrap | 12dp |
-| Loading | 200dp | 160dp | 12dp |
-| Success/Error | 85% (max 320dp) | Wrap | 12dp |
+| Dialog Type   | Width           | Height | Radius |
+| ------------- | --------------- | ------ | ------ |
+| Alert         | 85% (max 320dp) | Wrap   | 12dp   |
+| Confirmation  | 85% (max 320dp) | Wrap   | 12dp   |
+| Loading       | 200dp           | 160dp  | 12dp   |
+| Success/Error | 85% (max 320dp) | Wrap   | 12dp   |
 
 ### Bottom Sheet Dimensions
 
-| Sheet Type | Height | Top Radius | Handle |
-|------------|--------|------------|--------|
-| Coin Selector | 70% max | 12dp | 32x4dp |
-| Network Selector | Wrap | 12dp | 32x4dp |
-| Filter Options | 80% max | 12dp | 32x4dp |
-| Order Confirmation | Wrap | 12dp | 32x4dp |
-| Share Options | Wrap | 12dp | 32x4dp |
+| Sheet Type         | Height  | Top Radius | Handle |
+| ------------------ | ------- | ---------- | ------ |
+| Coin Selector      | 70% max | 12dp       | 32x4dp |
+| Network Selector   | Wrap    | 12dp       | 32x4dp |
+| Filter Options     | 80% max | 12dp       | 32x4dp |
+| Order Confirmation | Wrap    | 12dp       | 32x4dp |
+| Share Options      | Wrap    | 12dp       | 32x4dp |
 
 ---
 
@@ -441,32 +425,32 @@ This document provides comprehensive documentation of all dialog and bottom shee
 
 ### Background Colors
 
-| Component | Color |
-|-----------|-------|
-| Dialog Background | `#1E2329` |
-| Bottom Sheet Background | `#1E2329` |
-| Dim Overlay | `#000000` at 32% |
-| Handle Color | `#474D57` |
+| Component               | Color            |
+| ----------------------- | ---------------- |
+| Dialog Background       | `#1E2329`        |
+| Bottom Sheet Background | `#1E2329`        |
+| Dim Overlay             | `#000000` at 32% |
+| Handle Color            | `#474D57`        |
 
 ### Text Styles
 
-| Element | Size | Weight | Color |
-|---------|------|--------|-------|
-| Dialog Title | 18sp | Medium | White |
-| Dialog Message | 14sp | Regular | `#848E9C` |
-| Sheet Title | 18sp | Medium | White |
-| Item Title | 16sp | Regular | White |
-| Item Subtitle | 12sp | Regular | `#848E9C` |
-| Button Text | 16sp | Medium | Context-based |
+| Element        | Size | Weight  | Color         |
+| -------------- | ---- | ------- | ------------- |
+| Dialog Title   | 18sp | Medium  | White         |
+| Dialog Message | 14sp | Regular | `#848E9C`     |
+| Sheet Title    | 18sp | Medium  | White         |
+| Item Title     | 16sp | Regular | White         |
+| Item Subtitle  | 12sp | Regular | `#848E9C`     |
+| Button Text    | 16sp | Medium  | Context-based |
 
 ### Button Styles
 
-| Button Type | Background | Text Color |
-|-------------|------------|------------|
-| Primary | `#F0B90B` | `#000000` |
-| Secondary | Transparent + Border | `#F0B90B` |
-| Danger | `#F6465D` | `#FFFFFF` |
-| Cancel | `#2B3139` | `#848E9C` |
+| Button Type | Background           | Text Color |
+| ----------- | -------------------- | ---------- |
+| Primary     | `#F0B90B`            | `#000000`  |
+| Secondary   | Transparent + Border | `#F0B90B`  |
+| Danger      | `#F6465D`            | `#FFFFFF`  |
+| Cancel      | `#2B3139`            | `#848E9C`  |
 
 ---
 
@@ -475,20 +459,20 @@ This document provides comprehensive documentation of all dialog and bottom shee
 ### Dialog Animations
 
 | Animation | Duration | Interpolator |
-|-----------|----------|--------------|
-| Enter | 200ms | Decelerate |
-| Exit | 150ms | Accelerate |
-| Dim In | 200ms | Linear |
-| Dim Out | 150ms | Linear |
+| --------- | -------- | ------------ |
+| Enter     | 200ms    | Decelerate   |
+| Exit      | 150ms    | Accelerate   |
+| Dim In    | 200ms    | Linear       |
+| Dim Out   | 150ms    | Linear       |
 
 ### Bottom Sheet Animations
 
-| Animation | Duration | Interpolator |
-|-----------|----------|--------------|
-| Slide Up | 300ms | Decelerate |
-| Slide Down | 250ms | Accelerate |
-| Drag | Real-time | - |
-| Fling | 200ms | - |
+| Animation  | Duration  | Interpolator |
+| ---------- | --------- | ------------ |
+| Slide Up   | 300ms     | Decelerate   |
+| Slide Down | 250ms     | Accelerate   |
+| Drag       | Real-time | -            |
+| Fling      | 200ms     | -            |
 
 ---
 
@@ -496,23 +480,23 @@ This document provides comprehensive documentation of all dialog and bottom shee
 
 ### Dialog Behavior
 
-| Property | Value |
-|----------|-------|
-| Cancelable on Back | Yes (except loading) |
+| Property                    | Value                |
+| --------------------------- | -------------------- |
+| Cancelable on Back          | Yes (except loading) |
 | Cancelable on Touch Outside | Yes (except loading) |
-| Dim Background | Yes |
-| Modal | Yes |
+| Dim Background              | Yes                  |
+| Modal                       | Yes                  |
 
 ### Bottom Sheet Behavior
 
-| Property | Value |
-|----------|-------|
-| Cancelable on Back | Yes |
-| Cancelable on Touch Outside | Yes |
-| Draggable | Yes |
-| Half-expanded State | No |
-| Skip Collapsed | Yes |
-| Hideable | Yes |
+| Property                    | Value |
+| --------------------------- | ----- |
+| Cancelable on Back          | Yes   |
+| Cancelable on Touch Outside | Yes   |
+| Draggable                   | Yes   |
+| Half-expanded State         | No    |
+| Skip Collapsed              | Yes   |
+| Hideable                    | Yes   |
 
 ---
 
