@@ -19,23 +19,24 @@ The Web3 Assets page is the comprehensive portfolio management view. It provides
 
 ### 2. Primary Financial Actions
 
-- **Send**: Up arrow icon; initiates the transaction flow for transferring tokens out.
-- **Receive**: Down arrow icon; displays QR code and public addresses for incoming transfers.
-- **History**: Square-clock icon; filtered view of asset-specific transactions.
-- **Approvals**: Shield-check icon; tool to manage and revoke token permissions granted to various Smart Contracts.
+- **Action Grid (Centered 4-column)**:
+  - **Send**: Up arrow icon in circular grey enclosure.
+  - **Receive**: Down arrow icon in circular grey enclosure.
+  - **History**: Square-clock icon; filtered view of asset-specific transactions.
+  - **Approvals**: Shield-check icon; tool to manage and revoke token permissions.
+- **Wallet Address Row**: Address string with **overlapping rectangles copy icon**.
 
 ### 3. Asset Classification (Tabs)
 
 - **Tokens**:
-  - **Sorting**: Horizontal sliders icon to sort by Value, Name, or 24h Change.
-  - **Network Overlays**: Token logos feature a small circular network icon at the bottom-right (e.g., the BNB logo inside a yellow hexagon for BNB Chain).
-  - **Market Performance**: Real-time price and percentage change (Green for gain, Red for loss).
+  - **Network Badging**: Asset icons feature a **small circular network badge** at the bottom-right (e.g., a tiny BNB logo on a USDT icon indicating it's on BSC).
+  - **Sparklines**: Real-time 24h performance charts next to the token value.
 - **DeFi**:
-  - **Status Notice**: "The asset data updates might be delayed by a few minutes..." alert box with an info icon.
-  - **Empty State**: Illustration with "You have no assets yet" and a yellow "Explore DeFi" link.
+  - **Total Staked**: Aggregate value of all smart contract positions.
+  - **Empty State**: Illustration + Yellow "Explore DeFi" hyperlink.
 - **NFTs**:
   - **Segmentation**: Sub-tabs for "Assets" and "History".
-  - **Network Support**: Informational footer stating support for Ethereum, Polygon, and BNB Chain networks.
+  - **Network Support**: Footer with logos for **Ethereum, Polygon, and BNB Chain** support.
 
 ### 4. Navigation & Tooling
 

@@ -98,13 +98,13 @@ This document catalogs all color values and theme definitions extracted from the
 
 ### Dark Theme Backgrounds
 
-| Color Name           | Hex Value   | Usage                |
-| -------------------- | ----------- | -------------------- |
-| Background Primary   | `#FF0B0E11` | Main background      |
-| Background Secondary | `#FF12161C` | Secondary background |
-| Background Tertiary  | `#FF181E25` | Tertiary background  |
-| Background Card      | `#FF202630` | Card backgrounds     |
-| Background Elevated  | `#FF1E2026` | Elevated surfaces    |
+| Color Name           | Hex Value   | Usage                                |
+| -------------------- | ----------- | ------------------------------------ |
+| Background Primary   | `#FF0B0E11` | Main background / Markets background |
+| Background Secondary | `#FF12161C` | Secondary background                 |
+| Background Tertiary  | `#FF181E25` | Tertiary background                  |
+| Background Card      | `#FF202630` | Card backgrounds                     |
+| Background Elevated  | `#FF1E2026` | Elevated surfaces                    |
 
 ```xml
 <color name="2131099846">#ff0b0e11</color>

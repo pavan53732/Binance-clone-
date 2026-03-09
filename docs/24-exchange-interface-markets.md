@@ -4,50 +4,70 @@ High-fidelity documentation of the Binance Markets Interface, covering all navig
 
 ## 1. Page Header & Navigation
 
-- **Search Bar:** Global search persistent at the top right.
-- **Navigation Tabs (Top):**
-  - **Favorites:** Star icon, lists user-defined watched assets.
-  - **Market Categories:** Categories like "All", "Payments", "Infrastructure", "Layer 1/Layer 2", "Meme", etc.
-  - **Pair Categories:**
-    - **USDT:** Most common trading pair.
-    - **FDUSD:** Stablecoin pair.
-    - **BTC:** Bitcoin pairs.
-    - **ETH:** Ethereum pairs.
-    - **BNB:** Binance Coin pairs.
+- **Search Component**:
+  - Rounded input field with approx. `20dp` corner radius.
+  - Background color: `#1E2329` (Dark Grey).
+  - Magnifying glass icon (Left); placeholder text "Search Coin Pairs" (Muted Grey).
+  - _Note_: This header lacks the Notification/Pay icons found on the Home screen in this version.
+- **Primary Tab Navigation**:
+  - Tabs: **Favorites, Market, Alpha, Grow, Square, Data**.
+  - **Active Indicator**: Thick yellow horizontal bar (`#F0B90B`) below the active tab text.
+  - **Inactive State**: Muted grey text (`#707A8A`) with no underline.
 
-## 2. Asset Listings Table
+## 2. Favorites Tab (Grid Specification)
 
-- **Columns:**
-  - **Name:** Asset ticker and full name (e.g., BTC/USDT). Includes a small star icon for favoriting.
-  - **Price:** Last traded price with color-coded direction (Green/Red).
-  - **24h Change %:** Percentage change with background color-coding:
-    - **Green:** Positive change (e.g., +5.20%).
-    - **Red:** Negative change (e.g., -2.15%).
-  - **24h Volume / Market Cap:** Toggleable column showing either volume or market capitalization.
-- **Sorting Controls:** Arrow icons next to column headers for ascending/descending sorts.
-- **Sparklines (Mini Charts):** Small line charts representing the 24h price trend for each asset.
+- **Layout**: 2-column vertical grid of asset cards.
+- **Card Components**:
+  - **Ticker Pair**: e.g., `BTC/USDT` (Bold White).
+  - **Change Percentage**: Percentage pill (Green/Red) positioned centrally.
+  - **Checkboxes**: Top-right corner of each card for batch deleting/moving.
+- **Primary CTA**: Large full-width yellow "Add Favorites" button at the bottom navigation anchor.
 
-## 3. Specialized Market Sections
+## 3. Market Tab (List Specification)
 
-- **Hot Markets:** Top list of highly active or trending assets.
-- **New Listings:** Recently added trading pairs.
-- **Gainer & Losers:**
-  - **Gainers:** Top percentage increases in 24h.
-  - **Losers:** Top percentage decreases in 24h.
-- **24h Volume:** Top assets by trading volume.
+- **Filter Chips**:
+  - Horizontally scrollable list of rounded pills: `USDT`, `FDUSD`, `BTC`, `ETH`, `BNB`, `Alts`, `Innovation`, `Liquid Staking`.
+  - **Active Pill**: Yellow background with dark text.
+  - **Inactive Pill**: Dark grey background with light text.
+- **Table Headers (Sticky)**:
+  - `Name / Vol`, `Last Price`, `24h Chg%`.
+  - Sorting: Dual-arrow (Up/Down) ivory/grey icons next to each header.
+- **Asset Row Micro-Details**:
+  - **Left Section**:
+    - Asset circular icon.
+    - Symbol (Bold white) on top; 24h Volume or Full Name (Muted regular) below.
+  - **Center Section**:
+    - Last Traded Price (Bold white).
+    - Local fiat equivalent (e.g., `₹5,821,432.18`) in smaller muted text below.
+  - **Right Section**:
+    - Solid color pill (Green `#0ECB81` or Red `#F6465D`) with white text.
+  - **Fav Indicator**: Small hollow/filled star icon on the extreme left or integrated into the batch edit mode.
 
-## 4. Interaction Micro-Details
+## 4. Intelligence & Data Tabs
 
-- **Hover States:** Row highlighting on hover in the asset table.
-- **Loading States:** Shimmer effects for price updates or initial table load.
-- **Empty States:** Search results with "No assets found" and a prompt to adjust filters.
-- **Star Toggle:** Smooth transition from hollow star to filled yellow star when adding to favorites.
+- **AI Sentiment Analysis**:
+  - "Powered by AI" badge (Small, italicized).
+  - Sentiment Score: Circular or boxed numerical value (e.g., `7.48`).
+  - Descriptor Labels: `Strong Positive` (Green), `Neutral` (Grey), `Strong Negative` (Red).
+- **Market Distribution Bar**:
+  - Horizontal progress-style bar showing the ratio of advancing vs. declining assets.
+  - Count display: e.g., `Advantaged: 1,425 | Declined: 892`.
+- **Zones (Category Cards)**:
+  - Rounded cards for `BNB Chain`, `DeFi`, `Seed`.
+  - Shows top gainer thumbnail and percentage change within the category.
 
-## 5. Visual Specifications
+## 5. Square (Community Feed)
 
-- **Color Palette:**
-  - Positive: `#00C087` (Emerald Green)
-  - Negative: `#CF304A` (Crimson Red)
-  - Text (Primary): White/Dark Grey depending on mode.
-  - Text (Secondary): Light Grey for ticker names and sub-details.
-- **Typography:** San-serif (e.g., Inter or Roboto) with distinct weights for price (Bold) vs. ticker (Medium).
+- Integrated sub-navigation: `Discover`, `Following`, `Hot`, `News`, `Academy`.
+- Real-time timestamping for news snippets (e.g., `2m ago`).
+
+## 6. Visual Specifications
+
+- **Background Palette**: Deep Black/Grey (`#0B0E11`).
+- **Corner Radii**:
+  - Search Bar: `20dp`.
+  - Feature Cards: `8dp`.
+  - Active Indicators: `2dp` height.
+- **Typography**:
+  - Symbols/Prices: `14sp` Bold.
+  - Sub-details: `10sp` regular weight.

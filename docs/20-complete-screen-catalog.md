@@ -191,15 +191,15 @@ This catalog provides a comprehensive inventory of all screens in the Binance An
 
 ### 9. Markets Screen (Main)
 
-| Property       | Value                                |
-| -------------- | ------------------------------------ |
-| Screen Name    | MarketsFragment                      |
-| Layout File    | `fragment_markets.xml`               |
-| Purpose        | Browse all trading pairs             |
-| Key Components | Search bar, category tabs, pair list |
-| Navigation     | → Trade (pair selected)              |
-| Input          | Search query, tab selection          |
-| Output         | Selected trading pair                |
+| Property       | Value                                                                                     |
+| -------------- | ----------------------------------------------------------------------------------------- |
+| Screen Name    | MarketsFragment                                                                           |
+| Layout File    | `fragment_markets.xml`                                                                    |
+| Purpose        | Browse all trading pairs with AI Sentiment & Intelligence insights                        |
+| Key Components | Favorites Grid, Multi-tab Navigation, AI Sentiment Card, Category Zone Cards, Ticker List |
+| Navigation     | → Trade (pair selected)                                                                   |
+| Input          | Search query, tab selection, grid/list toggle                                             |
+| Output         | Selected trading pair, market sentiment insights                                          |
 
 **UI Elements**:
 
@@ -323,15 +323,13 @@ This catalog provides a comprehensive inventory of all screens in the Binance An
 
 ### 17. Assets Screen (Main)
 
-| Property       | Value                                          |
-| -------------- | ---------------------------------------------- |
-| Screen Name    | AssetsFragment                                 |
-| Layout File    | `fragment_assets.xml`                          |
-| Purpose        | View and manage assets                         |
-| Key Components | Balance display, asset list, action buttons    |
-| Navigation     | → Deposit → Withdraw → Transfer → Asset Detail |
-| Input          | Search, filter                                 |
-| Output         | Selected asset                                 |
+| Screen Name | AssetsFragment |
+| Layout File | `fragment_assets.xml` |
+| Purpose | Comprehensive portfolio management (CeFi & DeFi) |
+| Key Components | Account Tabs (Overview, Spot, Funding, Margin, Futures, Earn), Sticky Action Bar (Deposit, Withdraw, Transfer), Balance Card with Privacy Mask, Asset List with PNL Sparklines, Margin Risk Gauge, Futures Activation Banner |
+| Navigation | → Deposit → Withdraw → Transfer → Asset Detail |
+| Input | Account tab switching, Search, "Hide 0 Balance" toggle |
+| Output | Portfolio valuation, risk metrics, individual asset history |
 
 **UI Elements**:
 

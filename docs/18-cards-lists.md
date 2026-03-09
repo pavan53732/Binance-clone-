@@ -595,16 +595,27 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 
 **Selectable Card**:
 
-```xml
-<ripple android:color="#1AFFFFFF">
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="#FF1E2329" />
-            <corners android:radius="12dp" />
-        </shape>
-    </item>
-</ripple>
-```
+````
+
+**AI Sentiment Card (Intelligence)**:
+
+| Component | Specification |
+|-----------|---------------|
+| Background | `#1E2329` (Standard Card) |
+| Badge | "Powered by AI" (Italic, 10sp) |
+| Score Font | 20sp Bold White |
+| Label Font | 12sp Medium (Color-coded) |
+| Corner Radius | 12dp |
+
+**Category Zone Card (Vertical Gainer)**:
+
+| Component | Specification |
+|-----------|---------------|
+| Background | `#202630` (Elevated Card) |
+| Title Font | 12sp Bold White |
+| Sub-text | Top Gainer Asset Symbol |
+| Pill | Solid Change % Pill (Right-aligned) |
+| Corner Radius | 8dp |
 
 ---
 
@@ -677,7 +688,20 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 │    Icon     │  │    Icon     │
 │   Title     │  │   Title     │
 └─────────────┘  └─────────────┘
-```
+````
+
+**Market Grid Card (Favorites)**:
+
+| Component     | Specification               |
+| ------------- | --------------------------- |
+| Background    | Bordered Item Background    |
+| Symbol Font   | 14sp Bold White (Top Left)  |
+| Change Pill   | Centered Solid Pill         |
+| Checkbox      | Custom Circular (Top Right) |
+| Padding       | 12dp all sides              |
+| Corner Radius | 8dp                         |
+
+---
 
 ---
 
@@ -718,3 +742,29 @@ The Web3 interface introduces specialized cards for decentralized discovery and 
 8. Loading states use shimmer effect
 9. All cards support dark theme
 10. Padding ensures content doesn't touch edges
+
+---
+
+### Asset List Item (Exchange/Web3)
+
+**Usage**: Rows in Spot, Funding, and Web3 Token lists.
+
+| Property      | Value                              |
+| ------------- | ---------------------------------- |
+| Icon Size     | 32dp                               |
+| Badge Size    | 12dp (Circular, Bottom-Right)      |
+| Title Font    | 14sp Bold White                    |
+| Subtitle Font | 12sp Regular Muted                 |
+| PNL Font      | 12sp Medium (Green/Red)            |
+| Sparkline     | 48dp x 16dp (Muted Grey/Green/Red) |
+
+### Margin Risk Gauge
+
+**Usage**: Visual risk indicator in Margin account overview.
+
+| Property   | Value                                                 |
+| ---------- | ----------------------------------------------------- |
+| Shape      | Semi-circular Arch                                    |
+| Segments   | Green (Safe) -> Yellow (Warning) -> Red (Liquidation) |
+| Pointer    | Triangular needle or central numerical readout        |
+| Background | Grey `#1E2329` track                                  |

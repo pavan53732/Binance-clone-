@@ -260,21 +260,27 @@ This document provides comprehensive specifications for all button types used in
 
 **Usage**: Context menus, info tips, and quick navigations.
 
-| Button Type           | Icon Drawable                         | Size   | Color       |
-| :-------------------- | :------------------------------------ | :----- | :---------- |
-| **Context Menu**      | `ic_more_vert.xml`                    | 24dp   | White       |
-| **Notification Dot**  | (Small yellow circle on context icon) | 8dp    | `#F0B90B`   |
-| **Scanner / QR**      | `ic_scanner.xml`                      | 24dp   | White       |
-| **Info / Tooltip**    | `ic_info_outline.xml`                 | 16dp   | `#848E9C`   |
-| **Chart Icon**        | `ic_chart_kline.xml`                  | 24dp   | White       |
-| **X Mode Toggle**     | `ic_x_logo_switch.xml`                | 40dp   | White/Grey  |
-| **Lightning Trade**   | `ic_lightning_yellow.xml`             | 32dp   | Yellow      |
-| **Security Shield**   | `ic_shield_protection.xml`            | 24dp   | White       |
-| **Allocation Toggle** | `ic_unit_switcher.xml` (%/$)          | 32dp   | Grey        |
-| **Slanted Toggle**    | `bg_slanted_buy_sell.xml`             | Custom | Green/Red   |
-| **BBO Button**        | `ic_bbo_action.xml` (Text: BBO)       | 28dp   | Yellow      |
-| **Leverage Pill**     | `ic_leverage_x.xml` (x2, x5, x10)     | 24dp   | Gray/Yellow |
-| **Funding Icon**      | `ic_funding.xml`                      | 24dp   | White       |
+| Button Type           | Icon Drawable                         | Size   | Color        |
+| :-------------------- | :------------------------------------ | :----- | :----------- |
+| **Context Menu**      | `ic_more_vert.xml`                    | 24dp   | White        |
+| **Notification Dot**  | (Small yellow circle on context icon) | 8dp    | `#F0B90B`    |
+| **Scanner / QR**      | `ic_scanner.xml`                      | 24dp   | White        |
+| **Info / Tooltip**    | `ic_info_outline.xml`                 | 16dp   | `#848E9C`    |
+| **Chart Icon**        | `ic_chart_kline.xml`                  | 24dp   | White        |
+| **X Mode Toggle**     | `ic_x_logo_switch.xml`                | 40dp   | White/Grey   |
+| **Lightning Trade**   | `ic_lightning_yellow.xml`             | 32dp   | Yellow       |
+| **Security Shield**   | `ic_shield_protection.xml`            | 24dp   | White        |
+| **Allocation Toggle** | `ic_unit_switcher.xml` (%/$)          | 32dp   | Grey         |
+| **Slanted Toggle**    | `bg_slanted_buy_sell.xml`             | Custom | Green/Red    |
+| **BBO Button**        | `ic_bbo_action.xml` (Text: BBO)       | 28dp   | Yellow       |
+| **Leverage Pill**     | `ic_leverage_x.xml` (x2, x5, x10)     | 24dp   | Gray/Yellow  |
+| **Funding Icon**      | `ic_funding.xml`                      | 24dp   | White        |
+| **Add Favorites**     | `btn_yellow_fill.xml` (Full Width)    | 48dp   | Black/Yellow |
+| **Tab Underline**     | `bg_tab_indicator_yellow.xml`         | 2dp H  | `#F0B90B`    |
+| **Filter Chip**       | `bg_chip_selectable.xml`              | 32dp   | Var (Yellow) |
+| **Borrow Button**     | `btn_yellow_small.xml`                | 28dp   | Black/Yellow |
+| **Repay Button**      | `btn_grey_small.xml`                  | 28dp   | White/Grey   |
+| **Asset Search**      | `ic_asset_search.xml`                 | 24dp   | Grey         |
 
 ### Standard Icon Button
 
@@ -603,6 +609,29 @@ This document provides comprehensive specifications for all button types used in
 
 - **Visual**: Rounded switch (Yellow toggle handle on dark track).
 - **Label**: "Use Exchange Balance" (14sp, Regular, White).
+
+### Markets Tab Indicator
+
+**Usage**: Active state for top-level navigation (Exchange/Web3, Favorites/Market).
+
+| Property  | Value                         |
+| --------- | ----------------------------- |
+| Height    | 2dp                           |
+| Color     | `#F0B90B` (Yellow)            |
+| Alignment | Bottom-centered under text    |
+| Animation | Slide transition between tabs |
+
+### Full-Width Action Button (Market/Assets)
+
+**Usage**: Primary CTAs like "Add Favorites" or "Add Funds".
+
+| Property      | Value                            |
+| ------------- | -------------------------------- |
+| Height        | 48dp                             |
+| Width         | match_parent (minus 32dp margin) |
+| Background    | Solid `#F0B90B` (Yellow)         |
+| Corner Radius | 8dp                              |
+| Text          | 16sp Bold Black                  |
 
 ---
 
