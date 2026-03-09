@@ -27,36 +27,58 @@ This document provides comprehensive documentation of the Binance **Web3 Wallet 
 - **Visibility Toggle**: Eye icon to hide/show balances.
 - **Management**: "Manage Wallets" text link at the bottom of the controller card.
 
-### 3. Promotional Carousel
+## Component Breakdown
 
-- **Format**: Horizontal auto-playing/scrollable banners.
-- **Content**: Ecosystem news, new DApp launches, and incentive programs (e.g., "Join the Mega-Drop").
-- **Pagination**: Small grey dots indicating the number of slides, with the active slide in white.
+### 1. Header & Navigation Zone
 
-### 4. Featured Ecosystem (Grid)
+- **Top Bar**: Hamburger menu (left), "Exchange | Wallet" pill toggle (center, "Wallet" active), Support (headphone) and QR Code Scanner icons (right).
+- **Search Bar**: Full-width search input field immediately below the top bar.
 
-- **Common DApps**: 4-column icon grid.
-  - **PancakeSwap**: Primary DEX integration.
-  - **Venus**: Lending protocol.
-  - **Staking**: Direct link to earn opportunities.
-  - **Airdrops**: Access to token claim events.
-- **Visuals**: Circular icons with high-contrast logos on the dark background.
+### 2. Account Summary & Core Actions
 
-### 5. Bottom Navigation Bar
+- **Wallet Selector**: "Wallet1" dropdown to switch wallets, accompanied by a copy address icon.
+- **Total Balance**: Large fiat display (e.g., "₹95.53").
+- **Primary CTA**: Large, solid yellow (`#FCD535`) "Receive" button parked to the right of the balance.
+- **Action Dashboard (Quick Links)**: A horizontal row of rounded square outlined icons.
+  - Items in view: **Alpha**, **Securities**, **Earn**, **Referral**, **More**.
 
-- **Home**: House icon (Active status: Yellow).
-- **Markets**: Chart icon.
-- **Trade**: Interchanging arrows icon (Swap/Bridge).
-- **Discover**: Compass icon.
-- **Assets**: Wallet/Card icon with yellow dot indicator for new notifications.
+### 3. Promotional & Status Widgets
+
+- **Banner Carousel**: Highlights active events (e.g., "Sentio Booster Program Phase 1", "Share $2M rewards"). Dark surface (`#2B3139`) with pagination dots and a yellow "Join" button.
+- **Micro-Widgets (Row)**:
+  - **Meme Rush**: Displays stats like "1.91K new tokens in 1h" with overlapping token avatars.
+  - **Earn Dashboard**: Displays current yield (e.g., "9.62% APY") with a mini bar chart graphic and asset (e.g., vbUSDC).
+
+### 4. Dynamic Market Feeds (Tabbed Data List)
+
+Tabs available: **Watchlist**, **Hot Searches**, **Trending**, **Alpha**.
+
+- **Hot Searches Tab**:
+  - Secondary Filters: **All**, **BSC**, **Solana**, **Ethereum**. Followed by a timeframe dropdown (`1h`).
+  - List Items: Token Icon (with network badge e.g. yellow BSC cube). Token Name (with X icon to remove). 24h Volume. Current Price. 24h Change %.
+- **Alpha Tab**:
+  - Secondary Filters: **All**, **Points+**, **Tokenized Securities**.
+  - List Items: Token name followed by special badges (e.g., a yellow `x4` badge for points multipliers).
+
+### 5. "More" Bottom Sheet Modal
+
+Triggered from the quick links. Covers the bottom area with rounded tops.
+
+- List items with right-facing chevrons (`>`):
+  - **Security Center**
+  - **Inscription**
+  - **Solana Account Rent Recovery**
+  - **Connected DApps**
+  - **History**: Wallet/Card icon with yellow dot indicator for new notifications.
 
 ## Visual Fidelity Details
 
-- **Background**: Deep charcoal/black (#0B0E11).
-- **Primary Text**: Off-white (#EAECEF).
-- **Secondary Text**: Muted grey (#707A8A).
-- **Call to Action (CTA)**: Binance Yellow (#F0B90B) used for active states and critical buttons.
-- **Spacing**: Generous padding between cards to ensure clear touch targets on mobile devices.
+- **Background**: Deep Dark Blue/Grey (`#181A20`).
+- **Surface Containers**: Dark Grey (`#2B3139`) for cards, action grids, and pills.
+- **Primary Text**: Pure White (`#FFFFFF`).
+- **Secondary/Muted Text**: Grey (`#848E9C`).
+- **Call to Action (CTA) / Accents**: Brand Yellow (`#FCD535`) used for active states and critical buttons.
+- **Spacing**: Strict `16dp` global horizontal padding. Generous vertical spacing.
 
 ---
 

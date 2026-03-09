@@ -16,7 +16,6 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
   - **Fiat:** Direct currency trading.
   - **P2P:** Peer-to-peer trading (Red "99+" chat bubble badge: 18dp diameter circle, white text on `#F6465D`).
   - **Express:** [NEW] Fast-track trading (Yellow "New" badge same as Alpha).
-  
 - **Tab Active State Indicators:**
   - Underline: 2dp Yellow `#F0B90B`, full tab width
   - Active Text: 14sp Bold `#FFFFFF`
@@ -89,7 +88,6 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
       - ETH pairs: 5 decimals (0.00000)
       - USDT pairs: 2 decimals (0.00)
       - Auto-formatting applied on field blur
-  
   - **Amount Input with Balance Controls:**
     - Quantity entry with integrated percentage allocation
     - **Decimal Precision Display:**
@@ -107,6 +105,7 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
       - Format: "BTC ▼" at right boundary
       - Same styling as price input currency pill
       - Action: Switches between base assets
+
 - **Interactive Controls:**
   - **Numeric Keypad:** Custom dark-themed keypad for rapid entry
     - Layout: 4x3 grid (1-9, ., 0, backspace)
@@ -114,12 +113,12 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
     - Background: `#1E2329` per button
     - Text: 20sp White numbers
     - Appearance: Slides up from bottom on amount field focus
-  
   - **Allocation Slider with Diamond Nodes:**
     ```
     ┌──────────◆──────────◆──────────◆──────────◆──────────┐
        0%        25%        50%       75%       100%
     ```
+
     - **Slider Track:**
       - Height: 2dp thin line
       - Color: `#2B3139` (inactive portion), `#F0B90B` (active filled portion)
@@ -143,7 +142,6 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
       - Snap-to-node: Gently snaps to nearest diamond position
       - Real-time Update: Amount field updates as slider moves
       - Visual Feedback: Active portion (0% to current) fills yellow
-  
   - **Percentage Quick Buttons:**
     - Layout: Horizontal row below slider or above amount input
     - Buttons: [25%] [50%] [75%] [100%]
@@ -155,6 +153,7 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
     - Selected State: Yellow background `#F0B90B` with Black text
     - Hover State: 1dp Yellow border
     - Interaction: Instant allocation set on tap
+
 - **Availability:** Displays "Available [Asset Balance]" with a yellow `+` icon
   - Position: Top right above amount input
   - Format: "Available: 0.500 BTC" with clickable `+` icon
@@ -187,7 +186,6 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
 ## 3. Order Book & Recent Trades
 
 - **Order Book & Recent Trades with Depth Visualization:**
-  
   - **Order Book Structure (Left or Right Panel):**
     - **Asks Section (Sell Orders - Red):**
       - Rows: 5+ visible sell orders stacked vertically
@@ -200,7 +198,6 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
         - Color: `#1ACF304A` (10% red tint)
       - Cumulative Display: Stacked visualization showing total liquidity
       - Update Frequency: Real-time flash on change (red pulse)
-    
     - **Bids Section (Buy Orders - Green):**
       - Rows: 5+ visible buy orders
       - Price Display: Green `#02C076` 13sp left-aligned
@@ -210,20 +207,18 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
         - Bar Width: Proportional to volume (max 50%)
         - Color: `#1A02C076` (10% green tint)
       - Mirrored Layout: Symmetrical with asks section
-    
     - **Spread Display (Center Separator):**
       - Current Price: Large green number (e.g., `66,184.8`) in 20sp Bold
       - Index Price: Smaller gray below (`66,182.3`) in 11sp Regular
       - Spread Value: Optional percentage display (e.g., "0.04%")
       - Background: `#1E2329` subtle highlight
       - Vertical Padding: 8dp top/bottom
-    
     - **Header Labels:**
       - Format: "Price(USDT) | Amount(BTC) | Total"
       - Font: 11sp Regular Gray `#848E9C`
       - Border Bottom: 1dp `#2B3139`
       - Sticky: Remains visible on scroll
-  
+
   - **Recent Market Trades Tape:**
     - Scroll Direction: Vertical auto-scroll (top to bottom)
     - Trade Row Format: `Price | Amount | Time`
@@ -236,19 +231,19 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
       - Sell Flash: Red tint `#1ACF304A`
     - Auto-Scroll Speed: Smooth 30fps animation
     - Pause on Touch: User can pause to review
-  
   - **Funding Rate Metrics (Top of Order Book):**
+
     ```
     Funding (8h) / Countdown
     -0.00516% / 00:20:18
     ```
+
     - **Funding Rate Display:**
       - Label: "Funding (8h)" 11sp Gray `#848E9C`
       - Value: "-0.00516%" 12sp Red/Green based on sign
       - Position: Top right corner above order book
       - Tooltip: Tap shows explanation of funding mechanism
       - Update: Every 8 hours for perpetual contracts
-    
     - **Countdown Timer:**
       - Format: "HH:MM:SS" monospace
       - Font: 12sp White
@@ -256,12 +251,14 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
       - Update: Every second real-time countdown
       - Urgency Color: Yellow `#F0B90B` when < 1 minute remaining
       - Reset: Automatically resets after funding event
-  
+
   - **Long/Short Ratio Visualization:**
+
     ```
     Long/Short Ratio
     ████████░░░░░░░░░░░░ 8.76% Long / 91.24% Short
     ```
+
     - **Dual-Color Progress Bar:**
       - Total Width: 100% of container (minus padding)
       - Long Portion: Green `#02C076` proportional to percentage
@@ -270,13 +267,11 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
       - Border: 1dp `#474D57` surrounding entire bar
       - Corner Radius: 4dp
       - Divider: Thin white line at 50% center point
-    
     - **Percentage Labels:**
       - Long %: Green `#02C076` 11sp left of bar
       - Short %: Red `#CF304A` 11sp right of bar
       - Format: "8.76%" / "91.24%"
       - Update: Real-time from market sentiment API
-    
     - **Advanced Metrics (Optional Expand):**
       - Top Trader Long/Short Ratio
       - Account Long/Short Ratio
@@ -295,9 +290,11 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
   - **Time Range:** Auto-scrolling real-time updates
 
 - **Timeframe Selector (Top of Chart):**
+
   ```
   1m | 5m | 15m | 1H | 4H | 1D | 1W | 1M
   ```
+
   - **Button Specifications:**
     - Size: 40dp width x 28dp height
     - Spacing: 4dp gap between buttons
@@ -385,6 +382,7 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
   O: 66,184.8  H: 66,250.0  L: 66,100.5  C: 66,184.8
   Vol: 1.234 BTC  +0.52%
   ```
+
   - Position: Follows finger/cursor
   - Format: Open, High, Low, Close, Volume
   - Change %: From candle open to close
@@ -408,9 +406,9 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
   - **Badge:** Red circle with white count number (e.g., "3")
   - **Order Row Layout:**
     ```
-    BTC/USDT  Buy  Limit                    
-    Price: 65,000  Amt: 0.5  Filled: 40%   
-    [Cancel] [Modify]                       
+    BTC/USDT  Buy  Limit
+    Price: 65,000  Amt: 0.5  Filled: 40%
+    [Cancel] [Modify]
     ```
   - **Columns:**
     - Pair: Bold 14sp White (e.g., "BTC/USDT")
@@ -430,52 +428,52 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
     - CTA: "Start Trading" Yellow button
 
   ### **Tab 2: Order History**
-    - **Date Range Filter:**
-      - Presets: Today, Yesterday, Last 7 Days, Last 30 Days, Custom
-      - Calendar picker for custom range
-    - **Export Button:**
-      - Icon: Download arrow 20dp
-      - Format: CSV export via email or file manager
-    - **Row Additions vs Open Orders:**
-      - Status Column: Filled, Cancelled, Expired, Partially Filled
-      - Avg Price: For partially filled orders
-      - Total: Order total in quote currency
-    - **Filter Options:**
-      - Order Type: All, Limit, Market, Stop-Limit
-      - Side: All, Buy, Sell
-      - Status: All, Filled, Cancelled, Expired
+  - **Date Range Filter:**
+    - Presets: Today, Yesterday, Last 7 Days, Last 30 Days, Custom
+    - Calendar picker for custom range
+  - **Export Button:**
+    - Icon: Download arrow 20dp
+    - Format: CSV export via email or file manager
+  - **Row Additions vs Open Orders:**
+    - Status Column: Filled, Cancelled, Expired, Partially Filled
+    - Avg Price: For partially filled orders
+    - Total: Order total in quote currency
+  - **Filter Options:**
+    - Order Type: All, Limit, Market, Stop-Limit
+    - Side: All, Buy, Sell
+    - Status: All, Filled, Cancelled, Expired
 
   ### **Tab 3: Trade History**
-    - **Execution-Level Details:**
-      - Fill Price: Individual execution prices
-      - Fill Amount: Quantity per fill
-      - Fee: Trading fee paid (with coin type)
-      - Role: Maker or Taker badge
-      - Time: Exact fill timestamp
-    - **Aggregation:** Grouped by parent order
-    - **Fee Breakdown:**
-      - Total Fees: Sum for selected period
-      - BNB Discount: If applicable, shows discount applied
-    - **Download:** CSV export with all fills
+  - **Execution-Level Details:**
+    - Fill Price: Individual execution prices
+    - Fill Amount: Quantity per fill
+    - Fee: Trading fee paid (with coin type)
+    - Role: Maker or Taker badge
+    - Time: Exact fill timestamp
+  - **Aggregation:** Grouped by parent order
+  - **Fee Breakdown:**
+    - Total Fees: Sum for selected period
+    - BNB Discount: If applicable, shows discount applied
+  - **Download:** CSV export with all fills
 
   ### **Tab 4: Funds**
-    - **Asset Balances for Current Pair:**
-      - Example for BTC/USDT:
-        - BTC: 0.50000000 (≈ $33,092.40)
-        - USDT: 10,000.00 (≈ $10,000.00)
-      - Lock Icon: Shows locked amount in open orders
-      - Available: Unlocked balance for trading
-    - **Quick Actions:**
-      - Deposit: Opens deposit modal
-      - Withdraw: Opens withdrawal form
-      - Transfer: Internal transfer between wallets
-    - **Mini Portfolio:**
-      - 24h PNL: Green/Red percentage
-      - Total Value: In BTC + fiat equivalent
-    - **Small Asset Conversion:**
-      - Link: "Convert small assets to BNB"
-      - Shows eligible dust balances
-      - One-click conversion button
+  - **Asset Balances for Current Pair:**
+    - Example for BTC/USDT:
+      - BTC: 0.50000000 (≈ $33,092.40)
+      - USDT: 10,000.00 (≈ $10,000.00)
+    - Lock Icon: Shows locked amount in open orders
+    - Available: Unlocked balance for trading
+  - **Quick Actions:**
+    - Deposit: Opens deposit modal
+    - Withdraw: Opens withdrawal form
+    - Transfer: Internal transfer between wallets
+  - **Mini Portfolio:**
+    - 24h PNL: Green/Red percentage
+    - Total Value: In BTC + fiat equivalent
+  - **Small Asset Conversion:**
+    - Link: "Convert small assets to BNB"
+    - Shows eligible dust balances
+    - One-click conversion button
 
 - **Tab Interaction:**
   - Active Tab: Yellow underline 2dp, bold text
@@ -501,9 +499,11 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
   - Focus State: 1dp Yellow border `#F0B90B`
 
 - **Category Navigation Pills (Horizontal Scroll):**
+
   ```
   Trending | Solana | Base | Stocks | Meme | Favorites | New Listings
   ```
+
   - **Pill Specifications:**
     - Size: Auto width x 32dp height (min 64dp width)
     - Spacing: 8dp gap between pills
@@ -516,18 +516,19 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
   - **Scroll Behavior:** Smooth horizontal scroll, snap to center
 
 - **Token List Item Layout:**
+
   ```
   ┌──────────────────────────────────────────────────┐
   │ [Icon] BTC  Bitcoin        $42,500   +2.5%     │
   │          USDT              Vol: 1.2B  Cap: 840B│
   └──────────────────────────────────────────────────┘
   ```
+
   - **Left Section:**
     - Token Icon: 32dp circular with network badge overlay
     - Symbol: Bold 16sp White (e.g., "BTC")
     - Name: Regular 13sp Gray `#848E9C` (e.g., "Bitcoin")
     - Stacked vertically, left-aligned
-  
   - **Right Section:**
     - Price: Bold 14sp White with auto decimal precision
     - 24h Change: Pill background Green/Red, percentage
@@ -580,6 +581,7 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
 ## 7. Advanced Order Options (TP/SL, Reduce Only, GTC)
 
 ### **TP/SL Checkbox (Take Profit / Stop Loss):**
+
 - **Label:** "TP/SL" with dotted underline (tooltip trigger)
   - Dotted Line: 1dp Gray `#848E9C`, 2dp gaps
   - Tooltip: On hover/tap, explains TP/SL mechanism
@@ -598,6 +600,7 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
 - **Position:** Left of Reduce Only checkbox, above order button
 
 ### **Reduce Only Checkbox:**
+
 - **Label:** "Reduce Only" (no underline, standard text)
 - **Checkbox Design:** Same as TP/SL (20dp square, 1dp border)
 - **Function:**
@@ -608,6 +611,7 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
 - **Position:** Right of TP/SL, left of GTC dropdown
 
 ### **GTC Dropdown (Good 'Til Cancelled):**
+
 - **Label:** "GTC" displayed on button face
 - **Button Specifications:**
   - Size: 64dp width x 32dp height
@@ -621,17 +625,14 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
      - Default selection
      - Order stays active until manually cancelled or filled
      - Badge: None (default state)
-  
   2. **IOC (Immediate-or-Cancel)**
      - Executes immediately
      - Unfilled portion automatically cancelled
      - Badge: "IOC" Yellow text on Gray pill
-  
   3. **FOK (Fill-or-Kill)**
      - Must execute entirely and immediately
      - If not possible, entire order is cancelled
      - Badge: "FOK" Yellow text
-  
   4. **OCO (One-Cancels-the-Other)**
      - Conditional order pair (Stop-Limit + Limit)
      - When one fills, other is cancelled
@@ -645,9 +646,11 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
   - Animation: Smooth fade-in + slide-down (200ms)
 
 ### **Cost Summary Row (Above Button):**
+
 ```
 Max: 0.500 BTC          Cost: 0.00 USDT
 ```
+
 - **Max Display (Left):**
   - Label: "Max:" 12sp Gray `#848E9C`
   - Value: "0.500" 12sp White Bold
@@ -682,6 +685,7 @@ Max: 0.500 BTC          Cost: 0.00 USDT
 ## 8. Convert Page Specialized View (Zero-Fee Trading)
 
 - **Simplified Two-Field Layout:**
+
   ```
   ┌─────────────────────────────────────────┐
   │  You Pay                                │
@@ -736,6 +740,7 @@ Max: 0.500 BTC          Cost: 0.00 USDT
     - Updates with current market price
 
 - **Quote Preview Screen (After "Preview Conversion"):**
+
   ```
   ┌─────────────────────────────────────────┐
   │  Exchange Rate                          │
@@ -788,7 +793,6 @@ Max: 0.500 BTC          Cost: 0.00 USDT
     - Display: Large numeric countdown "5.4s" 18sp
     - Color: White normally, Yellow when < 2 seconds
     - Position: Centered above progress bar
-  
   - **Progress Bar:**
     - Style: Linear horizontal depleting bar
     - Full Width: 100% of container
@@ -796,13 +800,11 @@ Max: 0.500 BTC          Cost: 0.00 USDT
     - Color: Yellow `#F0B90B` depleting left to right
     - Animation: Smooth linear depletion (not stepped)
     - Reset: Restarts on new quote
-  
   - **Expiration Behavior:**
     - At Zero: Quote locks, button disables
     - Message: "Quote expired" Red text
     - Auto-Refresh: Option to fetch new quote
     - Manual Refresh: "Refresh" button appears
-  
   - **Lock Animation:**
     - Visual: Screen dims slightly, lock icon fades in
     - Sound: Subtle click sound (if enabled)
@@ -826,7 +828,6 @@ Max: 0.500 BTC          Cost: 0.00 USDT
     - Action Buttons:
       - "View Transaction": Opens TX details
       - "Swap Again": Returns to convert page
-  
   - **Failure State:**
     - X Icon: Large red ✗
     - Title: "Swap Failed" 20sp Bold

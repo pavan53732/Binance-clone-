@@ -52,8 +52,13 @@ This document provides comprehensive documentation of the Binance **Web3 Trade (
 
 ## Visual Fidelity Details
 
+- **Global Style Tokens**:
+  - Background: `#181A20` | Surface Containers: `#2B3139`.
+  - Primary Text: `#FFFFFF` | Muted Text: `#848E9C`.
+  - Brand Accents/CTA: `#FCD535`.
+  - Horizontal Padding: Strict `16dp`.
 - **Order Book Highlighting**: Dynamic flickering of numbers to represent active market matching.
-- **Allocation Diamonds**: Diamond markers turn yellow when selected.
+- **Allocation Diamonds**: Diamond markers turn yellow (`#FCD535`) when selected.
 - **Input Fields**: Focus state indicated by a subtle border highlight.
 - **Footer**: Integrated tab bar for quick navigation between Home, Markets, Trade, etc.
 

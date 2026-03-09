@@ -8,29 +8,38 @@ This document provides comprehensive documentation of the Binance **Web3 Discove
 
 ---
 
-## UI Components
+## Component Breakdown
 
-### 1. Ecosystem Tabs (Top Navigation)
+The top navigation splits the ecosystem into four main pillars: **Discover**, **Earn**, **Booster**, and **DApps**. Most tabs share a top search bar ("Search for a token or protocol" or "Search for dApps or enter a URL").
 
-- **Discover**: Hub for featured projects and earning highlights.
-- **Earn**: Detailed dashboard for liquidity provision and staking.
-- **Booster**: Exclusive launchpad and rewards portal for early-stage protocols.
-- **DApps**: Browser and categorized directory of decentralized applications.
-- **Search Bar**: "Search for dApps or enter a URL" (Discover) or "Search for a token or protocol" (Earn).
+### 1. Discover Tab (Main Ecosystem Hub)
 
-### 2. Discover Tab Content
+- **Top Banner**: Carousel of high-yield or exclusive events (e.g., "Subscribe USDT to share...") with a gold `Earn` tag.
+- **"Earn on Your Tokens" Section**:
+  - Horizontal scroll of high-yield opportunity cards (`#2B3139` surface). Features APY in yellow text and a yellow `Bonus` pill.
+  - A vertical token list below the cards for other assets.
+- **"On-chain Opportunities" Section**:
+  - Promotional cards for events like "Monday Trade" featuring a "Binance Wallet Exclusive" yellow tag and top-right green `Ongoing` badge.
 
-- **Marketing Carousel**: Interactive banners highlighting "SPK Rewards" and "Join Now" CTAs.
-- **Earn on Your Tokens**: Section showing high APY opportunities.
-  - **USDT**: e.g., "13.85% APY" with "Bonus" pill.
-  - **USDC**: e.g., "10.00% APY".
-- **On-chain Opportunities**: Targeted cards for decentralized events (e.g., "Monday Trade - Binance Wallet Exclusive").
+### 2. Earn Tab (Yield Dashboard)
 
-### 3. Earn Dashboard
+- **Portfolio Summary**: "Total Assets" header with a visibility (eye) icon, order history icon, and large fiat value (e.g., `₹0`).
+- **Action Grid (Quick Links)**: 5 circular outlined icons: **Tokens**, **Loans** (with a yellow "New" badge), **Protocols**, **Alpha Pools**, **Bonus**.
+- **Promotional Banner**: Featured earn program (e.g., "Share 6M SPK reward") with a yellow "Join Now" button.
+- **Lists**: Sections for "Earn on Your Holdings" (balance + dynamic APY range) and "Trending Tokens".
 
-- **Total Assets**: INR value with a visibility (eye) toggle and history icon.
-- **Quick Navigation Icons**:
-  - **Tokens**: Individual asset staking.
+### 3. Booster Tab (Airdrop & Task Campaigns)
+
+- **Header Summary**: "My Total Rewards" and "Joined" counters.
+- **Active Programs**: Gradient surface cards for ongoing events (e.g., "Sentio XYZ"). Includes sub-data points like reward pool (gift icon) and active countdown timers (clock icon).
+- **"Finished" Grid**: A 3-column grid of completed projects.
+  - Each `#2B3139` card contains: Project Logo, Name, Participant Count (user icon), and Total Issued Rewards.
+
+### 4. DApps Tab (Web3 Browser)
+
+- **"Common Tools" Section**: Secondary filter row mapping to `Recent`, `Favorites`, `DEX`, `Staking & Restaking` to quickly filter a horizontal grid of DApp icons.
+- **Categorized Lists**: Vertical lists for "Trending DApps", "Prediction Market", etc.
+  - List items contain Logo, Title, short description string, and supporting network icons.
   - **Loans (New)**: Lending and borrowing protocols.
   - **Protocols**: Direct access to external DeFi providers.
   - **Alpha Pools**: High-risk, high-reward liquidity pools.
@@ -54,8 +63,13 @@ This document provides comprehensive documentation of the Binance **Web3 Discove
 
 ## Visual Fidelity Details
 
-- **Consistency**: All tabs maintain the dark slate theme with yellow highlight colors for active tabs and bonus pills.
-- **Status Indicators**: "Ongoing" (Green) and "Finished" (Grey) status badges on booster cards.
+- **Global Style Tokens**:
+  - Background: `#181A20` | Surface Containers: `#2B3139`.
+  - Primary Text: `#FFFFFF` | Muted Text: `#848E9C`.
+  - Brand Accents/CTA: `#FCD535`.
+  - Horizontal Padding: Strict `16dp`.
+- **Consistency**: All tabs maintain the dark slate theme with yellow (`#FCD535`) highlight colors for active tabs and bonus pills.
+- **Status Indicators**: "Ongoing" (Green `#0ECB81`) and "Finished" (Muted Grey `#848E9C`) status badges on booster cards.
 - **Action Elements**: High sensitivity on row clicks, consistent chevron icons for deep links.
 - **Promotional Effects**: Sparkle icons on AI-driven or exclusive "Star" programs.
 

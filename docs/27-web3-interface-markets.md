@@ -8,38 +8,31 @@ This document provides comprehensive documentation of the Binance **Web3 Markets
 
 ---
 
-## UI Components
+## Component Breakdown
 
-### 1. Primary Navigation Tabs
+The Markets interface is divided by three core top-level tabs: **Markets**, **Tracker**, and **Trenches** (which typically features a yellow `New` badge).
 
-- **Markets**: Standard view of trending on-chain pairs.
-- **Tracker**: Deep dive into specific wallet and signal behaviors.
-- **Trenches (New)**: High-speed discovery for meme coins and early-stage projects.
-- **Search Icon**: Magnifying glass (Top Right) for token/contract address lookup.
+### 1. Markets Tab (General Overview)
+
+- **Quick Link Action Grids**:
+  - `Meme Rush`: Displays new token count (e.g., "1919 new tokens in 1h") with stacked coin graphics.
+  - `Tokenized Securities`: E.g., Metals.
+  - `Signals`: Visualizes active gem counts on a dashed timeline.
+- **Category Feeds**: A horizontal list mapping to `Watchlist`, `Hot Searches`, `Trending`, and `Alpha`.
+- **Token Filtering Dashboard**:
+  - Chain filters (`All` globe, `BSC`, `Solana`, `Ethereum`, etc.)
+  - Timeframe selector (e.g., `1h` dropdown) and funnel filter.
+  - Sorters: `Vol / Market Cap` and `Last Price / Change`.
+  - Token rows display Logo, Name, Chain ID, Volume, Market Cap, Price, and 24h Change.
 
 ### 2. Tracker Sub-Interface
 
-- **Navigation**: `Leaderboard`, `Monitor`, `Signals`.
-- **Signals Feed**:
-  - **Sentiment Label**: Pill-shaped badge (e.g., "Neutral" in grey).
-  - **Hype Growth**: Percentage with a trend arrow (e.g., "129.15% ↗" in green).
-  - **AI Summary**: Concise sentence describing token behavior (e.g., "Frequent Selling Absorbed by Larger Bids").
-  - **Trade Button**: Rectangular yellow button.
-  - **AI Attribution**: "Token Matching & Content Generation by AI" footer with a robot icon.
-- **Smart Money Tracking**:
-  - **Purchase History**: "9 Smart Money bought ₹849,853.92 within 11 mins".
-  - **Status Bar**: Horizontal progress bar showing "Sold All" (Red) or "Expired" (Grey).
-
-### 3. Trenches Sub-Interface
-
-- **Navigation**: `Meme Rush`, `Meme Rank`, `Topic Rush`.
-- **Meme Rush (High Velocity)**:
-  - **Filters**: "New", "Finalizing", "Migrated".
-  - **X Mode Toggle**: Switch to enable/disable social data integration from X (formerly Twitter).
-  - **Token Card Details**:
-    - **Age**: e.g., "6s" (seconds since launch).
-    - **Stats**: Total holders, warnings (shield icon), and developer/distribution (DS) flags.
-    - **Trade**: Yellow button with a lightning bolt icon.
+- **Filters**: "New", "Finalizing", "Migrated".
+- **X Mode Toggle**: Switch to enable/disable social data integration from X (formerly Twitter).
+- **Token Card Details**:
+  - **Age**: e.g., "6s" (seconds since launch).
+  - **Stats**: Total holders, warnings (shield icon), and developer/distribution (DS) flags.
+  - **Trade**: Yellow button with a lightning bolt icon.
 - **Meme Rank (Liquidity/Volume)**:
   - **Metrics**: 24h Volume (B.Vol), 24h Transactions (B.Txn), Liquidity (Liq), and Holders.
   - **AI Analysis**: "What is [Token Name]?" link with a sparkle icon.
@@ -49,8 +42,13 @@ This document provides comprehensive documentation of the Binance **Web3 Markets
 
 ## Visual Fidelity Details
 
+- **Global Style Tokens**:
+  - Background: `#181A20` | Surface Containers: `#2B3139`.
+  - Primary Text: `#FFFFFF` | Muted Text: `#848E9C`.
+  - Brand Accents/CTA: `#FCD535`.
+  - Horizontal Padding: Strict `16dp`.
 - **Indicators**:
-  - **Yellow Dot**: "New" badge on the Trenches and Topic Rush tabs.
+  - **Yellow Dot**: "New" badge on the Trenches and Topic Rush tabs (`#FCD535`).
   - **Status Icons**: Poop emoji for "shitcoin" categorization, robot icon for AI tools.
 - **Typography**: Clean sans-serif with emphasized numerical data in yellow/green/red based on type.
 - **Interactive Elements**: All list items are clickable for deep-dive charts and on-chain explorer links.

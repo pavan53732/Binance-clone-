@@ -20,43 +20,61 @@ This document provides comprehensive documentation of the Binance **Exchange Ass
   - **PNL Chart Icon**: Links to detailed profit/loss analysis.
   - **History (Clock) Icon**: Links to transaction logs.
 
-## 2. Portfolio Overview (Global Card)
+## 2. Global Portfolio Header (All Tabs)
 
 - **Total Balance Display**:
-  - Prominent fiat value (e.g., INR or BTC) in **Bold 28sp**.
-  - **Privacy Toggle**: Small eye icon to mask values with asterisks (`****`).
-  - **Estimated Value**: Muted secondary text showing the value in a secondary currency.
-- **Portfolio PNL Tracker**: Horizontal row showing 24h PNL percentage and value (Green for Profit `#0ECB81`, Red for Loss `#F6465D`).
-- **Primary Sticky Action Bar**:
-  - **Deposit** (or Add Funds): Solid **Binance Yellow** background (`#F0B90B`) with Black text.
-  - **Withdraw** (or Send): Secondary Grey background (`#2B2F36`) with White text.
-  - **Transfer**: Secondary Grey background (`#2B2F36`) with White text.
+  - Top Row: "Est. Total Value" (`13sp`, Muted `#848E9C`) + Eye Icon (Privacy Toggle).
+  - To the right: PNL Chart Icon and History (Document with Clock) Icon.
+  - Value Row: Prominent fiat value (e.g., `₹15.27` or `₹0.00000000`) in **Bold 32sp** White (`#FFFFFF`), followed by currency dropdown `INR` with a chevron.
+- **Portfolio PNL Tracker**: Horizontal row showing "Today's PNL" and value. Green for Profit (`#0ECB81`), Red for Loss (`#F6465D` e.g., `-₹0.0822033(-0.54%)`). `13sp`, `FontWeight.Medium`.
 
-## 3. Account-Specific Micro-Details
+## 3. Account-Specific Tab Details
 
-### A. Spot & Funding Tabs
+### A. Overview Tab
 
-- **Utility Row**:
-  - **Search Bar**: Rounded input with magnifying glass icon.
-  - **Hide 0 Balance**: Checkbox toggle (Square with yellow check when active).
-  - **Small Asset Exchange**: Text link "Convert Small Assets to BNB" with a subtle chevron.
-- **Asset List Item**:
-  - Left: Circular icon + Symbol (Bold) + Full Name (Muted).
-  - Right: Total Amount (Bold) + Fiat Valuation (Muted) + **24h Sparkline/Price Change PNL**.
+- **Primary Action Bar**:
+  - **Add Funds**: Solid Binance Yellow background (`#FCD535`) with Black text (`#0B0E11`). Rounded bounds (`8dp`).
+  - **Send**: Secondary Dark Grey background (`#2B3139`) with White text.
+  - **Transfer**: Secondary Dark Grey background (`#2B3139`) with White text.
+- **Sub-Navigation**: "Crypto" (Active with short yellow underline) and "Account" (Muted). Search and Hexagon Settings icon aligned right.
+- **Asset List Item (Crypto)**:
+  - Top Row: Circular asset logo (e.g., OG, NOT).
+  - Center Stack: Asset Ticker (White, `16sp`, `SemiBold`). Below it, the Full Name (e.g., "Notcoin") and "Today's PNL".
+  - Right Stack (End Aligned): Asset Quantity (White, `16sp`). Below it, fiat valuation and exact PNL % change.
+  - **Action Button Row (Margin Top)**: Two buttons per asset, right-aligned: **"Earn"** and **"Trade"**. Both use Dark Grey `#2B3139` backgrounds, `12sp` White text, `4dp` corner radius.
 
-### B. Margin Tab (Risk Management)
+### B. Spot Tab
 
-- **Margin Level Gauge**:
-  - Semi-circular or linear gauge showing risk levels from **Low (Green)** to **Liquidation (Red)**.
-  - Numerical value shown in the center (e.g., "999.00" for low risk).
-- **Sub-Tabs**: Pill-style selection for "Cross" and "Isolated" margin modes.
-- **Actions**: `Borrow` (Yellow filled), `Repay` (Grey), `Transfer` (Grey).
+- **Margin Top Navigation**:
+  - Tabs: "Spot" (Active dark pill), "Cross Margin", "Isolated Margin" (Transparent pills).
+- **Primary Action Bar**: Identical to Overview (`Add Funds`, `Send`, `Transfer`).
+- **Asset List Section**:
+  - Header: "Balances" (`18sp`, `SemiBold`, White) + Search Magnifying Glass right aligned.
+  - List Item: Token Logo + Ticker (`USDT`) + Full Name (`TetherUS`, muted `#848E9C`). Right aligned is the raw balance (`0.00`). No `Earn`/`Trade` buttons show here.
 
-### C. Futures Tab (Activation & Activation)
+### C. Isolated Margin Tab
 
-- **Futures Activation Banner**: Yellow background banner for inactive accounts: "Activate your Futures account to start trading" + **Solid Yellow "Activate" button**.
-- **Margin Mode Tabs**: USDⓈ-M and COIN-M selection.
-- **PNL Display**: Real-time update of "Unrealized PNL" for open positions.
+- **Header Additions**:
+  - Top Right: "Active: 0/15" (`12sp`, Yellow `#FCD535`) indicating active isolated pairs.
+  - Under PNL Tracker: Two columns showing "Total Debt (INR)" and "Total Equity (INR)", values exactly matching formatting constraints.
+- **Primary Action Bar**:
+  - **Borrow**: Solid Yellow (`#FCD535`), Black text.
+  - **Repay**: Dark Grey (`#2B3139`), White text.
+  - **Transfer**: Dark Grey (`#2B3139`), White text.
+- **Isolated Asset Card (Highly Detailed)**:
+  - **Header Row**: Pair Name (e.g., `OG/USDC` `16sp`, White). Next to it, a **"5x" Margin Pill** (Transparent background, grey stroke, `10sp`).
+  - **Risk Gauge (Right Aligned)**: Speedometer Icon (`14x14dp`) + "Margin level 999.00" (Text and icon strictly Green `#0ECB81`, `13sp`, `Medium`).
+  - **3-Column Data Grid (Margin Top `16dp`)**:
+    - **Column 1**: Base Asset (e.g., "OG Balance", "USDC Balance").
+    - **Column 2**: Borrowed Amounts ("OG Borrowed", "USDC Borrowed").
+    - **Column 3 (End Aligned)**: Equity ("OG Equity", "USDC Equity").
+    - Data Typography: Labels are Muted `#848E9C` (`12sp`), Values are White (`14sp`, `Medium`).
+
+### D. Futures Tab (Activation & Balances)
+
+- **Futures Utilities**:
+  - Margin Mode Tabs: USDⓈ-M and COIN-M selection.
+  - Identical data structures to margin, emphasizing Unrealized PNL and isolated position allocations.
 
 ## 4. Visual Specifications
 

@@ -1,21 +1,23 @@
 # 24. Exchange Interface: Futures
 
-Binance Futures High-Fidelity Specification
+Binance Futures High-Fidelity UI/UX Specification
 
 ## Overview
 
-This document provides comprehensive documentation of the Binance **Exchange Futures Interface**, covering USDⓈ-M, COIN-M, Options, and Smart Money trading modes. It details the derivative order panel, order book visualization, options trading, and copy trading features.
+This document provides comprehensive documentation of the Binance **Exchange Futures Interface**, covering USDⓈ-M, COIN-M, Options, and Smart Money trading modes. It details the derivative order panel, order book visualization, options trading, and copy trading features based on reference images.
 
 ## 1. Global Navigation & Tab System
 
 Located at the top of the interface, providing seamless transitions between derivative products.
 
-| Tab Name        | Interface Type           | Key Visual Indicators                                                                  |
-| :-------------- | :----------------------- | :------------------------------------------------------------------------------------- |
-| **USDⓈ-M**      | USDT/USDC Margined       | Active state: Thick yellow horizontal bar below label. White circle around 'S'.        |
-| **COIN-M**      | Crypto Margined          | Underlying symbol uses coin name first (e.g., BTCUSD).                                 |
-| **Options**     | European Style Options   | Active state: Yellow horizontal bar. Yellow semi-circular notification badge on right. |
-| **Smart Money** | Copy Trading & Analytics | Yellow horizontal bar when active. Menu icon (three lines) on right.                   |
+| Tab Name        | Interface Type           | Key Visual Indicators                                                               |
+| :-------------- | :----------------------- | :---------------------------------------------------------------------------------- |
+| **USDⓈ-M**      | USDT/USDC Margined       | Active state: Thick yellow horizontal bar below label. White text.                  |
+| **COIN-M**      | Crypto Margined          | Active state: Thick yellow horizontal bar below label. White text.                  |
+| **Options**     | European Style Options   | Active state: Thick yellow horizontal bar. Yellow semi-circular notification badge. |
+| **Smart Money** | Copy Trading & Analytics | Active state: Thick yellow horizontal bar. Yellow semi-circular notification badge. |
+
+_Note: Global top-right icons include a scanner icon (with yellow dot) and a hamburger menu (`≡`)._
 
 ---
 
@@ -23,16 +25,13 @@ Located at the top of the interface, providing seamless transitions between deri
 
 Micro-details for the active trading pair (Pro Mode).
 
-- **Symbol Display**: `BTCUSDT Perp` (Left aligned, symbol in large white bold, `Perp` in a rounded gray badge).
-- **Price Metric**: `-1.64%` (Displayed in red below the symbol).
-- **Control Hub**:
-  - **Control Hub (Top Right)**:
-  - Chart Icon (Candle sticks).
-  - Context Menu (Vertical ellipsis - `...`) with yellow notification dot.
-  - Scanner/QR icon with yellow notification dot (Options page).
+- **Symbol Display**: `BTCUSDT Perp` or `BTCUSD CM Perp`.
+  - Format: Large white symbol text followed by a gray pill badge indicating the contract type (`Perp` or `CM Perp`) with a downward disclosure arrow (`▼`).
+- **Price Metric**: Percentage change (e.g., `-1.64%`) displayed in red or green below the symbol.
+- **Control Hub (Top Right)**:
+  - Chart Icon (Candlesticks).
   - Info/Document icon (`?`) with folded corner.
-- **Header Badges**: Large white symbol text (e.g., `BTCUSDT`) followed by a gray pill badge indicating the contract type (`Perp` or `CM Perp`) with a downward disclosure arrow.
-  - **Content**: Trophy icon + "Hot Campaign: ROBO Trading Challenge" + Dismiss icon (X).
+  - Context Menu (Vertical ellipsis - `...`) with yellow notification dot.
 
 ---
 
@@ -42,43 +41,35 @@ Deep-dive into the interaction panel for opening/closing positions.
 
 ### A. Core Settings Toggle
 
-- **Margin Mode Box**: `Cross` or `Isolated` (Gray container with white text and a **dotted underline** indicating tooltip availability).
-- **Leverage Box**: `20x` (Adjustable slider entry, gray container with **dotted underline**).
-- **Asset Mode (M/S)**: `S` or `M` toggle box for Single-Asset or Multi-Asset collateral usage.
+- **Margin Mode Box**: `Cross` or `Isolated` (Gray container with white text and a **dotted underline** indicating active tooltip trigger).
+- **Leverage Box**: e.g., `20x` (Adjustable slider entry, gray container with **dotted underline**).
+- **Asset Mode (M/S)**: Toggle switch button labeled `S` (Single Asset Mode) or `M` (Multi-Asset Mode).
 
 ### B. Buy/Sell Side Switcher
 
-- **Segmented Control**: Large buttons for `Buy` (Green, active) and `Sell` (Gray, inactive).
-- **Arrow Indicator**: A distinct pointed "tab" extension from the active button towards the input fields.
+- **Segmented Control**: Large buttons for `Buy` (Green) and `Sell` (Red).
+- **Arrow Indicator**: A distinct pointed "tab" extension from the active button pointing downwards towards the input fields, highlighting the active side.
 
 ### C. Input Fields & Order Types
 
-- **Selection Dropdown**: Defaulted to `Limit` (Features **dotted underline**). Options: Market, Stop-Limit, Trailing Stop, Post Only.
-- **Order Input Fields**:
-  - Dotted underline indicates active tooltip trigger for Margin Mode, Leverage, Order Type, and Asset Selector labels.
-  - Price Field: Includes `BBO` gray button and price label (e.g., `Price (USDT)`) with dotted underline.
-  - Amount Field: Flanked by `[-]` and `[+]` precision buttons. Includes `Amount` label and asset dropdown (e.g., `BTC` with ▾).
-  - **Asset Mode**: Toggle switch button labeled `S` (Single Asset Mode).
-- **Secondary Flags**:
-  - `TP/SL` Checkbox: Label has a dotted underline.
-  - `Reduce Only` Checkbox: Label has a dotted underline.
-  - `GTC` (Good 'Til Cancel): Dropdown menu next to Reduce Only.
-- **Summary Row**:
-  - `Max`: Total available contract amount.
-  - `Cost`: Label has a dotted underline (e.g., `Cost 0.00 USDT`).
-- **Precision Slider**: Horizontal line with **five diamond-shaped nodes** representing 0%, 25%, 50%, 75%, and 100% of available balance.
+- **Selection Dropdown**: Defaulted to `Limit` (Features **dotted underline**). Options typically include Market, Stop-Limit, Trailing Stop, Post Only.
+- **Price Input**: Gray container. Includes `BBO` gray text button on the left and label `Price (USDT)` on the right.
+- **Amount Input**: Gray container flanked by `[-]` and `[+]` decrement/increment buttons. Includes `Amount` label and asset dropdown (e.g., `BTC ▾` or `Cont ▾`).
+- **Precision Slider**: Horizontal track with **five diamond-shaped nodes** representing 0%, 25%, 50%, 75%, and 100% of available balance. The active segment is colored (green for long, red for short).
 
 ### D. Operational Flags
 
-- **TP/SL**: Checkbox with **dotted underline** on the label.
-- **Reduce Only**: Checkbox (No underline).
-- **GTC Dropdown**: Time-in-Force selector (`Post-Only` variant includes dotted underline).
+- **TP/SL Checkbox**: Label features a **dotted underline**.
+- **Reduce Only Checkbox**: Standard checkbox label.
+- **Post Only / GTC Checkbox**: Depending on mode, includes dropdown indicators.
 
 ### E. Financial Summary & CTA
 
-- **Max**: `0.000 BTC` (Maximum possible order size).
-- **Cost**: `0.00 USDT` (Required margin for the order).
-- **Primary Button**: Large green `Buy / Long` button (Width: match_panel).
+- **Max**: e.g., `0.000 BTC` or `0 Cont` (Maximum possible order size).
+- **Cost**: e.g., `0.00 USDT` or `0.00000000 BTC`. Label features a **dotted underline**.
+- **Primary Action Button**: Full-width bold button.
+  - Buy side: Large green `Buy / Long` button.
+  - Sell side: Large red `Sell / Short` button.
 
 ---
 
@@ -86,106 +77,78 @@ Deep-dive into the interaction panel for opening/closing positions.
 
 Real-time liquidity visualization.
 
+- **Header List Column**: Header labels `Price (USDT)` and `Amount (BTC)` arranged hierarchically over the tape.
 - **Funding Metrics**:
-  - `Funding (8h) / Countdown`: Right-aligned above the tape.
-  - `Value`: `-0.00516% / 00:20:18` (Red value indicating shorts pay longs).
-- **Price/Amount Columns**: Header labels `Price (USDT)` and `Amount (BTC)`.
+  - `Funding (8h)` (or `Funding / Countdown`): Right-aligned above the tape.
+  - Values: e.g., `-0.00516% / 00:20:18` or `0.0100% / 00:27:06`. Values can be yellow or red.
 - **The Tape**:
-  - **Asks (Red)**: 5+ lines showing sell liquidity.
-  - **Bids (Green)**: 5+ lines showing buy liquidity.
-  - **Spread Price**: Large green value (e.g., `66,184.8`) in the center with index price (`66,182.3`) below it.
-- **Long/Short Ratio Bar**:
-  - Horizontal dual-colored bar.
-  - Example: `8.76%` (Green) vs `91.24%` (Red), showing extreme bearish sentiment.
+  - **Asks (Red Top Half)**: Ordered list of sell liquidity with faint red background depth bars growing from right to left.
+  - **Spread Price Center**: Large current price value (e.g., `66,177.30`) in bold color (Green/Red) correlating to latest tick, with index price (e.g., `66,178.6`) below it with an underline.
+  - **Bids (Green Bottom Half)**: Ordered list of buy liquidity with faint green background depth bars.
+- **View Toggles**: At the top right of the order list block, controls exist to show only bids, only asks, or spread view, plus a decimal precision selector.
 
 ---
 
 ## 5. Options Interface (Specialized)
 
-UI components specific to the Options tab.
+UI components specific to the European Style Options tab.
 
-### A. Expiry Selector
+### A. Asset & Expiry Selectors
 
-- **Horizontal Scroll**: Dates formatted as `YY-MM-DD` (e.g., `26-03-09`).
-- **Active State**: Yellow underline and white bold text.
-  ###- **Sub-Tabs**: `Discover`, `Favorites`, `Call ↗`, `Put ↘`. (Note the directional arrows on Call/Put).
-- **Strike Price Layout**:
-  - Strike Price Separator: Center pill showing `Index Price` (e.g., `1941.16`) with a horizontal white line splitting Call from Put cards.
-- **Option Performance**:
-  - Leverage Badge: Gray pill with white text (e.g., `124.31x`).
-  - Mark Price: Contained in a dark gray rounded box with color-coded value.
-    d bubble displaying the `Index Price` (e.g., `1941.16`), separating In-the-Money (ITM) from Out-the-Money (OTM) options.
-- **Card Header**: Star icon (Favorites) + Strike Price (e.g., `1,925 Call`) + Gray leverage multiplier badge (`66.08x`).
-- **Metrics Grid**:
-  - `Breakeven (%)`: Precise price and percentage in brackets (e.g., `1,954.3637 (+0.72%)`).
-  - `Prob of Profit`: Percentage value with two decimal places.
-- **Market Price Box**: Dark gray block containing `Mark Price` text and a color-coded numeric value (Green/Red).
+- **Symbol Header**: e.g., `ETH Options ▼` with Index Price summary below (e.g., `1941.01`).
+- **Asset Selector Sheet**: Accessed via the symbol header. Columns for `Symbol` and `Index Price / BVOL`. Tabbed view for `Favorites`, `USDⓈ-M`, `COIN-M`, `Options` at the top.
+- **Sub-Tabs**: Horizontal scrolling layout: `Discover`, `Favorites`, `Call ↗`, `Put ↘`. Note the distinctive directional arrows on Call/Put tabs. The active tab has a thick yellow underline indicator.
+- **Expiry Date Ribbon**: Horizontal scrollable list (e.g., `26-03-09`, `26-03-10`). Active date has a dark gray pill background with white text. Shows `Time to Expiry` below (e.g., `08:19:11`).
 
-### C. Activation Prompt (Overlay)
+### B. Strike Price Cards (Grid Layout)
 
-- **UI Element**: Dark bottom-anchored card.
-- **Title**: "Wanna hedge risks?" with close (X) icon.
-- **Description**: Text prompting user to activate their Options account.
-- **CTA**: Full-width yellow `Activate Account` button.
+- **Index Price Separator**: A white pill displaying the current `Index Price` (e.g., `1941.01`), acting as the center divider line.
+- **Individual Call/Put Cards**:
+  - **Card Header**: Star icon (for Favorites), Strike Title (e.g., `1,925 Call`), and Leverage specific gray badge (e.g., `64.20x`).
+  - **Mark Price Box**: Dark teal rounded rectangle on the right containing the label `Mark Price` and large value (e.g., `30.2`).
+  - **Metrics**:
+    - `Breakeven (%)`: e.g., `1,955.2352 (+0.73%)`. Right aligned to the label.
+    - `Prob of Profit`: e.g., `38.99%`. Right aligned to the label.
+
+### C. Context Elements
+
+- **Notification Strip**: Yellow bell icon + "Important Notice: Binance Options Upgrade..." + Dismiss icon (X).
+- **Options Context Menu Overlay**: Appears from top right ellipsis. Contains grid icons for `Events`, `Copy`, `Bots`, `?`, `...` and a `Manage Features` edit link.
 
 ---
 
-## 6. Smart Money Hub (Analytics)
+## 6. Smart Money Hub (Analytics & Copy Trading)
 
-Micro-details for the advanced trader monitoring dashboard.
+The dashboard for tracking and subscribing to advanced portfolios.
 
-### A. Top Traders Tab
+### A. Hub Navigation
 
-- **Card Layout**:
-  - **Avatar**: Circle with customized graphics (e.g., cartoon cat or ninja icon).
-  - **Identity**: Username (e.g., `懂币猫的实盘`) + Subscriber count badge (`1,772 Subscribers`).
-  - **Status Label**: `Private Positions` or `No Position` in a small gray box.
-- **Performance KPIs**:
-  - `30D PnL (USD)`: Large green value (e.g., `+$732,377.76`).
-  - `30D ROI`: Percentage (e.g., `+42.55%`).
-  - `Assets (USD)`: Total portfolio value (e.g., `$1,021,889.13`).
-- **Equity Curve**: Small cyan sparkline visualization showing the 30-day profit trajectory.
-- **CTA**: Yellow `Subscribe` or `Subscribe with Code` button.
+- **Tabs**: `My Subscriptions`, `Top Traders`, `Smart Signal`. Active tab features white text and a thick yellow indicator line.
 
-### B. Smart Signal Tab
+### B. Top Traders Feed
 
-- **Symbol List**: Dominant### Smart Money Hub Details
-- **Trader Performance**: High-fidelity Sparklines (30D equity curves) in green (profit) or red (loss).
-- **Smart Signal Row**:
-  - `Dominant Flow`: `S` (Red Box) or `B` (Green Box).
-  - `Sentiment Bar`: Dual-progress bar (Long/Short ratio).
-  - `Engagement`: Person icon + `Total (Active)` interaction counts, e.g., `143 ( 53 )`. Parenthetical value indicates active/recent signals.
-  - `Action`: Gray "View" button on the far right of each signal row.
-- **Empty State**: Magnifying glass over documents icon for "No records".
-  precedes the counts.
-- **Engagement**: Green `View` button on the right of each pair card.
-- **Pairs Covered**: Traditional crypto (BTC/ETH/SOL/XRP) + Commodities (XAU/Gold, XAG/Silver).
+- **Trader Card**:
+  - **Header**: Avatar image (custom graphic/NFT) + Name string (e.g., `懂币猫的实盘`).
+  - **Badges**: Subscriber count icon (`1,772 Subscribers`) and position status tag (`Private Positions` or `No Position` in a rounded gray tag).
+  - **Sparkline**: Small cyan trajectory graph plotted over 30 days.
+  - **Key Metrics**:
+    - `30D PnL (USD)`: Large prominent value (e.g., `+$732,377.76`).
+    - `30D ROI`: e.g., `+42.55%`.
+    - `Assets (USD)`: Total managed assets (e.g., `$1,021,889.13`).
+  - **CTA**: Yellow primary button spanning the bottom (`Subscribe` or `Subscribe with Code`).
 
-### C. Empty State (Subscriptions)
+### C. Smart Signal Feed
 
-- **UI Element**: Large centered graphic (Gray magnifying glass over documents with an exclamation point).
-- **Text**: "No records" centrally aligned below the graphic.
+- **Filters**: Dropdowns for Timeframe (`30m ▼`) and Symbol (`Symbol ▼`).
+- **Symbol Selector Bottom Sheet**: Title `Symbols` with close X. Incorporates a `Search` input wrapper with a text `Cancel` button. Checkmark list for `All`, `BTCUSDT Perpetual`, `ETHUSDT Perpetual`, etc.
+- **Signal List Item**:
+  - Pair Label: e.g., `ETHUSDT Perp`.
+  - Content: `Dominant Flow` text.
+  - Direction Indicator: `S` tag in red or `B` tag in green, followed by flow volume (e.g., `19.56M USDT`).
+  - Sentiment Ratio Line: Small horizontal dual-colored thin progress bar (Green/Red).
+  - Participation Metric: Two person icon outline + numbers (e.g., `2060 ( 1238 )`).
+  - Interactive: Right-aligned chevron or `View` button to explore details.
 
----
+### D. Empty States
 
-## 7. Advanced Menu & Context Filters
-
-- **Futures Sidebar Menu**:
-  - **Events**: Promotions and leaderboard entries.
-  - **Trading Bots**: Grid trading and rebalancing entry points.
-  - **Copy Trading**: Manager/Investor dashboard.
-- **Symbol Filter Sheet**:
-  - Full-screen bottom sheet with search bar and sortable alphabetized list of "Perpetual" pairs.
-
----
-
-## Notes
-
-1. The Futures interface provides access to USDT-Margined and Coin-Margined perpetual contracts.
-2. Options trading offers European-style options with various expiry dates and strike prices.
-3. Smart Money features enable copy trading and analytics for following successful traders.
-4. Leverage can be adjusted up to 125x on certain contracts.
-5. Funding rate countdown is displayed in real-time.
-6. Long/Short ratio provides market sentiment indicators.
-7. Order book shows real-time liquidity with depth visualization.
-8. Multiple margin modes (Cross/Isolated) provide risk management options.
+- **My Subscriptions "No records"**: Used when no data exists. Centered composition displaying a gray graphical illustration of a magnifying glass positioned over document files with an exclamation mark, accompanied by the text "No records" directly beneath.
