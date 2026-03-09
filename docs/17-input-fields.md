@@ -252,9 +252,55 @@ This document provides comprehensive documentation of all input field types used
 **Increment Buttons**:
 | Property | Value |
 |----------|-------|
-| Size | 24dp x 24dp |
-| Position | Right side |
-| Step | Price tick size |
+| Size | 32dp x 32dp (circular) |
+| Icon | Minus/Plus in 16sp |
+| Position | Horizontal extremities (left/right of input) |
+| Step | Price tick size (exchange-defined) |
+| Color (Normal) | `#848E9C` Medium Gray |
+| Color (Hovered) | Yellow `#F0B90B` |
+| Repeat Behavior | Hold for continuous increment (300ms delay, 100ms repeat) |
+| Haptic Feedback | Light vibration on step (if enabled) |
+
+**"Suggest [Price]" Label** (NEW):
+- **Position**: Below input baseline (2dp gap), left-aligned
+- **Font**: 10sp Regular
+- **Color**: `#848E9C` Muted Gray
+- **Dynamic Content**: Shows calculated suggestion (e.g., "Suggest 678.07")
+- **Behavior**:
+  - Appears only on field focus
+  - Disappears on blur
+  - Updates in real-time with market
+  - Tap to auto-fill suggested price
+- **Visibility Logic**:
+  - Hidden when user entered manual value
+  - Hidden for Market order type
+  - Shown for Limit, Stop-Limit orders
+
+**Embedded Currency Pill** (NEW):
+- **Format**: "USDT ▼" inside right boundary of input
+- **Background**: `#2B3139` rounded pill shape
+- **Corner Radius**: 16dp (fully rounded)
+- **Text**: 13sp White `#FFFFFF`
+- **Arrow**: 12dp chevron `#848E9C` pointing down
+- **Action**: Tap expands dropdown to switch quote currencies (USDT/USDC/BUSD)
+- **Padding**: 8dp horizontal, 6dp vertical
+- **Min Width**: 64dp
+
+**Decimal Precision Rules by Pair Type** (ENHANCED):
+| Pair Type | Decimals | Example | Auto-Formatting |
+|-----------|----------|---------|-----------------|
+| BTC pairs | 8 decimals | 0.00000000 | Rounds on blur |
+| ETH pairs | 5 decimals | 0.00000 | Rounds on blur |
+| USDT pairs | 2 decimals | 0.00 | Rounds on blur |
+| BNB pairs | 3 decimals | 0.000 | Rounds on blur |
+| Low-price altcoins | 4-6 decimals | 0.0000 | Dynamic by tick size |
+
+**Market Price Placeholder** (NEW):
+- **Trigger**: Market order type selected
+- **Display**: "Market Price" in 14sp Italic Gray `#848E9C`
+- **Position**: Centered in input field
+- **Behavior**: Read-only, non-editable
+- **Purpose**: Indicates price fills at current market rate
 
 **Input Validations**:
 | Rule | Condition | Error Message |
@@ -266,11 +312,20 @@ This document provides comprehensive documentation of all input field types used
 | Min Price | >= minimum | "Price too low" |
 | Max Price | <= maximum | "Price too high" |
 
-**BBO (Best Bid/Offer) Variant**:
-
-- **Layout**: Features a distinct yellow `BBO` button on the far right of the price input field.
-- **Interaction**: Clicking `BBO` instantly populates the input with the current best liquidity price.
-- **Visuals**: Square-ish button with yellow border and text inside the input container.
+**BBO (Best Bid/Offer) Button** (ENHANCED):
+- **Position**: Far right INSIDE input container (flush with edge)
+- **Size**: 48dp width x 32dp height
+- **Background**: `#2B3139` Dark Gray
+- **Text**: "BBO" in 12sp Yellow `#F0B90B`
+- **Border**: None (seamless integration)
+- **Action**: Instantly populates best bid price from order book
+- **Visibility**: 
+  - Always visible in Margin mode
+  - Optional in Spot mode (user preference)
+  - Hidden in Market order type
+- **Interaction**: Single tap fills price, no confirmation needed
+- **Cooldown**: 100ms debounce to prevent accidental double-taps
+- **Integration**: Embedded within input track boundaries, appears as part of input field
 
 ---
 

@@ -256,7 +256,7 @@ This document provides comprehensive specifications for all button types used in
 | **Border**     | 1dp solid `#2B3139` (Left/Right edges of input) |
 | **Background** | Transparent or `#1E2329`                        |
 
-### Micro-Action Context Buttons
+### Micro-Action Context Buttons (ENHANCED):
 
 **Usage**: Context menus, info tips, and quick navigations.
 
@@ -272,7 +272,7 @@ This document provides comprehensive specifications for all button types used in
 | **Security Shield**   | `ic_shield_protection.xml`            | 24dp   | White        |
 | **Allocation Toggle** | `ic_unit_switcher.xml` (%/$)          | 32dp   | Grey         |
 | **Slanted Toggle**    | `bg_slanted_buy_sell.xml`             | Custom | Green/Red    |
-| **BBO Button**        | `ic_bbo_action.xml` (Text: BBO)       | 28dp   | Yellow       |
+| **BBO Button**        | Text badge "BBO" (no icon)            | 48dp x 32dp | Yellow `#F0B90B` |
 | **Leverage Pill**     | `ic_leverage_x.xml` (x2, x5, x10)     | 24dp   | Gray/Yellow  |
 | **Funding Icon**      | `ic_funding.xml`                      | 24dp   | White        |
 | **Add Favorites**     | `btn_yellow_fill.xml` (Full Width)    | 48dp   | Black/Yellow |
@@ -281,6 +281,42 @@ This document provides comprehensive specifications for all button types used in
 | **Borrow Button**     | `btn_yellow_small.xml`                | 28dp   | Black/Yellow |
 | **Repay Button**      | `btn_grey_small.xml`                  | 28dp   | White/Grey   |
 | **Asset Search**      | `ic_asset_search.xml`                 | 24dp   | Grey         |
+| **Dropdown Arrow**    | Chevron down icon                     | 12dp   | `#848E9C`    |
+| **Precision +/-**     | Minus/Plus circular buttons           | 32dp   | `#848E9C` → Yellow |
+
+**BBO Button Specifications** (NEW):
+- **Type**: Text badge button (no icon)
+- **Dimensions**: 48dp width x 32dp height
+- **Text**: "BBO" in 12sp Bold Yellow `#F0B90B`
+- **Background**: `#2B3139` Dark Gray
+- **Border**: None (flush integration with input field)
+- **Corner Radius**: 4dp
+- **Usage**: Embedded in price input fields for instant best bid fill
+- **State**: Normal only (no hover/disabled states)
+- **Integration**: Appears as part of input field container
+
+**Dropdown Arrow Button** (NEW):
+- **Type**: Icon-only trigger button
+- **Icon**: Chevron down (▼)
+- **Size**: 12dp chevron
+- **Color**: `#848E9C` Medium Gray
+- **Container**: Embedded in currency pill
+- **Usage**: Switches between quote currencies in input fields
+- **Interaction**: Tap expands dropdown menu
+- **Placement**: Right side of currency text (e.g., "USDT ▼")
+
+**Precision Adjustment Buttons** (NEW):
+- **Type**: Circular increment/decrement buttons
+- **Icons**: Minus (-) and Plus (+)
+- **Size**: 32dp diameter circle
+- **Icon Size**: 16sp
+- **Colors**:
+  - Normal: `#848E9C` Medium Gray
+  - Hovered: Yellow `#F0B90B`
+  - Active (pressed): Darker Yellow `#D4A10A`
+- **Placement**: Horizontal extremities of numeric inputs
+- **Behavior**: Hold for continuous adjustment
+- **Step Value**: Exchange-defined tick size
 
 ### Standard Icon Button
 
@@ -647,14 +683,42 @@ This document provides comprehensive specifications for all button types used in
 - **Currency Pill**: Unit (e.g., `USDC`) displayed as a gray pill inside the field.
 - **Market Placeholder**: Displays "Market Price" when Market order is selected.
 
-### Buy/Sell Pointer Button
+### Buy/Sell Pointer Button (ENHANCED)
 
-**Usage**: Active execution button in Spot/Margin/Alpha.
+**Usage**: Active execution button in Spot/Margin/Alpha with directional flow indicator.
 
-- **Visual**: Rounded rectangle with a directional "pointer" extension on the outer edge (Right for Buy, Left for Sell).
+- **Visual**: Rounded rectangle with a directional "pointer" extension on the outer edge
+  - **Buy Button**: Right-pointing triangular extension on right edge
+  - **Sell Button**: Left-pointing triangular extension on left edge
+  - **Extension Size**: 8dp height x 44dp width (full button height)
+  - **Extension Color**: Matches button background (Green/Red)
+  - **Function**: Visual flow indicator pointing toward form
+  - **Integration**: Seamless merge with button body, no visible seam
+  
 - **States**:
-  - **Buy**: Background `#02C076` (Green), Text "Buy [Asset]" (Binance White).
-  - **Sell**: Background `#CF304A` (Red), Text "Sell [Asset]" (Binance White).
+  - **Buy**:
+    - Background: Solid `#02C076` (Green)
+    - Text: "Buy [Asset]" in White 16sp Bold
+    - Extension: Same green, right-pointing
+  - **Sell**:
+    - Background: Solid `#CF304A` (Red)
+    - Text: "Sell [Asset]" in White 16sp Bold
+    - Extension: Same red, left-pointing
+  - **Disabled**:
+    - Background: `#474D57` (Dark Gray)
+    - Text: `#707A8A` (Muted Gray)
+    - Extension: Same gray color
+  - **Loading**:
+    - Background: 60% opacity of normal color
+    - Spinner: White circular 20dp centered
+    - Text: Hidden or "Processing..."
+
+- **Dimensions**:
+  - Height: 44dp (standard), 48dp (large variant)
+  - Width: Full container minus pointer extension
+  - Corner Radius: 4dp on non-pointer edges
+  - Text: 16sp Bold White
+  - Padding: 24dp horizontal (excluding extension)
 
 ---
 

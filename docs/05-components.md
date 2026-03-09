@@ -452,6 +452,211 @@ ConstraintLayout
 
 ---
 
+---
+
+## Trading-Specific Components
+
+### Order Book Component
+**Usage:** Real-time liquidity visualization on trade pages
+
+**Structure:**
+```
+┌─────────────────────────────┐
+│ Price(USDT) | Amount(BTC)  │
+├─────────────────────────────┤
+│ 66,250.0    │ 0.543   ████ │  ← Ask (Red)
+│ 66,240.5    │ 1.234   ████ │
+│ 66,230.0    │ 0.876   ███  │
+│ 66,184.8    │ SPREAD       │  ← Current Price (Green)
+│ 66,180.0    │ 2.345   ████ │  ← Bid (Green)
+│ 66,170.5    │ 0.987   ███  │
+└─────────────────────────────┘
+```
+
+**Specifications:**
+| Property | Asks (Sell) | Bids (Buy) |
+|----------|-------------|------------|
+| Price Color | `#CF304A` Red | `#02C076` Green |
+| Amount Color | `#FFFFFF` White | `#FFFFFF` White |
+| Depth Bar Color | `#1ACF304A` (10% red) | `#1A02C076` (10% green) |
+| Row Height | 24dp | 24dp |
+| Font Size (Price) | 13sp | 13sp |
+| Font Size (Amount) | 12sp | 12sp |
+| Depth Bar Height | 20dp | 20dp |
+| Max Bar Width | 50% of column | 50% of column |
+
+**Features:**
+- Real-time flash on update (color pulse)
+- Auto-scroll to stay centered on spread
+- Cumulative depth visualization
+- Tap row to auto-fill price in order form
+
+---
+
+### Recent Trades Ticker
+**Usage:** Live market trade feed
+
+**Layout:**
+```
+Price      Amount     Time
+66,185.0   0.0234     14:32:45  ← Green (buy)
+66,184.5   0.1543     14:32:44  ← Red (sell)
+66,185.5   0.0876     14:32:43  ← Green (buy)
+```
+
+**Specifications:**
+| Property | Value |
+|----------|-------|
+| Row Height | 20dp |
+| Price Color | Green `#02C076` (buy) / Red `#CF304A` (sell) |
+| Amount Color | White `#FFFFFF` 11sp |
+| Time Color | Gray `#848E9C` 10sp |
+| Scroll Direction | Vertical auto-scroll (top to bottom) |
+| Update Frequency | Real-time (websocket) |
+| Flash Effect | Background tint on new trade (200ms) |
+
+---
+
+### Candlestick Chart Component
+**Usage:** Primary price visualization
+
+**Types Supported:**
+1. Candlestick (default)
+2. Line chart
+3. Heikin Ashi
+4. Hollow candles
+5. Area chart
+6. OHLC Bars
+
+**Specifications:**
+| Property | Value |
+|----------|-------|
+| Candle Up Color | Green `#02C076` |
+| Candle Down Color | Red `#CF304A` |
+| Wick Width | 1dp |
+| Candle Body Min Width | 4dp |
+| Volume Bar Height | 40dp (bottom pane) |
+| Grid Lines | 4 horizontal, light gray `#2B3139` |
+| Y-Axis Labels | Right-aligned, 11sp Gray |
+| X-Axis Labels | Bottom, timestamps 12sp |
+
+---
+
+### Timeframe Selector
+**Usage:** Chart period selection
+
+**Layout:**
+```
+[1m] [5m] [15m] [1H] [4H] [1D] [1W] [1M]
+         ↑ Active (Yellow)
+```
+
+**Specifications:**
+| Property | Value |
+|----------|-------|
+| Button Size | 40dp width x 28dp height |
+| Spacing | 4dp gap between buttons |
+| Background (Inactive) | `#2B3139` Dark Gray |
+| Text (Inactive) | 12sp White |
+| Background (Active) | Yellow `#F0B90B` |
+| Text (Active) | 12sp Bold Black |
+| Corner Radius | 4dp |
+| Scroll | Horizontal if overflow |
+
+---
+
+### Technical Indicator Overlay
+**Usage:** Chart analysis tools
+
+**Common Indicators:**
+1. **Volume** (default, bottom pane)
+2. **MA (Moving Average)** - MA7, MA25, MA99
+3. **EMA (Exponential MA)** - EMA9, EMA21
+4. **Bollinger Bands** - Upper/Middle/Lower
+5. **MACD** - Histogram + signal line (sub-pane)
+6. **RSI** - 0-100 oscillator (sub-pane)
+
+**Specifications:**
+| Component | Specification |
+|-----------|---------------|
+| Menu Access | "..." icon top-right toolbar |
+| Multiple Instances | Allowed (e.g., MA20 + MA50 + MA200) |
+| Opacity Control | Slider per indicator |
+| Pane Management | Resizable dividers |
+| Persistence | Saved to chart template |
+
+---
+
+### Long/Short Ratio Bar
+**Usage:** Market sentiment visualization
+
+**Layout:**
+```
+Long/Short Ratio
+████████░░░░░░░░░░░░ 8.76% / 91.24%
+↑ Green        ↑ Red
+```
+
+**Specifications:**
+| Property | Value |
+|----------|-------|
+| Total Width | 100% of container |
+| Height | 8dp |
+| Long Color | Green `#02C076` |
+| Short Color | Red `#CF304A` |
+| Border | 1dp `#474D57` |
+| Divider | 1dp White at 50% center |
+| Percentage Labels | 11sp matching color |
+| Update | Real-time from API |
+
+---
+
+### Funding Rate Display
+**Usage:** Perpetual contract funding info
+
+**Layout:**
+```
+Funding (8h) / Countdown
+-0.00516% / 00:20:18
+```
+
+**Specifications:**
+| Property | Value |
+|----------|-------|
+| Label Font | 11sp Gray `#848E9C` |
+| Value Font | 12sp Red/Green based on sign |
+| Countdown Background | `#2B3139` rounded pill |
+| Countdown Font | 12sp White Monospace |
+| Update Frequency | Every second (countdown), 8h (rate) |
+| Urgency Color | Yellow when < 1 minute |
+
+---
+
+### Allocation Slider (Diamond Nodes)
+**Usage:** Position size percentage selector
+
+**Layout:**
+```
+┌──────────◆──────────◆──────────◆──────────◆──────────┐
+   0%        25%        50%       75%       100%
+```
+
+**Specifications:**
+| Property | Value |
+|----------|-------|
+| Track Height | 2dp |
+| Track Color (Inactive) | `#2B3139` |
+| Track Color (Active) | `#F0B90B` (filled portion) |
+| Node Shape | Diamond (rotated square 45°) |
+| Node Size | 12dp x 12dp |
+| Node Color | Yellow `#F0B90B` |
+| Positions | 0%, 25%, 50%, 75%, 100% (exact) |
+| Snap Behavior | Gentle snap to nearest node |
+| Floating Label | 10sp White on `#2B3139` pill |
+| Label Animation | Slides with thumb, auto-hide 2s |
+
+---
+
 ## Notes
 
 1. Custom UI kit components ensure consistent styling
