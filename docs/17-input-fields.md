@@ -118,17 +118,15 @@ This document provides comprehensive documentation of all input field types used
 
 ---
 
-### 3. Search Fields
+### 3. Search Bar
 
-**Usage**: Markets search, coin search, transaction search
+**Usage**: Home screen, markets search, coin selection
 
 **Layout**:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  🔍 Search coins...                      ✕      │   │
-│  └─────────────────────────────────────────────────┘   │
+│  🔥  HOLO hot search                                   🔍 │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -136,14 +134,10 @@ This document provides comprehensive documentation of all input field types used
 | Property | Value |
 |----------|-------|
 | Height | 44dp |
-| Corner Radius | 8dp |
-| Background Color | `#1E2329` |
-| Text Size | 16sp |
-| Hint Color | `#848E9C` |
-| Search Icon | 24dp, left side |
-| Clear Icon | 24dp, right side (when text exists) |
-| Padding Left | 48dp (icon + padding) |
-| Padding Right | 48dp |
+| Background | `#2B3139` (Rounded 22dp) |
+| Left Icon | Flame icon (contextual) |
+| Placeholder | "HOLO hot search" |
+| Right Icon | Search (Magnifying glass) |
 
 **Search Icon**:
 | Property | Value |
