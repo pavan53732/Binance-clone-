@@ -6,13 +6,34 @@ Components are categorized by their UI role in either the **Exchange** or **Web3
 
 ## 1. Exchange Card Components (CeFi)
 
-### Asset Cards (Exchange)
+### Asset Cards (Exchange Portfolio)
 
-| Property       | Specification            | Description            |
-| -------------- | ------------------------ | ---------------------- |
-| **Background** | `#1E2329`                | Dark theme default     |
-| **Actions**    | Deposit, Withdraw, Trade | Quick action footer    |
-| **Metrics**    | Balance, USD Value       | Portfolio summary data |
+| Property         | Specification               | Description                   |
+| ---------------- | --------------------------- | ----------------------------- |
+| **Background**   | `#1E2329`                   | Dark theme default            |
+| **Primary Text** | `₹15.29` (Est. Total Value) | 24sp, Bold, White             |
+| **PNL Text**     | `-₹1.27 (-7.67%)`           | 12sp, Medium, Red (`#F6465D`) |
+| **Actions**      | "Add Funds" Button          | Yellow, 40dp height           |
+
+### Market Overview Grid Cards (Exchange Home)
+
+**Usage**: BNB, SOL, BTC overview on Home screen.
+
+| Element         | Specification           | Details                              |
+| --------------- | ----------------------- | ------------------------------------ |
+| **Container**   | 170dp x 180dp (approx)  | Corner Radius: 12dp, Bg: `#1E2329`   |
+| **Coin Symbol** | 14sp, Medium, `#848E9C` | e.g., "BNB"                          |
+| **Price**       | 18sp, Bold, White       | e.g., "610.53"                       |
+| **Change %**    | 14sp, Medium, Green/Red | e.g., "-1.64%"                       |
+| **Sparkline**   | 140dp x 40dp            | Red (`#F6465D`) or Green (`#2EBD85`) |
+
+### Quick Action Hub Cards (Exchange Home)
+
+| Card Type      | Primary Text            | Secondary Info / Meta                  |
+| -------------- | ----------------------- | -------------------------------------- |
+| **P2P Orders** | "P2P Orders"            | "Buy/Sell Crypto with INR"             |
+| **Send Cash**  | "Send Cash"             | "Send Crypto and Receive Fiat"         |
+| **Details**    | **Ref.Rate:** `₹101.16` | Includes small green sparkline preview |
 
 ---
 
