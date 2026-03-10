@@ -53,7 +53,8 @@ The Markets interface serves as the primary hub for exploring and analyzing trad
 
 - Markets explicitly for spot trading.
 - **Quote Asset Sub-navigation**:
-  - A scrollable row of secondary tabs to filter by quote currency: `USDC`, `USDT`, `FDUSD`, `TUSD`, `BTC`, `ETH`, `BNB`, `Alts`, `Innovation`, `Liquid Staking`.
+  - A scrollable row of secondary tabs to filter by quote currency: `USDC`, `USDT`, `U`, and potentially others like `FDUSD`, `TUSD`, `BTC`, `ETH`, `BNB`, `Alts`, `Innovation`, `Liquid Staking` (context-dependent).
+  - **Reference Images**: Image 03 shows USDC pairs, Image 04 shows USDT pairs, Image 05 shows "U" pairs.
   - The UI maintains the `Name / Vol`, `Last Price`, `24h Chg%` sorted table structure.
 - **Market Labels**:
   - Next to certain tickers (e.g., `PEPE`), a yellow `10x` badge is shown next to the `/USDC` or `/USDT` quote indicating supported Margin trading multiplier.
@@ -77,6 +78,7 @@ The Markets interface serves as the primary hub for exploring and analyzing trad
 - Specialized interface for options contracts with distinct filtering.
 - **Options Sub-navigation**:
   - Horizontal list of base assets: `BTC`, `ETH`, `BNB`, `SOL`, `XRP`, `DOGE`... and a dropdown `All ▾` button on the far right.
+  - **Reference Image**: Image 08 shows the BTC chain options view as the primary/default display.
 - **Contract Naming Convention**:
   - Symbol structure: `Asset - Date - Strike - Type` (e.g., `BTC-260327-145000-C`, `BTC-260313-62000-P`).
 - **Volume & Price**:

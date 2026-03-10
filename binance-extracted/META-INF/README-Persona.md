@@ -1,1 +1,0 @@
-See [here](https://docs.withpersona.com/docs/android-sdk-v2-licenses) for a list of the 3rd party software that we use and their associated licenses. Be sure to include these licenses in your app.
