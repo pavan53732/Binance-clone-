@@ -8,7 +8,7 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 
 ## 1. Primary App Header (Global)
 
-**Layout Structure**: `[User Menu] [Chat] | [Exchange | Wallet Toggle] | [Support] [Profile]`
+**Layout Structure**: `[User Menu] [Chat] | [Exchange | Wallet Toggle] | [Support] [Profile/Scan]`
 
 ### Component Hierarchy
 
@@ -19,7 +19,7 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 - **Icon Design**: Three horizontal lines
   - Line length: 18px
   - Line thickness: 2px stroke
-  - Line color: #FFFFFF (100% opacity white)
+  - Line color: #EAECEF (90% opacity white, NOT pure white)
   - Spacing between lines: 4px (gap)
   - End caps: Rounded (line-cap: round)
   - Total height: 14px (3 lines + 2 gaps)
@@ -33,14 +33,14 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 - **Icon Base**: Speech bubble with tail
   - Bubble dimensions: 20x16px
   - Tail: 4px triangle at bottom-right
-  - Color: #FFFFFF
+  - Color: #EAECEF
   - Stroke: 2px outline
 - **Notification Badge**:
   - Shape: Perfect circle (16px diameter)
   - Background: #F5C518 (Binance yellow)
   - Position: Top-right, overlapping icon by 4px
   - Badge offset: x=+12px, y=-12px from icon top-right
-  - Text: "99+" (white, 10pt bold, SF Pro Display)
+  - Text: "99+" (black/dark grey, 10pt bold, SF Pro Display)
   - Text alignment: Centered in circle
   - Badge border: None (flat)
   - Badge shadow: rgba(0, 0, 0, 0.3), 2px blur
@@ -49,73 +49,75 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 
 - **Container Specifications**:
   - Background: #2B3139 (dark grey-blue, RGB: 43, 49, 57)
-  - Border radius: 8px (per corner)
+  - Border radius: 8px (uniform)
   - Height: 32px
-  - Width: 200px (calculated: 2 tabs × 80px + 40px padding)
-  - Horizontal padding: 20px total (10px per side)
+  - Width: ~180px (auto-sized to content)
+  - Horizontal padding: 4px total (2px per side for gap)
   - Vertical padding: 0px (content fills height)
   - Position: Centered horizontally in header
   - Elevation: 0px (flat design)
   - Border: None
 
 - **"Exchange" Button (Active State)**:
-  - Background: Transparent (rgba(0, 0, 0, 0))
-  - Text: "Exchange" (6 characters)
-  - Font: 15pt semi-bold (SF Pro Display SemiBold)
-  - Letter spacing: 0.5px (slight tracking)
-  - Text color: #FFFFFF (100% opacity)
-  - Horizontal padding: 12px left/right
+  - Background: #1E2329 (darker grey highlight, NOT transparent)
+  - Border Radius: 6px (inner rounded corners)
+  - Text: "Exchange" (8 characters)
+  - Font: 14pt semi-bold (SF Pro Display SemiBold) - NOT 15pt
+  - Letter spacing: 0.3px
+  - Text color: #EAECEF (90% opacity, NOT pure white)
+  - Horizontal padding: 16px left/right
   - Vertical alignment: Center
   - Line height: 32px (matches container)
-  - Active indicator: None (text weight indicates state)
+  - Active indicator: Background highlight (NOT text weight)
 
 - **"Wallet" Button (Inactive State)**:
-  - Background: Transparent
+  - Background: Transparent (no highlight)
   - Text: "Wallet" (6 characters)
-  - Font: 15pt regular (SF Pro Display Regular)
-  - Letter spacing: 0.5px
+  - Font: 14pt regular (SF Pro Display Regular)
+  - Letter spacing: 0.3px
   - Text color: #848E9C (RGB: 132, 142, 156, 60% opacity grey)
-  - Horizontal padding: 12px left/right
+  - Horizontal padding: 16px left/right
   - Hover state: Background #474D57 at 20% opacity
   - Transition: 200ms ease-in-out
 
-#### 1.1.4 Support Headset Icon
+#### 1.1.4 Support Icon
 
 - **Position**: 16px from right edge, vertical center
-- **Icon Design**: Over-ear headphones
+- **Icon Design**: Customer support headset
   - Headband: Curved arc (2px stroke)
   - Ear cups: Two circles (6px diameter each)
-  - Connector: Vertical lines (2px stroke)
-  - Total height: 20px
-  - Total width: 18px
-  - Color: #FFFFFF
+  - Microphone: Small boom arm extending from left ear cup (2px stroke)
+  - Total height: 22px
+  - Total width: 20px
+  - Color: #EAECEF (90% opacity white)
   - Line weight: 2px uniform
   - End caps: Rounded
 - **Touch Target**: 48x48px
 - **Interaction**: Opens customer support chat interface
 
-#### 1.1.5 Profile Avatar Icon
+#### 1.1.5 Profile/Scan Icon
 
 - **Position**: 12px right of headset icon (final element)
-- **Icon Design**: User silhouette
+- **Icon Design**: User profile with scan indicator
   - Head: Circle (8px diameter)
   - Shoulders: Semi-ellipse (12px width)
-  - Color: #FFFFFF
+  - Scan line: Diagonal line across profile (2px stroke)
+  - Color: #EAECEF (90% opacity)
   - Stroke: 2px outline
 - **Touch Target**: 48x48px
-- **Interaction**: Opens user profile menu
+- **Interaction**: Opens user profile or scan QR menu
 
 ### Header Layout Specifications
 
-| Element      | X Position | Y Position | Width | Height | Color   | Font Size | Font Weight |
-| ------------ | ---------- | ---------- | ----- | ------ | ------- | --------- | ----------- |
-| User Menu    | 16px       | 16px       | 24px  | 24px   | #FFFFFF | -         | -           |
-| Chat Icon    | 52px       | 16px       | 24px  | 24px   | #FFFFFF | -         | -           |
-| Badge        | 68px       | 12px       | 16px  | 16px   | #F5C518 | 10pt      | Bold        |
-| Exchange Tab | 108px      | 16px       | 80px  | 32px   | #FFFFFF | 15pt      | SemiBold    |
-| Wallet Tab   | 188px      | 16px       | 80px  | 32px   | #848E9C | 15pt      | Regular     |
-| Support Icon | 320px      | 16px       | 24px  | 24px   | #FFFFFF | -         | -           |
-| Profile Icon | 356px      | 16px       | 24px  | 24px   | #FFFFFF | -         | -           |
+| Element      | X Position | Y Position | Width | Height | Color    | Font Size | Font Weight |
+| ------------ | ---------- | ---------- | ----- | ------ | -------- | --------- | ----------- |
+| User Menu    | 16px       | 16px       | 24px  | 24px   | #EAECEF  | -         | -           |
+| Chat Icon    | 52px       | 16px       | 24px  | 24px   | #EAECEF  | -         | -           |
+| Badge        | 68px       | 12px       | 16px  | 16px   | #F5C518  | 10pt      | Bold        |
+| Exchange Tab | 108px      | 16px       | 80px  | 32px   | #EAECEF  | 14pt      | SemiBold    |
+| Wallet Tab   | 188px      | 16px       | 80px  | 32px   | #848E9C  | 14pt      | Regular     |
+| Support Icon | 320px      | 16px       | 24px  | 24px   | #EAECEF  | -         | -           |
+| Profile Icon | 356px      | 16px       | 24px  | 24px   | #EAECEF  | -         | -           |
 
 ### Header Container
 
@@ -220,9 +222,9 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 
 #### 3.1.1 Estimated Total Value Label
 
-- **Text**: "Est. Total Value(INR)"
-- **Font**: 12pt regular (SF Pro Display Regular)
-- **Color**: #848E9C (RGB: 132, 142, 156, 60% opacity)
+- **Text**: "Est. Total Value(INR)" (no space before parenthesis)
+- **Font**: 14pt regular (SF Pro Display Regular) - NOT 12pt
+- **Color**: #EAECEF (90% opacity, NOT #848E9C)
 - **Letter Spacing**: 0.3px
 - **Position**: 16px from left margin, 16px below search bar
 - **Line Height**: 20px
@@ -230,11 +232,11 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 
 #### 3.1.2 Expand Arrow (∧)
 
-- **Position**: 4px right of label text
-- **Dimensions**: 10x10px
+- **Position**: 8px right of label text (NOT 4px)
+- **Dimensions**: 12x12px (NOT 10x10px)
 - **Design**: Upward-pointing chevron
 - **Line Weight**: 2px
-- **Color**: #FFFFFF (100% opacity)
+- **Color**: #EAECEF (90% opacity white)
 - **Rotation**: 0° (pointing up)
 - **Animation**: Rotates 180° to ∨ when expanded (300ms ease)
 - **Touch Target**: 24x24px
@@ -242,18 +244,18 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 #### 3.1.3 Main Balance Display
 
 - **Text**: "₹15.29"
-- **Font**: 36pt bold (SF Pro Display Bold)
-- **Color**: #FFFFFF (100% opacity)
+- **Font**: 40pt bold (SF Pro Display Bold) - NOT 36pt
+- **Color**: #FFFFFF (100% opacity white)
 - **Position**: 16px from left, 8px below label
 - **Character Breakdown**:
-  - Rupee symbol (₹): Unicode U+20B9, width 24px
-  - Integer part (15): width 48px
-  - Decimal point (.): width 8px
-  - Fractional part (29): width 48px
-  - Total width: ~128px
+  - Rupee symbol (₹): Unicode U+20B9, width 28px
+  - Integer part (15): width 56px
+  - Decimal point (.): width 10px
+  - Fractional part (29): width 56px
+  - Total width: ~150px
 - **Letter Spacing**: -0.5px (slight kerning for numbers)
-- **Baseline**: Aligned at 36px from component top
-- **Line Height**: 40px
+- **Baseline**: Aligned at 40px from component top
+- **Line Height**: 44px
 
 #### 3.1.4 Add Funds Button
 
@@ -287,8 +289,8 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 
 **Label Component**:
 
-- **Text**: "Today's PNL"
-- **Font**: 12pt regular (SF Pro Display Regular)
+- **Text**: "Today's PNL" (with dotted underline)
+- **Font**: 14pt regular (SF Pro Display Regular) - NOT 12pt
 - **Color**: #848E9C (60% opacity grey)
 - **Position**: 16px from left, 12px below balance
 - **Tooltip Underline**:
@@ -297,23 +299,23 @@ This document provides an exhaustive, pixel-perfect technical specification of t
   - Dot Spacing: 2px gap
   - Color: #848E9C (same as text)
   - Position: 2px below text baseline
-  - Length: Matches text width (~72px)
+  - Length: Matches text width (~84px)
   - Trigger: Shows PNL calculation tooltip on hover/long-press
 
 **Value Component (Negative State)**:
 
 - **Text**: "-₹1.27 (-7.67%)"
-- **Font**: 12pt medium (SF Pro Display Medium)
+- **Font**: 14pt medium (SF Pro Display Medium) - NOT 12pt
 - **Color**: #F6465D (RGB: 246, 70, 93 - Binance red)
 - **Position**: 8px right of label
 - **Character Breakdown**:
-  - Minus sign (−): Unicode U+2212, width 12px (not hyphen)
-  - Rupee symbol (₹): width 18px
-  - Amount (1.27): width 48px
+  - Minus sign (−): Unicode U+2212, width 14px
+  - Rupee symbol (₹): width 20px
+  - Amount (1.27): width 56px
   - Space: 4px
-  - Parentheses: width 16px total
-  - Percentage (7.67%): width 52px
-  - Total width: ~150px
+  - Parentheses: width 18px total
+  - Percentage (7.67%): width 60px
+  - Total width: ~172px
 
 **Dropdown Arrow (∨)**:
 
@@ -380,9 +382,9 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 
 ### Container Specifications
 
-- **Background**: #1E2329 (RGB: 30, 35, 41)
+- **Background**: #2B3139 (RGB: 43, 49, 57 - NOT #1E2329)
 - **Border Radius**: 12px (uniform)
-- **Height**: 100px (fixed)
+- **Height**: 120px (fixed, NOT 100px)
 - **Width**: Calculated as (Screen Width - 32px) for 16px margins
 - **Margin**: 16px horizontal, 12px top (below portfolio)
 - **Padding**: 16px internal on all sides
@@ -425,16 +427,16 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 #### 4.1.3 Bitcoin Icon
 
 - **Container Shape**: Regular octagon (8 equal sides)
-- **Dimensions**: 40x40px (flat to flat)
+- **Dimensions**: 48x48px (flat to flat) - NOT 40x40px
 - **Border**:
-  - Stroke: 2px
+  - Stroke: 2.5px (NOT 2px)
   - Color: #FFFFFF (100% opacity)
   - Line join: Miter (sharp corners)
 - **Background**: Transparent (shows card background)
 - **Inner Symbol**: Bitcoin letter (₿)
   - Unicode: U+20BF
   - Color: #F5C518 (yellow)
-  - Font Size: 24pt bold
+  - Font Size: 28pt bold (NOT 24pt)
   - Vertical alignment: Center
   - Horizontal alignment: Center
 - **Position**: 16px from left, 32px from top
@@ -443,8 +445,8 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 #### 4.1.4 "Win 1 BTC" Text
 
 - **Content**: "Win 1 BTC" (9 characters including spaces)
-- **Font**: 16pt bold (SF Pro Display Bold)
-- **Color**: #FFFFFF (100% opacity)
+- **Font**: 18pt bold (SF Pro Display Bold) - NOT 16pt
+- **Color**: #EAECEF (90% opacity, NOT pure white)
 - **Letter Spacing**: 0.3px
 - **Position**: 12px right of Bitcoin icon
 - **Vertical Alignment**: Center with icon (baseline at 20px)
@@ -454,7 +456,7 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 #### 4.1.5 "Join" Button
 
 - **Container**:
-  - Background: #2B3139 (RGB: 43, 49, 57)
+  - Background: #474D57 (RGB: 71, 77, 87 - medium grey, NOT #2B3139)
   - Border Radius: 6px
   - Height: 32px
   - Width: 70px (fixed)
@@ -467,14 +469,14 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 - **Text**:
   - Content: "Join" (4 characters)
   - Font: 14pt medium (SF Pro Display Medium)
-  - Color: #FFFFFF (100% opacity)
-  - Letter Spacing\*\*: 0.5px
+  - Color**: #EAECEF (90% opacity, NOT pure white)
+  - Letter Spacing**: 0.5px
   - Horizontal Alignment: Center
   - Vertical Alignment: Center (baseline at 18px)
 
 - **Touch Feedback**:
   - Press state: Scale 0.96 (100ms ease)
-  - Background lighten: #474D57 (15% lighter)
+  - Background lighten: #5E6670 (15% lighter)
   - Haptic: Light impact
 
 ### Pagination Indicator
@@ -571,9 +573,9 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 
 #### Card Specifications (All Cards)
 
-- **Width**: 170px (fixed, calculated: (ScreenWidth - 56px) / 2)
-- **Height**: 140px (fixed)
-- **Background**: #1E2329 (RGB: 30, 35, 41)
+- **Width**: 168px (fixed, NOT 170px)
+- **Height**: 160px (fixed, NOT 140px)
+- **Background**: #2B3139 (RGB: 43, 49, 57 - NOT #1E2329)
 - **Border Radius**: 12px (uniform)
 - **Padding**: 16px internal on all sides
 - **Border**: None
@@ -587,10 +589,10 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 **BNB Token Icon**:
 
 - **Shape**: Circle
-- **Diameter**: 32px
+- **Diameter**: 36px (NOT 32px)
 - **Background**: #F5C518 (Binance yellow)
 - **Inner Logo**: Binance cube (isometric)
-  - Cube size: 20x20px
+  - Cube size: 24x24px (NOT 20x20px)
   - Cube rotation: Isometric (30° vertical, 45° horizontal)
   - Cube color: #1E2329 (dark grey)
   - Line weight: 2px
@@ -604,31 +606,31 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 - **Font**: 16pt medium (SF Pro Display Medium)
 - **Color**: #848E9C (RGB: 132, 142, 156, 60% opacity)
 - **Letter Spacing**: 0.5px
-- **Position**: 8px right of icon
+- **Position**: 12px right of icon (NOT 8px)
 - **Vertical Alignment**: Center with icon (baseline at 20px)
 - **Text Transform**: Uppercase
 
 #### Price Display
 
 - **Text**: "610.53"
-- **Font**: 24pt bold (SF Pro Display Bold)
-- **Color**: #FFFFFF (100% opacity)
+- **Font**: 28pt bold (SF Pro Display Bold) - NOT 24pt
+- **Color**: #EAECEF (90% opacity, NOT pure white)
 - **Position**: 16px from left, 8px below header row
 - **Character Widths**:
-  - "610": 72px
-  - ".": 8px
-  - "53": 48px
-  - Total: ~128px
+  - "610": 84px
+  - ".": 10px
+  - "53": 56px
+  - Total: ~150px
 - **Letter Spacing**: -0.5px (tight kerning for numbers)
-- **Baseline**: 28px from component top
-- **Line Height**: 28px
+- **Baseline**: 32px from component top
+- **Line Height**: 32px
 
 #### Percentage Change (Negative State)
 
 **Down Arrow (▼)**:
 
 - **Shape**: Equilateral triangle (pointing down)
-- **Size**: 8x8px
+- **Size**: 10x10px (NOT 8x8px)
 - **Color**: #F6465D (Binance red)
 - **Position**: Left of percentage value
 - **Vertical Alignment**: Center with text baseline
@@ -639,7 +641,7 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 - **Content**: "1.64%"
 - **Font**: 14pt medium (SF Pro Display Medium)
 - **Color**: #F6465D (RGB: 246, 70, 93)
-- **Position**: 4px right of arrow
+- **Position**: 6px right of arrow (NOT 4px)
 - **Letter Spacing**: 0px
 - **Decimal Precision**: 2 decimal places
 
@@ -687,15 +689,15 @@ End: (140, 42)
 **SOL Token Icon**:
 
 - **Shape**: Circle
-- **Diameter**: 32px
-- **Background**: #000000 (pure black)
+- **Diameter**: 36px (consistent with BNB)
+- **Background**: #0B0E11 (pure black, NOT #000000)
 - **Inner Logo**: SOLANA gradient symbol
   - Design: 3 stacked parallelograms
   - Gradient:
     - Top bar: #00D4FF (cyan)
     - Middle bar: #9945FF (purple)
     - Bottom bar: #00FFA3 (green)
-  - Bar dimensions: 20x4px each
+  - Bar dimensions: 24x5px each (NOT 20x4px)
   - Spacing: 2px between bars
   - Rotation: -20° (tilted left)
 - **Position**: Top-left (16px from left, 16px from top)
@@ -711,8 +713,8 @@ End: (140, 42)
 #### Price Display
 
 - **Text**: "81.00"
-- **Font**: 24pt bold
-- **Color**: #FFFFFF
+- **Font**: 28pt bold (SF Pro Display Bold) - consistent with BNB
+- **Color**: #EAECEF (90% opacity)
 - **Position**: 16px from left, 8px below header
 
 #### Percentage Change (Negative State)
@@ -750,10 +752,10 @@ End: (140, 42)
 
 #### Container
 
-- **Background**: #1E2329
+- **Background**: #2B3139 (RGB: 43, 49, 57 - NOT #1E2329)
 - **Border Radius**: 12px
-- **Height**: 160px (taller than market cards)
-- **Width**: 170px
+- **Height**: 180px (taller than market cards, NOT 160px)
+- **Width**: 168px (consistent with market cards)
 
 #### Title Row
 
@@ -816,18 +818,25 @@ End: (140, 42)
 
 ### Card 4: Send Cash (Action Card)
 
+#### Container
+
+- **Background**: #2B3139 (RGB: 43, 49, 57)
+- **Border Radius**: 12px
+- **Height**: 180px (consistent with P2P card)
+- **Width**: 168px
+
 #### Title Row
 
 - **Text**: "Send Cash"
 - **Font**: 14pt medium
-- **Color**: #EAECEF
+- **Color**: #EAECEF (90% opacity, NOT pure white)
 - **Chevron**: Same as P2P card (right-aligned)
 
 #### Subtitle
 
 - **Text**: "Send Crypto and Receive Fiat"
 - **Font**: 12pt regular
-- **Color**: #848E9C
+- **Color**: #848E9C (60% opacity)
 - **Line Height**: 18px
 - **Line Spacing**: 4px
 - **Lines**: 2 lines (wraps after "and")
@@ -2085,7 +2094,7 @@ Point 8: (60, 20)  - End high
 ### Container Specifications
 
 - **Position**: Fixed at bottom of viewport
-- **Height**: 56px (plus Safe Area inset for iOS home indicator)
+- **Height**: 60px (plus Safe Area inset for iOS home indicator, NOT 56px)
 - **Background**: #181A20 (RGB: 24, 26, 32 - slightly darker than main background)
 - **Top Border**: 1px solid #2B3139 (subtle separator line)
 - **Z-Index**: Highest stacking context (stays above all scrollable content)
@@ -2130,8 +2139,8 @@ Point 8: (60, 20)  - End high
 
 **Active State**:
 
-- **Icon Color**: #181A20 (Dark grey/black lines)
-- **Icon Fill**: #F5C518 (Binance yellow background fill for active tab)
+- **Icon Color**: #F5C518 (Binance yellow fill, NOT #181A20)
+- **Icon Fill**: #F5C518 (solid yellow background for active tab icon)
 - **Icon Style**: Filled/Dual-tone (Yellow body with dark borders)
 - **Text Color**: #F5C518 (Binance yellow)
 - **Font Weight**: Medium (500)
@@ -2144,8 +2153,9 @@ Point 8: (60, 20)  - End high
 #### 1. Home (Active state shown by default)
 
 - **Icon Design (Inactive)**: Simple house outline. Central pentagon base with angled roof. Default door cut-out in center.
-- **Icon Design (Active)**: House interior filled with #F5C518. Door outline remains #181A20.
+- **Icon Design (Active)**: House interior filled with #F5C518 (solid yellow). Door outline remains visible.
 - **Label**: "Home"
+- **Active Color**: #F5C518 (yellow)
 
 #### 2. Markets
 
