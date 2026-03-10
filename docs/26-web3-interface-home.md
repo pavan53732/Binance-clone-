@@ -10,37 +10,40 @@ This document provides comprehensive documentation of the Binance **Web3 Wallet 
 
 ## UI Components
 
-### 1. Global Header
+### 1. Global Header & Navigation Zone
 
 - **Menu Trigger**: Three-line hamburger icon (Top Left).
-- **Title**: "Web3 Wallet" centered text.
+- **Navigation Toggle**: Centered segmented pill toggle containing `Exchange` and `Wallet` (Wallet is active, highlighted state).
 - **Action Icons** (Top Right):
-  - **Shield Icon**: Access to security settings and wallet protection.
-  - **Scanner Icon**: QR code scanner for DApp connections (WalletConnect).
-  - **Profile Icon**: Link to User ID and general settings.
+  - **Support/Headphones Icon**: Link to customer service/help.
+  - **Scanner Icon**: QR code scanner for DApp connections.
+
+- **Search Bar**:
+  - Rounded pill search field immediately below the top bar.
+  - Left-aligned placeholder text: "Search".
+  - Right-aligned magnifying glass icon.
+  - Placed inside a dark surface container.
 
 ### 2. Wallet Multi-Chain Controller
 
-- **Selector**: Dropdown displaying "Wallet 1" (or custom name) with a chevron down icon.
-- **Copy Address**: Overlapping squares icon to copy the current active wallet address.
-- **Total Balance**: Large font display of aggregate value across all supported chains (e.g., INR, USD).
-- **Visibility Toggle**: Eye icon to hide/show balances.
-- **Management**: "Manage Wallets" text link at the bottom of the controller card.
-
-## Component Breakdown
-
-### 1. Header & Navigation Zone
-
-- **Top Bar**: Hamburger menu (left), "Exchange | Wallet" pill toggle (center, "Wallet" active), Support (headphone) and QR Code Scanner icons (right).
-- **Search Bar**: Full-width search input field immediately below the top bar.
-
-### 2. Account Summary & Core Actions
-
-- **Wallet Selector**: "Wallet1" dropdown to switch wallets, accompanied by a copy address icon.
+- **Selector**: Dropdown displaying "Wallet1" followed by a chevron down icon (`▼`).
+- **Divider**: A subtle vertical divider separator.
+- **Copy Address**: Overlapping rectangles icon to copy the current active wallet address.
 - **Total Balance**: Large fiat display (e.g., "₹95.53").
-- **Primary CTA**: Large, solid yellow (`#FCD535`) "Receive" button parked to the right of the balance.
-- **Action Dashboard (Quick Links)**: A horizontal row of rounded square outlined icons.
-  - Items in view: **Alpha**, **Securities**, **Earn**, **Referral**, **More**.
+- **Primary CTA**: Large, solid Binance Yellow (`#FCD535`) rectangular "Receive" button, right-aligned to the card edge.
+
+### 3. Quick Actions Dashboard
+
+- **Layout Grid**: An equal-width 5-column fixed grid.
+- **Icon styling**: Rounded square dark containers, outlined white icons with yellow accents. Text label centered beneath each icon.
+- **Action Items**: **Alpha**, **Securities**, **Earn**, **Referral**, **More**.
+
+### 4. Promotional & Status Widgets
+
+- **Banner Carousel**: Highlights active events (e.g., "Sentio Booster Program Phase 1", "Share $2M rewards"). Dark surface (`#2B3139`) with active swipeable pages and 3-4 pagination dots underneath. Contains a yellow "Join" or "Claim Now" CTA button.
+- **Micro-Widgets (Row)**:
+  - **Meme Rush**: Displays stats like "1.91K new tokens in 1h" with a navigation chevron (`>`) and 3 overlapping circular token avatars on the bottom left.
+  - **Earn Dashboard**: Displays current yield (e.g., "9.62% APY") with a mini bar chart graphic on the right, asset (e.g., circle icon for vbUSDC), a navigation chevron (`>`), and pagination dots below the widget widget.
 
 ### 3. Promotional & Status Widgets
 
@@ -49,27 +52,55 @@ This document provides comprehensive documentation of the Binance **Web3 Wallet 
   - **Meme Rush**: Displays stats like "1.91K new tokens in 1h" with overlapping token avatars.
   - **Earn Dashboard**: Displays current yield (e.g., "9.62% APY") with a mini bar chart graphic and asset (e.g., vbUSDC).
 
-### 4. Dynamic Market Feeds (Tabbed Data List)
+### 5. Dynamic Market Feeds (Tab System)
 
-Tabs available: **Watchlist**, **Hot Searches**, **Trending**, **Alpha**.
+- **Tab Bar Layout**: Scrollable horizontal tab bar containing: **Watchlist**, **Hot Searches**, **Trending**, **Alpha**. Active tab features text color brightening and an underline highlight.
 
+#### Generic Token Row Layout Details
+
+Every token list item strictly follows a multi-line format:
+
+- **Left Column**: Token Icon (sometimes masked) + Token Name + secondary networking/social badge immediately to the right.
+- **Middle/Bottom-Left Block**: Secondary metrics row directly under the Name (e.g., 24h Volume and Market Cap).
+- **Right Block**: Right-aligned Price on top, right-aligned 24h Change % directly underneath (Green `#0ECB81` for positive, Red `#F6465D` for negative).
+
+#### Tab-Specific Details:
+
+- **Watchlist Tab**:
+  - List Items: Includes an orange favorite star (`⭐`), a green people/social icon next to the token name, the Token chain badge on the icon, and volume/marketcap metrics (e.g., `₹1.33B | ₹21.53T`).
 - **Hot Searches Tab**:
-  - Secondary Filters: **All**, **BSC**, **Solana**, **Ethereum**. Followed by a timeframe dropdown (`1h`).
-  - List Items: Token Icon (with network badge e.g. yellow BSC cube). Token Name (with X icon to remove). 24h Volume. Current Price. 24h Change %.
+  - Secondary Filters: Scrollable horizontal list: **All** (with globe icon), **BSC**, **Solana**, **Ethereum**. Followed by a timeframe dropdown (`1h ˅`).
+  - List Items: Token Name is followed by specific mini-badges (e.g., a blue/purple "X" alpha symbol or a green hand icon).
 - **Alpha Tab**:
-  - Secondary Filters: **All**, **Points+**, **Tokenized Securities**.
-  - List Items: Token name followed by special badges (e.g., a yellow `x4` badge for points multipliers).
+  - Secondary Filters: **All**, **Points+**, **Tokenized Securities**, and timeframe dropdown (`24h ˅`).
+  - List Items: Contains circular verification badges (standard `V` checkmark on the token name) and multiplier styling badges (e.g., a yellow `x4`).
 
-### 5. "More" Bottom Sheet Modal
+### 6. "More" Bottom Sheet Modal
 
-Triggered from the quick links. Covers the bottom area with rounded tops.
+Triggered from the quick links. Covers the bottom area with a full-width modal surface and rounded top corners.
 
-- List items with right-facing chevrons (`>`):
+- **Top drag handle**: Centered grey horizontal pill bar at the top edge.
+- **Row Components**: Each list item contains:
+  - **Left Icon Container**: Square outlined container with the specific graphic.
+  - **Label**: Left-aligned white text.
+  - **Right Chevron**: Right-aligned gray chevron (`>`).
+- Items:
   - **Security Center**
   - **Inscription**
   - **Solana Account Rent Recovery**
   - **Connected DApps**
-  - **History**: Wallet/Card icon with yellow dot indicator for new notifications.
+  - **History**: Wallet/Card icon.
+
+### 7. Bottom Navigation Bar
+
+Fixed block residing at the bottom of the device safe-area. Contains an equal-width 5-tab stack (Icon centered above Text).
+
+- **Tabs**:
+  1. **Home**: Currently active indicator (highlighted yellow house).
+  2. **Markets** (Line chart).
+  3. **Trade** (Exchange arrows).
+  4. **Discover** (Compass icon).
+  5. **Assets** (Wallet block).
 
 ## Visual Fidelity Details
 
@@ -78,6 +109,7 @@ Triggered from the quick links. Covers the bottom area with rounded tops.
 - **Primary Text**: Pure White (`#FFFFFF`).
 - **Secondary/Muted Text**: Grey (`#848E9C`).
 - **Call to Action (CTA) / Accents**: Brand Yellow (`#FCD535`) used for active states and critical buttons.
+- **Status Colors**: Positive Green (`#0ECB81`) and Negative Red (`#F6465D`) for price percentage blocks.
 - **Spacing**: Strict `16dp` global horizontal padding. Generous vertical spacing.
 
 ---

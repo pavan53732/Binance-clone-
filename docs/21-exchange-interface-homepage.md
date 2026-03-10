@@ -109,15 +109,15 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 
 ### Header Layout Specifications
 
-| Element      | X Position | Y Position | Width | Height | Color    | Font Size | Font Weight |
-| ------------ | ---------- | ---------- | ----- | ------ | -------- | --------- | ----------- |
-| User Menu    | 16px       | 16px       | 24px  | 24px   | #EAECEF  | -         | -           |
-| Chat Icon    | 52px       | 16px       | 24px  | 24px   | #EAECEF  | -         | -           |
-| Badge        | 68px       | 12px       | 16px  | 16px   | #F5C518  | 10pt      | Bold        |
-| Exchange Tab | 108px      | 16px       | 80px  | 32px   | #EAECEF  | 14pt      | SemiBold    |
-| Wallet Tab   | 188px      | 16px       | 80px  | 32px   | #848E9C  | 14pt      | Regular     |
-| Support Icon | 320px      | 16px       | 24px  | 24px   | #EAECEF  | -         | -           |
-| Profile Icon | 356px      | 16px       | 24px  | 24px   | #EAECEF  | -         | -           |
+| Element      | X Position | Y Position | Width | Height | Color   | Font Size | Font Weight |
+| ------------ | ---------- | ---------- | ----- | ------ | ------- | --------- | ----------- |
+| User Menu    | 16px       | 16px       | 24px  | 24px   | #EAECEF | -         | -           |
+| Chat Icon    | 52px       | 16px       | 24px  | 24px   | #EAECEF | -         | -           |
+| Badge        | 68px       | 12px       | 16px  | 16px   | #F5C518 | 10pt      | Bold        |
+| Exchange Tab | 108px      | 16px       | 80px  | 32px   | #EAECEF | 14pt      | SemiBold    |
+| Wallet Tab   | 188px      | 16px       | 80px  | 32px   | #848E9C | 14pt      | Regular     |
+| Support Icon | 320px      | 16px       | 24px  | 24px   | #EAECEF | -         | -           |
+| Profile Icon | 356px      | 16px       | 24px  | 24px   | #EAECEF | -         | -           |
 
 ### Header Container
 
@@ -469,8 +469,8 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 - **Text**:
   - Content: "Join" (4 characters)
   - Font: 14pt medium (SF Pro Display Medium)
-  - Color**: #EAECEF (90% opacity, NOT pure white)
-  - Letter Spacing**: 0.5px
+  - Color\*\*: #EAECEF (90% opacity, NOT pure white)
+  - Letter Spacing\*\*: 0.5px
   - Horizontal Alignment: Center
   - Vertical Alignment: Center (baseline at 18px)
 
@@ -573,8 +573,8 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 
 #### Card Specifications (All Cards)
 
-- **Width**: 168px (fixed, NOT 170px)
-- **Height**: 160px (fixed, NOT 140px)
+- **Width**: `calc(50% - 22px)` ≈ 166px on 375px screens (fluid, not fixed 168px — avoids grid overflow on narrow devices)
+- **Height**: ~148px (confirmed from screenshots — earlier spec value of 160px was an overestimate)
 - **Background**: #2B3139 (RGB: 43, 49, 57 - NOT #1E2329)
 - **Border Radius**: 12px (uniform)
 - **Padding**: 16px internal on all sides
@@ -591,12 +591,12 @@ This document provides an exhaustive, pixel-perfect technical specification of t
 - **Shape**: Circle
 - **Diameter**: 36px (NOT 32px)
 - **Background**: #F5C518 (Binance yellow)
-- **Inner Logo**: Binance cube (isometric)
-  - Cube size: 24x24px (NOT 20x20px)
-  - Cube rotation: Isometric (30° vertical, 45° horizontal)
-  - Cube color: #1E2329 (dark grey)
-  - Line weight: 2px
-  - Visible faces: Top, left, right (3 faces)
+- **Inner Logo**: Binance diamond logo (flat, NOT isometric cube)
+  - Design: Flat diamond/rhombus shape — the standard Binance wordmark diamond
+  - Logo size: 22x22px
+  - Logo color: #1E2329 (dark grey on yellow background)
+  - Style: Flat 2D, no 3D perspective or cube faces
+  - > ⚠️ **Correction**: Earlier versions incorrectly described this as an "isometric cube". Screenshots confirm it is a **flat Binance diamond logo** inside a yellow circle.
 - **Position**: Top-left corner (16px from left, 16px from top)
 - **Border**: None (flat design)
 
@@ -692,14 +692,15 @@ End: (140, 42)
 - **Diameter**: 36px (consistent with BNB)
 - **Background**: #0B0E11 (pure black, NOT #000000)
 - **Inner Logo**: SOLANA gradient symbol
-  - Design: 3 stacked parallelograms
-  - Gradient:
+  - Design: 3 stacked **rounded bars** (NOT sharp parallelograms — bars have rounded end-caps, forming a stylised "S" silhouette)
+  - Gradient (top-to-bottom, diagonal):
     - Top bar: #00D4FF (cyan)
     - Middle bar: #9945FF (purple)
     - Bottom bar: #00FFA3 (green)
-  - Bar dimensions: 24x5px each (NOT 20x4px)
+  - Bar dimensions: ~24x5px each, end-caps rounded (border-radius on bar ends)
   - Spacing: 2px between bars
-  - Rotation: -20° (tilted left)
+  - Rotation: −20° (tilted left, all 3 bars parallel)
+  - > ⚠️ **Correction**: Earlier spec described bars as "parallelograms" (sharp corners). Screenshots confirm they are **rounded-end bars**.
 - **Position**: Top-left (16px from left, 16px from top)
 
 **Token Symbol**:
@@ -1357,35 +1358,47 @@ Point 8: (60, 20)  - End high
   - Icon: Downward chevron (v) 12x12px, #848E9C, 4px left margin
   - Interaction: Tap to open bottom sheet with suggested creators
 
-#### 7.2.3 Feed Card Layout (Following Post)
+#### 7.2.3 Feed Card Layout (Social Post)
 
-- **Background**: Transparent or #181A20 (blends with page background, no distinct card border in this view)
+- **Background**: Transparent or #181A20 (blends with page background, no distinct card border)
 - **Padding**: 16px horizontal, 16px top
 - **Divider**: None visible between posts
 
 #### 7.2.4 Feed Post Header
 
-- **Layout**: Flex row (Avatar on left, Details on right)
+- **Layout**: Flex row (Avatar on left, Details stack on right)
 - **Avatar**:
   - Dimensions: 40x40px perfect circle
   - Gap: 12px right margin
-- **Details Section**:
-  - Row 1: "HEY NIROB" (15pt bold, #EAECEF) + Bullet "•" + Time "Sep 21, 2024" (13pt regular, #848E9C)
-  - Right Align (Absolute): Three dots menu (...) 16x16px, #474D57, top right corner.
+- **Creator Details Stack** (confirmed from Discover tab screenshots):
+  - **Row 1 — Username + Verified Badge**:
+    - Username text: e.g. `Crypto Eagles` (15pt bold, #EAECEF)
+    - **Verified Badge**: Yellow shield/checkmark icon immediately right of username
+      - Color: #F5C518 (Binance yellow)
+      - Size: 16x16px
+      - Style: Filled yellow checkmark badge
+  - **Row 2 — Follower Count**:
+    - Text: e.g. `119.2K followers` (13pt regular, #848E9C)
+    - Format: `[count] followers` — count abbreviated (K = thousands, M = millions)
+    - Field: `follower_count`, `follower_count_formatted`
+    - > ⚠️ **Previously missing from spec.** Confirmed visible in screenshots.
+  - **Row 3 — Timestamp**:
+    - Text: e.g. `• Feb 21` or `• 2h ago` (13pt regular, #848E9C)
+    - Relative for recent posts, absolute date for older
+- **Top-Right**: Three dots menu (`...`) / dismiss button — 16x16px, #474D57
 
 #### 7.2.5 Feed Post Body
 
-- **Text Formatting**:
-  - Lines:
-    1. "Hello guys,"
-    2. "Don't miss this ✨" (with sparkle emoji)
-    3. "Join the Binance Moonbix Bot and earn points."
-    4. "will receive a gift of 1000 points. ..."
+- **Text Content**:
   - Font: 15pt regular (SF Pro Display)
   - Color: #EAECEF
   - Line Height: 24px
   - Margin Top: 12px
-  - Truncation: Standard "... " and "See more" text if exceeding 4-5 lines.
+- **Content Truncation** (confirmed from Discover screenshots):
+  - Posts longer than 4–5 lines are truncated with `...`
+  - A `See more` or inline `...` continuation label appears at truncation point
+  - Field: `content_truncation_enabled: true`, `max_visible_lines: 4`
+  - > ⚠️ **Previously missing from spec.**
 
 #### 7.2.6 Image Attachment (Media Grid Component)
 
@@ -1599,10 +1612,9 @@ Point 8: (60, 20)  - End high
 - **Interaction Block (Right)**:
   - Layout Row: Messages Icon (outline) + "660" count (13pt #EAECEF) + 'X' Dismiss Icon (16px, #474D57, margin-left 16px).
 
-#### 7.5.7 Global Floating Action Button (FAB)
+#### 7.5.7 Floating Action Button (FAB)
 
-- **Position**: Fixed bottom-right.
-- **Dimensions & Style**: 56x56px, Yellow gradient, '+' icon. Present on Live tab as well.
+> The FAB is a **global persistent element** visible on all feed-based tabs (confirmed in 8 of 9 screenshots). Full specification is defined in **Section 8 → FAB — Floating Action Button**. No separate spec needed per tab.
 
 ### Tab 6: News (Active State)
 
@@ -1672,10 +1684,9 @@ Point 8: (60, 20)  - End high
     - Color: #EAECEF
     - Left Margin: 6px (from icon)
 
-#### 7.6.5 Global Floating Action Button (FAB)
+#### 7.6.5 Floating Action Button (FAB)
 
-- **Position**: Fixed bottom-right.
-- **Dimensions & Style**: 56x56px, Yellow gradient, '+' icon. Present on News tab as well.
+> The FAB is a **global persistent element** visible on all feed-based tabs (confirmed in 8 of 9 screenshots). Full specification is defined in **Section 8 → FAB — Floating Action Button**. No separate spec needed per tab.
 
 ### Tab 7: Academy (Active State)
 
@@ -2254,16 +2265,63 @@ Point 8: (60, 20)  - End high
 - Behavior: Auto-scroll 3-5 seconds
 - Snap: Center snap
 
-### Bottom Navigation
+### Bottom Navigation Bar
 
-- Tap: Switch tabs instantly
-- Active: Yellow icon + black label
-- Preserve scroll position per tab
+- **Position**: Fixed at screen bottom, above safe area inset
+- **Height**: 64px (excluding safe area / home indicator)
+- **Background**: #181A20 (deepest dark, distinct from page background)
+- **Top Border**: 1px solid #2B3139 (subtle divider)
+- **Width**: Full screen width
+- **z-index**: Above all scroll content
 
-### FAB Action
+**Navigation Items** (5 items, left to right, confirmed from all screenshots):
 
-- Tap: Opens quick action menu
-- Options: New Post, Quick Trade, etc.
+| #   | Label   | Icon Style               | Notes            |
+| --- | ------- | ------------------------ | ---------------- |
+| 1   | Home    | House icon               | Landing page     |
+| 2   | Markets | Line chart icon          | Markets hub      |
+| 3   | Trade   | Circle with arrows       | Trade interface  |
+| 4   | Futures | Bar chart / futures icon | Futures trading  |
+| 5   | Assets  | Wallet / grid icon       | Asset management |
+
+**Active Item State**:
+
+- Icon color: #F5C518 (Binance yellow)
+- Label color: #F5C518 (Binance yellow)
+- Icon size: 24x24px
+- Label font: 11pt regular
+- Indicator: Yellow icon + yellow label (no underline pill)
+
+**Inactive Item State**:
+
+- Icon color: #848E9C (muted grey)
+- Label color: #848E9C
+- Icon size: 24x24px
+- Label font: 11pt regular
+
+**Touch Feedback**:
+
+- Tap switches tab instantly
+- Scroll position preserved per tab
+- Haptic: Light impact
+
+### FAB — Floating Action Button
+
+- **Purpose**: Quick content creation / posting shortcut
+- **Position**: Fixed, bottom-right overlay (confirmed visible in Images 02, 04, 06, 09)
+  - `bottom: 88px` (above bottom navigation bar)
+  - `right: 16px`
+  - `z-index`: Floating above all content, below modal overlays
+- **Dimensions**: 56x56px perfect circle
+- **Background**: #F5C518 (Binance yellow)
+- **Icon**: `+` (plus sign)
+  - Size: 24px stroke
+  - Color: #1E2329 (dark)
+  - Weight: 2px
+- **Shadow**: rgba(0, 0, 0, 0.3), 12px blur, y-offset 4px
+- **Interaction**: Tap opens quick-action menu (New Post, Quick Trade, etc.)
+- **Touch Feedback**: Scale 0.94 on press (150ms ease-out), scale back 1.0 on release
+- > ⚠️ **Previously only referenced in Notes. Now fully specified.**
 
 ---
 
@@ -2311,6 +2369,152 @@ Point 8: (60, 20)  - End high
 | Announcements | YYYY-MM-DD HH:MM:SS          |
 | Social Posts  | Relative (2h ago, Yesterday) |
 | News          | Date + Read time             |
+
+---
+
+## 11. Discover Feed — Additional Components
+
+> All components in this section were **confirmed visible in reference screenshots** but were previously absent from the spec.
+
+---
+
+### 11.1 Trending Livestream Banner (Discover Tab)
+
+- **Position**: Pinned at the top of the Discover feed, below the tab bar and above the first post card.
+- **Height**: ~40px
+- **Background**: Purple gradient (left: deep purple `#6B3FA0` → right: vibrant purple `#9B59B6`)
+- **Layout**: Horizontal flex row — Avatar | Creator handle | "is trending" text | Audio indicator icon
+- **Avatar**:
+  - Dimensions: 28x28px circle
+  - Border: 2px solid white or transparent
+- **Text**:
+  - Content: e.g. `@Naccy livestream is trending`
+  - Font: 13pt regular, #FFFFFF
+- **Audio/Live Indicator**:
+  - Icon on right side (waveform or speaker icon)
+  - Color: #FFFFFF
+- **Interaction**: Tap navigates to the live stream
+- **Fields**: `banner_creator_handle`, `banner_text`, `banner_background_gradient`, `banner_live_indicator`
+
+---
+
+### 11.2 Asset Distribution Widget
+
+- **Position**: Below the P2P/Send Cash service cards, above the tab navigation row
+- **Height**: ~72px
+- **Background**: #2B3139
+- **Border Radius**: 12px
+- **Padding**: 12px 16px
+- **Layout**: Horizontal flex — Mini Donut Chart (left) | Text content (right)
+- **Title**:
+  - Text: `Asset Distribution` (truncated as `Asset Distrib...` if narrow)
+  - Font: 13pt medium, #EAECEF
+- **Top Holding Token**:
+  - Label: `Top holding [TOKEN]` (e.g., `Top holding USDC`)
+  - Font: 12pt regular, #848E9C
+- **Token Change**:
+  - Text: e.g., `USDC -0.01%`
+  - Change color: #F6465D for negative, #0ECB81 for positive
+- **Mini Chart**: Small pie/donut chart on left side (~40x40px), showing portfolio distribution
+- **Fields**: `top_holding_token`, `top_holding_change_percent`, `asset_distribution_donut_chart`
+
+---
+
+### 11.3 BTC Sentiment Poll Card (Hot Tab)
+
+- **Tab**: Hot (`/hot` feed)
+- **Position**: Appears as a card in the Hot feed among other trending content
+- **Card Container**:
+  - Background: #2B3139
+  - Border Radius: 12px
+  - Padding: 16px
+- **Card Layout**:
+  - **Title**: `How do you feel about BTC today?` (15pt medium, #EAECEF)
+  - **Subtitle / Call to action**: `Click to make your choice` (13pt regular, #848E9C)
+  - **Vote Buttons Row** (side by side, full width):
+    - **Bearish Button**:
+      - Background: #F6465D (Binance red) at 20% opacity or full
+      - Text: `Bearish` (14pt medium, #F6465D or white)
+      - Border: 1px solid #F6465D
+      - Border Radius: 8px
+      - Height: 44px
+      - Width: ~48% of card width
+    - **Bullish Button**:
+      - Background: #0ECB81 (Binance green) at 20% opacity or full
+      - Text: `Bullish` (14pt medium, #0ECB81 or white)
+      - Border: 1px solid #0ECB81
+      - Border Radius: 8px
+      - Height: 44px
+      - Width: ~48% of card width
+  - **Participant Count**: e.g., `6,125 Joined` (12pt regular, #848E9C, below buttons)
+- **Fields**: `poll_title`, `poll_option_bearish`, `poll_option_bullish`, `poll_participant_count`, `poll_user_vote_state`
+
+---
+
+### 11.4 Most Searched Token Widget (Hot Tab)
+
+- **Tab**: Hot (`/hot` feed)
+- **Position**: Appears in the Hot feed, typically below or near the sentiment poll
+- **Card Container**:
+  - Background: #2B3139
+  - Border Radius: 12px
+  - Padding: 12px 16px
+  - Height: ~80px
+- **Header**:
+  - Text: `Most Searched (6H)` (13pt medium, #EAECEF)
+  - Subtext: Time window label `(6H)` in muted grey
+- **Token Info (left side)**:
+  - Token name: e.g., `HOLO` (15pt bold, #EAECEF)
+  - Label badge: `Rapid Riser` (12pt, yellow pill `#F5C518` background, dark text)
+- **Sparkline (right side)**:
+  - Mini line chart (~60x30px)
+  - Color: #F6465D (red if declining) or #0ECB81 (green if rising)
+  - Type: Stroke-only line chart
+- **Percent Change**: Shown below sparkline or right of token name (red/green)
+- **Fields**: `most_searched_token`, `most_searched_timeframe`, `rapid_riser_label`, `sparkline_data`, `price_change_percent`
+
+---
+
+### 11.5 Discover Tab — Social Post Card (Full Model)
+
+> Distinct from the Following tab post card (Section 7.2). The Discover tab shows posts from creators the user does NOT follow, with extra creator metadata.
+
+- **Card Background**: Transparent / #181A20
+- **Padding**: 16px horizontal, 16px top, 12px bottom
+- **Separator**: None between posts (seamless scroll)
+
+**Post Card Structure**:
+
+```
+[Avatar 40x40]  [Username + Verified Badge ✓]
+                [119.2K followers]
+                [• Feb 21]
+[Post body text — truncated after 4 lines with ...]
+[Embedded Image Card (if present)]
+[Action Bar: 💬 5.7K  🔁 2.9K  ❤️ 5.4K  ↗ 2.5K]
+```
+
+**Creator Metadata Row** (unique to Discover vs Following):
+
+- **Follower Count**: `[N]K followers` or `[N]M followers` — always shown on Discover posts
+- **Verified Badge**: Yellow checkmark/shield, 16x16px, right of username
+- **Field**: `creator_follower_count`, `creator_is_verified`
+
+**Embedded Post Card** (reward/earnings screenshot):
+
+- Rounded rectangle card inset in post body
+- Background: Dark (#1E2329 or similar)
+- May show earnings metrics, campaign rewards, or referral stats
+- Border Radius: 12px
+- Field: `post_embedded_image_card`
+
+**Action Bar**:
+
+- Height: 40px
+- Background: Transparent
+- Icons: Comment (speech bubble), Repost (arrows), Like (heart), Share (arrow)
+- Count display: `[N]K` format for large numbers
+- Active like state: Heart fills red (#F6465D)
 
 ---
 

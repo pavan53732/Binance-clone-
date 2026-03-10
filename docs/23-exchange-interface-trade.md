@@ -83,17 +83,17 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
       - Arrow: 12dp chevron `#848E9C`
       - Action: Tap to switch between quote currencies (USDT/USDC/BUSD)
       - Corner Radius: 16dp (fully rounded pill)
-    - **Decimal Precision by Pair Type:**
-      - BTC pairs: 8 decimals (0.00000000)
-      - ETH pairs: 5 decimals (0.00000)
-      - USDT pairs: 2 decimals (0.00)
+    - **Decimal Precision (by Price Magnitude — NOT pair type):**
+      - > ⚠️ **Correction**: Earlier spec said "USDT pairs: 2 decimals" — screenshots confirm this is wrong (e.g., `0.04205`, `0.10595` are USDT pairs with 5 decimals).
+      - High-price assets (BTC ≥10,000): 2 decimals — e.g., `66,350.54`
+      - Mid-price assets (1–9,999): 3–4 decimals — e.g., `1.741`, `444.7`
+      - Low-price assets (0.001–0.99): 4–5 decimals — e.g., `0.04205`, `0.3094`
+      - Very low-price assets (<0.001): 5 decimals — e.g., `0.00000`
       - Auto-formatting applied on field blur
   - **Amount Input with Balance Controls:**
     - Quantity entry with integrated percentage allocation
-    - **Decimal Precision Display:**
-      - BTC pairs: 8 decimals (0.00000000)
-      - USDT pairs: 2 decimals (0.00)
-      - ETH pairs: 5 decimals (0.00000)
+    - **Decimal Precision Display (by Price Magnitude):**
+      - Same rule as price input: precision follows asset price magnitude, not pair type
       - Auto-formatting on blur
     - **"Available [Balance]" Display:**
       - Position: Top right above input field (8dp gap)
@@ -114,6 +114,7 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
     - Text: 20sp White numbers
     - Appearance: Slides up from bottom on amount field focus
   - **Allocation Slider with Diamond Nodes:**
+
     ```
     ┌──────────◆──────────◆──────────◆──────────◆──────────┐
        0%        25%        50%       75%       100%
@@ -142,6 +143,7 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
       - Snap-to-node: Gently snaps to nearest diamond position
       - Real-time Update: Amount field updates as slider moves
       - Visual Feedback: Active portion (0% to current) fills yellow
+
   - **Percentage Quick Buttons:**
     - Layout: Horizontal row below slider or above amount input
     - Buttons: [25%] [50%] [75%] [100%]
@@ -378,6 +380,7 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
   - **Edge Swipe:** Reveal full-screen mode
 
 - **Crosshair Tooltip (On Long Press):**
+
   ```
   O: 66,184.8  H: 66,250.0  L: 66,100.5  C: 66,184.8
   Vol: 1.234 BTC  +0.52%
@@ -498,7 +501,39 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
   - Cancel Link: "Cancel" text button (right of search bar when active)
   - Focus State: 1dp Yellow border `#F0B90B`
 
-- **Category Navigation Pills (Horizontal Scroll):**
+- **Quote Asset Tabs (Horizontal Scroll — Row 1 below Search):**
+
+  ```
+  [★] [⬆] | New | USDC | USDT | U | USD1 | USD | BNB | BTC | ALTS | Meme ...
+  ```
+
+  - **Confirmed from screenshots**: these are the primary market filter tabs
+  - **Special icons (left of tabs):**
+    - ☆ Star icon = Favorites tab
+    - ⬆ Category/trending icon = Category sub-filter
+  - **Quote currency tabs**: `New`, `USDC`, `USDT`, `U`, `USD1`, `USD`, `BNB`, `BTC`, `ALTS`
+  - **Active tab**: Yellow underline `#F0B90B`, Bold text
+  - **Inactive tab**: Gray text `#848E9C`, no underline
+  - **Scroll**: Horizontal, no snap
+
+- **Network Filter Chips (Horizontal Scroll — Row 2, Alpha/category mode only):**
+
+  ```
+  [Solana logo] Solana | [Base logo] Base | [ARB] Arbitrum | [Sonic] Sonic | [Sui] Sui | [ETH] Ethereum
+  ```
+
+  - **Confirmed from screenshot**: separate row above token list when in Alpha or category mode
+  - **Format**: Network logo icon + text label (e.g., `Solana`, `Base`, `Arbitrum`)
+  - **Chip Specs:**
+    - Height: 32dp
+    - Corner Radius: 16dp pill shape
+    - Icon: 16dp network logo left of label
+    - Spacing: 8dp gap between chips
+    - Active: Darker fill background
+    - Inactive: `#2B3139` background, White text
+  - **Scroll**: Horizontal, no sticky
+
+- **Category Navigation Pills (Horizontal Scroll — legacy/Spot mode only):**
 
   ```
   Trending | Solana | Base | Stocks | Meme | Favorites | New Listings
@@ -515,26 +550,45 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
     - Padding: 12dp horizontal, 6dp vertical
   - **Scroll Behavior:** Smooth horizontal scroll, snap to center
 
-- **Token List Item Layout:**
+- **Token List Item Layout (Confirmed from Screenshots):**
+
+  **Standard tab (e.g., USDC, USDT) layout:**
 
   ```
-  ┌──────────────────────────────────────────────────┐
-  │ [Icon] BTC  Bitcoin        $42,500   +2.5%     │
-  │          USDT              Vol: 1.2B  Cap: 840B│
-  └──────────────────────────────────────────────────┘
+  ┌───────────────────────────────────────────────────────────┐
+  │ [★] [Icon] ADA/USDC  5x [Taker Fee Promo]   0.2505 -1.61%│
+  │              Vol 4.39M                                    │
+  └───────────────────────────────────────────────────────────┘
   ```
 
-  - **Left Section:**
-    - Token Icon: 32dp circular with network badge overlay
-    - Symbol: Bold 16sp White (e.g., "BTC")
-    - Name: Regular 13sp Gray `#848E9C` (e.g., "Bitcoin")
-    - Stacked vertically, left-aligned
+  **Alpha tab layout:**
+
+  ```
+  ┌───────────────────────────────────────────────────────────┐
+  │ [★] [Icon] MAGMA ⚡     $0.09415           -1.29%        │
+  │              $906,119.80 | $20.89M                        │
+  └───────────────────────────────────────────────────────────┘
+  ```
+
+  - **Leftmost Column — Favorites Star:**
+    - Icon: Outline star `☆` (gray, ~20dp)
+    - Active (favorited): Filled yellow star `★`
+    - Position: Far left of row, before token icon
+    - Tap: Toggles favorite state
+    - > ⚠️ **Missing from original spec** — confirmed visible in ALL token list screenshots
+  - **Token Icon:** 32dp circular, network badge overlay possible
+  - **Symbol + Pair:** Bold 16sp White (e.g., `ADA/USDC`, `MAGMA`)
+    - > ⚠️ **Correction**: Full token name (e.g., "Bitcoin") is NOT shown in rows. Only symbol is displayed.
+  - **Inline Badges (same line as symbol):** Leverage pill + Promo badge (see below)
   - **Right Section:**
-    - Price: Bold 14sp White with auto decimal precision
-    - 24h Change: Pill background Green/Red, percentage
-    - Volume: 11sp Gray "Vol: 1.2B"
-    - Market Cap: 11sp Gray "Cap: $840B"
-    - Dual-metric display stacked right-aligned
+    - Price: Bold 14sp White, right-aligned, precision by price magnitude
+    - 24h Change %: Green (positive) / Red (negative), right-aligned
+  - **Secondary Row (below symbol):**
+    - **USDC/USDT tab format:** `Vol 4.39M` (with "Vol" prefix, abbreviated)
+    - **Alpha tab format:** `$906,119.80 | $20.89M` (raw dollar Volume | MarketCap, NO "Vol" prefix)
+    - > ⚠️ **Correction**: Spec previously documented only `Vol: 1.2B` style. Two formats exist depending on tab.
+  - **Row Height:** ~56–64dp
+  - **Row Divider:** 1dp `#2B3139` separator between rows
 
 - **Network Badges (Overlay on Token Icons):**
   - **Position:** Bottom-right corner of token icon (overlapping)
@@ -546,7 +600,15 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
     - Arbitrum: Blue/Red gradient with "ARB"
     - Sonic: Red stylized "S"
     - Sui: Blue water droplet icon
+    - BSC (BNB Chain): Yellow circle with "B"
   - **Border:** 1dp White for contrast
+
+- **Tokenized Stock Asset Badge:**
+  - **Design**: Small **blue square/cube** badge
+  - **Position**: Bottom-right overlay on token icon (overlaps network badge or replaces it)
+  - **Tokens**: `IAUon`, `BABAon`, `MSTRon`, `PLTRon`, `INTCon`, `SLVon`, `MUon`
+  - > ⚠️ **Correction**: Agent described this as "yellow cube" — screenshots confirm it is a **BLUE cube/square**
+  - **Meaning**: Indicates tokenized real-world stock/ETF asset
 
 - **Leverage Pills (Top-Right Overlay):**
   - **Shapes:** Rounded rectangle (24dp x 16dp)
@@ -561,9 +623,10 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
   - **"Taker Fee Promo" for USDC pairs:**
     - Shape: Rounded rectangle (auto width x 20dp)
     - Border: 1dp Yellow `#F0B90B`
-    - Background: Transparent
+    - Background: Transparent with slight dark fill
     - Text: "Taker Fee Promo" 9sp Yellow
-    - Position: Below price or as row subtitle
+    - Position: **Inline on same line as pair symbol + leverage pill** (e.g., `ADA/USDC  5x  [Taker Fee Promo]`)
+    - > ⚠️ **Correction**: Earlier spec said "below price or as row subtitle" — screenshots confirm inline placement
 
 - **Profit/Promo Badge Variants:**
   - Leverage Pills: Yellow `x2`, `x5`, `x10`
@@ -571,9 +634,39 @@ This document provides comprehensive documentation of the Binance **Exchange Tra
   - Trending: Orange flame icon + "🔥" text
   - Top Gainer: Green up arrow + percentage
 
+- **Price Protection Badge:**
+  - **Confirmed from screenshots**: present on USDT premium pairs (e.g., BTC/USDT)
+  - Shape: Rounded pill badge
+  - Border: 1dp Yellow `#F0B90B`
+  - Background: Transparent
+  - Text: "Price Protection" 9sp Yellow
+  - Position: **Inline, to the right of the leverage pill** (e.g., `BTC/USDT  10x  [Price Protection]`)
+
+- **Verified Token Badge:**
+  - **Confirmed from screenshots**: small yellow badge beside token symbol for curated/vetted tokens
+  - Appears as a small yellow ⚡ or star-like icon next to symbol (e.g., `MAGMA ⚡`, `BSB ⚡`)
+  - Size: ~16dp
+  - Color: Yellow `#F0B90B`
+  - Position: Immediately right of token symbol text
+
+- **Sort Indicators in Column Headers:**
+  - **Confirmed from screenshots**: column headers have bidirectional chevron pairs (▴▾)
+  - **Sortable columns**: `Name`, `Vol`, `MCap` (left side) | `Last Price`, `24h Chg` (right side)
+  - **Header format**: `Name ▴▾ / Vol ▴▾ / MCap ▴▾` · · · `Last Price ▴▾ / 24h Chg ▴▾`
+  - Active sort: highlighted chevron + sort direction applied to list
+  - Font: 11sp Gray `#848E9C`
+
+- **Compact "New" Tab Layout:**
+  - **Confirmed from screenshots**: the `New` quote asset tab uses a simplified 3-column layout
+  - **Header row**: `Name` · · · · · `Last Price` · · `24h Chg`
+  - **Row data**: Token icon + symbol only | Price (5 decimals) | % change
+  - **NOT shown**: Volume, Market Cap, leverage pills, promo badges
+  - **Examples from screenshots**: `OPN 0.3094 +3.24%`, `ROBO 0.04205 +6.83%`, `ESP 0.10595 -1.92%`
+  - Row height: ~52dp (smaller than standard rows)
+
 - **Interactive Features:**
   - Tap Row: Selects token, returns to trade page
-  - Swipe Left: Quick add to favorites (star icon)
+  - Tap Star (☆): Toggles favorite — adds/removes from Favorites tab
   - Long Press: Shows mini chart sparkline overlay
 
 ---
