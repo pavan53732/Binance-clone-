@@ -1,0 +1,19 @@
+# Large binary files and APK artifacts
+Binance_*.apk*
+Binance_*.apks
+apk-tools/*.zip
+apk-tools/jadx/lib/*.jar
+
+# IDE / Editor configuration
+.vscode/
+.idea/
+
+# Decompilation artifacts
+binance-decompiled/
+jadx-output/
+
+# Build artifacts
+*.log
+*.tmp
+*.apk
+*.zip
