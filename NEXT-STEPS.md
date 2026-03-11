@@ -14,14 +14,41 @@
 ✅ binance-3-10-4.apk  - Binance APK (308 MB)
 ✅ LIST OF UI UX MD FILES.md - Master documentation plan (50 files)
 ✅ docs/               - UI/UX documentation files (01–50)
-✅ UI UX IMAGES/       - extracted screenshots
+```
+
+---
+
+## 📁 Final Workspace Structure
+
+```
+project-root/
+│
+├── apk-tools/
+├── binance-3-10-4.apk
+├── binance-decompiled/
+│   ├── res/
+│   ├── assets/
+│   └── layout/
+│
+├── jadx-output/
+│
+└── docs/
+    ├── 01-application/
+    ├── 02-exchange-core/
+    ├── 03-web3-core/
+    ├── 04-exchange-advanced/
+    ├── 05-web3-advanced/
+    ├── 06-account-settings/
+    ├── 07-design-system/
+    ├── 08-ui-foundation/
+    └── 09-component-specs/
 ```
 
 ---
 
 ## 🎯 Immediate Next Steps
 
-### Step 1: Extract APK Screenshots
+### Step 1: Decompile APK and Extract Resources
 **Tool**: Use `apk-tools` folder (jadx + apktool)
 
 **Process**:
@@ -64,44 +91,7 @@ This helps build the **screen catalog** correctly.
 
 ---
 
-### Step 3: Organize UI Screenshots into Folders
-
-**Create image folders and the `docs/` documentation folder structure** in workspace root:
-
-```
-UI UX IMAGES/
-├── exchange-home/
-├── exchange-markets/
-├── exchange-trade/
-│   ├── charts/          # Subcomponent of trade page
-│   ├── order-book/      # Subcomponent of trade page
-│   └── order-types/     # Subcomponent of trade page
-├── exchange-futures/
-├── exchange-assets/
-├── exchange-open-orders/
-├── exchange-trade-history/
-├── web3-home/
-├── web3-markets/
-├── web3-swap/
-├── web3-discover/
-├── web3-assets/
-├── web3-token-details/
-├── web3-nft/
-├── web3-network-selector/
-├── web3-transaction-history/
-└── web3-wallet-connect/
-```
-
-**Sort images** into folders:
-- **Exchange (CeFi)**: Trading UI, order books, charts, markets
-- **Web3 (DeFi)**: Wallet UI, swaps, NFTs, dApps
-- **Flexible number of images per folder** (some screens may require 30+ screenshots)
-
-Note: `charts/`, `order-book/`, and `order-types/` are subcomponents of the trade page, not separate screens.
-
----
-
-### Step 4: Create Documentation Files (50 MD Files)
+### Step 3: Create Documentation Files (50 MD Files)
 
 All documentation files must be created and fed to the AI builder in numeric order (01 → 50).
 
@@ -200,13 +190,22 @@ When feeding files to the AI full stack builder, always follow the numeric seque
 ## Page Route
 /path
 
-## Source Images
-- Folder: `[Folder name]`
-- Images: `[X] screenshots`
-- Image list: `[List each image filename]`
+## Source Resources
+
+### Layout XML
+- Layout file name
+- Example: `fragment_trade.xml`
+
+### Drawable Resources
+- Icons
+- Background images
+- Vector drawables
+
+### Related Code
+- Activity / Fragment class name
 
 ## Component Hierarchy
-[Break down all UI components visible in screenshots]
+[Break down all UI components from layout XML]
 
 ## Layout Structure
 Header
@@ -214,7 +213,7 @@ Main Content
 Footer / Bottom Navigation
 
 ## Color Specifications
-- Extract exact hex codes from screenshots
+- Extract exact hex codes from drawable resources and XML
 - Document color usage (primary, secondary, error, success)
 - Include RGB values and opacity
 
@@ -272,10 +271,11 @@ Footer / Bottom Navigation
 
 ## 🔧 Tools You'll Need
 
-### For Image Analysis:
-- **Figma** or **Adobe XD** - For measuring pixels
-- **Photoshop** or **GIMP** - For color extraction
-- **Windows Snipping Tool** - For capturing screenshots
+### For APK Resource Analysis:
+- **Android Studio** - For viewing layout XML and drawable resources
+- **VS Code** - For editing XML files
+- **XML viewer** - For understanding layout hierarchy
+- **Vector drawable viewer** - For analyzing icons and images
 
 ### For Documentation:
 - **VS Code** or your IDE - For writing MD files
@@ -417,7 +417,8 @@ Lists every screen and route.
 ## 📌 Important Notes
 
 1. **Pixel-Perfect Documentation**:
-   - Measure everything from actual screenshots
+   - Extract UI details from layout XML and drawable resources
+   - Use screenshots only when layout structure is unclear
    - Use px (pixels) with dp equivalent
    - Include hex codes with RGB values
    - Document exact spacing in pixels
@@ -437,16 +438,14 @@ Lists every screen and route.
    - Web3 (08-22): Wallet, swaps, NFTs, dApps
    - Different UI patterns, different user flows
 
-4. **Image Naming Convention**:
-   - Use descriptive names: `01-exchange-home-discover-tab.jpg`
-   - NOT: `IMG_001.jpg` or `screenshot1.png`
-
-5. **Documentation Quality**:
+4. **Documentation Quality**:
    - Document all visible UI elements.
    - Typical size: 200-800 lines depending on screen complexity.
    - Trade page may exceed 1000 lines.
+   - Always inspect layout XML files first before documenting a screen.
+   - Use XML hierarchy as the source of truth for component structure.
 
-6. **One Screen Per File**:
+5. **One Screen Per File**:
    - Each MD file should describe ONE screen or ONE system only.
    - Do not mix multiple screens in the same document.
 
@@ -456,8 +455,8 @@ Lists every screen and route.
 
 - [ ] Decompile APK with apktool
 - [ ] Extract all images from `res/` folder
-- [ ] Create image folders
-- [ ] Sort images into folders
+- [ ] Analyze layout XML files
+- [ ] Analyze drawable resources
 - [ ] Extract navigation structure
 - [ ] Start with:
   - 01-complete-ui-specification.md
