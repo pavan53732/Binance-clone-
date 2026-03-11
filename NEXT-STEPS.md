@@ -13,6 +13,8 @@
 ✅ .git/               - Git repository
 ✅ binance-3-10-4.apk  - Binance APK (308 MB)
 ✅ LIST OF UI UX MD FILES.md - Master documentation plan (50 files)
+✅ docs/               - UI/UX documentation files (01–50)
+✅ UI UX IMAGES/       - extracted screenshots
 ```
 
 ---
@@ -64,7 +66,7 @@ This helps build the **screen catalog** correctly.
 
 ### Step 3: Organize UI Screenshots into Folders
 
-**Create folder structure** in workspace root:
+**Create image folders and the `docs/` documentation folder structure** in workspace root:
 
 ```
 UI UX IMAGES/
@@ -102,6 +104,86 @@ Note: `charts/`, `order-book/`, and `order-types/` are subcomponents of the trad
 ### Step 4: Create Documentation Files (50 MD Files)
 
 All documentation files must be created and fed to the AI builder in numeric order (01 → 50).
+
+---
+
+## 📂 Documentation Folder Structure
+
+Create a folder for all specification files.
+
+```
+docs/
+├── 01-application/
+│   ├── 01-complete-ui-specification.md
+│   └── 02-complete-screen-catalog.md
+│
+├── 02-exchange-core/
+│   ├── 03-exchange-homepage.md
+│   ├── 04-exchange-markets.md
+│   ├── 05-exchange-trade-spot.md
+│   ├── 06-exchange-trade-futures.md
+│   └── 07-exchange-assets-wallet.md
+│
+├── 03-web3-core/
+│   ├── 08-web3-wallet-home.md
+│   ├── 09-web3-wallet-markets.md
+│   ├── 10-web3-wallet-swap.md
+│   ├── 11-web3-wallet-discover-dapps.md
+│   └── 12-web3-wallet-assets.md
+│
+├── 04-exchange-advanced/
+│   ├── 13-exchange-order-book.md
+│   ├── 14-exchange-chart-system.md
+│   ├── 15-exchange-order-types.md
+│   ├── 16-exchange-open-orders.md
+│   └── 17-exchange-trade-history.md
+│
+├── 05-web3-advanced/
+│   ├── 18-web3-wallet-token-details.md
+│   ├── 19-web3-wallet-nft-assets.md
+│   ├── 20-web3-wallet-network-selector.md
+│   ├── 21-web3-wallet-transaction-history.md
+│   └── 22-web3-wallet-wallet-connect.md
+│
+├── 06-account-settings/
+│   ├── 23-user-profile.md
+│   ├── 24-account-settings.md
+│   ├── 25-security-settings.md
+│   ├── 26-two-factor-authentication.md
+│   ├── 27-biometric-authentication.md
+│   ├── 28-notifications-system.md
+│   ├── 29-permissions-system.md
+│   ├── 30-error-handling-ui.md
+│   ├── 31-real-time-data-updates.md
+│   └── 32-settings-flows.md
+│
+├── 07-design-system/
+│   ├── 33-colors-theme.md
+│   ├── 34-typography.md
+│   └── 35-dimensions-spacing.md
+│
+├── 08-ui-foundation/
+│   ├── 36-screen-layouts.md
+│   ├── 37-ui-components.md
+│   ├── 38-navigation-system.md
+│   ├── 39-icons-drawables.md
+│   ├── 40-strings-content.md
+│   └── 41-animations-motion.md
+│
+└── 09-component-specs/
+    ├── 42-logo-icon-specifications.md
+    ├── 43-button-specifications.md
+    ├── 44-screen-flows-navigation.md
+    ├── 45-features-overview.md
+    ├── 46-data-formatting-rules.md
+    ├── 47-ui-states-loading-error-empty.md
+    ├── 48-input-fields.md
+    ├── 49-cards-lists.md
+    └── 50-dialogs-bottom-sheets.md
+```
+
+All MD files should be created inside the `docs/` folder and maintained in numeric order.
+When feeding files to the AI full stack builder, always follow the numeric sequence (01 → 50).
 
 ---
 
