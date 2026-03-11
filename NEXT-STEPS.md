@@ -52,6 +52,37 @@ project-root/
 
 ## 🎯 Immediate Next Steps
 
+### Screen Discovery Process
+To reliably discover every screen inside the Android APK, we use a 4-layer scan approach:
+1. **Activity Discovery** (from AndroidManifest.xml)
+2. **Fragment Discovery** (dynamic UI components)
+3. **Navigation Graph Discovery** (declarative navigation)
+4. **Overlay & RecyclerView Discovery** (dialogs, bottom sheets, list items)
+
+This ensures we capture statically declared screens, dynamically created fragments, navigation destinations, and overlay interfaces that may not appear as standalone layouts.
+
+**JADX Search Commands for Screen Discovery:**
+- `extends Activity`
+- `extends Fragment` / `extends BaseFragment`
+- `extends DialogFragment`
+- `extends BottomSheetDialogFragment`
+- `R.layout.` (to find layout inflations)
+- `inflate(`
+- `DataBindingUtil.inflate`
+- `ViewBinding`
+- `@Composable`
+- `setContent`
+- `ComposeView`
+- `R.id.nav_` (navigation destinations)
+- `RecyclerView.Adapter`
+- `ViewHolder`
+- `FragmentTransaction`
+- `NavController`
+- `deep links` (in AndroidManifest.xml)
+- `intent-filter`
+- `app link`
+- `deep link`
+
 ### Step 1: AI Agent APK Decompilation
 The AI agent will automatically decompile the APK and analyze UI resources using apktool and jadx.
 
@@ -118,6 +149,11 @@ The AI agent analyzes extracted resources to identify:
 - RecyclerView adapter classes and item view types
 - List item layout files referenced by adapters
 - Adapter state logic (loading, empty, pagination)
+- ViewBinding classes
+- DataBinding layouts
+- binding adapters
+- Jetpack Compose UI functions
+- composable navigation destinations
 - filters, sort controls, and segmented controls
 - network selectors and chain selectors
 - modal, dialog, and bottom sheet structures
@@ -126,6 +162,9 @@ The AI agent analyzes extracted resources to identify:
 - animation trigger points
 - animation resource bindings in layouts
 - transition animations between fragments
+- WebSocket message handlers
+- Live price update listeners
+- UI refresh triggers
 
 This analysis produces structured UI data used to generate the documentation files.
 
@@ -138,6 +177,9 @@ Find navigation from:
 - drawer navigation
 - fragment/activity transitions
 - routing classes
+- intent-filter deep link schemes
+- app link URLs
+- internal URI routing patterns
 - deep links
 - res/navigation/
 - AndroidManifest.xml
@@ -189,6 +231,8 @@ Sources:
 - AndroidManifest.xml
 - Fragment classes
 - Activity classes
+- RecyclerView item layouts that function as mini-screens
+  Example: item_market_row.xml, item_order_row.xml, item_trade_row.xml
 
 The detected screens are used to build the screen catalog.
 
@@ -309,6 +353,17 @@ Overlay Types
 └── Contextual menus
 
 These overlays must be cataloged separately from screen variants.
+
+Overlay interfaces are NOT screen variants.
+Variants modify the base screen layout.
+Overlays appear above the current screen.
+
+Example:
+
+Trade Screen
+ ├ Variant: Spot Mode
+ ├ Variant: Futures Mode
+ └ Overlay: Order Confirm Bottom Sheet
 
 Sources:
 - BottomSheetDialogFragment classes
@@ -1011,17 +1066,17 @@ Lists every screen and route.
     Screens should be documented as part of a flow, not as isolated UI pages.
 
 9. **Micro-Detail Extraction Rule**:
-     Every screen must be decomposed into:
-     - sections
-     - tabs
-     - nested tabs
-     - widgets
-     - cards
-     - lists
-     - filters
-     - selectors
-     - overlays
-     - reusable components
+   Every screen must be decomposed into:
+   - sections
+   - tabs
+   - nested tabs
+   - widgets
+   - cards
+   - lists
+   - filters
+   - selectors
+   - overlays
+   - reusable components
 
      Many important Binance UI elements exist as subviews inside major screens and must not be skipped.
 
