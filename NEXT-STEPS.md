@@ -59,39 +59,42 @@ The AI agent will automatically decompile the APK and analyze UI resources using
 
 **Process**:
 1. **Decompile APK** with apktool:
-   ```powershell
-   java -jar apk-tools/apktool.jar decode Binance.apk -o binance-decompiled
-   ```
+    ```powershell
+    java -jar apk-tools/apktool.jar decode Binance.apk -o binance-decompiled
+    ```
 
 2. **Extract all images** from decompiled folder:
-   - Location: `binance-decompiled/res/drawable-*/`
-   - Location: `binance-decompiled/res/mipmap-*/`
-   - Location: `binance-decompiled/assets/`
+    - Location: `binance-decompiled/res/drawable-*/`
+    - Location: `binance-decompiled/res/mipmap-*/`
+    - Location: `binance-decompiled/assets/`
 
 3. **Extract layout XML files**:
-   - Location: `binance-decompiled/res/layout/`
-   - Location: `binance-decompiled/res/layout-v*/`
+    - Location: `binance-decompiled/res/layout/`
+    - Location: `binance-decompiled/res/layout-v*/`
 
 4. **Extract design system resources**:
-   Location:
-   `binance-decompiled/res/values/`
-   
-   Important files:
-   - colors.xml
-   - styles.xml
-   - themes.xml
-   - dimens.xml
-   - strings.xml
+    Location:
+    `binance-decompiled/res/values/`
+    
+    Important files:
+    - colors.xml
+    - styles.xml
+    - themes.xml
+    - dimens.xml
+    - strings.xml
+    - arrays.xml
+    - integers.xml
+    - bools.xml
 
 5. **Extract animation resources**:
-   Location:
-   `binance-decompiled/res/anim/`
-   `binance-decompiled/res/animator/`
+    Location:
+    `binance-decompiled/res/anim/`
+    `binance-decompiled/res/animator/`
 
 6. **Decompile with jadx** for source code:
-   ```powershell
-   apk-tools\jadx\bin\jadx.bat Binance.apk --output-dir jadx-output
-   ```
+    ```powershell
+    apk-tools\jadx\bin\jadx.bat Binance.apk --output-dir jadx-output
+    ```
 
 **Expected Output**:
 - ~500-1000 drawable images (icons, illustrations, backgrounds)
@@ -112,11 +115,17 @@ The AI agent analyzes extracted resources to identify:
 - activity and fragment classes
 - TabLayout / ViewPager structures
 - RecyclerView / list-based widgets
+- RecyclerView adapter classes and item view types
+- List item layout files referenced by adapters
+- Adapter state logic (loading, empty, pagination)
 - filters, sort controls, and segmented controls
 - network selectors and chain selectors
 - modal, dialog, and bottom sheet structures
 - component state resources
 - feature flags and conditional UI branches
+- animation trigger points
+- animation resource bindings in layouts
+- transition animations between fragments
 
 This analysis produces structured UI data used to generate the documentation files.
 
@@ -138,6 +147,9 @@ Find navigation from:
 - modal entry points
 - bottom sheet entry points
 - in-screen route transitions
+- Fragment container hierarchies
+- FragmentTransaction replacements
+- FragmentPagerAdapter / FragmentStateAdapter
 
 This helps build the **screen catalog** correctly.
 
@@ -164,6 +176,12 @@ Trade (Screen Container)
  │   └── Order Form
  ├── Margin (Variant)
  └── Futures (Variant)
+
+The screen catalog should record:
+- screen container count
+- variant count
+- overlay interfaces
+- modal interfaces
 
 Sources:
 - res/layout/
@@ -274,6 +292,33 @@ Sources:
 
 ---
 
+### Step 4.7: Detect Overlay Interfaces
+
+Some UI interfaces appear as overlays instead of full screens.
+
+Examples:
+
+Overlay Types
+├── Bottom sheets
+├── Dropdown panels
+├── Filter panels
+├── Network selector sheets
+├── Token selector sheets
+├── Share dialogs
+├── Quick action panels
+└── Contextual menus
+
+These overlays must be cataloged separately from screen variants.
+
+Sources:
+- BottomSheetDialogFragment classes
+- DialogFragment classes
+- PopupWindow implementations
+- layout XML used by overlay controllers
+
+---
+
+
 ### Step 5: Extract User Workflows
 
 The AI agent analyzes navigation flows and event handlers to reconstruct user workflows.
@@ -330,6 +375,7 @@ Also detect micro UI components:
 - Navigation: back arrows, close icons, expand/collapse indicators
 - Controllers: sliders, steppers, dials, radial selectors
 - Display: tooltips, popovers, contextual menus, quick settings tiles
+- Interaction zones: swipe gesture areas, chart touch zones, drag handles, scroll snapping regions
 
 Sources used:
 - layout XML
@@ -339,6 +385,9 @@ Sources used:
 - TabLayout / ViewPager bindings
 - TabLayoutMediator bindings
 - click handlers in source code
+- ViewModel classes
+- LiveData / Flow bindings
+- data binding expressions in layouts
 
 ---
 
@@ -445,6 +494,16 @@ res/layout-ldrtl/
 
 Theme variants:
 res/values-night/
+
+Locale variants:
+res/values-es/
+res/values-fr/
+res/values-ja/
+res/values-zh/
+res/values-zh-rCN/
+res/values-zh-rTW/
+res/values-ru/
+res/values-ar/
 
 These resources must be mapped to the primary UI definitions.
 
@@ -896,29 +955,29 @@ Lists every screen and route.
     - Include hex codes with RGB values
     - Document exact spacing in pixels
 
-2. **Two-Layer Architecture**:
-   01–02 → Application definition  
-   03–07 → Exchange core screens  
-   08–12 → Web3 core screens  
-   13–17 → Exchange advanced modules  
-   18–22 → Web3 advanced modules  
-   23–32 → Account & settings  
-   33–41 → Design system & foundation UI  
-   42–50 → Component specifications
+3. **Two-Layer Architecture**:
+    01–02 → Application definition  
+    03–07 → Exchange core screens  
+    08–12 → Web3 core screens  
+    13–17 → Exchange advanced modules  
+    18–22 → Web3 advanced modules  
+    23–32 → Account & settings  
+    33–41 → Design system & foundation UI  
+    42–50 → Component specifications
 
-3. **CeFi vs DeFi Separation**:
-   - Exchange (03-17): Order books, charts, trading
-   - Web3 (08-22): Wallet, swaps, NFTs, dApps
-   - Different UI patterns, different user flows
+4. **CeFi vs DeFi Separation**:
+    - Exchange (03-17): Order books, charts, trading
+    - Web3 (08-22): Wallet, swaps, NFTs, dApps
+    - Different UI patterns, different user flows
 
-4. **Documentation Quality**:
-   - Document all visible UI elements.
-   - Typical size: 200-800 lines depending on screen complexity.
-   - Trade page may exceed 1000 lines.
-   - Always inspect layout XML files first before documenting a screen.
-   - Use XML hierarchy as the source of truth for component structure.
+5. **Documentation Quality**:
+    - Document all visible UI elements.
+    - Typical size: 200-800 lines depending on screen complexity.
+    - Trade page may exceed 1000 lines.
+    - Always inspect layout XML files first before documenting a screen.
+    - Use XML hierarchy as the source of truth for component structure.
 
-5. **One Screen Container Per File**:
+6. **One Screen Container Per File**:
     - Each MD file describes one major screen container.
     - Inside the file document:
       - screen variants
@@ -937,34 +996,34 @@ Lists every screen and route.
       - Indicator settings
       - Order confirmation modal
 
-6. **APK Resource First Rule**:
-   The AI agent analyzes the following resources to document a screen:
-   - res/layout/
-   - res/values/
-   - res/drawable/
-   - res/navigation/
-   - source code (jadx)
-   
-   These resources define the true UI structure.
+7. **APK Resource First Rule**:
+    The AI agent analyzes the following resources to document a screen:
+    - res/layout/
+    - res/values/
+    - res/drawable/
+    - res/navigation/
+    - source code (jadx)
+    
+    These resources define the true UI structure.
 
-7. **Workflow Extraction Rule**:
-   Always identify the user workflow a screen belongs to.
-   Screens should be documented as part of a flow, not as isolated UI pages.
+8. **Workflow Extraction Rule**:
+    Always identify the user workflow a screen belongs to.
+    Screens should be documented as part of a flow, not as isolated UI pages.
 
-8. **Micro-Detail Extraction Rule**:
-    Every screen must be decomposed into:
-    - sections
-    - tabs
-    - nested tabs
-    - widgets
-    - cards
-    - lists
-    - filters
-    - selectors
-    - overlays
-    - reusable components
+9. **Micro-Detail Extraction Rule**:
+     Every screen must be decomposed into:
+     - sections
+     - tabs
+     - nested tabs
+     - widgets
+     - cards
+     - lists
+     - filters
+     - selectors
+     - overlays
+     - reusable components
 
-    Many important Binance UI elements exist as subviews inside major screens and must not be skipped.
+     Many important Binance UI elements exist as subviews inside major screens and must not be skipped.
 
 ---
 
