@@ -11,7 +11,7 @@
 ```
 ✅ apk-tools/          - Extraction tools (jadx + apktool)
 ✅ .git/               - Git repository
-✅ binance-3-10-4.apk  - Binance APK (308 MB)
+✅ Binance.apk         - Binance APK
 ✅ LIST OF UI UX MD FILES.md - Master documentation plan (50 files)
 ✅ docs/               - UI/UX documentation files (01–50)
 ```
@@ -24,11 +24,12 @@
 project-root/
 │
 ├── apk-tools/
-├── binance-3-10-4.apk
+├── Binance.apk
 ├── binance-decompiled/
 │   ├── res/
 │   ├── assets/
 │   └── layout/
+│       └── layout-v*/
 │
 ├── jadx-output/
 │
@@ -48,13 +49,15 @@ project-root/
 
 ## 🎯 Immediate Next Steps
 
-### Step 1: Decompile APK and Extract Resources
+### Step 1: AI Agent APK Decompilation
+The AI agent will automatically decompile the APK and analyze UI resources using apktool and jadx.
+
 **Tool**: Use `apk-tools` folder (jadx + apktool)
 
 **Process**:
 1. **Decompile APK** with apktool:
    ```powershell
-   java -jar apk-tools/apktool.jar decode binance-3-10-4.apk -o binance-decompiled
+   java -jar apk-tools/apktool.jar decode Binance.apk -o binance-decompiled
    ```
 
 2. **Extract all images** from decompiled folder:
@@ -66,9 +69,25 @@ project-root/
    - Location: `binance-decompiled/res/layout/`
    - Location: `binance-decompiled/res/layout-v*/`
 
-4. **Decompile with jadx** for source code:
+4. **Extract design system resources**:
+   Location:
+   `binance-decompiled/res/values/`
+   
+   Important files:
+   - colors.xml
+   - styles.xml
+   - themes.xml
+   - dimens.xml
+   - strings.xml
+
+5. **Extract animation resources**:
+   Location:
+   `binance-decompiled/res/anim/`
+   `binance-decompiled/res/animator/`
+
+6. **Decompile with jadx** for source code:
    ```powershell
-   bin\jadx.bat binance-3-10-4.apk --output-dir jadx-output
+   apk-tools\jadx\bin\jadx.bat Binance.apk --output-dir jadx-output
    ```
 
 **Expected Output**:
@@ -78,7 +97,29 @@ project-root/
 
 ---
 
-### Step 2: Extract Navigation Structure
+### Step 2: AI Resource Analysis
+
+The AI agent analyzes extracted resources to identify:
+
+- UI layouts
+- drawable assets
+- design system tokens
+- navigation graphs
+- animation resources
+- activity and fragment classes
+- TabLayout / ViewPager structures
+- RecyclerView / list-based widgets
+- filters, sort controls, and segmented controls
+- network selectors and chain selectors
+- modal, dialog, and bottom sheet structures
+- component state resources
+- feature flags and conditional UI branches
+
+This analysis produces structured UI data used to generate the documentation files.
+
+---
+
+### Step 3: Extract Navigation Structure
 
 Find navigation from:
 - bottom navigation
@@ -86,12 +127,148 @@ Find navigation from:
 - fragment/activity transitions
 - routing classes
 - deep links
+- res/navigation/
+- AndroidManifest.xml
+- bottom navigation tabs
+- top tabs / segmented tabs
+- nested tab navigation
+- modal entry points
+- bottom sheet entry points
+- in-screen route transitions
 
 This helps build the **screen catalog** correctly.
 
 ---
 
-### Step 3: Create Documentation Files (50 MD Files)
+### Step 4: Detect All Application Screens
+
+The AI agent scans layouts, activities, fragments, and navigation graphs to detect all screens present in the application.
+
+Sources:
+- res/layout/
+- res/navigation/
+- AndroidManifest.xml
+- Fragment classes
+- Activity classes
+
+The detected screens are used to build the screen catalog.
+
+Also detect and catalog:
+- tab-based subviews inside screens
+- widget regions inside screens
+- reusable section containers
+- modal-only screens
+- bottom-sheet-only flows
+- popups and overlays
+- filter panels
+- network selection panels
+- token/asset selector panels
+
+---
+
+### Step 5: Extract User Workflows
+
+The AI agent analyzes navigation flows and event handlers to reconstruct user workflows.
+
+Examples:
+- Spot trading workflow
+- Futures trading workflow
+- Convert / swap workflow
+- Deposit workflow
+- Withdraw workflow
+- Transfer workflow
+- Login / authentication workflow
+- KYC / identity workflow
+- Web3 wallet connect workflow
+- Token network selection workflow
+- Filter / sort interaction workflow
+- Search and asset selection workflow
+
+Sources used:
+- navigation graphs
+- fragment transitions
+- click handlers in source code
+- deep links
+
+---
+
+### Step 6: Extract Tabs, Widgets, Filters, and Network Selectors
+
+The AI agent analyzes sub-screen UI structures that do not appear as standalone screens but are essential to the application behavior.
+
+Extract:
+- top tab groups
+- in-screen segmented controls
+- coin list tabs
+- market filter controls
+- sort controls
+- widget containers
+- carousels and banners
+- network selectors
+- token selectors
+- asset filters
+- bottom sheet filters
+- quick action modules
+
+Sources used:
+- layout XML
+- view IDs
+- adapter classes
+- fragment containers
+- TabLayout / ViewPager bindings
+- click handlers in source code
+
+---
+
+### Step 7: Extract UI Design System
+
+Analyze resources from:
+- res/values/colors.xml
+- res/values/styles.xml  
+- res/values/themes.xml
+- res/values/dimens.xml
+
+Extract:
+- color palette
+- typography definitions
+- spacing system
+- border radius
+- elevation/shadows
+- gradients
+- state colors
+- selector-based color variants
+- divider styles
+- tab indicators
+- chip/tag styles
+- button state styles
+- input state styles
+
+---
+
+### Step 8: Extract UI Assets
+
+Analyze resources from:
+- res/drawable/
+- res/mipmap/
+- assets/
+
+Extract:
+- icons
+- vector drawables
+- illustrations
+- backgrounds
+- gradients
+- tab icons
+- filter icons
+- network logos
+- token logos
+- badges and status indicators
+- onboarding illustrations
+- empty-state illustrations
+
+---
+
+### Step 9: Create Documentation Files (50 MD Files)
 
 All documentation files must be created and fed to the AI builder in numeric order (01 → 50).
 
@@ -172,6 +349,10 @@ docs/
     └── 50-dialogs-bottom-sheets.md
 ```
 
+Workflow documentation files:
+- 44-screen-flows-navigation.md → navigation graph of the entire app
+- 45-features-overview.md → user workflows for major features
+
 All MD files should be created inside the `docs/` folder and maintained in numeric order.
 When feeding files to the AI full stack builder, always follow the numeric sequence (01 → 50).
 
@@ -190,6 +371,47 @@ When feeding files to the AI full stack builder, always follow the numeric seque
 ## Page Route
 /path
 
+## Workflow Context
+
+Describe the user workflow this screen belongs to.
+
+Example:
+Markets → Select Pair → Trade Screen → Place Order
+
+## Screen Purpose
+
+Explain the purpose of this screen inside the application.
+
+Example:
+
+Trade Screen  
+Allows users to place spot or futures orders for a selected trading pair.
+
+## Subviews and Internal Sections
+- Tabs
+- Widgets
+- Cards
+- Lists
+- Modals
+- Bottom sheets
+
+## Filters and Selectors
+- Filter types
+- Sort options
+- Chip groups
+- Dropdown selectors
+- Network selectors
+- Token selectors
+
+## States and Variants
+- Empty state
+- Loading state
+- Error state
+- Success state
+- Disabled state
+- Selected state
+- Filtered state
+
 ## Source Resources
 
 ### Layout XML
@@ -201,11 +423,16 @@ When feeding files to the AI full stack builder, always follow the numeric seque
 - Background images
 - Vector drawables
 
-### Related Code
+### Navigation Source
+- Activity / Fragment / Navigation graph
+
+### Source Code References
 - Activity / Fragment class name
+- Important event handlers
+- Navigation triggers
 
 ## Component Hierarchy
-[Break down all UI components from layout XML]
+[Break down all UI components from layout XML, including tabs, widgets, lists, filters, selectors, modals, bottom sheets, overlays, and reusable subviews]
 
 ## Layout Structure
 Header
@@ -238,7 +465,13 @@ Footer / Bottom Navigation
 
 ## Interaction Patterns
 - Tap/click behavior
-- Gesture support (swipe, pinch, etc.)
+- Gesture support (swipe, pinch, drag, scroll)
+- Tab switching behavior
+- Filter application behavior
+- Sort behavior
+- Selector opening behavior
+- Bottom sheet behavior
+- Modal behavior
 - Animation timings (duration, easing)
 - Haptic feedback
 - Navigation actions
@@ -269,22 +502,20 @@ Footer / Bottom Navigation
 
 ---
 
-## 🔧 Tools You'll Need
+## ⚙ AI Agent Execution Environment
 
-### For APK Resource Analysis:
-- **Android Studio** - For viewing layout XML and drawable resources
-- **VS Code** - For editing XML files
-- **XML viewer** - For understanding layout hierarchy
-- **Vector drawable viewer** - For analyzing icons and images
+This workspace runs inside an AI-enabled code editor.
 
-### For Documentation:
-- **VS Code** or your IDE - For writing MD files
-- **Markdown Preview** - For viewing formatted docs
+The AI agent performs:
+- APK decompilation
+- resource extraction
+- layout analysis
+- navigation analysis
+- workflow reconstruction
+- documentation generation
 
-### For APK Extraction:
-- **apktool** (in apk-tools folder) - For decompiling
-- **jadx** (in apk-tools folder) - For source code
-- **7-Zip** - For opening APK as archive
+The agent uses the tools located in:
+apk-tools/
 
 ---
 
@@ -449,16 +680,54 @@ Lists every screen and route.
    - Each MD file should describe ONE screen or ONE system only.
    - Do not mix multiple screens in the same document.
 
+6. **APK Resource First Rule**:
+   The AI agent analyzes the following resources to document a screen:
+   - res/layout/
+   - res/values/
+   - res/drawable/
+   - res/navigation/
+   - source code (jadx)
+   
+   These resources define the true UI structure.
+
+7. **Workflow Extraction Rule**:
+   Always identify the user workflow a screen belongs to.
+   Screens should be documented as part of a flow, not as isolated UI pages.
+
+8. **Micro-Detail Extraction Rule**:
+   Document not only screens, but also:
+   - tabs
+   - widgets
+   - filters
+   - sort controls
+   - selectors
+   - network pickers
+   - token pickers
+   - bottom sheets
+   - modals
+   - reusable cards and panels
+
+   Many important Binance UI elements exist as subviews inside major screens and must not be skipped.
+
 ---
 
 ## 🚀 Quick Start Checklist
 
-- [ ] Decompile APK with apktool
-- [ ] Extract all images from `res/` folder
-- [ ] Analyze layout XML files
-- [ ] Analyze drawable resources
+- [ ] Decompile APK
+- [ ] Extract UI resources
+- [ ] Analyze layouts
 - [ ] Extract navigation structure
-- [ ] Start with:
+- [ ] Detect all application screens
+- [ ] Detect tabs and segmented views
+- [ ] Detect widgets and reusable sections
+- [ ] Detect filters and sort controls
+- [ ] Detect network and token selectors
+- [ ] Detect modals and bottom sheets
+- [ ] Extract component states and UI variants
+- [ ] Extract user workflows
+- [ ] Extract design system
+- [ ] Extract assets
+- [ ] Start documenting with:
   - 01-complete-ui-specification.md
   - 02-complete-screen-catalog.md
   - 03–07 Exchange core screens
@@ -477,7 +746,7 @@ Lists every screen and route.
 **Just read this file** and you'll know exactly:
 1. What we planned (50-file architecture)
 2. What's done (workspace cleanup)
-3. What's next (extract APK → organize → document)
+3. What's next (AI decompile → AI analysis → extract navigation → detect screens → extract tabs/widgets/filters/networks → extract workflows → extract design system → extract assets → create 50 MD files)
 
 **Continue from where you left off!** 🎯
 
@@ -485,4 +754,4 @@ Lists every screen and route.
 
 *Last Updated: 2026-03-12*
 *Project: Binance Clone - Documentation-Driven Development*
-*Architecture: 50 MD Files → AI Full Stack App Builder → Complete App*
+*Architecture: Binance APK → AI Agent Decompilation (apktool) → Source Extraction (jadx) → Resource Analysis (layouts + drawables + values) → Screen Detection → Navigation & Workflow Reconstruction → UI/UX Documentation (50 MD Files) → AI Full Stack App Builder → Generated Web Application → Capacitor Android Build*
