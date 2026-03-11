@@ -27,9 +27,12 @@ project-root/
 ├── Binance.apk
 ├── binance-decompiled/
 │   ├── res/
+│   │   ├── layout/
+│   │   ├── layout-v*/
+│   │   ├── layout-land/
+│   │   ├── layout-sw600dp/
+│   │   └── layout-ldrtl/
 │   ├── assets/
-│   └── layout/
-│       └── layout-v*/
 │
 ├── jadx-output/
 │
@@ -144,6 +147,24 @@ This helps build the **screen catalog** correctly.
 
 The AI agent scans layouts, activities, fragments, and navigation graphs to detect all screens present in the application.
 
+The screen catalog must record four hierarchy levels:
+Application
+│
+├── Screen Container
+│   ├── Screen Variant
+│   │   ├── Sections
+│   │   │   ├── Tabs
+│   │   │   └── Widgets
+
+Example:
+Trade (Screen Container)
+ ├── Spot (Variant)
+ │   ├── Chart
+ │   ├── Order Book
+ │   └── Order Form
+ ├── Margin (Variant)
+ └── Futures (Variant)
+
 Sources:
 - res/layout/
 - res/navigation/
@@ -163,6 +184,93 @@ Also detect and catalog:
 - filter panels
 - network selection panels
 - token/asset selector panels
+
+### Step 4.5: Detect Screen Sections and Layout Regions
+
+Each detected screen must be decomposed into layout regions.
+
+Examples:
+
+Exchange Home
+├── Header
+├── Balance summary
+├── Quick actions
+├── Banner / carousel
+├── Market tabs
+├── Market widget list
+└── News section
+
+Markets Screen
+├── Search bar
+├── Market category tabs
+├── Filter controls
+├── Coin list widget
+└── Pagination controls
+
+Trade Screen
+├── Pair selector
+├── Chart container
+├── Timeframe selector
+├── Indicator selector
+├── Order book
+├── Trade history
+├── Order form
+└── Position panel
+
+Sources:
+- layout XML hierarchy
+- fragment containers
+- RecyclerView sections
+- view IDs
+- ConstraintLayout chains and barriers
+- LinearLayout weight distribution and gravity
+- RelativeLayout alignment rules
+- SwipeRefreshLayout and NestedScrollView wrappers
+- GridLayout specifications
+- PercentRelativeLayout and PercentFrameLayout
+- CoordinatorLayout behaviors
+- AppBarLayout and CollapsingToolbarLayout
+- NestedScrollView with multiple scroll directions
+
+---
+
+### Step 4.6: Detect Screen Variants and Sub-Screens
+
+A single screen container may include multiple UI variants that behave as separate screens.
+
+Examples:
+
+Trade Screen
+├── Spot Mode
+├── Margin Mode
+├── Futures Mode
+├── Chart Fullscreen
+├── Indicator Settings
+├── Drawing Tools Panel
+├── Pair Selector Modal
+└── Order Confirmation Modal
+
+Markets Screen
+├── Favorites Tab
+├── Spot Markets Tab
+├── Futures Markets Tab
+├── ETF Tab
+└── Search Results Mode
+
+Wallet Screen
+├── Assets List
+├── Asset Details
+├── Deposit Flow
+├── Withdraw Flow
+└── Network Selector
+
+These variants must be cataloged even if they share the same base layout.
+
+Sources:
+- Fragment state changes
+- tab container switching
+- modal launch triggers
+- bottom sheet controllers
 
 ---
 
@@ -198,17 +306,30 @@ The AI agent analyzes sub-screen UI structures that do not appear as standalone 
 
 Extract:
 - top tab groups
-- in-screen segmented controls
+- nested tabs inside tabs (ViewPager2 with TabLayout, HorizontalScrollView with tab-like views)
+- segmented controls
+- horizontal scroll tab bars
+- chart timeframe selectors
+- indicator selectors
+- category tab bars
 - coin list tabs
 - market filter controls
 - sort controls
 - widget containers
 - carousels and banners
-- network selectors
-- token selectors
+- network selectors (searchable lists, QR code scan, favorite pinning)
+- token selectors (logo grids, network status indicators, testnet/mainnet toggles)
 - asset filters
 - bottom sheet filters
 - quick action modules
+
+Also detect micro UI components:
+- Feedback: badges, notification dots, progress indicators
+- Input assists: character counters, password visibility toggles, clear buttons
+- Selection: radio buttons, checkboxes, switches, chips (choice, filter, action, input)
+- Navigation: back arrows, close icons, expand/collapse indicators
+- Controllers: sliders, steppers, dials, radial selectors
+- Display: tooltips, popovers, contextual menus, quick settings tiles
 
 Sources used:
 - layout XML
@@ -216,6 +337,7 @@ Sources used:
 - adapter classes
 - fragment containers
 - TabLayout / ViewPager bindings
+- TabLayoutMediator bindings
 - click handlers in source code
 
 ---
@@ -245,6 +367,37 @@ Extract:
 
 ---
 
+### Step 7.5: Extract Component State Variants
+
+The AI agent must detect UI state variants defined in drawable selectors and style definitions.
+
+States to extract:
+- default
+- pressed
+- focused
+- selected
+- disabled
+- loading
+- error
+- success
+- active tab
+- inactive tab
+- hovered (for web/Desktop compatibility)
+- dragged (for drag-and-drop interfaces)
+- checked (for toggleable components)
+- expanded (for collapsible panels)
+
+Sources:
+- drawable selector XML
+- color selector XML
+- style attributes
+- view state flags
+- StateListDrawable XML for pressed/focused/selected/disabled states
+- AnimatedStateListDrawable for transition states
+- Theme attributes for state-specific colors (colorControlNormal, etc.)
+
+---
+
 ### Step 8: Extract UI Assets
 
 Analyze resources from:
@@ -265,6 +418,42 @@ Extract:
 - badges and status indicators
 - onboarding illustrations
 - empty-state illustrations
+
+---
+
+### Step 8.5: Extract Multi-Configuration Resources
+
+Detect alternative UI configurations.
+
+Examples:
+
+Density variants:
+res/drawable-hdpi/
+res/drawable-xhdpi/
+res/drawable-xxhdpi/
+res/drawable-xxxhdpi/
+
+Screen size variants:
+res/layout-sw600dp/
+res/layout-sw720dp/
+
+Orientation variants:
+res/layout-land/
+
+RTL layout variants:
+res/layout-ldrtl/
+
+Theme variants:
+res/values-night/
+
+These resources must be mapped to the primary UI definitions.
+
+Extraction approach:
+- Compare dimension values (dimens.xml) across configurations
+- Extract string variations (strings.xml) for locale-specific UI
+- Identify drawable substitutions (XML vs raster assets)
+- Document theme attribute overrides (colors, styles)
+- Note layout structural changes (added/removed views)
 
 ---
 
@@ -384,8 +573,55 @@ Explain the purpose of this screen inside the application.
 
 Example:
 
-Trade Screen  
+Trade Screen
 Allows users to place spot or futures orders for a selected trading pair.
+
+## Screen Variants
+
+List alternate UI modes of the screen.
+
+Example:
+
+Trade Screen
+Variants:
+- Spot Mode
+- Margin Mode
+- Futures Mode
+- Chart Fullscreen
+- Indicator Panel
+- Drawing Tools Panel
+
+## Tabs and Subviews
+
+Document all tab structures.
+
+Example:
+
+Markets Screen
+Tabs:
+- Favorites
+- Spot
+- Futures
+- ETF
+- Zones
+
+Nested Tabs:
+Spot Markets
+├── USDT
+├── BTC
+├── FDUSD
+└── BNB
+
+## Widget Regions
+
+List reusable widgets inside the screen.
+
+Examples:
+- coin list widget
+- price ticker widget
+- order book widget
+- portfolio summary card
+- banner carousel
 
 ## Subviews and Internal Sections
 - Tabs
@@ -400,8 +636,8 @@ Allows users to place spot or futures orders for a selected trading pair.
 - Sort options
 - Chip groups
 - Dropdown selectors
-- Network selectors
-- Token selectors
+- Network selectors: searchable lists, QR code scan, favorite pinning
+- Token selectors: logo grids, network status indicators, testnet/mainnet toggles
 
 ## States and Variants
 - Empty state
@@ -676,9 +912,24 @@ Lists every screen and route.
    - Always inspect layout XML files first before documenting a screen.
    - Use XML hierarchy as the source of truth for component structure.
 
-5. **One Screen Per File**:
-   - Each MD file should describe ONE screen or ONE system only.
-   - Do not mix multiple screens in the same document.
+5. **One Screen Container Per File**:
+    - Each MD file describes one major screen container.
+    - Inside the file document:
+      - screen variants
+      - tab views
+      - modal variants
+      - bottom sheet variants
+      - fullscreen variants
+    - Example:
+      05-exchange-trade-spot.md
+      Container:
+      Trade Screen
+      Variants documented inside:
+      - Spot mode
+      - Margin mode
+      - Chart fullscreen
+      - Indicator settings
+      - Order confirmation modal
 
 6. **APK Resource First Rule**:
    The AI agent analyzes the following resources to document a screen:
@@ -695,19 +946,19 @@ Lists every screen and route.
    Screens should be documented as part of a flow, not as isolated UI pages.
 
 8. **Micro-Detail Extraction Rule**:
-   Document not only screens, but also:
-   - tabs
-   - widgets
-   - filters
-   - sort controls
-   - selectors
-   - network pickers
-   - token pickers
-   - bottom sheets
-   - modals
-   - reusable cards and panels
+    Every screen must be decomposed into:
+    - sections
+    - tabs
+    - nested tabs
+    - widgets
+    - cards
+    - lists
+    - filters
+    - selectors
+    - overlays
+    - reusable components
 
-   Many important Binance UI elements exist as subviews inside major screens and must not be skipped.
+    Many important Binance UI elements exist as subviews inside major screens and must not be skipped.
 
 ---
 
@@ -718,12 +969,16 @@ Lists every screen and route.
 - [ ] Analyze layouts
 - [ ] Extract navigation structure
 - [ ] Detect all application screens
-- [ ] Detect tabs and segmented views
-- [ ] Detect widgets and reusable sections
-- [ ] Detect filters and sort controls
-- [ ] Detect network and token selectors
-- [ ] Detect modals and bottom sheets
-- [ ] Extract component states and UI variants
+- [ ] Detect screen sections
+- [ ] Detect screen variants
+- [ ] Detect nested tab structures
+- [ ] Detect widget containers
+- [ ] Detect micro UI components
+- [ ] Detect overlay interfaces
+- [ ] Detect modal-only screens
+- [ ] Detect fullscreen variants
+- [ ] Detect component states
+- [ ] Detect multi-configuration resources
 - [ ] Extract user workflows
 - [ ] Extract design system
 - [ ] Extract assets
