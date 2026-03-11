@@ -9,7 +9,7 @@
 
 ### 📦 Current Workspace Contents
 ```
-✅ apk-tools/          - Extraction tools (jadx, apktool)
+✅ apk-tools/          - Extraction tools (jadx + apktool)
 ✅ .git/               - Git repository
 ✅ binance-3-10-4.apk  - Binance APK (308 MB)
 ✅ LIST OF UI UX MD FILES.md - Master documentation plan (50 files)
@@ -49,104 +49,59 @@
 
 ---
 
-### Step 2: Organize UI Screenshots into 20 Folders
+### Step 2: Extract Navigation Structure
+
+Find navigation from:
+- bottom navigation
+- drawer navigation
+- fragment/activity transitions
+- routing classes
+- deep links
+
+This helps build the **screen catalog** correctly.
+
+---
+
+### Step 3: Organize UI Screenshots into Folders
 
 **Create folder structure** in workspace root:
 
 ```
 UI UX IMAGES/
-├── Exchange interface Home page_/
-├── Exchange interface market page_/
-├── Exchange interface trade page_/
-├── Exchange interface futures page_/
-├── Exchange interface assets page_/
-├── Exchange interface order book_/
-├── Exchange interface chart system_/
-├── Exchange interface order types_/
-├── Exchange interface open orders_/
-├── Exchange interface trade history_/
-├── Web3 wallet interface home_/
-├── Web3 wallet interface markets_/
-├── Web3 wallet interface swap_/
-├── Web3 wallet interface discover_/
-├── Web3 wallet interface assets_/
-├── Web3 wallet interface token details_/
-├── Web3 wallet interface NFT_/
-├── Web3 wallet interface network selector_/
-├── Web3 wallet interface transaction history_/
-└── Web3 wallet interface wallet connect_/
+├── exchange-home/
+├── exchange-markets/
+├── exchange-trade/
+│   ├── charts/          # Subcomponent of trade page
+│   ├── order-book/      # Subcomponent of trade page
+│   └── order-types/     # Subcomponent of trade page
+├── exchange-futures/
+├── exchange-assets/
+├── exchange-open-orders/
+├── exchange-trade-history/
+├── web3-home/
+├── web3-markets/
+├── web3-swap/
+├── web3-discover/
+├── web3-assets/
+├── web3-token-details/
+├── web3-nft/
+├── web3-network-selector/
+├── web3-transaction-history/
+└── web3-wallet-connect/
 ```
 
 **Sort images** into folders:
 - **Exchange (CeFi)**: Trading UI, order books, charts, markets
 - **Web3 (DeFi)**: Wallet UI, swaps, NFTs, dApps
-- **~9-10 images per folder** (for comprehensive documentation)
+- **Flexible number of images per folder** (some screens may require 30+ screenshots)
+
+Note: `charts/`, `order-book/`, and `order-types/` are subcomponents of the trade page, not separate screens.
 
 ---
 
-### Step 3: Create Documentation Files (50 MD Files)
+### Step 4: Create Documentation Files (50 MD Files)
 
-**Start with Global UI System (Files 01-20)**:
-
-#### Phase 1: Foundation (01-10)
-1. `01-colors-theme.md` - Extract all colors from APK
-2. `02-typography.md` - Font families, sizes, weights
-3. `03-dimensions-spacing.md` - Spacing system, dimensions
-4. `04-screen-layouts.md` - Screen sizes, layouts
-5. `05-ui-components.md` - Buttons, inputs, cards
-6. `06-navigation-system.md` - Nav patterns, bottom bars
-7. `07-icons-drawables.md` - Icon library, sizes
-8. `08-strings-content.md` - Text content, labels
-9. `09-animations-motion.md` - Animations, transitions
-10. `10-complete-ui-specification.md` - Summary
-
-#### Phase 2: Interaction (11-20)
-11. `11-logo-icon-specifications.md` - Logo variations
-12. `12-button-specifications.md` - All button types
-13. `13-screen-flows-navigation.md` - User flows
-14. `14-features-overview.md` - Feature list
-15. `15-data-formatting-rules.md` - Price, date formats
-16. `16-ui-states-loading-error-empty.md` - States
-17. `17-input-fields.md` - Form inputs
-18. `18-cards-lists.md` - Card layouts
-19. `19-dialogs-bottom-sheets.md` - Modals
-20. `20-complete-screen-catalog.md` - All screens
-
-#### Phase 3: Exchange Interface (21-30)
-21. `21-exchange-homepage.md` - Exchange home
-22. `22-exchange-markets.md` - Markets page
-23. `23-exchange-trade-spot.md` - Spot trading
-24. `24-exchange-trade-futures.md` - Futures
-25. `25-exchange-assets-wallet.md` - Assets
-26. `26-exchange-order-book.md` - Order book
-27. `27-exchange-chart-system.md` - Charts
-28. `28-exchange-order-types.md` - Order types
-29. `29-exchange-open-orders.md` - Open orders
-30. `30-exchange-trade-history.md` - History
-
-#### Phase 4: Web3 Wallet (31-40)
-31. `31-web3-wallet-home.md` - Wallet home
-32. `32-web3-wallet-markets.md` - Markets
-33. `33-web3-wallet-swap.md` - Swap
-34. `34-web3-wallet-discover-dapps.md` - dApps
-35. `35-web3-wallet-assets.md` - Assets
-36. `36-web3-wallet-token-details.md` - Token details
-37. `37-web3-wallet-nft-assets.md` - NFTs
-38. `38-web3-wallet-network-selector.md` - Networks
-39. `39-web3-wallet-transaction-history.md` - History
-40. `40-web3-wallet-wallet-connect.md` - WalletConnect
-
-#### Phase 5: Account & Settings (41-50)
-41. `41-user-profile.md` - Profile
-42. `42-account-settings.md` - Settings
-43. `43-security-settings.md` - Security
-44. `44-two-factor-authentication.md` - 2FA
-45. `45-biometric-authentication.md` - Biometric
-46. `46-notifications-system.md` - Notifications
-47. `47-permissions-system.md` - Permissions
-48. `48-error-handling-ui.md` - Errors
-49. `49-real-time-data-updates.md` - WebSocket
-50. `50-settings-flows.md` - Flows
+All documentation files must be created and fed to the AI builder in numeric order (01 → 50).
 
 ---
 
@@ -155,10 +110,13 @@ UI UX IMAGES/
 **Each MD file should include**:
 
 ```markdown
-# [File Number]-[File Name]
+# [##]-[file-name]
 
 ## Overview
 [Brief description of what this file documents]
+
+## Page Route
+/path
 
 ## Source Images
 - Folder: `[Folder name]`
@@ -168,6 +126,11 @@ UI UX IMAGES/
 ## Component Hierarchy
 [Break down all UI components visible in screenshots]
 
+## Layout Structure
+Header
+Main Content
+Footer / Bottom Navigation
+
 ## Color Specifications
 - Extract exact hex codes from screenshots
 - Document color usage (primary, secondary, error, success)
@@ -175,20 +138,19 @@ UI UX IMAGES/
 
 ## Typography
 - Font family (SF Pro Display, etc.)
-- Font sizes (in pt or px, NOT dp/sp)
+- Font sizes (in px with dp equivalent)
 - Font weights (regular, medium, semi-bold, bold)
 - Letter spacing
 - Line heights
 
 ## Dimensions & Spacing
-- All measurements in pixels (px)
+- All measurements in pixels (px) with dp equivalent
 - Component sizes (width, height)
 - Margins and padding
-- Touch target sizes (minimum 48x48px)
+- Touch target sizes (minimum 48x48px ~24dp)
 
 ## Component States
 - Default state
-- Hover state (if applicable)
 - Pressed/Active state
 - Disabled state
 - Loading state
@@ -198,6 +160,7 @@ UI UX IMAGES/
 - Gesture support (swipe, pinch, etc.)
 - Animation timings (duration, easing)
 - Haptic feedback
+- Navigation actions
 
 ## Data Display Formats
 - How numbers are formatted
@@ -243,22 +206,119 @@ UI UX IMAGES/
 
 ---
 
-## 📊 Priority Order
+## 📊 Priority Order (BUILD ORDER)
 
-### HIGH PRIORITY (Start Here)
-1. Extract APK → Get all images
-2. Organize images → 20 folders
-3. Document Global UI (01-10) → Foundation
-4. Document Exchange (21-25) → Core trading
-5. Document Web3 (31-35) → Wallet features
+### Step 1 — Application Definition
+```
+01-complete-ui-specification.md
+```
 
-### MEDIUM PRIORITY
-6. Document Interaction (11-20) → Patterns
-7. Document Exchange Advanced (26-30) → Trading tools
-8. Document Web3 Advanced (36-40) → dApps, NFTs
+Defines the entire application structure.
 
-### LOW PRIORITY (Complete Later)
-9. Document Account (41-50) → Settings
+---
+
+### Step 2 — Screen Catalog
+```
+02-complete-screen-catalog.md
+```
+
+Lists every screen and route.
+
+---
+
+### Step 3 — Exchange Core Screens
+```
+03-exchange-homepage.md
+04-exchange-markets.md
+05-exchange-trade-spot.md
+06-exchange-trade-futures.md
+07-exchange-assets-wallet.md
+```
+
+---
+
+### Step 4 — Web3 Core Screens
+```
+08-web3-wallet-home.md
+09-web3-wallet-markets.md
+10-web3-wallet-swap.md
+11-web3-wallet-discover-dapps.md
+12-web3-wallet-assets.md
+```
+
+---
+
+### Step 5 — Exchange Advanced Modules
+```
+13-exchange-order-book.md
+14-exchange-chart-system.md
+15-exchange-order-types.md
+16-exchange-open-orders.md
+17-exchange-trade-history.md
+```
+
+---
+
+### Step 6 — Web3 Advanced Modules
+```
+18-web3-wallet-token-details.md
+19-web3-wallet-nft-assets.md
+20-web3-wallet-network-selector.md
+21-web3-wallet-transaction-history.md
+22-web3-wallet-wallet-connect.md
+```
+
+---
+
+### Step 7 — Account & Settings
+```
+23-user-profile.md
+24-account-settings.md
+25-security-settings.md
+26-two-factor-authentication.md
+27-biometric-authentication.md
+28-notifications-system.md
+29-permissions-system.md
+30-error-handling-ui.md
+31-real-time-data-updates.md
+32-settings-flows.md
+```
+
+---
+
+### Step 8 — Design System
+```
+33-colors-theme.md
+34-typography.md
+35-dimensions-spacing.md
+```
+
+---
+
+### Step 9 — Foundation UI
+```
+36-screen-layouts.md
+37-ui-components.md
+38-navigation-system.md
+39-icons-drawables.md
+40-strings-content.md
+41-animations-motion.md
+```
+
+---
+
+### Step 10 — Component Specifications
+```
+42-logo-icon-specifications.md
+43-button-specifications.md
+44-screen-flows-navigation.md
+45-features-overview.md
+46-data-formatting-rules.md
+47-ui-states-loading-error-empty.md
+48-input-fields.md
+49-cards-lists.md
+50-dialogs-bottom-sheets.md
+```
 
 ---
 
@@ -276,17 +336,23 @@ UI UX IMAGES/
 
 1. **Pixel-Perfect Documentation**:
    - Measure everything from actual screenshots
-   - Use px (pixels), NOT dp or sp
+   - Use px (pixels) with dp equivalent
    - Include hex codes with RGB values
    - Document exact spacing in pixels
 
 2. **Two-Layer Architecture**:
-   - Files 01-20: Shared across entire app
-   - Files 21-50: Product-specific (Exchange or Web3)
+   01–02 → Application definition  
+   03–07 → Exchange core screens  
+   08–12 → Web3 core screens  
+   13–17 → Exchange advanced modules  
+   18–22 → Web3 advanced modules  
+   23–32 → Account & settings  
+   33–41 → Design system & foundation UI  
+   42–50 → Component specifications
 
 3. **CeFi vs DeFi Separation**:
-   - Exchange (21-30): Order books, charts, trading
-   - Web3 (31-40): Wallet, swaps, NFTs, dApps
+   - Exchange (03-17): Order books, charts, trading
+   - Web3 (08-22): Wallet, swaps, NFTs, dApps
    - Different UI patterns, different user flows
 
 4. **Image Naming Convention**:
@@ -294,10 +360,13 @@ UI UX IMAGES/
    - NOT: `IMG_001.jpg` or `screenshot1.png`
 
 5. **Documentation Quality**:
-   - Each MD file should be 300-600 lines
-   - Include actual pixel measurements
-   - Document component hierarchy
-   - Specify interaction states
+   - Document all visible UI elements.
+   - Typical size: 200-800 lines depending on screen complexity.
+   - Trade page may exceed 1000 lines.
+
+6. **One Screen Per File**:
+   - Each MD file should describe ONE screen or ONE system only.
+   - Do not mix multiple screens in the same document.
 
 ---
 
@@ -305,11 +374,19 @@ UI UX IMAGES/
 
 - [ ] Decompile APK with apktool
 - [ ] Extract all images from `res/` folder
-- [ ] Create 20 image folders
+- [ ] Create image folders
 - [ ] Sort images into folders
-- [ ] Start with `01-colors-theme.md`
-- [ ] Document each file with pixel-perfect specs
-- [ ] Feed each MD file to AI builder
+- [ ] Extract navigation structure
+- [ ] Start with:
+  - 01-complete-ui-specification.md
+  - 02-complete-screen-catalog.md
+  - 03–07 Exchange core screens
+  - 08–12 Web3 core screens
+  - 13–22 Advanced modules
+  - 23–32 Account & settings
+  - 33–41 Design system
+  - 42–50 Component specifications
+- [ ] Feed each MD file to AI builder in numeric order (01 → 50)
 - [ ] Build complete app module by module
 
 ---
