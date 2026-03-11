@@ -883,12 +883,18 @@ Lists every screen and route.
 
 ## 📌 Important Notes
 
-1. **Pixel-Perfect Documentation**:
-   - Extract UI details from layout XML and drawable resources
-   - Use screenshots only when layout structure is unclear
-   - Use px (pixels) with dp equivalent
-   - Include hex codes with RGB values
-   - Document exact spacing in pixels
+1. **Mobile-Only Extraction**:
+    - Extract UI/UX exclusively from Android APK (no desktop/web sources)
+    - Focus on mobile-specific UI patterns, components, and interactions
+    - Ignore any desktop/web-specific elements that may appear in resources
+    - All extracted specifications target mobile UI implementation
+
+2. **Pixel-Perfect Documentation**:
+    - Extract UI details from layout XML and drawable resources
+    - Use screenshots only when layout structure is unclear
+    - Use px (pixels) with dp equivalent
+    - Include hex codes with RGB values
+    - Document exact spacing in pixels
 
 2. **Two-Layer Architecture**:
    01–02 → Application definition  
