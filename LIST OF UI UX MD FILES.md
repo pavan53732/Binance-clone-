@@ -48,13 +48,14 @@ These interfaces must be documented **inside the container screen file** where t
 
 **Documentation Architecture** (Correct Build Order):
 - **Files 01–02**: Application definition & screen catalog
-- **Files 03–07**: Exchange Core screens
-- **Files 08–12**: Web3 Core screens
-- **Files 13–17**: Exchange Advanced modules
-- **Files 18–22**: Web3 Advanced modules
-- **Files 23–32**: Account & Settings
-- **Files 33–41**: Design System
-- **Files 42–50**: Component Specifications
+- **Files 03–06**: Exchange Core screens
+- **Files 07–11**: Web3 Core screens
+- **Files 12–16**: Exchange Advanced modules
+- **Files 17–21**: Web3 Advanced modules
+- **Files 22–31**: Account & Settings
+- **Files 32–40**: Design System
+- **Files 41–49**: Component Specifications
+- **File 50**: Reserved for future expansion
 
 This order allows AI builders to understand: App structure → screens → modules → UI system → components
 
@@ -73,7 +74,7 @@ These files define the **application structure** and **screen catalog**.
 
 ---
 
-## 03-07: Exchange Core Screens
+## 03-06: Exchange Core Screens
 
 These files document the **core exchange screens** - main entry points.
 
@@ -81,106 +82,120 @@ These files document the **core exchange screens** - main entry points.
 |---|-----------|-------------|--------|
 | 3 | `03-exchange-homepage.md` | Exchange homepage | 📝 Planned |
 | 4 | `04-exchange-markets.md` | Markets screen | 📝 Planned |
-| 5 | `05-exchange-trade-spot.md` | Spot trading screen | 📝 Planned |
-| 6 | `06-exchange-trade-futures.md` | Futures trading screen | 📝 Planned |
-| 7 | `07-exchange-assets-wallet.md` | Assets/wallet screen | 📝 Planned |
+| 5 | `05-exchange-trade.md` | Trade screen (Spot/Margin/Futures) | 📝 Planned |
+| 6 | `06-exchange-assets-wallet.md` | Assets/wallet screen | 📝 Planned |
+
+> **Important:** Trade screen (05) is a single container with variants:
+> - Spot Mode
+> - Margin Mode
+> - Futures Mode
+>
+> This prevents AI builder from generating duplicate order forms, charts, and order books.
 
 ---
 
-## 08-12: Web3 Core Screens
+## 07-11: Web3 Core Screens
 
 These files document the **core Web3 wallet screens** - main entry points.
 
 | # | File Name | Description | Status |
 |---|-----------|-------------|--------|
-| 8 | `08-web3-wallet-home.md` | Web3 wallet home | 📝 Planned |
-| 9 | `09-web3-wallet-markets.md` | Web3 markets | 📝 Planned |
-| 10 | `10-web3-wallet-swap.md` | Web3 swap | 📝 Planned |
-| 11 | `11-web3-wallet-discover-dapps.md` | Discover dApps | 📝 Planned |
-| 12 | `12-web3-wallet-assets.md` | Web3 assets | 📝 Planned |
+| 7 | `07-web3-wallet-home.md` | Web3 wallet home | 📝 Planned |
+| 8 | `08-web3-wallet-markets.md` | Web3 markets | 📝 Planned |
+| 9 | `09-web3-wallet-swap.md` | Web3 swap | 📝 Planned |
+| 10 | `10-web3-wallet-discover-dapps.md` | Discover dApps | 📝 Planned |
+| 11 | `11-web3-wallet-assets.md` | Web3 assets | 📝 Planned |
 
 ---
 
-## 13-17: Exchange Advanced Modules
+## 12-16: Exchange Advanced Modules
 
 These files document **advanced exchange modules** - order book, charts, etc.
 
 | # | File Name | Description | Status |
 |---|-----------|-------------|--------|
-| 13 | `13-exchange-order-book.md` | Order book UI | 📝 Planned |
-| 14 | `14-exchange-chart-system.md` | Trading charts | 📝 Planned |
-| 15 | `15-exchange-order-types.md` | Order types UI | 📝 Planned |
-| 16 | `16-exchange-open-orders.md` | Open orders | 📝 Planned |
-| 17 | `17-exchange-trade-history.md` | Trade history | 📝 Planned |
+| 12 | `12-exchange-order-book.md` | Order book UI | 📝 Planned |
+| 13 | `13-exchange-chart-system.md` | Trading charts | 📝 Planned |
+| 14 | `14-exchange-order-types.md` | Order types UI | 📝 Planned |
+| 15 | `15-exchange-open-orders.md` | Open orders | 📝 Planned |
+| 16 | `16-exchange-trade-history.md` | Trade history | 📝 Planned |
 
 ---
 
-## 18-22: Web3 Advanced Modules
+## 17-21: Web3 Advanced Modules
 
 These files document **advanced Web3 modules** - NFTs, networks, etc.
 
 | # | File Name | Description | Status |
 |---|-----------|-------------|--------|
-| 18 | `18-web3-wallet-token-details.md` | Token details | 📝 Planned |
-| 19 | `19-web3-wallet-nft-assets.md` | NFT gallery | 📝 Planned |
-| 20 | `20-web3-wallet-network-selector.md` | Network selector | 📝 Planned |
-| 21 | `21-web3-wallet-transaction-history.md` | Transaction history | 📝 Planned |
-| 22 | `22-web3-wallet-wallet-connect.md` | WalletConnect | 📝 Planned |
+| 17 | `17-web3-wallet-token-details.md` | Token details | 📝 Planned |
+| 18 | `18-web3-wallet-nft-assets.md` | NFT gallery | 📝 Planned |
+| 19 | `19-web3-wallet-network-selector.md` | Network selector | 📝 Planned |
+| 20 | `20-web3-wallet-transaction-history.md` | Transaction history | 📝 Planned |
+| 21 | `21-web3-wallet-wallet-connect.md` | WalletConnect | 📝 Planned |
 
 ---
 
-## 23-32: Account & Settings
+## 22-31: Account & Settings
 
 These files document **account management** and **settings**.
 
 | # | File Name | Description | Status |
 |---|-----------|-------------|--------|
-| 23 | `23-user-profile.md` | User profile | 📝 Planned |
-| 24 | `24-account-settings.md` | Account settings | 📝 Planned |
-| 25 | `25-security-settings.md` | Security settings | 📝 Planned |
-| 26 | `26-two-factor-authentication.md` | 2FA setup | 📝 Planned |
-| 27 | `27-biometric-authentication.md` | Biometric auth | 📝 Planned |
-| 28 | `28-notifications-system.md` | Notifications | 📝 Planned |
-| 29 | `29-permissions-system.md` | Permissions | 📝 Planned |
-| 30 | `30-error-handling-ui.md` | Error handling | 📝 Planned |
-| 31 | `31-real-time-data-updates.md` | Real-time updates | 📝 Planned |
-| 32 | `32-settings-flows.md` | Settings flows | 📝 Planned |
+| 22 | `22-user-profile.md` | User profile | 📝 Planned |
+| 23 | `23-account-settings.md` | Account settings | 📝 Planned |
+| 24 | `24-security-settings.md` | Security settings | 📝 Planned |
+| 25 | `25-two-factor-authentication.md` | 2FA setup | 📝 Planned |
+| 26 | `26-biometric-authentication.md` | Biometric auth | 📝 Planned |
+| 27 | `27-notifications-system.md` | Notifications | 📝 Planned |
+| 28 | `28-permissions-system.md` | Permissions | 📝 Planned |
+| 29 | `29-error-handling-ui.md` | Error handling | 📝 Planned |
+| 30 | `30-real-time-data-updates.md` | Real-time updates | 📝 Planned |
+| 31 | `31-settings-flows.md` | Settings flows | 📝 Planned |
 
 ---
 
-## 33-41: Design System
+## 32-40: Design System
 
 These files document the **design system** - colors, typography, spacing.
 
 | # | File Name | Description | Status |
 |---|-----------|-------------|--------|
-| 33 | `33-colors-theme.md` | Colors and theme | 📝 Planned |
-| 34 | `34-typography.md` | Typography | 📝 Planned |
-| 35 | `35-dimensions-spacing.md` | Dimensions/spacing | 📝 Planned |
-| 36 | `36-screen-layouts.md` | Screen layouts | 📝 Planned |
-| 37 | `37-ui-components.md` | UI components | 📝 Planned |
-| 38 | `38-navigation-system.md` | Navigation system | 📝 Planned |
-| 39 | `39-icons-drawables.md` | Icons/drawables | 📝 Planned |
-| 40 | `40-strings-content.md` | Strings/content | 📝 Planned |
-| 41 | `41-animations-motion.md` | Animations/motion | 📝 Planned |
+| 32 | `32-colors-theme.md` | Colors and theme | 📝 Planned |
+| 33 | `33-typography.md` | Typography | 📝 Planned |
+| 34 | `34-dimensions-spacing.md` | Dimensions/spacing | 📝 Planned |
+| 35 | `35-screen-layouts.md` | Screen layouts | 📝 Planned |
+| 36 | `36-ui-components.md` | UI components | 📝 Planned |
+| 37 | `37-navigation-system.md` | Navigation system | 📝 Planned |
+| 38 | `38-icons-drawables.md` | Icons/drawables | 📝 Planned |
+| 39 | `39-strings-content.md` | Strings/content | 📝 Planned |
+| 40 | `40-animations-motion.md` | Animations/motion | 📝 Planned |
 
 ---
 
-## 42-50: Component Specifications
+## 41-49: Component Specifications
 
 These files document **component specifications** - buttons, inputs, cards, etc.
 
 | # | File Name | Description | Status |
 |---|-----------|-------------|--------|
-| 42 | `42-logo-icon-specifications.md` | Logo specs | 📝 Planned |
-| 43 | `43-button-specifications.md` | Button specs | 📝 Planned |
-| 44 | `44-screen-flows-navigation.md` | Screen flows | 📝 Planned |
-| 45 | `45-features-overview.md` | Features overview | 📝 Planned |
-| 46 | `46-data-formatting-rules.md` | Data formatting | 📝 Planned |
-| 47 | `47-ui-states-loading-error-empty.md` | UI states | 📝 Planned |
-| 48 | `48-input-fields.md` | Input fields | 📝 Planned |
-| 49 | `49-cards-lists.md` | Cards/lists | 📝 Planned |
-| 50 | `50-dialogs-bottom-sheets.md` | Dialogs/bottom sheets | 📝 Planned |
+| 41 | `41-logo-icon-specifications.md` | Logo specs | 📝 Planned |
+| 42 | `42-button-specifications.md` | Button specs | 📝 Planned |
+| 43 | `43-screen-flows-navigation.md` | Screen flows | 📝 Planned |
+| 44 | `44-features-overview.md` | Features overview | 📝 Planned |
+| 45 | `45-data-formatting-rules.md` | Data formatting | 📝 Planned |
+| 46 | `46-ui-states-loading-error-empty.md` | UI states | 📝 Planned |
+| 47 | `47-input-fields.md` | Input fields | 📝 Planned |
+| 48 | `48-cards-lists.md` | Cards/lists | 📝 Planned |
+| 49 | `49-dialogs-bottom-sheets.md` | Dialogs/bottom sheets | 📝 Planned |
+
+---
+
+## 50: Reserved
+
+| # | File Name | Description | Status |
+|---|-----------|-------------|--------|
+| 50 | `50-future expansion.md` | Reserved for future modules | 📝 Planned |
 
 ---
 
@@ -223,13 +238,14 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 | Category | Count |
 |----------|-------|
 | Application Definition (01-02) | 2 |
-| Exchange Core (03-07) | 5 |
-| Web3 Core (08-12) | 5 |
-| Exchange Advanced (13-17) | 5 |
-| Web3 Advanced (18-22) | 5 |
-| Account & Settings (23-32) | 10 |
-| Design System (33-41) | 9 |
-| Component Specs (42-50) | 9 |
+| Exchange Core (03-06) | 4 |
+| Web3 Core (07-11) | 5 |
+| Exchange Advanced (12-16) | 5 |
+| Web3 Advanced (17-21) | 5 |
+| Account & Settings (22-31) | 10 |
+| Design System (32-40) | 9 |
+| Component Specs (41-49) | 9 |
+| Reserved (50) | 1 |
 | **TOTAL MD Files** | **50** |
 
 | Asset Statistics (Estimated) | Count |
@@ -248,14 +264,15 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 02-complete-screen-catalog.md
 ```
 
-### Exchange Core (03-07)
+### Exchange Core (03-06)
 ```
 03-exchange-homepage.md
 04-exchange-markets.md
-05-exchange-trade-spot.md
-06-exchange-trade-futures.md
-07-exchange-assets-wallet.md
+05-exchange-trade.md        # Single container with Spot/Margin/Futures variants
+06-exchange-assets-wallet.md
 ```
+
+> **Trade screen (05)** is a single container with variants to prevent duplicate UI generation.
 
 ### Web3 Core (08-12)
 ```
@@ -332,8 +349,9 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 2. Files are numbered for **correct build order** (dependency order for AI builders)
 3. **50-file architecture** mirrors Binance's actual product structure
 4. **Build order**: App definition → Screens → Modules → UI System → Components
-5. **Exchange (CeFi)** and **Web3 Wallet (DeFi)** documented separately
-6. APK extraction produces ~500-1000 drawable assets, ~200-400 layouts
+5. **Trade screen (05)** is a single container with Spot/Margin/Futures variants - prevents duplicate UI
+6. **Exchange (CeFi)** and **Web3 Wallet (DeFi)** documented separately
+7. APK extraction produces ~500-1000 drawable assets, ~200-400 layouts
 
 ---
 
@@ -442,7 +460,8 @@ These components may not appear as XML layouts but must still be documented in t
 | 2026-03-12 | Restructured to 50-file architecture |
 | 2026-03-12 | Added Screen Container Architecture |
 | 2026-03-12 | Added Navigation Layer Model |
-| 2026-03-12 | **Aligned with NEXT-STEPS.md build order** (01-02 → 03-07 → 08-12 → 13-17 → 18-22 → 23-32 → 33-41 → 42-50) |
+| 2026-03-12 | **Aligned with NEXT-STEPS.md build order** |
+| 2026-03-12 | **Fixed Trade screen bug** - Combined Spot/Futures into single container (05-exchange-trade.md)
 
 ---
 
@@ -452,13 +471,13 @@ These components may not appear as XML layouts but must still be documented in t
 2. **Analyze resources** - Extract layouts, drawables, navigation graphs
 3. **Build screen catalog** - Identify all screens using 6-layer discovery
 4. **Start documentation** - Begin with application definition (01-02)
-5. **Document screens** - Exchange core (03-07) then Web3 core (08-12)
-6. **Document modules** - Exchange advanced (13-17) then Web3 advanced (18-22)
-7. **Document settings** - Account & settings (23-32)
-8. **Document design system** - Colors, typography, spacing (33-41)
-9. **Document components** - Buttons, inputs, cards (42-50)
+5. **Document screens** - Exchange core (03-06) then Web3 core (07-11)
+6. **Document modules** - Exchange advanced (12-16) then Web3 advanced (17-21)
+7. **Document settings** - Account & settings (22-31)
+8. **Document design system** - Colors, typography, spacing (32-40)
+9. **Document components** - Buttons, inputs, cards (41-49)
 
-**Correct build order**: 01-02 → 03-07 → 08-12 → 13-17 → 18-22 → 23-32 → 33-41 → 42-50
+**Correct build order**: 01-02 → 03-06 → 07-11 → 12-16 → 17-21 → 22-31 → 32-40 → 41-49 → 50
 
 ---
 
@@ -483,7 +502,7 @@ Examples:
 Mode switching inside a screen container.
 
 Examples:
-- **Trade Screen**
+- **Trade Screen** (single container file: 05-exchange-trade.md)
   - Spot Mode
   - Margin Mode
   - Futures Mode
