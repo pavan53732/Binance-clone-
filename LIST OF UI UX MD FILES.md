@@ -47,7 +47,7 @@ These include:
 These interfaces must be documented **inside the container screen file** where they appear.
 
 **Documentation Architecture** (Correct Build Order):
-- **Files 01–02**: Application definition & screen catalog
+- **Files 00–02**: Application definition & screen catalog
 - **Files 03–06**: Exchange Core screens
 - **Files 07–11**: Web3 Core screens
 - **Files 12–16**: Exchange Advanced modules

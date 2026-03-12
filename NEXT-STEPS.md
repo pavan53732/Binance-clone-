@@ -154,6 +154,10 @@ To prevent documentation instability and duplicate definitions across 54 files, 
 
 When a screen utilizes a shared component (e.g., Coin Row), it MUST reference the exact `COMP-XXX` ID rather than duplicating the layout specification. Component specifications and data models will be mapped entirely in `36-ui-components.md` and `51-data-models.md`.
 
+#### Component Reuse Rule
+
+If a UI element already exists in the COMPONENT REGISTRY (COMP-XXX), it must NOT be redefined inside another screen document. Screens must reference the existing COMP-XXX entry instead. This prevents AI builders from creating duplicate UI components.
+
 ### Deduplication & Pagination Constraints
 
 1. **Asset Deduplication Rule:** Extract logical assets, ignoring density variants (e.g., map `drawable-hdpi/icon_btc.png` and `drawable-xxhdpi/icon_btc.png` into a single logical `icon_btc` definition). Logical asset name = base drawable filename.
@@ -1493,6 +1497,16 @@ Lists every screen and route.
 
 ---
 
+### Step 11 — Backend Mapping
+
+```
+51-data-models.md
+52-api-endpoints.md
+53-event-system.md
+```
+
+---
+
 ### Step 10 — Component Specifications
 
 ```
@@ -1573,16 +1587,19 @@ Lists every screen and route.
      Container:
      Trade Screen
      Variants documented inside:
-     - Spot mode
-     - Margin mode
-     - Futures mode
-     - Chart fullscreen
-     - Indicator settings
-     - Order confirmation modal
-     - Indicator settings
-     - Order confirmation modal
+      - Spot mode
+      - Margin mode
+      - Futures mode
+      - Chart fullscreen
+      - Indicator settings
+      - Order confirmation modal
 
-7. **APK Resource First Rule**:
+7. **APK Resource First Rule (Anti-Hallucination UI Evidence Rule)**:
+   Every documented UI component must include explicit proof of real existence. You must map:
+   - Layout XML source
+   - View IDs
+   - Drawable references
+   - Inflation location in Smali/Java
    The AI agent analyzes the following resources to document a screen:
    - res/layout/
    - res/values/
@@ -1656,7 +1673,7 @@ Many important Binance UI elements exist as subviews inside major screens and mu
   - 32–34 Design system
   - 35–40 UI foundation
   - 41–50 Component specifications
-- [ ] Feed each MD file to AI builder in numeric order (01 → 50)
+- [ ] Feed each MD file to AI builder in numeric order (00 → 53)
 - [ ] Build complete app module by module
 
 ---
@@ -1665,9 +1682,9 @@ Many important Binance UI elements exist as subviews inside major screens and mu
 
 **Just read this file** and you'll know exactly:
 
-1. What we planned (50-file architecture)
+1. What we planned (54-file architecture)
 2. What's done (workspace cleanup)
-3. What's next (AI decompile → AI analysis → extract navigation → detect screens → extract tabs/widgets/filters/networks → extract workflows → extract design system → extract assets → create 50 MD files)
+3. What's next (AI decompile → AI analysis → extract navigation → detect screens → extract tabs/widgets/filters/networks → extract workflows → extract design system → extract assets → create 54 MD files)
 
 **Continue from where you left off!** 🎯
 
@@ -1675,4 +1692,4 @@ Many important Binance UI elements exist as subviews inside major screens and mu
 
 _Last Updated: 2026-03-12_
 _Project: Binance Clone - Documentation-Driven Development_
-_Architecture: Binance APK → AI Agent Decompilation (apktool) → Source Extraction (jadx) → Resource Analysis (layouts + drawables + values) → Screen Detection → Navigation & Workflow Reconstruction → UI/UX Documentation (50 MD Files) → AI Full Stack App Builder → Generated Web Application → Capacitor Android Build_
+_Architecture: Binance APK → AI Agent Decompilation (apktool) → Source Extraction (jadx) → Resource Analysis (layouts + drawables + values) → Screen Detection → Navigation & Workflow Reconstruction → UI/UX Documentation (54 MD Files) → AI Full Stack App Builder → Generated Web Application → Capacitor Android Build_
