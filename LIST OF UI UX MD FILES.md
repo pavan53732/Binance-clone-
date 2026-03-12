@@ -130,9 +130,12 @@ These files document **advanced Web3 modules** - NFTs, networks, etc.
 |---|-----------|-------------|--------|
 | 17 | `17-web3-wallet-token-details.md` | Token details | 📝 Planned |
 | 18 | `18-web3-wallet-nft-assets.md` | NFT gallery | 📝 Planned |
-| 19 | `19-web3-wallet-network-selector.md` | Network selector | 📝 Planned |
+| 19 | `19-web3-wallet-swap.md` | Swap/Bridge | 📝 Planned |
 | 20 | `20-web3-wallet-transaction-history.md` | Transaction history | 📝 Planned |
 | 21 | `21-web3-wallet-wallet-connect.md` | WalletConnect | 📝 Planned |
+
+> **Important:** Network Selector is NOT a standalone screen.
+> It is a **reusable overlay component** documented in `49-dialogs-bottom-sheets.md`
 
 ---
 
@@ -402,16 +405,78 @@ These modules must be documented inside the screen where they appear.
 
 ---
 
-### Toolbar Menu Interfaces
+### Network Selector Overlay
 
-Toolbar menus defined in `res/menu/` must be documented.
+The **network selector** is NOT a screen - it is a **reusable overlay component**.
 
-Examples:
+**Incorrect model:**
+- Documented as standalone screen: `20-web3-wallet-network-selector.md`
+- AI generates route: `/network-selector`
+- Creates navigation problems
 
-- trade_menu.xml
-- market_filter_menu.xml
+**Correct model:**
+- Reusable overlay component (bottom sheet)
+- Used across multiple flows:
+  - Send Token → Network Selector
+  - Deposit → Network Selector
+  - Swap → Network Selector
+  - Bridge → Network Selector
 
-These menus represent UI actions and should be documented in the screen where they appear.
+**Documentation location:**
+- Should be in: `49-dialogs-bottom-sheets.md` (Component Spec)
+- NOT as standalone screen
+
+**Correct specification:**
+
+```markdown
+Component: Network Selector
+
+Type: Bottom Sheet Overlay
+
+Used In:
+- Send Token flow
+- Deposit flow
+- Swap flow
+- Bridge flow
+- Wallet Settings
+
+UI Structure:
+- Header with close button
+- Network search field
+- Network list with chain icons
+- Network fee indicators
+- Testnet/Mainnet toggle
+
+States:
+- Default
+- Searching
+- Unsupported network
+- Network unavailable
+
+Data Model:
+- chainId
+- rpcEndpoint
+- explorerUrl
+- tokenStandard
+```
+
+**Implementation pattern:**
+
+```
+WalletContext
+ ├ selectedNetwork
+ ├ selectedToken
+ └ balances
+
+NetworkSelector updates selectedNetwork
+Screens react to context automatically
+```
+
+**Why this matters:**
+- Prevents network context resets during transfers
+- Avoids duplicated network logic
+- Prevents failed transaction preparation
+- Correct back navigation behavior
 
 ---
 
