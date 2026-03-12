@@ -515,10 +515,34 @@ Examples:
 
 Tab systems and segmented controls inside sections.
 
+**Important:** Always define parent-child relationships for nested tabs.
+
+**Correct Example (Markets Screen):**
+
+```
+Layer 3a: Category Tabs (Screen-level)
+Tab Group: Market Categories
+- Favorites
+- Spot
+  - Nested: USDT, BTC, FDUSD, BNB
+- Futures
+- ETF
+- Zones
+```
+
+**Without Parent Definition (Incorrect):**
+- AI generates: /markets/spot/usdt as separate route
+
+**With Parent Definition (Correct):**
+- AI generates: Single MarketsScreen with nested tab switching
+
 Examples:
 - **Markets Screen**
   - Favorites
   - Spot
+    - USDT
+    - BTC
+    - FDUSD
   - Futures
   - ETF
 - **Spot Markets Tabs**
@@ -537,15 +561,19 @@ Large apps like Binance contain:
 - ~40 tab systems
 - ~20 nested tab groups
 
-Without navigation layering, AI builders often:
-- generate incorrect routes
-- duplicate screens
-- break tab logic
+**Common AI builder mistakes:**
+1. Generating separate routes for nested tabs (/markets/spot/usdt)
+2. Creating duplicate screens for mode variants
+3. Breaking tab logic by treating tabs as routes
 
-This structural addition prevents that by clearly distinguishing between:
+**This is prevented by:**
 - **Layer 1**: True routes (new screens)
 - **Layer 2**: Mode switches (variants within container)
-- **Layer 3**: Tab systems (internal UI switching)
+- **Layer 3**: Tab systems with parent-child relationships
+
+**Markets Example:**
+- Incorrect: MarketsPage → SpotPage → USDTPage (3 routes)
+- Correct: MarketsScreen → CategoryTabBar → PairTabBar (1 screen)
 
 ---
 
@@ -567,6 +595,62 @@ For each MD file, specify the navigation layer:
 **Example (Markets Screen - Chart Section):**
 - Navigation Layer: 3
 - Tabs: 1m, 5m, 15m, 1h, 4h
+
+---
+
+### Tab Hierarchy Documentation Rule
+
+For screens with nested tabs (like Markets), always define **parent-child relationships**.
+
+**Correct Pattern:**
+
+```markdown
+## Tab Architecture
+
+Tab Layer 1 (Screen-level tabs)
+
+Tab Group: [Group Name]
+Tabs:
+- Tab 1
+- Tab 2
+- Tab 3
+
+Tab Layer 2 (Nested tabs inside parent)
+
+Parent Tab: [Parent Tab Name]
+Tab Group: [Nested Group Name]
+Tabs:
+- Nested Tab 1
+- Nested Tab 2
+```
+
+**Example (Markets Screen):**
+
+```markdown
+## Tab Architecture
+
+Tab Layer 1: Category Tabs
+
+Tab Group: Market Categories
+Tabs:
+- Favorites
+- Spot
+- Futures
+- ETF
+- Zones
+
+Tab Layer 2: Nested Pair Tabs (inside Spot)
+
+Parent Tab: Spot
+Tab Group: Spot Pair Categories
+Tabs:
+- USDT
+- BTC
+- FDUSD
+- BNB
+```
+
+**Important:** Always specify `Parent Tab` for nested tab groups to prevent AI builder from generating separate screens.
 
 ---
 
