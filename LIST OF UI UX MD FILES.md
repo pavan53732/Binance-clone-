@@ -103,7 +103,7 @@ These files document the **core Web3 wallet screens** - main entry points.
 | 7 | `07-web3-wallet-home.md` | Web3 wallet home | 📝 Planned |
 | 8 | `08-web3-wallet-markets.md` | Web3 markets | 📝 Planned |
 | 9 | `09-web3-wallet-trade.md` | Web3 trade | 📝 Planned |
-| 10 | `10-web3-wallet-discover-dapps.md` | Discover dApps | 📝 Planned |
+| 10 | `10-web3-wallet-discover-dapps.md` | Discover page with Discover, Earn, Booster, DApps tabs | 📝 Planned |
 | 11 | `11-web3-wallet-assets.md` | Web3 assets | 📝 Planned |
 
 ---

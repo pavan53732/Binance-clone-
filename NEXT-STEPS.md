@@ -892,6 +892,84 @@ Footer / Bottom Navigation
 
 ---
 
+## 🔍 Detailed Extraction Examples for Web3 Core Screens
+
+---
+
+### 📱 For Web3 Core Screens – Discover Page (`10-web3-wallet-discover-dapps.md`)
+
+The Discover page is a multi-tab container with four primary variants: **Discover**, **Earn**, **Booster**, and **DApps**. Each tab has its own unique UI modules.
+
+#### Top Tab Architecture (Layer 3 Navigation)
+- **Tab Bar:** Horizontally scrollable with labels: `Discover`, `Earn`, `Booster`, `DApps`.
+- **Interaction:** Tapping a tab smoothly switches the entire content area below.
+
+---
+
+#### A. Discover Tab
+- **Purpose:** Lists ongoing airdrop campaigns and project spotlights.
+- **UI Components:**
+  - **Project List (`RecyclerView` item):**
+    - Left: Project name (e.g., `Turtle`).
+    - Right: Two numbers stacked vertically:
+      - Top: Participant count (e.g., `492011`) in bold.
+      - Bottom: Reward pool (e.g., `15,000,000 TUR...`) in smaller grey text.
+  - **Infinite Scroll:** More items load as user scrolls down.
+- **Micro-Interaction:** Tapping an item opens a detailed campaign page (likely a WebView or a new screen).
+
+#### B. Earn Tab
+- **Purpose:** Displays yield opportunities and staking options.
+- **Top Sub-Tabs:** Inside the Earn tab, there is a secondary tab strip: `Tokens`, `Loans`, `Protocols`, `Alpha Pools`, `Bonus`.
+- **Content Cards:**
+  - Each card shows:
+    - Token icon and name (e.g., `USDT`).
+    - Bonus badge (e.g., `Bonus` tag) if applicable.
+    - APY range (e.g., `1.55% ~ 13.85% APY`).
+    - User's current balance (if any).
+  - For `BNB`, the card shows balance and APY range.
+- **Micro-Interaction:** Tapping a card opens the corresponding earn product page.
+
+#### C. Booster Tab
+- **Purpose:** Features limited-time booster events with countdowns.
+- **Header:**
+  - `My Total Rewards` (value) and `Joined` count.
+- **Event List:**
+  - Each event card displays:
+    - Project logo and name (e.g., `Sentio XYZ`).
+    - Event description (e.g., `Decentralized Data and Compute Network`).
+    - Reward pool (e.g., `3,000,000 ST`).
+    - Countdown timer (e.g., `03d : 07h : 02m : 17s`).
+    - `Join Now` button.
+- **Finished Events Section:** Collapsible or separate list of past events with similar layout.
+
+#### D. DApps Tab
+- **Purpose:** Marketplace for discovering and launching dApps.
+- **Search Bar:** Persistent at top – "Search for dApps or enter a URL".
+- **Category Chips:** Below search, horizontally scrollable chips:
+  - `Recent`, `Favorites`, `DEX`, `Staking & Restaking`, etc.
+- **Trending DApps Grid:**
+  - 2-column grid of dApp cards.
+  - Each card shows:
+    - dApp logo, name, and a short description (e.g., `Venus - A Decentralized Marketplace...`).
+    - Optional `New` or `Popular` badge.
+- **Prediction Market Section:** Separate row with cards for `Predict` and `Polymarket`.
+- **Micro-Interaction:** Tapping a dApp card opens the dApp in an in-app browser with WalletConnect integration.
+
+#### Overlays & Reusable Components
+- **Network Selector Bottom Sheet:** Used when switching networks within any tab (documented in `50-dialogs-bottom-sheets.md`).
+- **Token Selector Modal:** Appears when selecting a token for earn or swap actions.
+- **dApp Connection Bottom Sheet:** Triggered when connecting to a dApp (WalletConnect flow).
+
+#### Source Resources to Look For
+- Layout files: `fragment_discover.xml`, `fragment_earn.xml`, `fragment_booster.xml`, `fragment_dapps.xml` (or a single container with `ViewPager2`).
+- RecyclerView adapters for project lists, dApp grids, event lists.
+- Custom countdown timer views in booster events.
+- Chip groups for categories.
+
+This level of detail ensures the AI builder can reconstruct the entire Discover page exactly as seen in the March 2026 screenshots.
+
+---
+
 ## ⚙ AI Agent Execution Environment
 
 This workspace runs inside an AI-enabled code editor.
@@ -941,11 +1019,11 @@ Lists every screen and route.
 
 ### Step 4 — Web3 Core Screens
 ```
-08-web3-wallet-home.md
-09-web3-wallet-markets.md
-10-web3-wallet-trade.md
-11-web3-wallet-discover-dapps.md
-12-web3-wallet-assets.md
+07-web3-wallet-home.md
+08-web3-wallet-markets.md
+09-web3-wallet-trade.md
+10-web3-wallet-discover-dapps.md
+11-web3-wallet-assets.md
 ```
 
 ---
@@ -1157,7 +1235,6 @@ Many important Binance UI elements exist as subviews inside major screens and mu
   - 32–34 Design system
   - 35–40 UI foundation
   - 41–50 Component specifications
-  - 42–50 Component specifications
 - [ ] Feed each MD file to AI builder in numeric order (01 → 50)
 - [ ] Build complete app module by module
 
