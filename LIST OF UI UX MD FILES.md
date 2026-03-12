@@ -405,7 +405,57 @@ These modules must be documented inside the screen where they appear.
 
 ---
 
-### Network Selector Overlay
+### Resource Mapping (Source of Truth)
+
+Every UI element must reference the actual resource from APK extraction.
+
+**Why:** Prevents AI hallucination (inventing non-existent buttons, widgets, tabs)
+
+```markdown
+## Resource Mapping (Source of Truth)
+
+Layout Files
+- fragment_trade.xml
+- layout_order_book.xml
+
+View IDs
+- R.id.chart_container
+- R.id.order_book_list
+- R.id.trade_history_list
+- R.id.order_form_container
+
+Adapters
+- TradeHistoryAdapter
+- OrderBookAdapter
+
+Drawable Resources
+- ic_buy_arrow.xml
+- ic_sell_arrow.xml
+```
+
+**Layout Tree Example:**
+
+```
+ConstraintLayout
+ ├ AppBarLayout
+ │   └ Pair Selector
+ ├ Chart Container
+ ├ Order Book Container
+ ├ Trade History List
+ └ Order Form Container
+```
+
+**Source Rule:**
+
+Every documented UI component must reference at least one concrete source:
+- layout XML
+- drawable resources
+- menu XML
+- navigation graph
+- adapter item layouts
+- source code view bindings
+
+If an element does NOT exist in these sources, it should NOT be documented.
 
 The **network selector** is NOT a screen - it is a **reusable overlay component**.
 
