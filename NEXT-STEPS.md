@@ -2,20 +2,23 @@
 
 ## Current Status (As of 2026-03-12)
 
-### ✅ Completed
+### ✅ Completed Preparations
 
-1. **Workspace Cleanup** - Deleted all unnecessary files
-2. **Documentation Architecture** - Created 50-file structure
-3. **Master Plan** - `LIST OF UI UX MD FILES.md` with complete architecture
+1. **Workspace Cleanup** - Wiped all old documentation contents from the `docs/` folder.
+2. **APK Decompilation** - Successfully generated `binance-decompiled` and `jadx-output` folders from the original APK.
+3. **Documentation Architecture** - Created 50-file framework structure (`01` through `50`) ready for fresh extraction.
+4. **Master Plan** - `LIST OF UI UX MD FILES.md` with complete architecture layout.
 
 ### 📦 Current Workspace Contents
 
 ```
-✅ apk-tools/          - Extraction tools (jadx + apktool)
-✅ .git/               - Git repository
-✅ Binance.apk         - Binance APK
-✅ LIST OF UI UX MD FILES.md - Master documentation plan (50 files)
-✅ docs/               - UI/UX documentation files (01–50)
+✅ apk-tools/               - Extraction tools (jadx + apktool)
+✅ .git/                    - Git repository
+✅ Binance.apk              - Binance Original APK
+✅ binance-decompiled/      - Output from Apktool (Res/Layouts/Values/Assets)
+✅ jadx-output/             - Output from JADX (Decompiled Java/Kotlin source code)
+✅ LIST OF UI UX MD FILES.md- Master 50-file documentation index
+✅ docs/                    - 50 blank MD files awaiting precise extraction from APK
 ```
 
 ---
@@ -96,7 +99,7 @@ This ensures we capture statically declared screens, dynamically created fragmen
 
 > **Important:** Network Selector is NOT a standalone screen.
 > It is a **reusable overlay component** (bottom sheet).
-> Document in: `50-dialogs-bottom-sheets.md`
+> Document in: `49-dialogs-bottom-sheets.md`
 
 ### Step 1: AI Agent APK Decompilation
 
@@ -695,7 +698,7 @@ Extract:
 - widget_info.xml (home screen widget metadata)
 - backup_rules.xml (data backup configuration)
 
-The preferences XML directly defines the Settings screen hierarchy — essential for documenting 24-account-settings.md and 32-settings-flows.md.
+The preferences XML directly defines the Settings screen hierarchy — essential for documenting 23-account-settings.md and 31-settings-flows.md.
 
 ---
 
@@ -781,7 +784,7 @@ These screens will NOT have layout XML to analyze — document their URL pattern
 
 Analyze resources from:
 
-- res/layout/notification_*.xml
+- res/layout/notification\_\*.xml
 - NotificationManager usage in source code
 - NotificationChannel definitions
 
@@ -799,7 +802,7 @@ Extract:
 
 Analyze resources from:
 
-- res/layout/widget_*.xml
+- res/layout/widget\_\*.xml
 - res/xml/widget_info.xml (AppWidgetProviderInfo)
 - AppWidgetProvider subclasses in source code
 
@@ -845,15 +848,15 @@ Extract and document:
 
 Create a side-by-side mapping table:
 
-| Token Name | Light Mode | Dark Mode |
-|---|---|---|
-| colorPrimary | #F0B90B | #F0B90B |
-| colorBackground | #FFFFFF | #181A20 |
-| colorSurface | #F5F5F5 | #1E2026 |
-| textPrimary | #1E2329 | #EAECEF |
-| ... | ... | ... |
+| Token Name      | Light Mode | Dark Mode |
+| --------------- | ---------- | --------- |
+| colorPrimary    | #F0B90B    | #F0B90B   |
+| colorBackground | #FFFFFF    | #181A20   |
+| colorSurface    | #F5F5F5    | #1E2026   |
+| textPrimary     | #1E2329    | #EAECEF   |
+| ...             | ...        | ...       |
 
-Both modes must be fully documented in 33-colors-theme.md for the clone to support dark mode correctly.
+Both modes must be fully documented in 32-colors-theme.md for the clone to support dark mode correctly.
 
 ---
 
@@ -908,59 +911,61 @@ docs/
 │   └── 11-web3-wallet-assets.md
 │
 ├── 04-exchange-advanced/
-│   ├── 13-exchange-order-book.md
-│   ├── 14-exchange-chart-system.md
-│   ├── 15-exchange-order-types.md
-│   ├── 16-exchange-open-orders.md
-│   └── 17-exchange-trade-history.md
+│   ├── 12-exchange-order-book.md
+│   ├── 13-exchange-chart-system.md
+│   ├── 14-exchange-order-types.md
+│   ├── 15-exchange-open-orders.md
+│   └── 16-exchange-trade-history.md
 │
 ├── 05-web3-advanced/
-│   ├── 18-web3-wallet-token-details.md
-│   ├── 19-web3-wallet-nft-assets.md
+│   ├── 17-web3-wallet-token-details.md
+│   ├── 18-web3-wallet-nft-assets.md
+│   ├── 19-web3-wallet-swap.md
 │   ├── 20-web3-wallet-transaction-history.md
 │   └── 21-web3-wallet-wallet-connect.md
 │
 ├── 06-account-settings/
-│   ├── 23-user-profile.md
-│   ├── 24-account-settings.md
-│   ├── 25-security-settings.md
-│   ├── 26-two-factor-authentication.md
-│   ├── 27-biometric-authentication.md
-│   ├── 28-notifications-system.md
-│   ├── 29-permissions-system.md
-│   ├── 30-error-handling-ui.md
-│   ├── 31-real-time-data-updates.md
-│   └── 32-settings-flows.md
+│   ├── 22-user-profile.md
+│   ├── 23-account-settings.md
+│   ├── 24-security-settings.md
+│   ├── 25-two-factor-authentication.md
+│   ├── 26-biometric-authentication.md
+│   ├── 27-notifications-system.md
+│   ├── 28-permissions-system.md
+│   ├── 29-error-handling-ui.md
+│   ├── 30-real-time-data-updates.md
+│   └── 31-settings-flows.md
 │
 ├── 07-design-system/
-│   ├── 33-colors-theme.md
-│   ├── 34-typography.md
-│   └── 35-dimensions-spacing.md
+│   ├── 32-colors-theme.md
+│   ├── 33-typography.md
+│   └── 34-dimensions-spacing.md
 │
 ├── 08-ui-foundation/
-│   ├── 36-screen-layouts.md
-│   ├── 37-ui-components.md
-│   ├── 38-navigation-system.md
-│   ├── 39-icons-drawables.md
-│   ├── 40-strings-content.md
-│   └── 41-animations-motion.md
+│   ├── 35-screen-layouts.md
+│   ├── 36-ui-components.md
+│   ├── 37-navigation-system.md
+│   ├── 38-icons-drawables.md
+│   ├── 39-strings-content.md
+│   └── 40-animations-motion.md
 │
 └── 09-component-specs/
-    ├── 42-logo-icon-specifications.md
-    ├── 43-button-specifications.md
-    ├── 44-screen-flows-navigation.md
-    ├── 45-features-overview.md
-    ├── 46-data-formatting-rules.md
-    ├── 47-ui-states-loading-error-empty.md
-    ├── 48-input-fields.md
-    ├── 49-cards-lists.md
-    └── 50-dialogs-bottom-sheets.md
+    ├── 41-logo-icon-specifications.md
+    ├── 42-button-specifications.md
+    ├── 43-screen-flows-navigation.md
+    ├── 44-features-overview.md
+    ├── 45-data-formatting-rules.md
+    ├── 46-ui-states-loading-error-empty.md
+    ├── 47-input-fields.md
+    ├── 48-cards-lists.md
+    ├── 49-dialogs-bottom-sheets.md
+    └── 50-overlay-selectors.md
 ```
 
 Workflow documentation files:
 
-- 44-screen-flows-navigation.md → navigation graph of the entire app
-- 45-features-overview.md → user workflows for major features
+- 43-screen-flows-navigation.md → navigation graph of the entire app
+- 44-features-overview.md → user workflows for major features
 
 All MD files should be created inside the `docs/` folder and maintained in numeric order.
 When feeding files to the AI full stack builder, always follow the numeric sequence (01 → 50).
@@ -1332,11 +1337,11 @@ Lists every screen and route.
 ### Step 5 — Exchange Advanced Modules
 
 ```
-13-exchange-order-book.md
-14-exchange-chart-system.md
-15-exchange-order-types.md
-16-exchange-open-orders.md
-17-exchange-trade-history.md
+12-exchange-order-book.md
+13-exchange-chart-system.md
+14-exchange-order-types.md
+15-exchange-open-orders.md
+16-exchange-trade-history.md
 ```
 
 ---
@@ -1344,11 +1349,11 @@ Lists every screen and route.
 ### Step 6 — Web3 Advanced Modules
 
 ```
-18-web3-wallet-token-details.md
-19-web3-wallet-nft-assets.md
-20-web3-wallet-swap.md
-21-web3-wallet-transaction-history.md
-22-web3-wallet-wallet-connect.md
+17-web3-wallet-token-details.md
+18-web3-wallet-nft-assets.md
+19-web3-wallet-swap.md
+20-web3-wallet-transaction-history.md
+21-web3-wallet-wallet-connect.md
 ```
 
 ---
@@ -1356,16 +1361,16 @@ Lists every screen and route.
 ### Step 7 — Account & Settings
 
 ```
-23-user-profile.md
-24-account-settings.md
-25-security-settings.md
-26-two-factor-authentication.md
-27-biometric-authentication.md
-28-notifications-system.md
-29-permissions-system.md
-30-error-handling-ui.md
-31-real-time-data-updates.md
-32-settings-flows.md
+22-user-profile.md
+23-account-settings.md
+24-security-settings.md
+25-two-factor-authentication.md
+26-biometric-authentication.md
+27-notifications-system.md
+28-permissions-system.md
+29-error-handling-ui.md
+30-real-time-data-updates.md
+31-settings-flows.md
 ```
 
 ---
@@ -1373,9 +1378,9 @@ Lists every screen and route.
 ### Step 8 — Design System
 
 ```
-33-colors-theme.md
-34-typography.md
-35-dimensions-spacing.md
+32-colors-theme.md
+33-typography.md
+34-dimensions-spacing.md
 ```
 
 ---
@@ -1383,12 +1388,12 @@ Lists every screen and route.
 ### Step 9 — Foundation UI
 
 ```
-36-screen-layouts.md
-37-ui-components.md
-38-navigation-system.md
-39-icons-drawables.md
-40-strings-content.md
-41-animations-motion.md
+35-screen-layouts.md
+36-ui-components.md
+37-navigation-system.md
+38-icons-drawables.md
+39-strings-content.md
+40-animations-motion.md
 ```
 
 ---
@@ -1396,15 +1401,16 @@ Lists every screen and route.
 ### Step 10 — Component Specifications
 
 ```
-42-logo-icon-specifications.md
-43-button-specifications.md
-44-screen-flows-navigation.md
-45-features-overview.md
-46-data-formatting-rules.md
-47-ui-states-loading-error-empty.md
-48-input-fields.md
-49-cards-lists.md
-50-dialogs-bottom-sheets.md
+41-logo-icon-specifications.md
+42-button-specifications.md
+43-screen-flows-navigation.md
+44-features-overview.md
+45-data-formatting-rules.md
+46-ui-states-loading-error-empty.md
+47-input-fields.md
+48-cards-lists.md
+49-dialogs-bottom-sheets.md
+50-overlay-selectors.md
 ```
 
 ---
@@ -1448,8 +1454,8 @@ Lists every screen and route.
    41–50 → Component specifications
 
 4. **CeFi vs DeFi Separation**:
-   - Exchange (03-17): Order books, charts, trading
-   - Web3 (08-22): Wallet, swaps, NFTs, dApps
+   - Exchange (03-16): Order books, charts, trading
+   - Web3 (07-21): Wallet, swaps, NFTs, dApps
    - Different UI patterns, different user flows
 
 5. **Documentation Quality**:

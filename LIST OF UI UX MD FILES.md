@@ -130,7 +130,7 @@ These files document **advanced Web3 modules** - NFTs, networks, etc.
 |---|-----------|-------------|--------|
 | 17 | `17-web3-wallet-token-details.md` | Token details | 📝 Planned |
 | 18 | `18-web3-wallet-nft-assets.md` | NFT gallery | 📝 Planned |
-| 19 | `19-web3-wallet-trade.md` | Swap/Bridge | 📝 Planned |
+| 19 | `19-web3-wallet-swap.md` | Swap/Bridge | 📝 Planned |
 | 20 | `20-web3-wallet-transaction-history.md` | Transaction history | 📝 Planned |
 | 21 | `21-web3-wallet-wallet-connect.md` | WalletConnect | 📝 Planned |
 
@@ -200,7 +200,7 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 | 47 | `47-input-fields.md` | Input fields | 📝 Planned |
 | 48 | `48-cards-lists.md` | Cards/lists | 📝 Planned |
 | 49 | `49-dialogs-bottom-sheets.md` | Dialogs/bottom sheets | 📝 Planned |
-| 50 | `50-dialogs-bottom-sheets.md` | Dialogs/bottom sheets (continued) | 📝 Planned |
+| 50 | `50-overlay-selectors.md` | Overlay selectors (network, token, chain, filters) | 📝 Planned |
 
 ---
 
@@ -226,7 +226,7 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 |-------------|---------|
 | `Web3 wallet interface home_` | 07-web3-wallet-home.md |
 | `Web3 wallet interface markets_` | 08-web3-wallet-markets.md |
-| `Web3 wallet interface swap_` | 09-web3-wallet-swap.md |
+| `Web3 wallet interface swap_` | 09-web3-wallet-trade.md |
 | `Web3 wallet interface discover_` | 10-web3-wallet-discover-dapps.md |
 | `Web3 wallet interface assets_` | 11-web3-wallet-assets.md |
 | `Web3 wallet interface token details_` | 17-web3-wallet-token-details.md |
@@ -299,7 +299,7 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 ```
 17-web3-wallet-token-details.md
 18-web3-wallet-nft-assets.md
-19-web3-wallet-trade.md
+19-web3-wallet-swap.md
 20-web3-wallet-transaction-history.md
 21-web3-wallet-wallet-connect.md
 ```
@@ -318,30 +318,35 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 31-settings-flows.md
 ```
 
-### Design System (33-41)
+### Design System (32-34)
 ```
-33-colors-theme.md
-34-typography.md
-35-dimensions-spacing.md
-36-screen-layouts.md
-37-ui-components.md
-38-navigation-system.md
-39-icons-drawables.md
-40-strings-content.md
-41-animations-motion.md
+32-colors-theme.md
+33-typography.md
+34-dimensions-spacing.md
 ```
 
-### Component Specifications (42-50)
+### UI Foundation (35-40)
 ```
-42-logo-icon-specifications.md
-43-button-specifications.md
-44-screen-flows-navigation.md
-45-features-overview.md
-46-data-formatting-rules.md
-47-ui-states-loading-error-empty.md
-48-input-fields.md
-49-cards-lists.md
-50-dialogs-bottom-sheets.md
+35-screen-layouts.md
+36-ui-components.md
+37-navigation-system.md
+38-icons-drawables.md
+39-strings-content.md
+40-animations-motion.md
+```
+
+### Component Specifications (41-50)
+```
+41-logo-icon-specifications.md
+42-button-specifications.md
+43-screen-flows-navigation.md
+44-features-overview.md
+45-data-formatting-rules.md
+46-ui-states-loading-error-empty.md
+47-input-fields.md
+48-cards-lists.md
+49-dialogs-bottom-sheets.md
+50-overlay-selectors.md
 ```
 
 ---
@@ -473,7 +478,7 @@ The **network selector** is NOT a screen - it is a **reusable overlay component*
   - Bridge → Network Selector
 
 **Documentation location:**
-- Should be in: `49-dialogs-bottom-sheets.md` (Component Spec)
+- Should be in: `49-dialogs-bottom-sheets.md` or `50-overlay-selectors.md` (Component Spec)
 - NOT as standalone screen
 
 **Correct specification:**
