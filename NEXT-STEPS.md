@@ -89,6 +89,10 @@ This ensures we capture statically declared screens, dynamically created fragmen
 - `NotificationManager`
 - `PendingIntent`
 
+> **Important:** Network Selector is NOT a standalone screen.
+> It is a **reusable overlay component** (bottom sheet).
+> Document in: `50-dialogs-bottom-sheets.md`
+
 ### Step 1: AI Agent APK Decompilation
 The AI agent will automatically decompile the APK and analyze UI resources using apktool and jadx.
 
@@ -628,9 +632,8 @@ docs/
 ├── 02-exchange-core/
 │   ├── 03-exchange-homepage.md
 │   ├── 04-exchange-markets.md
-│   ├── 05-exchange-trade-spot.md
-│   ├── 06-exchange-trade-futures.md
-│   └── 07-exchange-assets-wallet.md
+│   ├── 05-exchange-trade.md
+│   └── 06-exchange-assets-wallet.md
 │
 ├── 03-web3-core/
 │   ├── 08-web3-wallet-home.md
@@ -649,7 +652,7 @@ docs/
 ├── 05-web3-advanced/
 │   ├── 18-web3-wallet-token-details.md
 │   ├── 19-web3-wallet-nft-assets.md
-│   ├── 20-web3-wallet-network-selector.md
+│   ├── 20-web3-wallet-swap.md
 │   ├── 21-web3-wallet-transaction-history.md
 │   └── 22-web3-wallet-wallet-connect.md
 │
@@ -931,9 +934,8 @@ Lists every screen and route.
 ```
 03-exchange-homepage.md
 04-exchange-markets.md
-05-exchange-trade-spot.md
-06-exchange-trade-futures.md
-07-exchange-assets-wallet.md
+05-exchange-trade.md
+06-exchange-assets-wallet.md
 ```
 
 ---
@@ -964,7 +966,7 @@ Lists every screen and route.
 ```
 18-web3-wallet-token-details.md
 19-web3-wallet-nft-assets.md
-20-web3-wallet-network-selector.md
+20-web3-wallet-swap.md
 21-web3-wallet-transaction-history.md
 22-web3-wallet-wallet-connect.md
 ```
