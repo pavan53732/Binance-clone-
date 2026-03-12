@@ -17,7 +17,7 @@ The Binance mobile application contains approximately **200–240 UI interfaces*
 - RecyclerView UI modules
 - Compose / binding UI components
 
-These are grouped into **Screen Containers** so the system can be documented in **50 specification files**.
+These are grouped into **Screen Containers** so the system can be documented in **54 specification files**.
 
 Hierarchy model:
 
@@ -56,6 +56,7 @@ These interfaces must be documented **inside the container screen file** where t
 - **Files 32–35**: Design System
 - **Files 36–41**: UI Foundation
 - **Files 42–50**: Component Specifications
+- **Files 51–53**: Backend Mapping
 
 This order allows AI builders to understand: App structure → screens → modules → UI system → components
 
@@ -250,7 +251,8 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 | Design System (32-34) | 3 |
 | UI Foundation (35-40) | 6 |
 | Component Specs (41-50) | 10 |
-| **TOTAL MD Files** | **50** |
+| Backend Mapping (51-53) | 3 |
+| **TOTAL MD Files** | **54** |
 
 | Asset Statistics (Estimated) | Count |
 |-------------------------------|-------|
@@ -350,14 +352,21 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 50-overlay-selectors.md
 ```
 
+### Backend Mapping (51-53)
+```
+51-data-models.md
+52-api-endpoints.md
+53-event-system.md
+```
+
 ---
 
 ## Notes
 
 1. All files are located in the `/docs` directory
 2. Files are numbered for **correct build order** (dependency order for AI builders)
-3. **50-file architecture** mirrors Binance's actual product structure
-4. **Build order**: App definition → Screens → Modules → UI System → Components
+3. **54-file architecture** mirrors Binance's actual product structure
+4. **Build order**: App definition → Screens → Modules → UI System → Components → Backend
 5. **Trade screen (05)** is a single container with Spot/Margin/Futures variants - prevents duplicate UI
 6. **Exchange (CeFi)** and **Web3 Wallet (DeFi)** documented separately
 7. APK extraction produces ~500-1000 drawable assets, ~200-400 layouts
@@ -598,8 +607,9 @@ These components may not appear as XML layouts but must still be documented in t
 8. **Document design system** - Colors, typography, spacing (32-35)
 9. **Document UI foundation** - Layouts, components, navigation (36-41)
 10. **Document components** - Buttons, inputs, cards, dialogs (42-50)
+11. **Document backend** - Data models, APIs, WebSockets (51-53)
 
-**Correct build order**: 01-02 → 03-06 → 07-11 → 12-16 → 17-21 → 22-31 → 32-35 → 36-41 → 42-50
+**Correct build order**: 00-02 → 03-06 → 07-11 → 12-16 → 17-21 → 22-31 → 32-35 → 36-41 → 42-50 → 51-53
 
 ---
 

@@ -6,7 +6,7 @@
 
 1. **Workspace Cleanup** - Wiped all old documentation contents from the `docs/` folder.
 2. **APK Decompilation** - Successfully generated `binance-decompiled` and `jadx-output` folders from the original APK.
-3. **Documentation Architecture** - Created 50-file framework structure (`01` through `50`) ready for fresh extraction.
+3. **Documentation Architecture** - Created 54-file framework structure (`00` through `53`) ready for fresh extraction.
 4. **Master Plan** - `LIST OF UI UX MD FILES.md` with complete architecture layout.
 
 ### 📦 Current Workspace Contents
@@ -17,8 +17,8 @@
 ✅ Binance.apk              - Binance Original APK
 ✅ binance-decompiled/      - Output from Apktool (Res/Layouts/Values/Assets)
 ✅ jadx-output/             - Output from JADX (Decompiled Java/Kotlin source code)
-✅ LIST OF UI UX MD FILES.md- Master 50-file documentation index
-✅ docs/                    - 50 blank MD files awaiting precise extraction from APK
+✅ LIST OF UI UX MD FILES.md- Master 54-file documentation index
+✅ docs/                    - 54 MD files awaiting precise extraction from APK
 ```
 
 ---
@@ -50,7 +50,8 @@ project-root/
     ├── 06-account-settings/
     ├── 07-design-system/
     ├── 08-ui-foundation/
-    └── 09-component-specs/
+    ├── 09-component-specs/
+    └── 10-backend-mapping/
 ```
 
 ---
@@ -100,6 +101,10 @@ This ensures we capture statically declared screens, dynamically created fragmen
 - `getItemViewType()`
 - `onCreateViewHolder()`
 - `onBindViewHolder()`
+- `DiffUtil`
+- `ListAdapter`
+- `PagingDataAdapter`
+- `ConcatAdapter`
 
 *Navigation:*
 - `R.id.nav_` (navigation destinations)
@@ -113,12 +118,20 @@ This ensures we capture statically declared screens, dynamically created fragmen
 - `channel` / `stream`
 - `ticker` / `depth` / `trade`
 - `LiveData` / `Flow` / `RxJava` / `EventBus`
+*(Must map Event → UI Target: e.g., ticker stream → market list)*
 
 *Data & Dependency Graph:*
 - `ViewModel`
 - `retrofit` / `okhttp` / `graphql` / `rest`
+- `ApolloClient` / `query(` / `mutation(` / `subscription(`
 - `endpoint` / `baseUrl`
 - `DTO` / `data class`
+- `WebSocket message schemas` / `Ticker stream models` / `Order book delta models`
+
+*Storage Systems:*
+- `Room` / `SQLiteOpenHelper`
+- `SharedPreferences` / `EncryptedSharedPreferences`
+- `Keystore`
 
 *Feature Flags:*
 - `remote_config`
@@ -133,17 +146,17 @@ This ensures we capture statically declared screens, dynamically created fragmen
 
 To prevent documentation instability and duplicate definitions across 54 files, a strict ID system must be enforced. Every documented entity **must** be assigned a unique ID mapping to the `00-system-index.md` registry.
 
-**ID Nomenclatures:**
-- **SCR-XXX**: Screens (e.g., `SCR-001` Exchange Home, `SCR-003-V1` Trade Spot Variant).
-- **OVR-XXX**: Overlays (e.g., `OVR-001` Network Selector, `OVR-002` Token Selector).
-- **WGT-XXX**: Widgets (e.g., `WGT-001` Coin List, `WGT-002` Order Book).
-- **COMP-XXX**: Shared Components (e.g., `COMP-001` CoinListItem, `COMP-002` AssetRow).
+**The `00-system-index.md` master file must contain the global registries:**
+- **SCREEN REGISTRY (SCR-XXX)**: Screens (e.g., `SCR-001` Exchange Home, `SCR-003-V1` Trade Spot Variant).
+- **COMPONENT REGISTRY (COMP-XXX)**: Reusable UI element used across multiple screens (e.g., `COMP-001` CoinRow, `COMP-002` AssetCard).
+- **WIDGET REGISTRY (WGT-XXX)**: Functional module functionally isolated inside a specific screen (e.g., `WGT-001` CoinList, `WGT-002` OrderBook).
+- **OVERLAY REGISTRY (OVR-XXX)**: Overlays (e.g., `OVR-001` Network Selector, `OVR-002` Token Selector).
 
 When a screen utilizes a shared component (e.g., Coin Row), it MUST reference the exact `COMP-XXX` ID rather than duplicating the layout specification. Component specifications and data models will be mapped entirely in `36-ui-components.md` and `51-data-models.md`.
 
 ### Deduplication & Pagination Constraints
 
-1. **Asset Deduplication:** Extract logical assets, ignoring density duplicates (e.g., merge `icon_btc_24`, `icon_btc_hdpi` into a single logical `icon_btc` definition).
+1. **Asset Deduplication Rule:** Extract logical assets, ignoring density variants (e.g., map `drawable-hdpi/icon_btc.png` and `drawable-xxhdpi/icon_btc.png` into a single logical `icon_btc` definition). Logical asset name = base drawable filename.
 2. **Size constraints:** No single Markdown file may exceed ~800 lines. If a single page (e.g., Advanced Trade) balloons in size due to multiple sub-widgets, it **must** be split out into a new MD file using the `WGT-` or `COMP-` linking definitions.
 
 ### Step 1: AI Agent APK Decompilation
@@ -1037,6 +1050,11 @@ docs/
     ├── 48-cards-lists.md
     ├── 49-dialogs-bottom-sheets.md
     └── 50-overlay-selectors.md
+│
+└── 10-backend-mapping/
+    ├── 51-data-models.md
+    ├── 52-api-endpoints.md
+    └── 53-event-system.md
 ```
 
 Workflow documentation files:
@@ -1045,7 +1063,7 @@ Workflow documentation files:
 - 44-features-overview.md → user workflows for major features
 
 All MD files should be created inside the `docs/` folder and maintained in numeric order.
-When feeding files to the AI full stack builder, always follow the numeric sequence (01 → 50).
+When feeding files to the AI full stack builder, always follow the numeric sequence (00 → 53).
 
 ---
 
@@ -1494,7 +1512,7 @@ Lists every screen and route.
 
 ## 🎯 End Goal
 
-**After completing all 50 MD files**:
+**After completing all 54 MD files**:
 
 - Each file will be fed to AI Full Stack App Builder
 - AI will generate code for each module
