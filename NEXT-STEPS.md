@@ -636,11 +636,11 @@ docs/
 │   └── 06-exchange-assets-wallet.md
 │
 ├── 03-web3-core/
-│   ├── 08-web3-wallet-home.md
-│   ├── 09-web3-wallet-markets.md
-│   ├── 10-web3-wallet-swap.md
-│   ├── 11-web3-wallet-discover-dapps.md
-│   └── 12-web3-wallet-assets.md
+│   ├── 07-web3-wallet-home.md
+│   ├── 08-web3-wallet-markets.md
+│   ├── 09-web3-wallet-trade.md
+│   ├── 10-web3-wallet-discover-dapps.md
+│   └── 11-web3-wallet-assets.md
 │
 ├── 04-exchange-advanced/
 │   ├── 13-exchange-order-book.md
@@ -652,9 +652,8 @@ docs/
 ├── 05-web3-advanced/
 │   ├── 18-web3-wallet-token-details.md
 │   ├── 19-web3-wallet-nft-assets.md
-│   ├── 20-web3-wallet-swap.md
-│   ├── 21-web3-wallet-transaction-history.md
-│   └── 22-web3-wallet-wallet-connect.md
+│   ├── 20-web3-wallet-transaction-history.md
+│   └── 21-web3-wallet-wallet-connect.md
 │
 ├── 06-account-settings/
 │   ├── 23-user-profile.md
@@ -944,7 +943,7 @@ Lists every screen and route.
 ```
 08-web3-wallet-home.md
 09-web3-wallet-markets.md
-10-web3-wallet-swap.md
+10-web3-wallet-trade.md
 11-web3-wallet-discover-dapps.md
 12-web3-wallet-assets.md
 ```
@@ -1050,15 +1049,17 @@ Lists every screen and route.
     - Include hex codes with RGB values
     - Document exact spacing in pixels
 
-3. **Two-Layer Architecture**:
+3. **Documentation Build Order Grouping**:
+    Files are grouped into logical phases for sequential AI builder consumption:
     01–02 → Application definition  
-    03–07 → Exchange core screens  
-    08–12 → Web3 core screens  
-    13–17 → Exchange advanced modules  
-    18–22 → Web3 advanced modules  
-    23–32 → Account & settings  
-    33–41 → Design system & foundation UI  
-    42–50 → Component specifications
+    03–06 → Exchange core screens  
+    07–11 → Web3 core screens  
+    12–16 → Exchange advanced modules  
+    17–21 → Web3 advanced modules  
+    22–31 → Account & settings  
+    32–34 → Design system  
+    35–40 → UI foundation  
+    41–50 → Component specifications
 
 4. **CeFi vs DeFi Separation**:
     - Exchange (03-17): Order books, charts, trading
@@ -1081,13 +1082,16 @@ Lists every screen and route.
       - bottom sheet variants
       - fullscreen variants
     - Example:
-      05-exchange-trade-spot.md
+      05-exchange-trade.md
       Container:
       Trade Screen
       Variants documented inside:
       - Spot mode
       - Margin mode
+      - Futures mode
       - Chart fullscreen
+      - Indicator settings
+      - Order confirmation modal
       - Indicator settings
       - Order confirmation modal
 
@@ -1118,7 +1122,7 @@ Lists every screen and route.
    - overlays
    - reusable components
 
-     Many important Binance UI elements exist as subviews inside major screens and must not be skipped.
+Many important Binance UI elements exist as subviews inside major screens and must not be skipped.
 
 ---
 
@@ -1145,11 +1149,14 @@ Lists every screen and route.
 - [ ] Start documenting with:
   - 01-complete-ui-specification.md
   - 02-complete-screen-catalog.md
-  - 03–07 Exchange core screens
-  - 08–12 Web3 core screens
-  - 13–22 Advanced modules
-  - 23–32 Account & settings
-  - 33–41 Design system
+  - 03–06 Exchange core screens
+  - 07–11 Web3 core screens
+  - 12–16 Exchange advanced modules
+  - 17–21 Web3 advanced modules
+  - 22–31 Account & settings
+  - 32–34 Design system
+  - 35–40 UI foundation
+  - 41–50 Component specifications
   - 42–50 Component specifications
 - [ ] Feed each MD file to AI builder in numeric order (01 → 50)
 - [ ] Build complete app module by module

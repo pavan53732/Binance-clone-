@@ -102,7 +102,7 @@ These files document the **core Web3 wallet screens** - main entry points.
 |---|-----------|-------------|--------|
 | 7 | `07-web3-wallet-home.md` | Web3 wallet home | 📝 Planned |
 | 8 | `08-web3-wallet-markets.md` | Web3 markets | 📝 Planned |
-| 9 | `09-web3-wallet-swap.md` | Web3 swap | 📝 Planned |
+| 9 | `09-web3-wallet-trade.md` | Web3 trade | 📝 Planned |
 | 10 | `10-web3-wallet-discover-dapps.md` | Discover dApps | 📝 Planned |
 | 11 | `11-web3-wallet-assets.md` | Web3 assets | 📝 Planned |
 
@@ -130,7 +130,7 @@ These files document **advanced Web3 modules** - NFTs, networks, etc.
 |---|-----------|-------------|--------|
 | 17 | `17-web3-wallet-token-details.md` | Token details | 📝 Planned |
 | 18 | `18-web3-wallet-nft-assets.md` | NFT gallery | 📝 Planned |
-| 19 | `19-web3-wallet-swap.md` | Swap/Bridge | 📝 Planned |
+| 19 | `19-web3-wallet-trade.md` | Swap/Bridge | 📝 Planned |
 | 20 | `20-web3-wallet-transaction-history.md` | Transaction history | 📝 Planned |
 | 21 | `21-web3-wallet-wallet-connect.md` | WalletConnect | 📝 Planned |
 
@@ -158,7 +158,7 @@ These files document **account management** and **settings**.
 
 ---
 
-## 32-35: Design System
+## 32-34: Design System
 
 These files document the **design system** - colors, typography, spacing.
 
@@ -170,7 +170,7 @@ These files document the **design system** - colors, typography, spacing.
 
 ---
 
-## 36-41: UI Foundation
+## 35-40: UI Foundation
 
 These files document **UI foundation** - layouts, components, navigation, etc.
 
@@ -185,7 +185,7 @@ These files document **UI foundation** - layouts, components, navigation, etc.
 
 ---
 
-## 42-50: Component Specifications
+## 41-50: Component Specifications
 
 These files document **component specifications** - buttons, inputs, cards, etc.
 
@@ -200,7 +200,7 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 | 47 | `47-input-fields.md` | Input fields | 📝 Planned |
 | 48 | `48-cards-lists.md` | Cards/lists | 📝 Planned |
 | 49 | `49-dialogs-bottom-sheets.md` | Dialogs/bottom sheets | 📝 Planned |
-| 50 | `50-network-selector.md` | Network Selector (overlay component) | 📝 Planned |
+| 50 | `50-dialogs-bottom-sheets.md` | Dialogs/bottom sheets (continued) | 📝 Planned |
 
 ---
 
@@ -246,9 +246,9 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 | Exchange Advanced (12-16) | 5 |
 | Web3 Advanced (17-21) | 5 |
 | Account & Settings (22-31) | 10 |
-| Design System (32-35) | 3 |
-| UI Foundation (36-41) | 6 |
-| Component Specs (42-50) | 9 |
+| Design System (32-34) | 3 |
+| UI Foundation (35-40) | 6 |
+| Component Specs (41-50) | 10 |
 | **TOTAL MD Files** | **50** |
 
 | Asset Statistics (Estimated) | Count |
@@ -277,45 +277,45 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 
 > **Trade screen (05)** is a single container with variants to prevent duplicate UI generation.
 
-### Web3 Core (08-12)
+### Web3 Core (07-11)
 ```
-08-web3-wallet-home.md
-09-web3-wallet-markets.md
-10-web3-wallet-swap.md
-11-web3-wallet-discover-dapps.md
-12-web3-wallet-assets.md
-```
-
-### Exchange Advanced (13-17)
-```
-13-exchange-order-book.md
-14-exchange-chart-system.md
-15-exchange-order-types.md
-16-exchange-open-orders.md
-17-exchange-trade-history.md
+07-web3-wallet-home.md
+08-web3-wallet-markets.md
+09-web3-wallet-trade.md
+10-web3-wallet-discover-dapps.md
+11-web3-wallet-assets.md
 ```
 
-### Web3 Advanced (18-22)
+### Exchange Advanced (12-16)
 ```
-18-web3-wallet-token-details.md
-19-web3-wallet-nft-assets.md
-20-web3-wallet-network-selector.md
-21-web3-wallet-transaction-history.md
-22-web3-wallet-wallet-connect.md
+12-exchange-order-book.md
+13-exchange-chart-system.md
+14-exchange-order-types.md
+15-exchange-open-orders.md
+16-exchange-trade-history.md
 ```
 
-### Account & Settings (23-32)
+### Web3 Advanced (17-21)
 ```
-23-user-profile.md
-24-account-settings.md
-25-security-settings.md
-26-two-factor-authentication.md
-27-biometric-authentication.md
-28-notifications-system.md
-29-permissions-system.md
-30-error-handling-ui.md
-31-real-time-data-updates.md
-32-settings-flows.md
+17-web3-wallet-token-details.md
+18-web3-wallet-nft-assets.md
+19-web3-wallet-trade.md
+20-web3-wallet-transaction-history.md
+21-web3-wallet-wallet-connect.md
+```
+
+### Account & Settings (22-31)
+```
+22-user-profile.md
+23-account-settings.md
+24-security-settings.md
+25-two-factor-authentication.md
+26-biometric-authentication.md
+27-notifications-system.md
+28-permissions-system.md
+29-error-handling-ui.md
+30-real-time-data-updates.md
+31-settings-flows.md
 ```
 
 ### Design System (33-41)
