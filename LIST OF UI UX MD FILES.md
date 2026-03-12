@@ -53,9 +53,9 @@ These interfaces must be documented **inside the container screen file** where t
 - **Files 12–16**: Exchange Advanced modules
 - **Files 17–21**: Web3 Advanced modules
 - **Files 22–31**: Account & Settings
-- **Files 32–40**: Design System
-- **Files 41–49**: Component Specifications
-- **File 50**: Reserved for future expansion
+- **Files 32–35**: Design System
+- **Files 36–41**: UI Foundation
+- **Files 42–50**: Component Specifications
 
 This order allows AI builders to understand: App structure → screens → modules → UI system → components
 
@@ -135,7 +135,7 @@ These files document **advanced Web3 modules** - NFTs, networks, etc.
 | 21 | `21-web3-wallet-wallet-connect.md` | WalletConnect | 📝 Planned |
 
 > **Important:** Network Selector is NOT a standalone screen.
-> It is a **reusable overlay component** documented in `49-dialogs-bottom-sheets.md`
+> It is a **reusable overlay component** documented in `50-dialogs-bottom-sheets.md`
 
 ---
 
@@ -158,7 +158,7 @@ These files document **account management** and **settings**.
 
 ---
 
-## 32-40: Design System
+## 32-35: Design System
 
 These files document the **design system** - colors, typography, spacing.
 
@@ -167,6 +167,15 @@ These files document the **design system** - colors, typography, spacing.
 | 32 | `32-colors-theme.md` | Colors and theme | 📝 Planned |
 | 33 | `33-typography.md` | Typography | 📝 Planned |
 | 34 | `34-dimensions-spacing.md` | Dimensions/spacing | 📝 Planned |
+
+---
+
+## 36-41: UI Foundation
+
+These files document **UI foundation** - layouts, components, navigation, etc.
+
+| # | File Name | Description | Status |
+|---|-----------|-------------|--------|
 | 35 | `35-screen-layouts.md` | Screen layouts | 📝 Planned |
 | 36 | `36-ui-components.md` | UI components | 📝 Planned |
 | 37 | `37-navigation-system.md` | Navigation system | 📝 Planned |
@@ -176,7 +185,7 @@ These files document the **design system** - colors, typography, spacing.
 
 ---
 
-## 41-49: Component Specifications
+## 42-50: Component Specifications
 
 These files document **component specifications** - buttons, inputs, cards, etc.
 
@@ -191,48 +200,39 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 | 47 | `47-input-fields.md` | Input fields | 📝 Planned |
 | 48 | `48-cards-lists.md` | Cards/lists | 📝 Planned |
 | 49 | `49-dialogs-bottom-sheets.md` | Dialogs/bottom sheets | 📝 Planned |
-
----
-
-## 50: Reserved
-
-| # | File Name | Description | Status |
-|---|-----------|-------------|--------|
-| 50 | `50-future expansion.md` | Reserved for future modules | 📝 Planned |
+| 50 | `50-network-selector.md` | Network Selector (overlay component) | 📝 Planned |
 
 ---
 
 ## 📸 UI/UX Image Folders - Source of Truth
 
-### Exchange (CeFi) - Planned: 10 Folders
+### Exchange (CeFi) - File Mapping
 
-| Folder Name | Images | MD File |
-|-------------|--------|---------|
-| `Exchange interface Home page_` | TBD | 21-exchange-homepage.md |
-| `Exchange interface market page_` | TBD | 22-exchange-markets.md |
-| `Exchange interface trade page_` | TBD | 23-exchange-trade-spot.md |
-| `Exchange interface futures page_` | TBD | 24-exchange-trade-futures.md |
-| `Exchange interface assets page_` | TBD | 25-exchange-assets-wallet.md |
-| `Exchange interface order book_` | TBD | 26-exchange-order-book.md |
-| `Exchange interface chart system_` | TBD | 27-exchange-chart-system.md |
-| `Exchange interface order types_` | TBD | 28-exchange-order-types.md |
-| `Exchange interface open orders_` | TBD | 29-exchange-open-orders.md |
-| `Exchange interface trade history_` | TBD | 30-exchange-trade-history.md |
+| Folder Name | MD File |
+|-------------|---------|
+| `Exchange interface Home page_` | 03-exchange-homepage.md |
+| `Exchange interface market page_` | 04-exchange-markets.md |
+| `Exchange interface trade page_` | 05-exchange-trade.md |
+| `Exchange interface assets page_` | 06-exchange-assets-wallet.md |
+| `Exchange interface order book_` | 12-exchange-order-book.md |
+| `Exchange interface chart system_` | 13-exchange-chart-system.md |
+| `Exchange interface order types_` | 14-exchange-order-types.md |
+| `Exchange interface open orders_` | 15-exchange-open-orders.md |
+| `Exchange interface trade history_` | 16-exchange-trade-history.md |
 
-### Web3 Wallet (DeFi) - Planned: 10 Folders
+### Web3 Wallet (DeFi) - File Mapping
 
-| Folder Name | Images | MD File |
-|-------------|--------|---------|
-| `Web3 wallet interface home_` | TBD | 31-web3-wallet-home.md |
-| `Web3 wallet interface markets_` | TBD | 32-web3-wallet-markets.md |
-| `Web3 wallet interface swap_` | TBD | 33-web3-wallet-swap.md |
-| `Web3 wallet interface discover_` | TBD | 34-web3-wallet-discover-dapps.md |
-| `Web3 wallet interface assets_` | TBD | 35-web3-wallet-assets.md |
-| `Web3 wallet interface token details_` | TBD | 36-web3-wallet-token-details.md |
-| `Web3 wallet interface NFT_` | TBD | 37-web3-wallet-nft-assets.md |
-| `Web3 wallet interface network selector_` | TBD | 38-web3-wallet-network-selector.md |
-| `Web3 wallet interface transaction history_` | TBD | 39-web3-wallet-transaction-history.md |
-| `Web3 wallet interface wallet connect_` | TBD | 40-web3-wallet-wallet-connect.md |
+| Folder Name | MD File |
+|-------------|---------|
+| `Web3 wallet interface home_` | 07-web3-wallet-home.md |
+| `Web3 wallet interface markets_` | 08-web3-wallet-markets.md |
+| `Web3 wallet interface swap_` | 09-web3-wallet-swap.md |
+| `Web3 wallet interface discover_` | 10-web3-wallet-discover-dapps.md |
+| `Web3 wallet interface assets_` | 11-web3-wallet-assets.md |
+| `Web3 wallet interface token details_` | 17-web3-wallet-token-details.md |
+| `Web3 wallet interface NFT_` | 18-web3-wallet-nft-assets.md |
+| `Web3 wallet interface transaction history_` | 20-web3-wallet-transaction-history.md |
+| `Web3 wallet interface wallet connect_` | 21-web3-wallet-wallet-connect.md |
 
 ---
 
@@ -246,9 +246,9 @@ These files document **component specifications** - buttons, inputs, cards, etc.
 | Exchange Advanced (12-16) | 5 |
 | Web3 Advanced (17-21) | 5 |
 | Account & Settings (22-31) | 10 |
-| Design System (32-40) | 9 |
-| Component Specs (41-49) | 9 |
-| Reserved (50) | 1 |
+| Design System (32-35) | 3 |
+| UI Foundation (36-41) | 6 |
+| Component Specs (42-50) | 9 |
 | **TOTAL MD Files** | **50** |
 
 | Asset Statistics (Estimated) | Count |
@@ -589,10 +589,11 @@ These components may not appear as XML layouts but must still be documented in t
 5. **Document screens** - Exchange core (03-06) then Web3 core (07-11)
 6. **Document modules** - Exchange advanced (12-16) then Web3 advanced (17-21)
 7. **Document settings** - Account & settings (22-31)
-8. **Document design system** - Colors, typography, spacing (32-40)
-9. **Document components** - Buttons, inputs, cards (41-49)
+8. **Document design system** - Colors, typography, spacing (32-35)
+9. **Document UI foundation** - Layouts, components, navigation (36-41)
+10. **Document components** - Buttons, inputs, cards, dialogs (42-50)
 
-**Correct build order**: 01-02 → 03-06 → 07-11 → 12-16 → 17-21 → 22-31 → 32-40 → 41-49 → 50
+**Correct build order**: 01-02 → 03-06 → 07-11 → 12-16 → 17-21 → 22-31 → 32-35 → 36-41 → 42-50
 
 ---
 
