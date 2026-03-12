@@ -3,11 +3,13 @@
 ## Current Status (As of 2026-03-12)
 
 ### ✅ Completed
+
 1. **Workspace Cleanup** - Deleted all unnecessary files
 2. **Documentation Architecture** - Created 50-file structure
 3. **Master Plan** - `LIST OF UI UX MD FILES.md` with complete architecture
 
 ### 📦 Current Workspace Contents
+
 ```
 ✅ apk-tools/          - Extraction tools (jadx + apktool)
 ✅ .git/               - Git repository
@@ -53,7 +55,9 @@ project-root/
 ## 🎯 Immediate Next Steps
 
 ### Screen Discovery Process
+
 To reliably discover every screen inside the Android APK, we use a 6-layer scan approach:
+
 1. **Activity Discovery** (from AndroidManifest.xml)
 2. **Fragment Discovery** (dynamic UI components)
 3. **Navigation Graph Discovery** (declarative navigation)
@@ -64,6 +68,7 @@ To reliably discover every screen inside the Android APK, we use a 6-layer scan 
 This ensures we capture statically declared screens, dynamically created fragments, navigation destinations, and overlay interfaces that may not appear as standalone layouts.
 
 **JADX Search Commands for Screen Discovery:**
+
 - `extends Activity`
 - `extends Fragment` / `extends BaseFragment`
 - `extends DialogFragment`
@@ -94,54 +99,58 @@ This ensures we capture statically declared screens, dynamically created fragmen
 > Document in: `50-dialogs-bottom-sheets.md`
 
 ### Step 1: AI Agent APK Decompilation
+
 The AI agent will automatically decompile the APK and analyze UI resources using apktool and jadx.
 
 **Tool**: Use `apk-tools` folder (jadx + apktool)
 
 **Process**:
+
 1. **Decompile APK** with apktool:
-    ```powershell
-    java -jar apk-tools/apktool.jar decode Binance.apk -o binance-decompiled
-    ```
+
+   ```powershell
+   java -jar apk-tools/apktool.jar decode Binance.apk -o binance-decompiled
+   ```
 
 2. **Extract all images** from decompiled folder:
-    - Location: `binance-decompiled/res/drawable-*/`
-    - Location: `binance-decompiled/res/mipmap-*/`
-    - Location: `binance-decompiled/assets/`
+   - Location: `binance-decompiled/res/drawable-*/`
+   - Location: `binance-decompiled/res/mipmap-*/`
+   - Location: `binance-decompiled/assets/`
 
 3. **Extract layout XML files**:
-    - Location: `binance-decompiled/res/layout/`
-    - Location: `binance-decompiled/res/layout-v*/`
+   - Location: `binance-decompiled/res/layout/`
+   - Location: `binance-decompiled/res/layout-v*/`
 
 4. **Extract menu XML files**:
-    - Location: `binance-decompiled/res/menu/`
-    - Example: toolbar menus, overflow menus
+   - Location: `binance-decompiled/res/menu/`
+   - Example: toolbar menus, overflow menus
 
 5. **Extract design system resources**:
-    Location:
-    `binance-decompiled/res/values/`
-    
-    Important files:
-    - colors.xml
-    - styles.xml
-    - themes.xml
-    - dimens.xml
-    - strings.xml
-    - arrays.xml
-    - integers.xml
-    - bools.xml
+   Location:
+   `binance-decompiled/res/values/`
 
-5. **Extract animation resources**:
-    Location:
-    `binance-decompiled/res/anim/`
-    `binance-decompiled/res/animator/`
+   Important files:
+   - colors.xml
+   - styles.xml
+   - themes.xml
+   - dimens.xml
+   - strings.xml
+   - arrays.xml
+   - integers.xml
+   - bools.xml
 
-6. **Decompile with jadx** for source code:
-    ```powershell
-    apk-tools\jadx\bin\jadx.bat Binance.apk --output-dir jadx-output
-    ```
+6. **Extract animation resources**:
+   Location:
+   `binance-decompiled/res/anim/`
+   `binance-decompiled/res/animator/`
+
+7. **Decompile with jadx** for source code:
+   ```powershell
+   apk-tools\jadx\bin\jadx.bat Binance.apk --output-dir jadx-output
+   ```
 
 **Expected Output**:
+
 - ~500-1000 drawable images (icons, illustrations, backgrounds)
 - ~200-400 layout XML files
 - ~10,000+ Java/Kotlin source files
@@ -187,6 +196,7 @@ This analysis produces structured UI data used to generate the documentation fil
 ### Step 3: Extract Navigation Structure
 
 Find navigation from:
+
 - bottom navigation
 - drawer navigation
 - fragment/activity transitions
@@ -216,23 +226,27 @@ This helps build the **screen catalog** correctly.
 To avoid misinterpreting nested tab systems in large apps like Binance, navigation is classified into three layers:
 
 **Layer 1 — Application Navigation**
+
 - True top-level routes
 - Examples: Home, Markets, Trade, Futures, Assets, Web3 Wallet
 - AI builder should generate **separate routes** for these
 
 **Layer 2 — Screen Container Navigation**
+
 - Mode switches inside a screen container
 - Examples: Trade Screen variants (Spot, Margin, Futures)
 - AI builder should generate **mode switching**, not routing
 
 **Layer 3 — Internal Screen Navigation**
+
 - Tab systems inside sections
 - Examples: Markets tabs (Favorites, Spot, Futures), Timeframe selectors (1m, 5m, 15m, 1h)
 - AI builder should generate **tab systems**, not navigation routes
 
 This prevents AI builders from incorrectly generating routes like:
+
 - `/markets/spot/usdt` (wrong)
-Instead of tab switching within Markets screen (correct).
+  Instead of tab switching within Markets screen (correct).
 
 ---
 
@@ -244,27 +258,29 @@ The screen catalog must record four hierarchy levels:
 Application
 │
 ├── Screen Container
-│   ├── Screen Variant
-│   │   ├── Sections
-│   │   │   ├── Tabs
-│   │   │   └── Widgets
+│ ├── Screen Variant
+│ │ ├── Sections
+│ │ │ ├── Tabs
+│ │ │ └── Widgets
 
 Example:
 Trade (Screen Container)
- ├── Spot (Variant)
- │   ├── Chart
- │   ├── Order Book
- │   └── Order Form
- ├── Margin (Variant)
- └── Futures (Variant)
+├── Spot (Variant)
+│ ├── Chart
+│ ├── Order Book
+│ └── Order Form
+├── Margin (Variant)
+└── Futures (Variant)
 
 The screen catalog should record:
+
 - screen container count
 - variant count
 - overlay interfaces
 - modal interfaces
 
 Sources:
+
 - res/layout/
 - res/navigation/
 - AndroidManifest.xml
@@ -276,6 +292,7 @@ Sources:
 The detected screens are used to build the screen catalog.
 
 Also detect and catalog:
+
 - tab-based subviews inside screens
 - widget regions inside screens
 - reusable section containers
@@ -319,6 +336,7 @@ Trade Screen
 └── Position panel
 
 Sources:
+
 - layout XML hierarchy
 - fragment containers
 - RecyclerView sections
@@ -368,6 +386,7 @@ Wallet Screen
 These variants must be cataloged even if they share the same base layout.
 
 Sources:
+
 - Fragment state changes
 - tab container switching
 - modal launch triggers
@@ -400,11 +419,12 @@ Overlays appear above the current screen.
 Example:
 
 Trade Screen
- ├ Variant: Spot Mode
- ├ Variant: Futures Mode
- └ Overlay: Order Confirm Bottom Sheet
+├ Variant: Spot Mode
+├ Variant: Futures Mode
+└ Overlay: Order Confirm Bottom Sheet
 
 Sources:
+
 - BottomSheetDialogFragment classes
 - DialogFragment classes
 - PopupWindow implementations
@@ -412,12 +432,12 @@ Sources:
 
 ---
 
-
 ### Step 5: Extract User Workflows
 
 The AI agent analyzes navigation flows and event handlers to reconstruct user workflows.
 
 Examples:
+
 - Spot trading workflow
 - Futures trading workflow
 - Convert / swap workflow
@@ -432,6 +452,7 @@ Examples:
 - Search and asset selection workflow
 
 Sources used:
+
 - navigation graphs
 - fragment transitions
 - click handlers in source code
@@ -447,6 +468,7 @@ Sources used:
 The AI agent analyzes sub-screen UI structures that do not appear as standalone screens but are essential to the application behavior.
 
 Extract:
+
 - top tab groups
 - nested tabs inside tabs (ViewPager2 with TabLayout, HorizontalScrollView with tab-like views)
 - segmented controls
@@ -466,6 +488,7 @@ Extract:
 - quick action modules
 
 Also detect micro UI components:
+
 - Feedback: badges, notification dots, progress indicators
 - Input assists: character counters, password visibility toggles, clear buttons
 - Selection: radio buttons, checkboxes, switches, chips (choice, filter, action, input)
@@ -475,6 +498,7 @@ Also detect micro UI components:
 - Interaction zones: swipe gesture areas, chart touch zones, drag handles, scroll snapping regions
 
 Sources used:
+
 - layout XML
 - view IDs
 - adapter classes
@@ -491,12 +515,14 @@ Sources used:
 ### Step 7: Extract UI Design System
 
 Analyze resources from:
+
 - res/values/colors.xml
-- res/values/styles.xml  
+- res/values/styles.xml
 - res/values/themes.xml
 - res/values/dimens.xml
 
 Extract:
+
 - color palette
 - typography definitions
 - spacing system
@@ -518,6 +544,7 @@ Extract:
 The AI agent must detect UI state variants defined in drawable selectors and style definitions.
 
 States to extract:
+
 - default
 - pressed
 - focused
@@ -534,6 +561,7 @@ States to extract:
 - expanded (for collapsible panels)
 
 Sources:
+
 - drawable selector XML
 - color selector XML
 - style attributes
@@ -547,11 +575,13 @@ Sources:
 ### Step 8: Extract UI Assets
 
 Analyze resources from:
+
 - res/drawable/
 - res/mipmap/
 - assets/
 
 Extract:
+
 - icons
 - vector drawables
 - illustrations
@@ -605,11 +635,246 @@ res/values-ar/
 These resources must be mapped to the primary UI definitions.
 
 Extraction approach:
+
 - Compare dimension values (dimens.xml) across configurations
 - Extract string variations (strings.xml) for locale-specific UI
 - Identify drawable substitutions (XML vs raster assets)
 - Document theme attribute overrides (colors, styles)
 - Note layout structural changes (added/removed views)
+
+---
+
+### Step 8.6: Extract Custom Font Files
+
+Analyze resources from:
+
+- res/font/
+- assets/fonts/
+
+Extract:
+
+- Custom font families (TTF, OTF, WOFF files)
+- Font XML definitions (font family declarations)
+- Variable font axes (weight, width, slant)
+- Font fallback chains
+
+Binance uses custom fonts — without extracting the actual font files, the clone will fall back to system fonts and look incorrect.
+
+---
+
+### Step 8.7: Extract Raw Resources (Lottie, Audio, Media)
+
+Analyze resources from:
+
+- res/raw/
+- assets/ (Lottie subdirectories)
+
+Extract:
+
+- Lottie animation JSON files (loaders, success checkmarks, confetti, onboarding)
+- Sound effects (order fill sounds, notification tones)
+- Video files (splash screen, onboarding videos)
+- Certificate files (SSL pinning certificates)
+
+Lottie animations are critical — Binance uses them for loading spinners, success/error states, and celebration effects.
+
+---
+
+### Step 8.8: Extract XML Configurations
+
+Analyze resources from:
+
+- res/xml/
+
+Extract:
+
+- preferences.xml (Settings screen structure and preference hierarchies)
+- shortcuts.xml (app launcher shortcuts like "Quick Trade", "Scan QR")
+- network_security_config.xml (SSL pinning, cleartext traffic rules)
+- file_provider_paths.xml (file sharing paths)
+- widget_info.xml (home screen widget metadata)
+- backup_rules.xml (data backup configuration)
+
+The preferences XML directly defines the Settings screen hierarchy — essential for documenting 24-account-settings.md and 32-settings-flows.md.
+
+---
+
+### Step 8.9: Extract Color State Lists
+
+Analyze resources from:
+
+- res/color/
+
+Extract:
+
+- ColorStateList XML files for text colors (pressed, disabled, focused, selected)
+- ColorStateList XML files for icon tints
+- ColorStateList XML files for background tints
+- State-dependent color mappings for buttons, inputs, tabs, and chips
+
+These are separate from drawable selectors — they define how **text and icon colors** change across interaction states.
+
+---
+
+### Step 8.10: Extract Shared Element Transitions
+
+Analyze resources from:
+
+- res/transition/
+- Source code references to `TransitionManager`, `ChangeBounds`, `Fade`, `Slide`
+
+Extract:
+
+- Shared element transition definitions (e.g., coin icon morphing from list → detail)
+- Scene transitions between fragments
+- Custom transition classes
+- Transition duration, interpolator, and target view mappings
+
+---
+
+### Step 8.11: Deep Scan Assets Directory
+
+Analyze the full contents of:
+
+- assets/
+
+Extract beyond images:
+
+- WebView HTML/CSS/JS bundles (Help Center, FAQ, Terms of Service, KYC flows)
+- TradingView charting library files (the chart widget is often bundled as WebView assets)
+- Lottie JSON animation files
+- Configuration JSON files (feature flags, remote config defaults, A/B test configs)
+- Pre-bundled data files (country lists, currency lists, network metadata)
+- Markdown or text content files
+
+> **Important:** The TradingView chart system and many informational pages (Help, FAQ, ToS) are rendered via WebView.
+> These screens have NO layout XML — their UI lives entirely in HTML/CSS/JS inside `assets/`.
+> They must be documented separately.
+
+---
+
+### Step 8.12: Identify WebView-Based Screens
+
+Scan source code for:
+
+- `WebView` usage in layout XMLs
+- `WebViewClient` and `WebChromeClient` subclasses
+- `loadUrl()`, `loadData()`, `loadDataWithBaseURL()` calls
+- JavaScript interface bridges (`@JavascriptInterface`)
+- WebView-based Activity/Fragment classes
+
+Catalog all screens rendered via WebView:
+
+- Help Center / FAQ
+- Terms of Service / Privacy Policy
+- KYC / Identity Verification flows
+- Promotional landing pages
+- In-app dApp browser (Web3)
+- TradingView chart (if WebView-based)
+- Announcements / Blog content
+
+These screens will NOT have layout XML to analyze — document their URL patterns, injection bridges, and navigation entry points instead.
+
+---
+
+### Step 8.13: Extract Notification Layouts
+
+Analyze resources from:
+
+- res/layout/notification_*.xml
+- NotificationManager usage in source code
+- NotificationChannel definitions
+
+Extract:
+
+- Custom notification layouts (price alerts, order fills, deposit confirmations)
+- Notification channel categories (trading, security, promotions, system)
+- Notification action buttons ("View Order", "Open Trade")
+- Notification priority levels and display behaviors
+- Notification group / summary styles
+
+---
+
+### Step 8.14: Extract Home Screen Widget Layouts
+
+Analyze resources from:
+
+- res/layout/widget_*.xml
+- res/xml/widget_info.xml (AppWidgetProviderInfo)
+- AppWidgetProvider subclasses in source code
+
+Extract:
+
+- Widget layout structures (price ticker, portfolio summary, quick actions)
+- Widget size variants (1x1, 2x1, 4x1, 4x2, etc.)
+- Widget update intervals
+- Widget configuration activities
+- Widget click intent mappings
+
+---
+
+### Step 8.15: Audit Permissions and Map to UI Flows
+
+Analyze from:
+
+- AndroidManifest.xml `<uses-permission>` declarations
+- Runtime permission request code in source
+
+Map permissions to UI behaviors:
+
+- CAMERA → QR code scanner, KYC selfie, video verification
+- USE_BIOMETRIC / USE_FINGERPRINT → Biometric login, trade confirmation
+- READ_CONTACTS → Contact-based transfers
+- NFC → NFC-based features
+- POST_NOTIFICATIONS → Notification permission dialog (Android 13+)
+- ACCESS_FINE_LOCATION → Region-based compliance
+- READ_CLIPBOARD → Paste address detection
+
+Document the permission request dialogs and conditional UI flows that trigger based on permission state (granted, denied, permanently denied).
+
+---
+
+### Step 8.16: Document Light + Dark Mode Side-by-Side
+
+Extract and document:
+
+- res/values/colors.xml (light mode color tokens)
+- res/values-night/colors.xml (dark mode color tokens)
+- res/values/themes.xml (light theme attributes)
+- res/values-night/themes.xml (dark theme attribute overrides)
+
+Create a side-by-side mapping table:
+
+| Token Name | Light Mode | Dark Mode |
+|---|---|---|
+| colorPrimary | #F0B90B | #F0B90B |
+| colorBackground | #FFFFFF | #181A20 |
+| colorSurface | #F5F5F5 | #1E2026 |
+| textPrimary | #1E2329 | #EAECEF |
+| ... | ... | ... |
+
+Both modes must be fully documented in 33-colors-theme.md for the clone to support dark mode correctly.
+
+---
+
+### Step 8.17: Obfuscation Handling Strategy
+
+Binance's APK is heavily obfuscated with ProGuard/R8. The jadx output will contain:
+
+- Renamed classes (e.g., `a.b.c.d` instead of `TradeFragment`)
+- Renamed methods and fields
+- Inlined code and removed debug info
+
+Strategy:
+
+1. **Use layout XML as primary source** — layout files are NOT obfuscated
+2. **Use resource IDs** — `R.layout.*`, `R.id.*`, `R.drawable.*` retain original names
+3. **Use string resources** — `strings.xml` entries are in plaintext
+4. **Cross-reference layout inflation** — search for `R.layout.fragment_trade` to find the Fragment class even if obfuscated
+5. **Use AndroidManifest.xml** — Activity class names are preserved in the manifest
+6. **Rely on screenshots** when source code is too obfuscated to interpret
+
+> **Rule:** When jadx code is unreadable due to obfuscation, fall back to layout XML + screenshots as the source of truth.
 
 ---
 
@@ -693,6 +958,7 @@ docs/
 ```
 
 Workflow documentation files:
+
 - 44-screen-flows-navigation.md → navigation graph of the entire app
 - 45-features-overview.md → user workflows for major features
 
@@ -709,9 +975,11 @@ When feeding files to the AI full stack builder, always follow the numeric seque
 # [##]-[file-name]
 
 ## Overview
+
 [Brief description of what this file documents]
 
 ## Page Route
+
 /path
 
 ## Workflow Context
@@ -738,6 +1006,7 @@ Example:
 
 Trade Screen
 Variants:
+
 - Spot Mode
 - Margin Mode
 - Futures Mode
@@ -753,6 +1022,7 @@ Example:
 
 Markets Screen
 Tabs:
+
 - Favorites
 - Spot
 - Futures
@@ -771,6 +1041,7 @@ Spot Markets
 List reusable widgets inside the screen.
 
 Examples:
+
 - coin list widget
 - price ticker widget
 - order book widget
@@ -778,6 +1049,7 @@ Examples:
 - banner carousel
 
 ## Subviews and Internal Sections
+
 - Tabs
 - Widgets
 - Cards
@@ -786,6 +1058,7 @@ Examples:
 - Bottom sheets
 
 ## Filters and Selectors
+
 - Filter types
 - Sort options
 - Chip groups
@@ -794,6 +1067,7 @@ Examples:
 - Token selectors: logo grids, network status indicators, testnet/mainnet toggles
 
 ## States and Variants
+
 - Empty state
 - Loading state
 - Error state
@@ -805,36 +1079,44 @@ Examples:
 ## Source Resources
 
 ### Layout XML
+
 - Layout file name
 - Example: `fragment_trade.xml`
 
 ### Drawable Resources
+
 - Icons
 - Background images
 - Vector drawables
 
 ### Navigation Source
+
 - Activity / Fragment / Navigation graph
 
 ### Source Code References
+
 - Activity / Fragment class name
 - Important event handlers
 - Navigation triggers
 
 ## Component Hierarchy
+
 [Break down all UI components from layout XML, including tabs, widgets, lists, filters, selectors, modals, bottom sheets, overlays, and reusable subviews]
 
 ## Layout Structure
+
 Header
 Main Content
 Footer / Bottom Navigation
 
 ## Color Specifications
+
 - Extract exact hex codes from drawable resources and XML
 - Document color usage (primary, secondary, error, success)
 - Include RGB values and opacity
 
 ## Typography
+
 - Font family (SF Pro Display, etc.)
 - Font sizes (in px with dp equivalent)
 - Font weights (regular, medium, semi-bold, bold)
@@ -842,18 +1124,21 @@ Footer / Bottom Navigation
 - Line heights
 
 ## Dimensions & Spacing
+
 - All measurements in pixels (px) with dp equivalent
 - Component sizes (width, height)
 - Margins and padding
 - Touch target sizes (minimum 48x48px ~24dp)
 
 ## Component States
+
 - Default state
 - Pressed/Active state
 - Disabled state
 - Loading state
 
 ## Interaction Patterns
+
 - Tap/click behavior
 - Gesture support (swipe, pinch, drag, scroll)
 - Tab switching behavior
@@ -867,24 +1152,28 @@ Footer / Bottom Navigation
 - Navigation actions
 
 ## Data Display Formats
+
 - How numbers are formatted
 - Currency display
 - Percentage display
 - Date/time formats
 
 ## Accessibility
+
 - Screen reader labels
 - Focus order
 - Minimum contrast ratios
 - Touch target sizes
 
 ## Visual Design Details
+
 - Border radius values
 - Shadow specifications (color, blur, offset)
 - Gradient definitions
 - Icon specifications
 
 ## Implementation Notes
+
 - Special considerations for developers
 - Performance optimizations
 - Platform-specific notes (Android vs iOS)
@@ -901,12 +1190,14 @@ Footer / Bottom Navigation
 The Discover page is a multi-tab container with four primary variants: **Discover**, **Earn**, **Booster**, and **DApps**. Each tab has its own unique UI modules.
 
 #### Top Tab Architecture (Layer 3 Navigation)
+
 - **Tab Bar:** Horizontally scrollable with labels: `Discover`, `Earn`, `Booster`, `DApps`.
 - **Interaction:** Tapping a tab smoothly switches the entire content area below.
 
 ---
 
 #### A. Discover Tab
+
 - **Purpose:** Lists ongoing airdrop campaigns and project spotlights.
 - **UI Components:**
   - **Project List (`RecyclerView` item):**
@@ -918,6 +1209,7 @@ The Discover page is a multi-tab container with four primary variants: **Discove
 - **Micro-Interaction:** Tapping an item opens a detailed campaign page (likely a WebView or a new screen).
 
 #### B. Earn Tab
+
 - **Purpose:** Displays yield opportunities and staking options.
 - **Top Sub-Tabs:** Inside the Earn tab, there is a secondary tab strip: `Tokens`, `Loans`, `Protocols`, `Alpha Pools`, `Bonus`.
 - **Content Cards:**
@@ -930,6 +1222,7 @@ The Discover page is a multi-tab container with four primary variants: **Discove
 - **Micro-Interaction:** Tapping a card opens the corresponding earn product page.
 
 #### C. Booster Tab
+
 - **Purpose:** Features limited-time booster events with countdowns.
 - **Header:**
   - `My Total Rewards` (value) and `Joined` count.
@@ -943,6 +1236,7 @@ The Discover page is a multi-tab container with four primary variants: **Discove
 - **Finished Events Section:** Collapsible or separate list of past events with similar layout.
 
 #### D. DApps Tab
+
 - **Purpose:** Marketplace for discovering and launching dApps.
 - **Search Bar:** Persistent at top – "Search for dApps or enter a URL".
 - **Category Chips:** Below search, horizontally scrollable chips:
@@ -956,11 +1250,13 @@ The Discover page is a multi-tab container with four primary variants: **Discove
 - **Micro-Interaction:** Tapping a dApp card opens the dApp in an in-app browser with WalletConnect integration.
 
 #### Overlays & Reusable Components
+
 - **Network Selector Bottom Sheet:** Used when switching networks within any tab (documented in `50-dialogs-bottom-sheets.md`).
 - **Token Selector Modal:** Appears when selecting a token for earn or swap actions.
 - **dApp Connection Bottom Sheet:** Triggered when connecting to a dApp (WalletConnect flow).
 
 #### Source Resources to Look For
+
 - Layout files: `fragment_discover.xml`, `fragment_earn.xml`, `fragment_booster.xml`, `fragment_dapps.xml` (or a single container with `ViewPager2`).
 - RecyclerView adapters for project lists, dApp grids, event lists.
 - Custom countdown timer views in booster events.
@@ -975,6 +1271,7 @@ This level of detail ensures the AI builder can reconstruct the entire Discover 
 This workspace runs inside an AI-enabled code editor.
 
 The AI agent performs:
+
 - APK decompilation
 - resource extraction
 - layout analysis
@@ -990,6 +1287,7 @@ apk-tools/
 ## 📊 Priority Order (BUILD ORDER)
 
 ### Step 1 — Application Definition
+
 ```
 01-complete-ui-specification.md
 ```
@@ -999,6 +1297,7 @@ Defines the entire application structure.
 ---
 
 ### Step 2 — Screen Catalog
+
 ```
 02-complete-screen-catalog.md
 ```
@@ -1008,6 +1307,7 @@ Lists every screen and route.
 ---
 
 ### Step 3 — Exchange Core Screens
+
 ```
 03-exchange-homepage.md
 04-exchange-markets.md
@@ -1018,6 +1318,7 @@ Lists every screen and route.
 ---
 
 ### Step 4 — Web3 Core Screens
+
 ```
 07-web3-wallet-home.md
 08-web3-wallet-markets.md
@@ -1029,6 +1330,7 @@ Lists every screen and route.
 ---
 
 ### Step 5 — Exchange Advanced Modules
+
 ```
 13-exchange-order-book.md
 14-exchange-chart-system.md
@@ -1040,6 +1342,7 @@ Lists every screen and route.
 ---
 
 ### Step 6 — Web3 Advanced Modules
+
 ```
 18-web3-wallet-token-details.md
 19-web3-wallet-nft-assets.md
@@ -1051,6 +1354,7 @@ Lists every screen and route.
 ---
 
 ### Step 7 — Account & Settings
+
 ```
 23-user-profile.md
 24-account-settings.md
@@ -1067,6 +1371,7 @@ Lists every screen and route.
 ---
 
 ### Step 8 — Design System
+
 ```
 33-colors-theme.md
 34-typography.md
@@ -1076,6 +1381,7 @@ Lists every screen and route.
 ---
 
 ### Step 9 — Foundation UI
+
 ```
 36-screen-layouts.md
 37-ui-components.md
@@ -1088,6 +1394,7 @@ Lists every screen and route.
 ---
 
 ### Step 10 — Component Specifications
+
 ```
 42-logo-icon-specifications.md
 43-button-specifications.md
@@ -1105,6 +1412,7 @@ Lists every screen and route.
 ## 🎯 End Goal
 
 **After completing all 50 MD files**:
+
 - Each file will be fed to AI Full Stack App Builder
 - AI will generate code for each module
 - Modules will be combined into complete Binance clone
@@ -1115,77 +1423,77 @@ Lists every screen and route.
 ## 📌 Important Notes
 
 1. **Mobile-Only Extraction**:
-    - Extract UI/UX exclusively from Android APK (no desktop/web sources)
-    - Focus on mobile-specific UI patterns, components, and interactions
-    - Ignore any desktop/web-specific elements that may appear in resources
-    - All extracted specifications target mobile UI implementation
+   - Extract UI/UX exclusively from Android APK (no desktop/web sources)
+   - Focus on mobile-specific UI patterns, components, and interactions
+   - Ignore any desktop/web-specific elements that may appear in resources
+   - All extracted specifications target mobile UI implementation
 
 2. **Pixel-Perfect Documentation**:
-    - Extract UI details from layout XML and drawable resources
-    - Use screenshots only when layout structure is unclear
-    - Use px (pixels) with dp equivalent
-    - Include hex codes with RGB values
-    - Document exact spacing in pixels
+   - Extract UI details from layout XML and drawable resources
+   - Use screenshots only when layout structure is unclear
+   - Use px (pixels) with dp equivalent
+   - Include hex codes with RGB values
+   - Document exact spacing in pixels
 
 3. **Documentation Build Order Grouping**:
-    Files are grouped into logical phases for sequential AI builder consumption:
-    01–02 → Application definition  
-    03–06 → Exchange core screens  
-    07–11 → Web3 core screens  
-    12–16 → Exchange advanced modules  
-    17–21 → Web3 advanced modules  
-    22–31 → Account & settings  
-    32–34 → Design system  
-    35–40 → UI foundation  
-    41–50 → Component specifications
+   Files are grouped into logical phases for sequential AI builder consumption:
+   01–02 → Application definition  
+   03–06 → Exchange core screens  
+   07–11 → Web3 core screens  
+   12–16 → Exchange advanced modules  
+   17–21 → Web3 advanced modules  
+   22–31 → Account & settings  
+   32–34 → Design system  
+   35–40 → UI foundation  
+   41–50 → Component specifications
 
 4. **CeFi vs DeFi Separation**:
-    - Exchange (03-17): Order books, charts, trading
-    - Web3 (08-22): Wallet, swaps, NFTs, dApps
-    - Different UI patterns, different user flows
+   - Exchange (03-17): Order books, charts, trading
+   - Web3 (08-22): Wallet, swaps, NFTs, dApps
+   - Different UI patterns, different user flows
 
 5. **Documentation Quality**:
-    - Document all visible UI elements.
-    - Typical size: 200-800 lines depending on screen complexity.
-    - Trade page may exceed 1000 lines.
-    - Always inspect layout XML files first before documenting a screen.
-    - Use XML hierarchy as the source of truth for component structure.
+   - Document all visible UI elements.
+   - Typical size: 200-800 lines depending on screen complexity.
+   - Trade page may exceed 1000 lines.
+   - Always inspect layout XML files first before documenting a screen.
+   - Use XML hierarchy as the source of truth for component structure.
 
 6. **One Screen Container Per File**:
-    - Each MD file describes one major screen container.
-    - Inside the file document:
-      - screen variants
-      - tab views
-      - modal variants
-      - bottom sheet variants
-      - fullscreen variants
-    - Example:
-      05-exchange-trade.md
-      Container:
-      Trade Screen
-      Variants documented inside:
-      - Spot mode
-      - Margin mode
-      - Futures mode
-      - Chart fullscreen
-      - Indicator settings
-      - Order confirmation modal
-      - Indicator settings
-      - Order confirmation modal
+   - Each MD file describes one major screen container.
+   - Inside the file document:
+     - screen variants
+     - tab views
+     - modal variants
+     - bottom sheet variants
+     - fullscreen variants
+   - Example:
+     05-exchange-trade.md
+     Container:
+     Trade Screen
+     Variants documented inside:
+     - Spot mode
+     - Margin mode
+     - Futures mode
+     - Chart fullscreen
+     - Indicator settings
+     - Order confirmation modal
+     - Indicator settings
+     - Order confirmation modal
 
 7. **APK Resource First Rule**:
-    The AI agent analyzes the following resources to document a screen:
-    - res/layout/
-    - res/values/
-    - res/drawable/
-    - res/navigation/
-    - source code (jadx)
-    
-    These resources define the true UI structure.
+   The AI agent analyzes the following resources to document a screen:
+   - res/layout/
+   - res/values/
+   - res/drawable/
+   - res/navigation/
+   - source code (jadx)
+
+   These resources define the true UI structure.
 
 8. **Workflow Extraction Rule**:
-    Always identify the user workflow a screen belongs to.
-    Screens should be documented as part of a flow, not as isolated UI pages.
+   Always identify the user workflow a screen belongs to.
+   Screens should be documented as part of a flow, not as isolated UI pages.
 
 9. **Micro-Detail Extraction Rule**:
    Every screen must be decomposed into:
@@ -1224,6 +1532,18 @@ Many important Binance UI elements exist as subviews inside major screens and mu
 - [ ] Extract user workflows
 - [ ] Extract design system
 - [ ] Extract assets
+- [ ] Extract custom font files (res/font/, assets/fonts/)
+- [ ] Extract raw resources — Lottie JSONs, sounds, media (res/raw/)
+- [ ] Extract XML configs — preferences, shortcuts, security config (res/xml/)
+- [ ] Extract color state lists (res/color/)
+- [ ] Extract shared element transitions (res/transition/)
+- [ ] Deep scan assets/ — WebView HTML, Lottie, TradingView, config JSONs
+- [ ] Identify and catalog all WebView-based screens (no layout XML)
+- [ ] Extract notification layouts and channels
+- [ ] Extract home screen widget layouts
+- [ ] Audit AndroidManifest.xml permissions → map to UI flows
+- [ ] Document light + dark mode color tokens side-by-side
+- [ ] Establish obfuscation handling strategy for jadx output
 - [ ] Start documenting with:
   - 01-complete-ui-specification.md
   - 02-complete-screen-catalog.md
@@ -1243,6 +1563,7 @@ Many important Binance UI elements exist as subviews inside major screens and mu
 ## 📞 When You Return
 
 **Just read this file** and you'll know exactly:
+
 1. What we planned (50-file architecture)
 2. What's done (workspace cleanup)
 3. What's next (AI decompile → AI analysis → extract navigation → detect screens → extract tabs/widgets/filters/networks → extract workflows → extract design system → extract assets → create 50 MD files)
@@ -1251,6 +1572,6 @@ Many important Binance UI elements exist as subviews inside major screens and mu
 
 ---
 
-*Last Updated: 2026-03-12*
-*Project: Binance Clone - Documentation-Driven Development*
-*Architecture: Binance APK → AI Agent Decompilation (apktool) → Source Extraction (jadx) → Resource Analysis (layouts + drawables + values) → Screen Detection → Navigation & Workflow Reconstruction → UI/UX Documentation (50 MD Files) → AI Full Stack App Builder → Generated Web Application → Capacitor Android Build*
+_Last Updated: 2026-03-12_
+_Project: Binance Clone - Documentation-Driven Development_
+_Architecture: Binance APK → AI Agent Decompilation (apktool) → Source Extraction (jadx) → Resource Analysis (layouts + drawables + values) → Screen Detection → Navigation & Workflow Reconstruction → UI/UX Documentation (50 MD Files) → AI Full Stack App Builder → Generated Web Application → Capacitor Android Build_
