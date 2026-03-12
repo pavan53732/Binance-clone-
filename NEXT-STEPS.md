@@ -53,11 +53,13 @@ project-root/
 ## 🎯 Immediate Next Steps
 
 ### Screen Discovery Process
-To reliably discover every screen inside the Android APK, we use a 4-layer scan approach:
+To reliably discover every screen inside the Android APK, we use a 6-layer scan approach:
 1. **Activity Discovery** (from AndroidManifest.xml)
 2. **Fragment Discovery** (dynamic UI components)
 3. **Navigation Graph Discovery** (declarative navigation)
-4. **Overlay & RecyclerView Discovery** (dialogs, bottom sheets, list items)
+4. **Overlay Discovery** (dialogs, bottom sheets)
+5. **RecyclerView Item Discovery** (list items, adapters)
+6. **Compose / Binding UI Discovery** (Jetpack Compose, ViewBinding)
 
 This ensures we capture statically declared screens, dynamically created fragments, navigation destinations, and overlay interfaces that may not appear as standalone layouts.
 
@@ -82,6 +84,10 @@ This ensures we capture statically declared screens, dynamically created fragmen
 - `intent-filter`
 - `app link`
 - `deep link`
+- `extends Service`
+- `extends IntentService`
+- `NotificationManager`
+- `PendingIntent`
 
 ### Step 1: AI Agent APK Decompilation
 The AI agent will automatically decompile the APK and analyze UI resources using apktool and jadx.
@@ -103,7 +109,11 @@ The AI agent will automatically decompile the APK and analyze UI resources using
     - Location: `binance-decompiled/res/layout/`
     - Location: `binance-decompiled/res/layout-v*/`
 
-4. **Extract design system resources**:
+4. **Extract menu XML files**:
+    - Location: `binance-decompiled/res/menu/`
+    - Example: toolbar menus, overflow menus
+
+5. **Extract design system resources**:
     Location:
     `binance-decompiled/res/values/`
     
@@ -197,6 +207,31 @@ This helps build the **screen catalog** correctly.
 
 ---
 
+### Navigation Layer Model
+
+To avoid misinterpreting nested tab systems in large apps like Binance, navigation is classified into three layers:
+
+**Layer 1 — Application Navigation**
+- True top-level routes
+- Examples: Home, Markets, Trade, Futures, Assets, Web3 Wallet
+- AI builder should generate **separate routes** for these
+
+**Layer 2 — Screen Container Navigation**
+- Mode switches inside a screen container
+- Examples: Trade Screen variants (Spot, Margin, Futures)
+- AI builder should generate **mode switching**, not routing
+
+**Layer 3 — Internal Screen Navigation**
+- Tab systems inside sections
+- Examples: Markets tabs (Favorites, Spot, Futures), Timeframe selectors (1m, 5m, 15m, 1h)
+- AI builder should generate **tab systems**, not navigation routes
+
+This prevents AI builders from incorrectly generating routes like:
+- `/markets/spot/usdt` (wrong)
+Instead of tab switching within Markets screen (correct).
+
+---
+
 ### Step 4: Detect All Application Screens
 
 The AI agent scans layouts, activities, fragments, and navigation graphs to detect all screens present in the application.
@@ -231,7 +266,7 @@ Sources:
 - AndroidManifest.xml
 - Fragment classes
 - Activity classes
-- RecyclerView item layouts that function as mini-screens
+- RecyclerView item layouts representing reusable UI modules
   Example: item_market_row.xml, item_order_row.xml, item_trade_row.xml
 
 The detected screens are used to build the screen catalog.
@@ -397,6 +432,9 @@ Sources used:
 - fragment transitions
 - click handlers in source code
 - deep links
+- ViewModel navigation events
+- event bus triggers
+- navigation commands emitted by ViewModel
 
 ---
 
