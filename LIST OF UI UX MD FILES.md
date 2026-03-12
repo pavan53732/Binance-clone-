@@ -61,14 +61,15 @@ This order allows AI builders to understand: App structure → screens → modul
 
 ---
 
-## Total UI/UX Documentation: 50 MD Files (Planned)
+## Total UI/UX Documentation: 54 MD Files (Planned)
 
-## 01-02: Application Definition
+## 00-02: Application Definition
 
-These files define the **application structure** and **screen catalog**.
+These files define the **application structure**, **screen catalog**, and **master ID registries**.
 
 | # | File Name | Description | Status |
 |---|-----------|-------------|--------|
+| 0 | `00-system-index.md` | Master index of SCR, COMP, OVR, and WGT IDs | 📝 Planned |
 | 1 | `01-complete-ui-specification.md` | Complete UI specification | 📝 Planned |
 | 2 | `02-complete-screen-catalog.md` | Screen catalog | 📝 Planned |
 
@@ -775,6 +776,18 @@ Tabs:
 
 ---
 
+## 51-53: Data & Backend Integration
+
+These files document the **backend systems** driving the UI, including models, APIs, and real-time sockets.
+
+| # | File Name | Description | Status |
+|---|-----------|-------------|--------|
+| 51 | `51-data-models.md` | Models (Market, Order, Trade, Asset) | 📝 Planned |
+| 52 | `52-api-endpoints.md` | API endpoint discovery (REST/GraphQL) | 📝 Planned |
+| 53 | `53-event-system.md` | WebSocket streams, LiveData, EventBus | 📝 Planned |
+
+---
+
 ## Estimated UI Coverage
 
 Typical Binance mobile application structure:
@@ -789,7 +802,7 @@ Typical Binance mobile application structure:
 | Compose / binding UIs | ~10 |
 | **Total UI interfaces** | **~200–240** |
 
-These interfaces are grouped into **50 screen containers** documented in this specification.
+These interfaces are grouped into **54 screen containers** documented in this specification.
 
 ---
 

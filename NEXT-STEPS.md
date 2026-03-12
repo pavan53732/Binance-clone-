@@ -70,36 +70,81 @@ To reliably discover every screen inside the Android APK, we use a 6-layer scan 
 
 This ensures we capture statically declared screens, dynamically created fragments, navigation destinations, and overlay interfaces that may not appear as standalone layouts.
 
-**JADX Search Commands for Screen Discovery:**
+**JADX Search Commands for Screen Discovery & Backend Mapping:**
 
+*Fragments & Activities:*
 - `extends Activity`
 - `extends Fragment` / `extends BaseFragment`
 - `extends DialogFragment`
 - `extends BottomSheetDialogFragment`
+
+*Layouts & Binding:*
 - `R.layout.` (to find layout inflations)
 - `inflate(`
 - `DataBindingUtil.inflate`
 - `ViewBinding`
+
+*Jetpack Compose:*
 - `@Composable`
 - `setContent`
 - `ComposeView`
-- `R.id.nav_` (navigation destinations)
+- `remember`
+- `Modifier`
+- `NavHost` / `composable(`
+- `Scaffold`
+- `LazyColumn` / `LazyRow`
+
+*RecyclerView & Adapters:*
 - `RecyclerView.Adapter`
 - `ViewHolder`
+- `getItemViewType()`
+- `onCreateViewHolder()`
+- `onBindViewHolder()`
+
+*Navigation:*
+- `R.id.nav_` (navigation destinations)
 - `FragmentTransaction`
 - `NavController`
-- `deep links` (in AndroidManifest.xml)
-- `intent-filter`
-- `app link`
-- `deep link`
-- `extends Service`
-- `extends IntentService`
-- `NotificationManager`
-- `PendingIntent`
+- `intent-filter` / `app link` / `deep link` (in AndroidManifest.xml)
+
+*Event Systems & WebSockets:*
+- `subscribe`
+- `socket` / `websocket`
+- `channel` / `stream`
+- `ticker` / `depth` / `trade`
+- `LiveData` / `Flow` / `RxJava` / `EventBus`
+
+*Data & Dependency Graph:*
+- `ViewModel`
+- `retrofit` / `okhttp` / `graphql` / `rest`
+- `endpoint` / `baseUrl`
+- `DTO` / `data class`
+
+*Feature Flags:*
+- `remote_config`
+- `ABTest`
+- `feature_flag`
 
 > **Important:** Network Selector is NOT a standalone screen.
 > It is a **reusable overlay component** (bottom sheet).
 > Document in: `49-dialogs-bottom-sheets.md`
+
+### Global Screen & Component ID System
+
+To prevent documentation instability and duplicate definitions across 54 files, a strict ID system must be enforced. Every documented entity **must** be assigned a unique ID mapping to the `00-system-index.md` registry.
+
+**ID Nomenclatures:**
+- **SCR-XXX**: Screens (e.g., `SCR-001` Exchange Home, `SCR-003-V1` Trade Spot Variant).
+- **OVR-XXX**: Overlays (e.g., `OVR-001` Network Selector, `OVR-002` Token Selector).
+- **WGT-XXX**: Widgets (e.g., `WGT-001` Coin List, `WGT-002` Order Book).
+- **COMP-XXX**: Shared Components (e.g., `COMP-001` CoinListItem, `COMP-002` AssetRow).
+
+When a screen utilizes a shared component (e.g., Coin Row), it MUST reference the exact `COMP-XXX` ID rather than duplicating the layout specification. Component specifications and data models will be mapped entirely in `36-ui-components.md` and `51-data-models.md`.
+
+### Deduplication & Pagination Constraints
+
+1. **Asset Deduplication:** Extract logical assets, ignoring density duplicates (e.g., merge `icon_btc_24`, `icon_btc_hdpi` into a single logical `icon_btc` definition).
+2. **Size constraints:** No single Markdown file may exceed ~800 lines. If a single page (e.g., Advanced Trade) balloons in size due to multiple sub-widgets, it **must** be split out into a new MD file using the `WGT-` or `COMP-` linking definitions.
 
 ### Step 1: AI Agent APK Decompilation
 
@@ -881,9 +926,40 @@ Strategy:
 
 ---
 
-### Step 9: Create Documentation Files (50 MD Files)
+### Step 8.18: Extract UI Data Models
 
-All documentation files must be created and fed to the AI builder in numeric order (01 → 50).
+Screens depend directly on data structures to render rows, cards, and tickers.
+Analyze and extract:
+- `ViewModel` classes
+- `data classes` and `DTOs` (Data Transfer Objects)
+- GraphQL models mapping to the UI
+Document exactly what fields are required to populate screens like `03-exchange-homepage.md`.
+
+---
+
+### Step 8.19: API Endpoint Discovery
+
+Identify exactly how the UI modules fetch their data.
+Scan for:
+- `Retrofit` / `OkHttp` / `GraphQL` builders
+- `baseUrl`, `endpoint`, and API routing structures
+Document REST/GraphQL endpoints in `52-api-endpoints.md`.
+
+---
+
+### Step 8.20: Event System Extraction
+
+Binance heavily queries continuous data (Prices, Order Books) via Streams.
+Scan for:
+- `subscribe`, `socket`, `channel`
+- LiveData, Flow, RxJava, or EventBus receivers updating the UI
+Document the socket topics required to animate the UI in `53-event-system.md`.
+
+---
+
+### Step 9: Create Documentation Files (54 MD Files)
+
+All documentation files must be created and fed to the AI builder in numeric order (00 → 53).
 
 ---
 
@@ -894,6 +970,7 @@ Create a folder for all specification files.
 ```
 docs/
 ├── 01-application/
+│   ├── 00-system-index.md
 │   ├── 01-complete-ui-specification.md
 │   └── 02-complete-screen-catalog.md
 │
