@@ -173,10 +173,10 @@ The AI agent will automatically decompile the APK and analyze UI resources using
 
 **Process**:
 
-1. **Decompile APK** with apktool:
+1. **Decompile APK** with apktool: *(COMPLETED)*
 
    ```powershell
-   java -jar apk-tools/apktool.jar decode Binance.apk -o binance-decompiled
+   # java -jar apk-tools/apktool.jar decode Binance.apk -o binance-decompiled
    ```
 
 2. **Extract all images** from decompiled folder:
@@ -211,9 +211,9 @@ The AI agent will automatically decompile the APK and analyze UI resources using
    `binance-decompiled/res/anim/`
    `binance-decompiled/res/animator/`
 
-7. **Decompile with jadx** for source code:
+7. **Decompile with jadx** for source code: *(COMPLETED)*
    ```powershell
-   apk-tools\jadx\bin\jadx.bat Binance.apk --output-dir jadx-output
+   # apk-tools\jadx\bin\jadx.bat Binance.apk --output-dir jadx-output
    ```
 
 **Expected Output**:
