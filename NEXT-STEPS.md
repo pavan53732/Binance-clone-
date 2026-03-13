@@ -163,7 +163,9 @@ If a UI element already exists in the COMPONENT REGISTRY (COMP-XXX), it must NOT
 1. **Asset Deduplication Rule:** Extract logical assets, ignoring density variants (e.g., map `drawable-hdpi/icon_btc.png` and `drawable-xxhdpi/icon_btc.png` into a single logical `icon_btc` definition). Logical asset name = base drawable filename.
 2. **Size constraints:** No single Markdown file may exceed ~800 lines. If a single page (e.g., Advanced Trade) balloons in size due to multiple sub-widgets, it **must** be split out into a new MD file using the `WGT-` or `COMP-` linking definitions.
 
-### Step 1: AI Agent APK Decompilation
+### ✅ Step 1: AI Agent APK Decompilation (COMPLETED)
+
+*(This step has been successfully completed. The resources are extracted and available in the `binance-decompiled` and `jadx-output` directories.)*
 
 The AI agent will automatically decompile the APK and analyze UI resources using apktool and jadx.
 
@@ -1632,8 +1634,8 @@ Many important Binance UI elements exist as subviews inside major screens and mu
 
 ## 🚀 Quick Start Checklist
 
-- [ ] Decompile APK
-- [ ] Extract UI resources
+- [x] Decompile APK
+- [x] Extract UI resources
 - [ ] Analyze layouts
 - [ ] Extract navigation structure
 - [ ] Detect all application screens
@@ -1684,7 +1686,7 @@ Many important Binance UI elements exist as subviews inside major screens and mu
 
 1. What we planned (54-file architecture)
 2. What's done (workspace cleanup)
-3. What's next (AI decompile → AI analysis → extract navigation → detect screens → extract tabs/widgets/filters/networks → extract workflows → extract design system → extract assets → create 54 MD files)
+3. What's next (AI analysis → extract navigation → detect screens → extract tabs/widgets/filters/networks → extract workflows → extract design system → extract assets → create 54 MD files)
 
 **Continue from where you left off!** 🎯
 
