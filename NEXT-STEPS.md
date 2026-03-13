@@ -976,6 +976,93 @@ Document the socket topics required to animate the UI in `53-event-system.md`.
 
 ---
 
+### Step 8.21: Extract Architecture Systems
+
+Advanced mobile reverse-engineering requires extracting deep architectural behaviors that define how the app actually operates, not just how it looks.
+
+1. **Dependency Injection Architecture:**
+   - Scan for: `Hilt`, `Dagger`, `@Module`, `@Provides`, `@Singleton`, `@Inject`, `@HiltAndroidApp`, `Koin`, `Kodein`
+   - Extract: Application scope services, Repository classes, API service providers, Database providers, Use case layers.
+   - Example: `MarketRepository` → uses `ApiService` → injected into `MarketViewModel`.
+
+2. **Repository Layer:**
+   - Scan for: `Repository`, `DataSource`, `RemoteDataSource`, `LocalDataSource`
+   - Extract: The middle layer between ViewModels and API/DB (e.g., `TickerRepository`, `OrderRepository`, `AuthRepository`). This determines which API calls populate which UI components.
+
+3. **Pagination System:**
+   - Scan for: `PagingSource`, `PagingData`, `PagingDataAdapter`, `loadNextPage`, `cursor`, `page`, `limit`
+   - Extract: Pagination method, page size, cursor vs offset, loading indicators. Affects scroll behavior and API usage.
+
+4. **Error Handling Architecture:**
+   - Scan for: `ApiException`, `NetworkException`, `ErrorMapper`, `ResultWrapper`, `Failure`
+   - Extract: Error code → UI mapping, retry logic, toast messages, snackbar messages, error banners.
+
+5. **Feature Gating / Regional Restrictions:**
+   - Scan for: `region`, `country`, `geo`, `compliance`, `isRestricted`, `featureGate`
+   - Extract: Country restrictions, KYC gating, feature toggles, compliance checks (e.g., US users → futures disabled).
+
+6. **Analytics / Tracking Events:**
+   - Scan for: `track`, `analytics`, `logEvent`, `FirebaseAnalytics`, `Amplitude`, `Mixpanel`
+   - Extract: User action events, screen view events, trading events, conversion events. This reveals important user flows.
+
+7. **Security Systems:**
+   - Scan for: `SafetyNet`, `PlayIntegrity`, `RootDetection`, `EmulatorDetection`, `CertificatePinning`, `Keystore`
+   - Extract: Root detection logic, SSL pinning config, biometric usage, device integrity checks. Critical for reproducing authentication flows.
+
+8. **Background Services:**
+   - Scan for: `Service`, `ForegroundService`, `JobScheduler`, `WorkManager`, `AlarmManager`
+   - Extract: Background price refresh, notification polling, account sync (e.g., `WorkManager` → refresh ticker every 15s).
+
+9. **App Lifecycle Hooks:**
+   - Scan for: `onCreate`, `onResume`, `onPause`, `onStop`, `onDestroy`
+   - Extract: Analytics triggers, socket reconnect, data refresh logic.
+
+10. **WebSocket Protocol Mapping:**
+    - Extract: Subscription messages, heartbeat messages, reconnect strategy, message schema. Required to rebuild real-time trading data.
+
+11. **Chart Engine Extraction:**
+    - Scan for: `TradingView`, `MPAndroidChart`, `ChartView`, `Indicator`, `Candle`, `OHLC`
+    - Extract: Chart library, data feed adapter, indicator engine, timeframe system, drawing tools, gesture controls.
+
+12. **Localization Strategy:**
+    - Extract: Language switching logic, fallback language, RTL layout adjustments, dynamic translation loading.
+
+13. **Accessibility Services:**
+    - Scan for: `contentDescription`, `AccessibilityNodeInfo`, `AccessibilityDelegate`
+    - Extract: TalkBack support, contentDescription, accessibility delegates, accessibility roles.
+
+14. **Performance Optimizations:**
+    - Scan for: `RecyclerView pool`, `setHasFixedSize`, `DiffUtil`, `view recycling`, `prefetch`
+    - Extract: RecyclerView pooling, image caching, lazy loading.
+
+15. **Image Loading System:**
+    - Scan for: `Glide`, `Coil`, `Picasso`, `Fresco`, `ImageLoader`
+    - Extract: Image caching, placeholder logic, error images, network vs local images.
+
+16. **Push Notification Providers:**
+    - Scan for: `FirebaseMessagingService`, `onMessageReceived`
+    - Extract: Firebase Cloud Messaging, Huawei Push, OneSignal logic.
+
+17. **Deep Linking System:**
+    - Scan for: `intent-filter`, `scheme`, `host`, `path`
+    - Extract: App scheme, universal links, deeplink routing (e.g., `binance://trade/BTCUSDT`).
+
+18. **Feature Module Architecture:**
+    - Scan for: `feature`, `module`, `core`, `base`
+    - Extract: Module boundaries, feature modules, shared modules.
+
+19. **A/B Experiment Framework:**
+    - Scan for: `experiment`, `variant`, `bucket`, `ABTest`
+    - Extract: Experiment ID, UI variations, feature rollout logic.
+
+20. **Caching Layers:**
+    - Scan for: `cache`, `LRU`, `diskCache`
+    - Extract: Memory cache, disk cache, API cache.
+
+Document these architecture systems comprehensively to achieve ~99% extraction completeness.
+
+---
+
 ### Step 9: Create Documentation Files (54 MD Files)
 
 All documentation files must be created and fed to the AI builder in numeric order (00 → 53).
@@ -1664,6 +1751,7 @@ Many important Binance UI elements exist as subviews inside major screens and mu
 - [ ] Audit AndroidManifest.xml permissions → map to UI flows
 - [ ] Document light + dark mode color tokens side-by-side
 - [ ] Establish obfuscation handling strategy for jadx output
+- [ ] Extract advanced architecture systems (DI, Repositories, Sockets, etc. - Step 8.21)
 - [ ] Start documenting with:
   - 01-complete-ui-specification.md
   - 02-complete-screen-catalog.md
