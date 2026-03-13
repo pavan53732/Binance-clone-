@@ -94,6 +94,10 @@ This ensures we capture statically declared screens, dynamically created fragmen
 - `NavHost` / `composable(`
 - `Scaffold`
 - `LazyColumn` / `LazyRow`
+- `@Preview`
+- `rememberCoroutineScope`
+- `rememberSaveable`
+- `LaunchedEffect`
 
 *RecyclerView & Adapters:*
 - `RecyclerView.Adapter`
@@ -105,6 +109,15 @@ This ensures we capture statically declared screens, dynamically created fragmen
 - `ListAdapter`
 - `PagingDataAdapter`
 - `ConcatAdapter`
+
+*Interaction & Gestures:*
+- `setOnClickListener`
+- `setOnLongClickListener`
+- `setOnTouchListener`
+- `addTextChangedListener`
+- `GestureDetector`
+- `ScaleGestureDetector`
+- `VelocityTracker`
 
 *Navigation:*
 - `R.id.nav_` (navigation destinations)
@@ -1059,7 +1072,49 @@ Advanced mobile reverse-engineering requires extracting deep architectural behav
     - Scan for: `cache`, `LRU`, `diskCache`
     - Extract: Memory cache, disk cache, API cache.
 
-Document these architecture systems comprehensively to achieve ~99% extraction completeness.
+### Step 8.22: Extract UI State Machines
+
+Large trading apps heavily rely on state transitions to control buttons, loading indicators, and error banners.
+- Scan for: ViewModel state classes, sealed classes, UI reducers, `stateFlow`, `LiveData` state objects.
+- Extract: e.g., `OrderFormState` → `Idle`, `Editing`, `Submitting`, `Success`, `Error`.
+
+### Step 8.23: Extract Gesture Interaction Systems
+
+Charts and order books often use complex touch mechanics.
+- Scan for: `GestureDetector`, `ScaleGestureDetector`, `OnTouchListener`, `MotionEvent`, `VelocityTracker`
+- Extract: Chart pinch zoom, candle crosshair drag, swipe order book depth, drag indicator overlays.
+
+### Step 8.24: Extract Concurrency and Scheduling Systems
+
+Modern apps rely on concurrency to not block the main UI thread.
+- Scan for: `CoroutineScope`, `Dispatchers`, `launch`, `async`, `RxJava`, `Schedulers`, `Executors`
+- Extract: E.g., `MarketRepository` → fetch data on `Dispatchers.IO` → update ViewModel.
+
+### Step 8.25: Extract Navigation Guards
+
+Many critical screens require conditions before access is granted.
+- Scan for: `isLoggedIn`, `requiresKYC`, `checkPermission`, `authGuard`
+- Extract: E.g., Trade screen → requires login, requires KYC, requires futures permission.
+
+### Step 8.26: Extract Environment Configuration
+
+Enterprise apps switch logic based on environment builds.
+- Scan for: `BuildConfig`, `environment`, `flavor`, `stage`, `testnet`, `mainnet`
+- Extract: API base URLs, feature toggles, network environments.
+
+### Step 8.27: Extract Wallet Cryptography Systems (Web3)
+
+If the app contains a Web3 wallet, key management is foundational.
+- Scan for: `WalletManager`, `KeyStore`, `BIP39`, `Mnemonic`, `HDWallet`, `PrivateKey`, `Signature`
+- Extract: Wallet key storage, mnemonic handling, signature generation, transaction signing.
+
+### Step 8.28: Extract Rate Limiting Systems
+
+Trading APIs often throttle UI refreshes to preserve performance.
+- Scan for: `throttle`, `debounce`, `rateLimit`, `cooldown`
+- Extract: Search debounce (e.g., 300ms), ticker refresh (e.g., 500ms).
+
+Document all architecture systems comprehensively to achieve ~99.5% extraction completeness.
 
 ---
 
@@ -1586,16 +1641,6 @@ Lists every screen and route.
 
 ---
 
-### Step 11 — Backend Mapping
-
-```
-51-data-models.md
-52-api-endpoints.md
-53-event-system.md
-```
-
----
-
 ### Step 10 — Component Specifications
 
 ```
@@ -1609,6 +1654,16 @@ Lists every screen and route.
 48-cards-lists.md
 49-dialogs-bottom-sheets.md
 50-overlay-selectors.md
+```
+
+---
+
+### Step 11 — Backend Mapping
+
+```
+51-data-models.md
+52-api-endpoints.md
+53-event-system.md
 ```
 
 ---
@@ -1716,6 +1771,15 @@ Lists every screen and route.
    - reusable components
 
 Many important Binance UI elements exist as subviews inside major screens and must not be skipped.
+
+10. **API Evidence Rule (Anti-Hallucination Backend Mapping)**:
+    Every documented API endpoint must reference explicit source-code evidence:
+    - Retrofit interface
+    - GraphQL query file
+    - WebSocket subscription string
+    - Network request class
+    
+    If no definitive evidence exists from jadx extraction, you must explicitly mark it as `UNVERIFIED_API`.
 
 ---
 
